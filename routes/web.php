@@ -23,3 +23,4 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin')->g
     Route::get('/', 'HomeController@index')->name('dashboard');
     
 });
+
