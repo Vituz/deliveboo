@@ -51,7 +51,7 @@ class RegisterController extends Controller
     {   /* ddd($data); */
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'categories[]'=>['required'],
+            'categories'=>['required'],
             'city'=>['required'],
             'address'=>['required'],
             'p_iva'=>['required', 'min:11', 'max:11'],
