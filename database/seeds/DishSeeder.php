@@ -21,7 +21,7 @@ class DishSeeder extends Seeder
             $dish->description=$faker->text(20);
             $dish->ingredients=$faker->text(30);
             $dish->price=$faker->randomFloat(2, 10,200);
-            $dish->img=$faker->imageUrl(640, 300, 'Dishes', true, $dish->name);
+            $dish->img=$faker->imageUrl(640, 300, null, true, $dish->name);
             $dish->visibility=$faker->boolean();
             $dish->save();
         }
