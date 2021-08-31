@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -36,4 +37,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function dishes(){
+        return $this->hasMany(Dish::class);
+
+    }
+
+    public function categories(): BelongsToMany {
+        return $this->belongsToMany(Category::class);
+    }
+
 }
