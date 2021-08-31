@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -19,10 +20,10 @@ class UserSeeder extends Seeder
             $newUser->name = $faker->name();
             $newUser->address = $faker->address();
             $newUser->city = $faker->city();
-            $newUser->p_iva = '12345678901';
+            $newUser->p_iva = $faker->numerify('###########');
             $newUser->image = $faker->imageUrl(640, 480);
             $newUser->email = $faker->freeEmail();
-            $newUser->password = 'password';
+            $newUser->password = Hash::make('password');
             $newUser->save();
 
         }

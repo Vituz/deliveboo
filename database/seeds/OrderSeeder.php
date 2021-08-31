@@ -22,7 +22,7 @@ class OrderSeeder extends Seeder
             $order->ui_surname = $faker->word();
             $order->ui_email = $faker->email();
             $order->ui_address = $faker->address();
-            $order->ui_phone_number = $faker->phoneNumber();
+            $order->ui_phone_number = $faker->numerify('##########');
             $order->amount = $faker->randomFloat(2, 9.99, 299.99);
 
             $order->save();
