@@ -39,5 +39,6 @@ class CreateDishesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('dishes');
+        
     }
 }
