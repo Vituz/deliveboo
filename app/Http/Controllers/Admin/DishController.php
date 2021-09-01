@@ -22,11 +22,10 @@ class DishController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-
-
-        $dishes = Dish::all()->sortByDesc('id');
-        return view('admin.dishes.index', compact('dishes'));
+    {   
+       $user=Auth::user()->id;
+       $dishes=Dish::where('user_id',$user)->get();
+       return view('admin.dishes.index',compact('dishes'));
     }
 
     /**
