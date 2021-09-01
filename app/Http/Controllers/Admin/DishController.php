@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Dish;
-use App\User;
 use App\Http\Controllers\Controller;
-// use Illuminate\Support\Facade\Auth;
 use Illuminate\Http\Request;
-use PHPUnit\Framework\MockObject\Builder\Identity;
+use Illuminate\Support\Facades\Storage;
+
 
 class DishController extends Controller
 {
@@ -54,9 +53,12 @@ class DishController extends Controller
             'price' => 'required | numeric',
             'visibility' => 'required | boolean'
             ]);
-            // ddd($validatedData);
-            // ddd($validatedData);
+            
+            $img = Storage::disk('public')->put('dish_images', $request->img);
+            $validatedData['img'] = $img;
+
             $validatedData['user_id']=$current_user_id;
+
             Dish::create($validatedData);
             return redirect()->route('admin.dishes.index');
         }
@@ -103,7 +105,11 @@ class DishController extends Controller
             'price' => 'required | numeric',
             'visibility' => 'required | boolean'
         ]);
+        $img = Storage::disk('public')->put('dish_images', $request->img);
+        $validatedData['img'] = $img;
+
         $validatedData['user_id']=$current_user_id;
+        
         $dish->update($validatedData);
         return redirect()->route('admin.dishes.index');
     }
