@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
-use App\Dish;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
+use App\Dish;
+use App\User;
+use App\Http\Controllers\Controller;
+// use Illuminate\Support\Facade\Auth;
+use Illuminate\Http\Request;
+use PHPUnit\Framework\MockObject\Builder\Identity;
 
 class DishController extends Controller
 {
@@ -17,6 +19,8 @@ class DishController extends Controller
      */
     public function index()
     {
+
+
         $dishes = Dish::all()->sortByDesc('id');
         return view('admin.dishes.index', compact('dishes'));
     }
@@ -40,44 +44,47 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
+        $current_user_id=$request->user()->id;
         $validatedData = $request ->validate([
-            'user_id' => 'required',
-            'name' => 'required | max:50 | min:5',
+            'name' => 'required | max:50 | min:1',
             'type' => 'required',
             'description' => 'nullable',
             'ingredients' => 'nullable',
             'img' => 'nullable | mimes:jpeg,jpg,png| max: 5000',
             'price' => 'required | numeric',
             'visibility' => 'required | boolean'
-        ]);
-
-        Dish::create($validatedData);
-        return redirect()->route('admin.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Dish $dish)
-    {
-        return view('admin.dishes.show', compact('dish'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Dish $dish)
-    {
-        return view('admin.dishes.edit', compact('dish'));
-    }
-
-    /**
+            ]);
+            // ddd($validatedData);
+            // ddd($validatedData);
+            $validatedData['user_id']=$current_user_id;
+            Dish::create($validatedData);
+            return redirect()->route('admin.dishes.index');
+        }
+        
+        /**
+         * Display the specified resource.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+        public function show(Dish $dish)
+        {
+            return view('admin.dishes.show', compact('dish'));
+        }
+        
+        /**
+         * Show the form for editing the specified resource.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+        public function edit(Dish $dish)
+        {
+            $dtypes=config('dtype.data');
+            return view('admin.dishes.edit', compact('dish', 'dtypes'));
+        }
+        
+        /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -86,8 +93,8 @@ class DishController extends Controller
      */
     public function update(Request $request, Dish $dish)
     {
+        $current_user_id=$request->user()->id;
         $validatedData = $request ->validate([
-            'user_id' => 'required',
             'name' => 'required | max:50 | min:5',
             'type' => 'required',
             'description' => 'nullable',
@@ -96,7 +103,7 @@ class DishController extends Controller
             'price' => 'required | numeric',
             'visibility' => 'required | boolean'
         ]);
-
+        $validatedData['user_id']=$current_user_id;
         $dish->update($validatedData);
         return redirect()->route('admin.dishes.index');
     }
