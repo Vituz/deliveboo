@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use App\Dish;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
-
-
 
 class DishController extends Controller
 {
@@ -54,9 +52,13 @@ class DishController extends Controller
             'price' => 'required | numeric',
             'visibility' => 'required | boolean'
             ]);
+
             
             $img = Storage::disk('public')->put('dish_images', $request->img);
             $validatedData['img'] = $img;
+
+            // ddd($validatedData);
+
 
             $validatedData['user_id']=$current_user_id;
 
