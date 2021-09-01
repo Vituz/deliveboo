@@ -3,7 +3,6 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <h1>Edit single dish</h1>
 
     {{-- @include('partials.errors') --}}
 
@@ -20,14 +19,12 @@
 
 
 <div class="container">
-    <h1>Add single dish</h1>
-
-    @section('content')
-
+    <h1>Edit single dish</h1>
    
-    <form action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.dishes.update', $dish->id) }}" method="post" enctype="multipart/form-data">
 
         @csrf
+        @method('PUT')
     
         <div class="form-group">
             <input type="text" class="form-control @error('name') is invalid @enderror" name="name" id="name"
@@ -43,7 +40,7 @@
         <div class="form-group">
 
             <select class="form-control" name="type" id="type" aria-describedby="typeId">
-                <option value="" selected disabled>{{$dish->type}}</option>
+                <option value="{{$dish->type}}" selected >{{$dish->type}}</option>
                 <option value="Starters">Starters</option>
                 <option value="First courses">First courses</option>
                 <option value="Main courses">Main courses</option>
@@ -102,7 +99,7 @@
             <input type="file" class="form-control-file @error('img') is invalid @enderror" name="img"
                 id="img" aria-describedby="imgId" max="300">
             <small id="imgId" class="form-text text-muted">Place an Url image</small>
-            <img src="{{asset('storage/'.$dish->img)}} alt="{{$dish->img}}" width="200">
+            {{-- <img src="{{asset('storage/'.$dish->img)}} alt="{{$dish->img}}" width="200"> --}}
         </div>
           @error('img')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -114,7 +111,7 @@
     <div class="form-group">
 
         <select class="form-control" name="visibility" id="visibility" aria-describedby="visibilityId" required>
-            <option value="" selected disabled>{{$dish->visibility ? 'true' : 'false'}}</option>
+            <option value="{{$dish->visibility}}" selected>{{$dish->visibility ? 'true' : 'false'}}</option>
             <option value="1">true</option>
             <option value="0">false</option>
         </select>

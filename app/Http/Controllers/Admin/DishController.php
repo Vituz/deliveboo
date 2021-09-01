@@ -55,35 +55,35 @@ class DishController extends Controller
             ]);
             // ddd($validatedData);
             // ddd($validatedData);
-        $validatedData['user_id']=$current_user_id;
-        Dish::create($validatedData);
-        return redirect()->route('admin.dishes.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Dish $dish)
-    {
-        return view('admin.dishes.show', compact('dish'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Dish $dish)
-    {
-        $dtypes=config('dtype.data');
-        return view('admin.dishes.edit', compact('dish', 'dtypes'));
-    }
-
-    /**
+            $validatedData['user_id']=$current_user_id;
+            Dish::create($validatedData);
+            return redirect()->route('admin.dishes.index');
+        }
+        
+        /**
+         * Display the specified resource.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+        public function show(Dish $dish)
+        {
+            return view('admin.dishes.show', compact('dish'));
+        }
+        
+        /**
+         * Show the form for editing the specified resource.
+         *
+         * @param  int  $id
+         * @return \Illuminate\Http\Response
+         */
+        public function edit(Dish $dish)
+        {
+            $dtypes=config('dtype.data');
+            return view('admin.dishes.edit', compact('dish', 'dtypes'));
+        }
+        
+        /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -92,8 +92,8 @@ class DishController extends Controller
      */
     public function update(Request $request, Dish $dish)
     {
+        $current_user_id=$request->user()->id;
         $validatedData = $request ->validate([
-            'user_id' => 'required',
             'name' => 'required | max:50 | min:5',
             'type' => 'required',
             'description' => 'nullable',
@@ -102,7 +102,7 @@ class DishController extends Controller
             'price' => 'required | numeric',
             'visibility' => 'required | boolean'
         ]);
-
+        $validatedData['user_id']=$current_user_id;
         $dish->update($validatedData);
         return redirect()->route('admin.dishes.index');
     }
