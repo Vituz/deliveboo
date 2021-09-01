@@ -28,16 +28,15 @@
                         <div class="form-group row">
                             <label for="categories[]" class="col-md-4 col-form-label text-md-right">Categoria</label>
                             <div class="col-md-6">
-                                <select multiple class="form-control" name="categories[]" id="categories[]">
+                                <select multiple class="form-control @error('categories') is-invalid @enderror" name="categories[]" id="categories[]">
                                     <option value="" disabled>Seleziona una o più categorie</option>
-                                    {{--  loop categorie 
                                         @foreach($categories as $category )
                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach
-                                    --}}
+                                   
                                     
                                 </select>
-                                @error('categories[]')
+                                @error('categories')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>

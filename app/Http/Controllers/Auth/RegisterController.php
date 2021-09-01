@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Category;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -48,13 +49,14 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {   /* ddd($data); */
+    {   
+        /* ddd($data); */
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'categories[]'=>['required'],
+            'categories'=>['required'],
             'city'=>['required'],
             'address'=>['required'],
-            'p_iva'=>['required', 'min:11', 'max:11'],
+            'p_iva'=>['required','numeric'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -68,13 +70,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        
+       /*  ddd($data); */
+
+      $user = User::create([
             'name' => $data['name'],
             'city'=>$data['city'],
             'address'=>$data['address'],
             'p_iva'=>$data['p_iva'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+      ]);
+        
+        $user->categories()->sync($data['categories']);
+        return $user;
+       
     }
 }
