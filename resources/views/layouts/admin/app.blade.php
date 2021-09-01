@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Boolpress') }}</title>
+    <title>{{ config('app.name', 'DeliveBoo') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -22,7 +22,8 @@
 </head>
 
 <body>
-    <h1>Home Page dishes</h1>
+    <h1>Dashboard</h1>
+    @yield('content')
 </body>
 
 </html>
