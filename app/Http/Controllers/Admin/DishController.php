@@ -6,7 +6,7 @@ use App\Category;
 use App\Dish;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
 {
@@ -16,9 +16,8 @@ class DishController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $dishes = Dish::all()->sortByDesc('id');
-        return view('admin.index', compact('dishes'));
+    {   
+       
     }
 
     /**
@@ -52,7 +51,7 @@ class DishController extends Controller
         ]);
 
         Dish::create($validatedData);
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.dishes.index');
     }
 
     /**
