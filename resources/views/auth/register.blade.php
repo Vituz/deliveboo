@@ -30,10 +30,10 @@
                             <div class="col-md-6">
                                 <select multiple class="form-control @error('categories') is-invalid @enderror" name="categories[]" id="categories[]">
                                     <option value="" disabled>Seleziona una o più categorie</option>
-                                    
-                                    @foreach($categories as $category )
+                                        @foreach($categories as $category )
                                     <option value="{{$category->id}}">{{$category->name}}</option>
-                                    @endforeach                                  
+                                    @endforeach
+                                   
                                     
                                 </select>
                                 @error('categories')

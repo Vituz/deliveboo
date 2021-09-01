@@ -14,7 +14,7 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        
     }
     /**
      * Display the specified resource.

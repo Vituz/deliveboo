@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +20,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin')->group(function(){
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
     Route::get('/', 'HomeController@index')->name('dashboard');
-    
+    Route::resource('/dishes', DishController::class); 
 });
 
