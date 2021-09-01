@@ -18,7 +18,7 @@ class DishController extends Controller
     public function index()
     {
         $dishes = Dish::all()->sortByDesc('id');
-        return view('admin.index', compact('dishes'));
+        return view('admin.dishes.index', compact('dishes'));
     }
 
     /**
@@ -98,7 +98,7 @@ class DishController extends Controller
         ]);
 
         $dish->update($validatedData);
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.dishes.index');
     }
 
     /**
@@ -110,6 +110,6 @@ class DishController extends Controller
     public function destroy(Dish $dish)
     {
         $dish->delete();
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.dishes.index');
     }
 }
