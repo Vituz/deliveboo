@@ -4,6 +4,7 @@
 
 @section('content')
     <h1>Dishes table</h1>
+
     <div class="col-md-10 p-2">
         <table class="table table-striped table-inverse ">
             <thead class="thead-inverse">
@@ -49,5 +50,4 @@
         </table>
     </div>
     
-
 @endsection

@@ -8,7 +8,11 @@ use App\User;
 use App\Http\Controllers\Controller;
 // use Illuminate\Support\Facade\Auth;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
+
 use PHPUnit\Framework\MockObject\Builder\Identity;
+
 
 class DishController extends Controller
 {
@@ -55,7 +59,7 @@ class DishController extends Controller
             'visibility' => 'required | boolean'
             ]);
             // ddd($validatedData);
-            // ddd($validatedData);
+
             $validatedData['user_id']=$current_user_id;
             Dish::create($validatedData);
             return redirect()->route('admin.dishes.index');
