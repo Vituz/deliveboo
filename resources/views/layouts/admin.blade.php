@@ -11,8 +11,11 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
 
@@ -64,7 +67,34 @@
             </div>
         </nav>
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <div class="row">
+                    <aside class="col-sm-2">
+                        <ul class="nav flex-column py-3">
+                            <li class="nav-item nav-pills">
+
+                                <a class="nav-link {{Route::currentRouteName() == ''? 'active': ''}}" href="{{route('admin.dashboard')}}"><i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a>
+                            </li>
+                            <li class="nav-item nav-pills">
+                                <a class="nav-link {{Route::currentRouteName() == ''? 'active': ''}}" href=""><i class="fas fa-newspaper mr-2"></i> Piatti</a>
+                            </li>
+                            <li class="nav-item nav-pills">
+                                <a class="nav-link {{Route::currentRouteName() == ''? 'active': ''}}" href=""><i class="fas fa-newspaper mr-2"></i> Ordini</a>
+                            </li>
+                            <li class="nav-item nav-pills">
+                                <a class="nav-link {{Route::currentRouteName() == ''? 'active': ''}}" href=""><i class="fas fa-newspaper mr-2"></i> Statistiche</a>
+                            </li>
+
+                        </ul>
+                    </aside>
+                    <div class="col-sm-10">
+                        @yield('content')
+                    </div>
+
+                </div>
+            </div>
+
+
         </main>
     </div>
 </body>
