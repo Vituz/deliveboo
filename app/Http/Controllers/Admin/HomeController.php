@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -23,6 +25,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        
+        $user = Auth::user();
+        
+        return view('admin.home',compact('user'));
+    }
+
+
+    /**
+     * Set a profile image
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function setImage(Request $request)
+    {
+        ddd($request->all());
+    }
+
+    /**
+     * change the profile image
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function changeImage(Request $request)
+    {
+        ddd($request->all());
+        
     }
 }
