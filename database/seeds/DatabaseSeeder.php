@@ -9,15 +9,14 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-      public function run()
+    public function run()
     {
-
         $this->call(
             [
                 UserSeeder::class,
                 DishSeeder::class,
                 OrderSeeder::class,
-                CategorySeeder::class  
+                CategorySeeder::class
             ]
         );
     }

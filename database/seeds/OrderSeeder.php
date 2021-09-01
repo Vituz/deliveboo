@@ -17,7 +17,7 @@ class OrderSeeder extends Seeder
         for ($i = 0; $i < 20; $i++) {
             $order = new Order();
 
-            $order->user_id = $faker->numberBetween(1, 10);
+            $order->user_id = $faker->numberBetween(1, 20);
             $order->ui_name = $faker->word();
             $order->ui_surname = $faker->word();
             $order->ui_email = $faker->email();
