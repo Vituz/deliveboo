@@ -7,6 +7,8 @@ use App\Dish;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class DishController extends Controller
@@ -17,11 +19,10 @@ class DishController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-
-
-        $dishes = Dish::all()->sortByDesc('id');
-        return view('admin.dishes.index', compact('dishes'));
+    {   
+       $user=Auth::user()->id;
+       $dishes=Dish::where('user_id',$user)->get();
+       return view('admin.dishes.index',compact('dishes'));
     }
 
     /**
@@ -109,7 +110,7 @@ class DishController extends Controller
         $validatedData['img'] = $img;
 
         $validatedData['user_id']=$current_user_id;
-        
+
         $dish->update($validatedData);
         return redirect()->route('admin.dishes.index');
     }

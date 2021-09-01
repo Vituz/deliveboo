@@ -73,13 +73,15 @@
                         <ul class="nav flex-column py-3">
                             <li class="nav-item nav-pills">
 
+
+
                                 <a class="nav-link {{Route::currentRouteName() == '' ? 'active' : ''}}" href="{{route('admin.dashboard')}}"><i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a>
                             </li>
                             <li class="nav-item nav-pills">
                                 <a class="nav-link {{Route::currentRouteName() == '' ? 'active' : ''}}" href="{{route('admin.dishes.index')}}"><i class="fas fa-newspaper mr-2"></i> Piatti</a>
                             </li>
                             <li class="nav-item nav-pills">
-                                <a class="nav-link {{Route::currentRouteName() == '' ? 'active': ''}}" href=""><i class="fas fa-newspaper mr-2"></i> Ordini</a>
+                                <a class="nav-link {{Route::currentRouteName() == '' ? 'active': ''}}" href="{{-- {{route('')}} --}}"><i class="fas fa-newspaper mr-2"></i> Ordini</a>
                             </li>
                             <li class="nav-item nav-pills">
                                 <a class="nav-link {{Route::currentRouteName() == '' ? 'active': ''}}" href=""><i class="fas fa-newspaper mr-2"></i> Statistiche</a>
