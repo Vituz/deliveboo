@@ -25,7 +25,7 @@ class CreateDishesTable extends Migration
             $table->text('description')->nullable();
             $table->text('ingredients')->nullable();
             $table->float('price', 8,2);
-            $table->string('img', 300);
+            $table->string('img', 300)->nullable();
             $table->boolean('visibility');
             $table->timestamps();
         });
