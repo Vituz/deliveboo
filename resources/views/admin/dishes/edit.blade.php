@@ -28,18 +28,10 @@
     <form action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
 
         @csrf
-        <div class="form-group">
-            <div class="sub d-flex justify-content-center align-items-center">
-                <span class="mr-4">User_ID</span>
-                <input type="text" readonly class="form-control" name="user_id" id="user_id"  value=" {{ Auth::user()->id }}" >
-            </div>
-        </div>
-
-
-
+    
         <div class="form-group">
             <input type="text" class="form-control @error('name') is invalid @enderror" name="name" id="name"
-                aria-describedby="nameId" placeholder="Dish" minlength="5" max="50" value="{{ $dish->name}}"
+                aria-describedby="nameId" placeholder="Dish" minlength="1" max="50" value="{{ $dish->name}}"
                 max=50 required>
             <small id="nameId" class="form-text text-muted pl-2">Add a name</small>
         </div>
@@ -51,13 +43,13 @@
         <div class="form-group">
 
             <select class="form-control" name="type" id="type" aria-describedby="typeId">
-                <option value="" selected disabled>Select the dish type</option>
-                <option value="starters">Starters</option>
-                <option value="first courses">First courses</option>
-                <option value="main courses">Main courses</option>
-                <option value="side courses">Side dishes</option>
-                <option value="desserts">Desserts</option>
-                <option value="drinks">Drinks</option>
+                <option value="" selected disabled>{{$dish->type}}</option>
+                <option value="Starters">Starters</option>
+                <option value="First courses">First courses</option>
+                <option value="Main courses">Main courses</option>
+                <option value="Side courses">Side dishes</option>
+                <option value="Desserts">Desserts</option>
+                <option value="Drinks">Drinks</option>
             </select>
             {{-- <small id="typeId" class="form-text text-muted pl-2">Add a type</small> --}}
         </div>
@@ -94,25 +86,23 @@
         <div class="form-group">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  <span class="input-group-text">0.00</span>
+                  <span class="input-group-text">&euro;</span>
                 </div>
-                <input type="text" class="form-control" name="price"  id="price" value="{{$dish->price}}" required>
+                <input type="text" class="form-control" name="price"  id="price" required value="{{$dish->price}}">
               </div>          
 
         @error('price')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
-        </div>
         
         {{-- /price  --}}
    
     {{--Immagini--}}
         <div class="form-group">
             <input type="file" class="form-control-file @error('img') is invalid @enderror" name="img"
-                id="img" aria-describedby="imgId"
-                value="{{$dish->img }}" max="300" required>
+                id="img" aria-describedby="imgId" max="300">
             <small id="imgId" class="form-text text-muted">Place an Url image</small>
+            <img src="{{asset('storage/'.$dish->img)}} alt="{{$dish->img}}" width="200">
         </div>
           @error('img')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -124,7 +114,7 @@
     <div class="form-group">
 
         <select class="form-control" name="visibility" id="visibility" aria-describedby="visibilityId" required>
-            <option value="" selected disabled>The dish will be visible?</option>
+            <option value="" selected disabled>{{$dish->visibility ? 'true' : 'false'}}</option>
             <option value="1">true</option>
             <option value="0">false</option>
         </select>
