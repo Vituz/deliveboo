@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Dish;
-use App\Category;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
+use App\Dish;
+use App\User;
+use App\Http\Controllers\Controller;
+// use Illuminate\Support\Facade\Auth;
+use Illuminate\Http\Request;
+use PHPUnit\Framework\MockObject\Builder\Identity;
 
 class DishController extends Controller
 {
@@ -17,7 +19,8 @@ class DishController extends Controller
      */
     public function index()
     {
-        $dishes = Dish::all()->sortByDesc('id');
+        // $dishes = Dish::where('user_id', Auth::user()->id);
+        $dishes = Dish::all();
         return view('admin.dishes.index', compact('dishes'));
     }
 
@@ -40,17 +43,19 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
+        $current_user_id=$request->user()->id;
         $validatedData = $request ->validate([
-            'user_id' => 'required',
-            'name' => 'required | max:50 | min:5',
+            'name' => 'required | max:50 | min:1',
             'type' => 'required',
             'description' => 'nullable',
             'ingredients' => 'nullable',
             'img' => 'nullable | mimes:jpeg,jpg,png| max: 5000',
             'price' => 'required | numeric',
             'visibility' => 'required | boolean'
-        ]);
-
+            ]);
+            // ddd($validatedData);
+            // ddd($validatedData);
+        $validatedData['user_id']=$current_user_id;
         Dish::create($validatedData);
         return redirect()->route('admin.dishes.index');
     }
@@ -74,7 +79,8 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        return view('admin.dishes.edit', compact('dish'));
+        $dtypes=config('dtype.data');
+        return view('admin.dishes.edit', compact('dish', 'dtypes'));
     }
 
     /**

@@ -27,18 +27,11 @@
     <form action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
 
         @csrf
-        <div class="form-group">
-            <div class="sub d-flex justify-content-center align-items-center">
-                <span class="mr-4">User_ID</span>
-                <input type="text" readonly class="form-control" name="user_id" id="user_id"  value=" {{ Auth::user()->id }}" >
-            </div>
-        </div>
 
-
-
+        
         <div class="form-group">
             <input type="text" class="form-control @error('name') is invalid @enderror" name="name" id="name"
-                aria-describedby="nameId" placeholder="Dish" minlength="5" max="50" value="{{ old('name') }}"
+                aria-describedby="nameId" placeholder="Dish" minlength="1" max="50" value="{{ old('name') }}"
                 max=50 required>
             <small id="nameId" class="form-text text-muted pl-2">Add a name</small>
         </div>
@@ -93,8 +86,7 @@
         <div class="form-group">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text">$</span>
-                  <span class="input-group-text">0.00</span>
+                  <span class="input-group-text">&euro;</span>
                 </div>
                 <input type="text" class="form-control" name="price"  id="price" required>
               </div>          
