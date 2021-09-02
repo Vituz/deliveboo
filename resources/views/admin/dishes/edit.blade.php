@@ -19,8 +19,8 @@
 
 
 <div class="container">
+    @if(Auth::user()->id == $dish->user_id)
     <h1>Edit single dish</h1>
-   
     <form action="{{ route('admin.dishes.update', $dish->id) }}" method="post" enctype="multipart/form-data">
 
         @csrf
@@ -126,6 +126,9 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    @else
+        <div class="alert alert-danger">{{Auth::user()->name}} non sei autorizzato alla modifica di questo piatto</div>
+    @endif
 </div>
 
 
