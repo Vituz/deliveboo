@@ -74,11 +74,7 @@
         </main>
         <footer>
         
-        @foreach($links as $link)
-            <ul>
-                <li><span>{{$link['text']}}</span></li>   
-            </ul>        
-        @endforeach
+        
         </footer>
     </div>
 </body>
