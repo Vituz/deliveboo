@@ -1,98 +1,83 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Styles -->
+<style>
+    html,
+    body {
+        background-color: #fff;
+        color: #636b6f;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 200;
+        height: 100vh;
+        margin: 0;
+    }
 
-    <title>DeliveBoo</title>
+    .full-height {
+        height: 100vh;
+    }
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    .flex-center {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
 
-    <!-- Styles -->
-    <style>
-        html,
-        body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 200;
-            height: 100vh;
-            margin: 0;
-        }
+    .position-ref {
+        position: relative;
+    }
 
-        .full-height {
-            height: 100vh;
-        }
+    .top-right {
+        position: absolute;
+        right: 10px;
+        top: 18px;
+    }
 
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
+    .content {
+        text-align: center;
+    }
 
-        .position-ref {
-            position: relative;
-        }
+    .title {
+        font-size: 84px;
+    }
 
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
+    .links>a {
+        color: #636b6f;
+        padding: 0 25px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: .1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
 
-        .content {
-            text-align: center;
-        }
+    .m-b-md {
+        margin-bottom: 30px;
+    }
+</style>
 
-        .title {
-            font-size: 84px;
-        }
+<!-- Styles -->
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-        .links>a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
+@section('content')
 
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-    </style>
-</head>
+<div class="container">
 
-<body>
-    <div class="flex-center position-ref full-height">
-        @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-            <a href="{{ url('/admin') }}">Dashboard</a>
-            @else
-            <a href="{{ route('login') }}">Login</a>
-
-            @if (Route::has('register'))
-            <a href="{{ route('register') }}">Register</a>
-            @endif
-            @endauth
-        </div>
-        @endif
-
-
-        <div id="app">
-            <div class="card" v-for="restaurant in restaurants">
-                <h3>@{{restaurant.name}}</h3>
-
+    <div class="card-group d-flex">
+        <div class="w-25" v-for="restaurant in restaurants">
+            <img class="card-img-top" :src="'storage/' + restaurant.image" :alt="restaurant.name">
+            <div class="card-body">
+                <h4 class="card-title">@{{restaurant.name}}</h4>
+                <p class="card-text">2</p>
             </div>
         </div>
+    </div>
+
+</div>
+
 
     </div>
     
     <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 
-</html>
+@endsection
