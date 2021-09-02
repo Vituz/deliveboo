@@ -22,18 +22,20 @@
                     <h2 class="text-center">{{Auth::user()->name}}</h2>
                     @if (Auth::user()->image)
                         <img src="{{asset('storage/' . Auth::user()->image)}}" width=100% alt="immagine profilo"> 
-                        <form action="{{route('admin.changeImage',$user)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('admin.changeImage',$user)}}" method="POST" enctype="multipart/form-data" class="my-4">
                             @csrf
                             @method('PUT')
-                            <input type="file" name="image" id="image">
-                            <button type="submit" class="btn btn-primary">CAMBIA IMMAGINE</button>
+                            <h4>CAMBIA IMMAGINE PROFILO</h4>
+                            <input type="file" name="image" id="image" class="d-block my-2">
+                            <button type="submit" class="btn btn-primary">carica</button>
                         </form>                  
                    
                     @else 
-                    <form action="{{route('admin.setImage')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('admin.setImage')}}" method="POST" enctype="multipart/form-data" class="my-4">
                         @csrf
-                        <input type="file" name="image" id="image">
-                        <button type="submit" class="btn btn-danger">NUOVA IMMAGINE</button>
+                        <h4>CARICA IMMAGINE PROFILO</h4>
+                        <input type="file" name="image" id="image" class="d-block my-2">
+                        <button type="submit" class="btn btn-danger">carica</button>
                     </form>
                     @endif
                     <div class="user_details d-flex flex-column">
