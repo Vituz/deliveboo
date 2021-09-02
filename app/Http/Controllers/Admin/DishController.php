@@ -17,10 +17,10 @@ class DishController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-       $user=Auth::user()->id;
-       $dishes=Dish::where('user_id',$user)->get();
-       return view('admin.dishes.index',compact('dishes'));
+    {
+        $user = Auth::user()->id;
+        $dishes = Dish::where('user_id', $user)->get()->sortBy('name');
+        return view('admin.dishes.index', compact('dishes'));
     }
 
     /**
@@ -30,7 +30,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        
+
         return view('admin.dishes.create');
     }
 
@@ -42,69 +42,9 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        $current_user_id=$request->user()->id;
-        $validatedData = $request ->validate([
+        $current_user_id = $request->user()->id;
+        $validatedData = $request->validate([
             'name' => 'required | max:50 | min:1',
-            'type' => 'required',
-            'description' => 'nullable',
-            'ingredients' => 'nullable',
-            'img' => 'nullable | mimes:jpeg,jpg,png| max: 5000',
-            'price' => 'required | numeric',
-            'visibility' => 'required | boolean'
-            ]);
-
-            
-            if ($request->hasFile('img')) {
-                $file_path=Storage::put('dish_images',$validatedData['img']);
-                $validatedData['img']=$file_path;}
-
-
-            // $img = Storage::disk('public')->put('dish_images', $request->img);
-            // $validatedData['img'] = $img;
-
-
-
-            $validatedData['user_id']=$current_user_id;
-
-            Dish::create($validatedData);
-            return redirect()->route('admin.dishes.index');
-        }
-        
-        /**
-         * Display the specified resource.
-         *
-         * @param  int  $id
-         * @return \Illuminate\Http\Response
-         */
-        public function show(Dish $dish)
-        {
-            return view('admin.dishes.show', compact('dish'));
-        }
-        
-        /**
-         * Show the form for editing the specified resource.
-         *
-         * @param  int  $id
-         * @return \Illuminate\Http\Response
-         */
-        public function edit(Dish $dish)
-        {
-            $dtypes=config('dtype.data');
-            return view('admin.dishes.edit', compact('dish', 'dtypes'));
-        }
-        
-        /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Dish $dish)
-    {
-        $current_user_id=$request->user()->id;
-        $validatedData = $request ->validate([
-            'name' => 'required | max:50 | min:5',
             'type' => 'required',
             'description' => 'nullable',
             'ingredients' => 'nullable',
@@ -113,12 +53,75 @@ class DishController extends Controller
             'visibility' => 'required | boolean'
         ]);
 
+
+            
+            if ($request->hasFile('img')) {
+                $file_path=Storage::put('dish_images',$validatedData['img']);
+                $validatedData['img']=$file_path;}
+
+
+        // ddd($validatedData);
+
+
+        $validatedData['user_id'] = $current_user_id;
+
+        Dish::create($validatedData);
+        return redirect()->route('admin.dishes.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Dish $dish)
+    {
+        return view('admin.dishes.show', compact('dish'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Dish $dish)
+    {
+        $dtypes = config('dtype.data');
+        return view('admin.dishes.edit', compact('dish', 'dtypes'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Dish $dish)
+    {
+
+        $current_user_id=$request->user()->id;
+        $validatedData = $request ->validate([
+            'name' => 'required | max:50 | min:1',
+
+            'type' => 'required',
+            'description' => 'nullable',
+            'ingredients' => 'nullable',
+            'img' => 'nullable | mimes:jpeg,jpg,png| max: 5000',
+            'price' => 'required | numeric',
+            'visibility' => 'required | boolean'
+        ]);
+
+
         if ($request->hasFile('img')) {
             Storage::delete($dish->img);
             $file_path=Storage::put('dish_images',$validatedData['img']);
             $validatedData['img']=$file_path;}
 
             $validatedData['user_id']=$current_user_id;
+
 
         $dish->update($validatedData);
         return redirect()->route('admin.dishes.index');
