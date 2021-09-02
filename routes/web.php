@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $links = config('dtype.links');
+    //ddd($links);
+    return view('welcome', compact('links'));
 });
 
 Auth::routes();
