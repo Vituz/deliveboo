@@ -40,13 +40,9 @@
         <div class="form-group">
 
             <select class="form-control" name="type" id="type" aria-describedby="typeId">
-                <option value="{{$dish->type}}" selected ></option>
-                <option value="Starters">Starters</option>
-                <option value="First courses">First courses</option>
-                <option value="Main courses">Main courses</option>
-                <option value="Side courses">Side dishes</option>
-                <option value="Desserts">Desserts</option>
-                <option value="Drinks">Drinks</option>
+                @foreach ($datatypes as $key=>$datatype)                
+                    <option value="{{$datatype}}" {{$datatype==$dish->type ? 'selected' : '' }}>{{$datatype}}</option>
+                @endforeach
             </select>
             {{-- <small id="typeId" class="form-text text-muted pl-2">Add a type</small> --}}
         </div>
@@ -111,9 +107,9 @@
     <div class="form-group">
 
         <select class="form-control" name="visibility" id="visibility" aria-describedby="visibilityId" required>
-            <option value="{{$dish->visibility}}" selected>{{$dish->visibility ? 'true' : 'false'}}</option>
-            <option value="1">true</option>
-            <option value="0">false</option>
+            <option value="{{$dish->visibility}}" selected>{{$dish->visibility ? 'Visibile' : 'Non visibile'}}</option>
+            <option value="1">Visibile</option>
+            <option value="0">Non visibile</option>
         </select>
         {{-- <small id="typeId" class="form-text text-muted pl-2">Add a type</small> --}}
     </div>
