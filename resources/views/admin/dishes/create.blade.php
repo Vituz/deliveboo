@@ -41,12 +41,9 @@
 
             <select class="form-control" name="type" id="type" aria-describedby="typeId">
                 <option value="" selected disabled>Select the dish type</option>
-                <option value="starters">Starters</option>
-                <option value="first courses">First courses</option>
-                <option value="main courses">Main courses</option>
-                <option value="side courses">Side dishes</option>
-                <option value="desserts">Desserts</option>
-                <option value="drinks">Drinks</option>
+                @foreach ($datatypes as $key=>$datatype)                
+                    <option value="{{$datatype}}">{{$datatype}}</option>
+                @endforeach
             </select>
             {{-- <small id="typeId" class="form-text text-muted pl-2">Add a type</small> --}}
         </div>
@@ -111,9 +108,9 @@
         <div class="form-group">
 
             <select class="form-control" name="visibility" id="visibility" aria-describedby="visibilityId" required>
-                <option value="" selected disabled>The dish will be visible?</option>
-                <option value="1">true</option>
-                <option value="0">false</option>
+                <option value="" selected disabled>Il piatto sarà visibile?</option>
+                <option value="1">Visibile</option>
+                <option value="0">Non visibile</option>
             </select>
             {{-- <small id="typeId" class="form-text text-muted pl-2">Add a type</small> --}}
         </div>
