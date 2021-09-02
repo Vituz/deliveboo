@@ -30,8 +30,8 @@ class DishController extends Controller
      */
     public function create()
     {
-
-        return view('admin.dishes.create');
+        $datatypes=config('dtype.data');
+        return view('admin.dishes.create', compact('datatypes'));
     }
 
     /**
@@ -54,8 +54,11 @@ class DishController extends Controller
         ]);
 
 
-        $img = Storage::disk('public')->put('dish_images', $request->img);
-        $validatedData['img'] = $img;
+            
+            if ($request->hasFile('img')) {
+                $file_path=Storage::put('dish_images',$validatedData['img']);
+                $validatedData['img']=$file_path;}
+
 
         // ddd($validatedData);
 
@@ -85,8 +88,9 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        $dtypes = config('dtype.data');
-        return view('admin.dishes.edit', compact('dish', 'dtypes'));
+        $datatypes=config('dtype.data');
+        // ddd($datatypes);
+        return view('admin.dishes.edit', compact('dish', 'datatypes'));
     }
 
     /**
@@ -98,22 +102,28 @@ class DishController extends Controller
      */
     public function update(Request $request, Dish $dish)
     {
-        $current_user_id = $request->user()->id;
-        $validatedData = $request->validate([
-            'name' => 'required | max:50 | min:5',
+        $current_user_id=$request->user()->id;
+        $validatedData = $request ->validate([
+            'name' => 'required | max:50 | min:1',
             'type' => 'required',
             'description' => 'nullable',
             'ingredients' => 'nullable',
             'img' => 'nullable | mimes:jpeg,jpg,png| max: 5000',
             'price' => 'required | numeric',
             'visibility' => 'required | boolean'
-        ]);
-        $img = Storage::disk('public')->put('dish_images', $request->img);
-        $validatedData['img'] = $img;
+            ]);
+            
+            
+            if ($request->hasFile('img')) {
+                Storage::delete($dish->img);
+                $file_path=Storage::put('dish_images',$validatedData['img']);
+                $validatedData['img']=$file_path;}
+                $validatedData['user_id']=$current_user_id;
+             
 
-        $validatedData['user_id'] = $current_user_id;
 
         $dish->update($validatedData);
+        // ddd($dish);
         return redirect()->route('admin.dishes.index');
     }
 

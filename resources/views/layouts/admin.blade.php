@@ -73,9 +73,6 @@
                     <aside class="col-sm-2">
                         <ul class="nav flex-column py-3">
                             <li class="nav-item nav-pills">
-
-
-
                                 <a class="nav-link {{Route::currentRouteName() == '' ? 'active' : ''}}" href="{{route('admin.dashboard')}}"><i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a>
                             </li>
                             <li class="nav-item nav-pills">
@@ -96,8 +93,6 @@
 
                 </div>
             </div>
-
-
         </main>
     </div>
 </body>

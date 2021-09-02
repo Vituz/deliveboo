@@ -19,8 +19,8 @@
 
 
 <div class="container">
+    @if(Auth::user()->id == $dish->user_id)
     <h1>Edit single dish</h1>
-   
     <form action="{{ route('admin.dishes.update', $dish->id) }}" method="post" enctype="multipart/form-data">
 
         @csrf
@@ -30,7 +30,7 @@
             <input type="text" class="form-control @error('name') is invalid @enderror" name="name" id="name"
                 aria-describedby="nameId" placeholder="Dish" minlength="1" max="50" value="{{ $dish->name}}"
                 max=50 required>
-            <small id="nameId" class="form-text text-muted pl-2">Add a name</small>
+            <small id="nameId" class="form-text text-muted pl-2">Inserisci nome piatto</small>
         </div>
         @error('name')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -40,13 +40,9 @@
         <div class="form-group">
 
             <select class="form-control" name="type" id="type" aria-describedby="typeId">
-                <option value="{{$dish->type}}" selected >{{$dish->type}}</option>
-                <option value="Starters">Starters</option>
-                <option value="First courses">First courses</option>
-                <option value="Main courses">Main courses</option>
-                <option value="Side courses">Side dishes</option>
-                <option value="Desserts">Desserts</option>
-                <option value="Drinks">Drinks</option>
+                @foreach ($datatypes as $key=>$datatype)                
+                    <option value="{{$datatype}}" {{$datatype==$dish->type ? 'selected' : '' }}>{{$datatype}}</option>
+                @endforeach
             </select>
             {{-- <small id="typeId" class="form-text text-muted pl-2">Add a type</small> --}}
         </div>
@@ -71,7 +67,7 @@
         {{-- ingredients --}}
         <div class="form-group">
             <textarea class="form-control @error('ingredients') is invalid @enderror" name="ingredients" id="ingredientsId" rows="3"
-            value="" >{{$dish->ingredients }}</textarea>
+            value="" >{{$dish->ingredients}}</textarea>
             <small id="ingredientsId" class="form-text text-muted pl-2">Ingredients</small>
         </div>
         @error('ingredients')
@@ -99,7 +95,7 @@
             <input type="file" class="form-control-file @error('img') is invalid @enderror" name="img"
                 id="img" aria-describedby="imgId" max="300">
             <small id="imgId" class="form-text text-muted">Place an Url image</small>
-            {{-- <img src="{{asset('storage/'.$dish->img)}} alt="{{$dish->img}}" width="200"> --}}
+             <img src="{{asset('storage/'. $dish->img)}}" alt="{{$dish->name}}" width="200">
         </div>
           @error('img')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -111,9 +107,9 @@
     <div class="form-group">
 
         <select class="form-control" name="visibility" id="visibility" aria-describedby="visibilityId" required>
-            <option value="{{$dish->visibility}}" selected>{{$dish->visibility ? 'true' : 'false'}}</option>
-            <option value="1">true</option>
-            <option value="0">false</option>
+            <option value="{{$dish->visibility}}" selected>{{$dish->visibility ? 'Visibile' : 'Non visibile'}}</option>
+            <option value="1">Visibile</option>
+            <option value="0">Non visibile</option>
         </select>
         {{-- <small id="typeId" class="form-text text-muted pl-2">Add a type</small> --}}
     </div>
@@ -126,6 +122,9 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    @else
+        <div class="alert alert-danger">{{Auth::user()->name}} non sei autorizzato alla modifica di questo piatto</div>
+    @endif
 </div>
 
 

@@ -48,12 +48,14 @@ class HomeController extends Controller
     {
         /* ddd($request->all()); */
         $validated= $request->validate(['image'=>'nullable | image']);
-        $file_path=Storage::put('user_images',$validated['image']);
-        
-        $validated['image']=$file_path;
-        
-        $user = Auth::user();
-        $user->update($validated);
+
+        /* controllo presenza immagine nella request */
+        if ($request->hasFile('image')) {
+            $file_path=Storage::put('user_images',$validated['image']);
+            $validated['image']=$file_path;
+            $user = Auth::user();
+            $user->update($validated);
+            }
 
         return redirect()->route('admin.dashboard');
     }
@@ -64,12 +66,19 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function changeImage(Request $request)
-    {
+    {  
+        
+        $user_image = Auth::user()->image;
         $validated= $request->validate(['image'=>'nullable | image']);
+
+        /* controllo presenza immagine nella request */
+        if ($request->hasFile('image')) {
+        Storage::delete($user_image);
         $file_path=Storage::put('user_images',$validated['image']);
         $validated['image']=$file_path;
         $user = Auth::user();
         $user->update($validated);
+        }
        
        return redirect()->route('admin.dashboard');
         

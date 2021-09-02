@@ -41,12 +41,9 @@
 
             <select class="form-control" name="type" id="type" aria-describedby="typeId">
                 <option value="" selected disabled>Select the dish type</option>
-                <option value="starters">Starters</option>
-                <option value="first courses">First courses</option>
-                <option value="main courses">Main courses</option>
-                <option value="side courses">Side dishes</option>
-                <option value="desserts">Desserts</option>
-                <option value="drinks">Drinks</option>
+                @foreach ($datatypes as $key=>$datatype)                
+                    <option value="{{$datatype}}">{{$datatype}}</option>
+                @endforeach
             </select>
             {{-- <small id="typeId" class="form-text text-muted pl-2">Add a type</small> --}}
         </div>
@@ -83,9 +80,8 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">&euro;</span>
                 </div>
-                <input type="text" class="form-control" name="price" id="price" required>
-            </div>
-
+                <input type="text" class="form-control @error('price') is invalid @enderror"  name="price"  id="price" value="{{old('price')}}" required>
+              </div>          
             @error('price')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -95,8 +91,12 @@
 
         {{--Immagini--}}
         <div class="form-group">
-            <input type="file" class="form-control-file @error('img') is invalid @enderror" name="img" id="img" aria-describedby="imgId" value="{{ old('img') }}" max="300" required>
-            <small id="imgId" class="form-text text-muted">Place an Url image</small>
+
+            <input type="file" class="form-control-file  @error('img') is invalid @enderror"  name="img"
+                id="img" aria-describedby="imgId"
+                value="{{ old('img') }}" max="300">
+            <small id="imgId" class="form-text text-muted">Carica un'immagine</small>
+
         </div>
         @error('img')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -108,9 +108,9 @@
         <div class="form-group">
 
             <select class="form-control" name="visibility" id="visibility" aria-describedby="visibilityId" required>
-                <option value="" selected disabled>The dish will be visible?</option>
-                <option value="1">true</option>
-                <option value="0">false</option>
+                <option value="" selected disabled>Il piatto sarà visibile?</option>
+                <option value="1">Visibile</option>
+                <option value="0">Non visibile</option>
             </select>
             {{-- <small id="typeId" class="form-text text-muted pl-2">Add a type</small> --}}
         </div>
