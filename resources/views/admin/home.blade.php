@@ -12,19 +12,65 @@
                     @if (Auth::user()->image)
 
                         <img src="{{asset('storage/' . Auth::user()->image)}}" width="100%" alt="immagine profilo"> 
-                        <form class="d-flex flex-column mt-3" action="{{route('admin.changeImage',$user)}}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
-                            <input type="file" name="image" id="image" class="justify-content-center">
-                            <button type="submit" class="btn btn-primary mt-3">CAMBIA IMMAGINE</button>
-                        </form>                  
+                        
+                            
+                            <button class="btn btn-primary mt-3" type="button" data-toggle="modal" data-target="#Modal-changeImg">CAMBIA IMMAGINE</button>
+                        
+                        <div class="modal fade" id="Modal-changeImg" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"> WARNING!!</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div> 
+                                    <form class="d-flex flex-column mt-3" action="{{route('admin.changeImage',$user)}}" method="POST" enctype="multipart/form-data">
+                                        @method('PUT')
+                                        @csrf
+                                        <div class="modal-body">
+                                            <input type="file" name="image" id="image" class="justify-content-center">
+                                            <img width=100% src="{{asset('storage/' . Auth::user()->image)}}" alt="user image">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                                            
+                                            <button type="submit" class="btn btn-primary ">CAMBIA IMMAGINE</button>                                     
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>                 
                    
                     @else 
-                        <form class="d-flex flex-column mt-3" action="{{route('admin.setImage')}}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input type="file" name="image" id="image">
-                            <button type="submit" class="btn btn-danger">NUOVA IMMAGINE</button>
-                        </form>
+                    <button class="btn btn-primary mt-3" type="button" data-toggle="modal" data-target="#Modal-setImg">CARICA IMMAGINE</button>
+                        
+                        <div class="modal fade" id="Modal-setImg" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title"> WARNING!!</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div> 
+                                    <form class="d-flex flex-column mt-3" action="{{route('admin.setImage',$user)}}" method="POST" enctype="multipart/form-data">
+                                       
+                                        @csrf
+                                        <div class="modal-body">
+                                            <input type="file" name="image" id="image" class="justify-content-center">
+
+                                            <img width=100% src="{{asset('storage/' . Auth::user()->image)}}" >
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                           
+                                            <button type="submit" class="btn btn-primary">CARICA</button>                                     
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
 
                     @endif
                         <div class="user_details d-flex flex-column mt-3">
