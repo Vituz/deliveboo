@@ -88,7 +88,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">&euro;</span>
                 </div>
-                <input type="text" class="form-control" name="price"  id="price" required>
+                <input type="text" class="form-control @error('price') is invalid @enderror"  name="price"  id="price" required>
               </div>          
 
         @error('price')
@@ -100,14 +100,14 @@
    
     {{--Immagini--}}
         <div class="form-group">
-            <input type="file" class="form-control-file  name="img"
+            <input type="file" class="form-control-file  @error('img') is invalid @enderror"  name="img"
                 id="img" aria-describedby="imgId"
                 value="{{ old('img') }}" max="300">
             <small id="imgId" class="form-text text-muted">Place an Url image</small>
         </div>
-          {{-- @error('img')
+          @error('img')
             <div class="alert alert-danger">{{ $message }}</div>
-        @enderror --}}
+        @enderror
     {{--/Immagini--}}
 
 
