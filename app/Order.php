@@ -12,4 +12,9 @@ class Order extends Model
     {
         return $this->belongsToMany(Dish::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }
