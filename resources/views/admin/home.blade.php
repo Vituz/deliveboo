@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card">
+            <!-- <div class="card">
                
                 <div class="card-body">
                     @if (session('status'))
@@ -17,35 +17,36 @@
                     
                 </div>
                
-            </div>
-            <div class="user_profile">
-                    <h2 class="text-center">{{Auth::user()->name}}</h2>
+            </div> -->
+                <div class="user_profile">
+                    <h2 class="text-center"> Benvenuto {{Auth::user()->name}}</h2>
+                    <hr>
                     @if (Auth::user()->image)
-                        <img src="{{asset('storage/' . Auth::user()->image)}}" width=100% alt="immagine profilo"> 
-                        <form action="{{route('admin.changeImage',$user)}}" method="POST" enctype="multipart/form-data" class="my-4">
+
+                        <img src="{{asset('storage/' . Auth::user()->image)}}" width="100%" alt="immagine profilo"> 
+                        <form class="d-flex flex-column mt-3" action="{{route('admin.changeImage',$user)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            <h4>CAMBIA IMMAGINE PROFILO</h4>
-                            <input type="file" name="image" id="image" class="d-block my-2">
-                            <button type="submit" class="btn btn-primary">carica</button>
+                            <input type="file" name="image" id="image" class="justify-content-center">
+                            <button type="submit" class="btn btn-primary mt-3">CAMBIA IMMAGINE</button>
                         </form>                  
                    
                     @else 
-                    <form action="{{route('admin.setImage')}}" method="POST" enctype="multipart/form-data" class="my-4">
-                        @csrf
-                        <h4>CARICA IMMAGINE PROFILO</h4>
-                        <input type="file" name="image" id="image" class="d-block my-2">
-                        <button type="submit" class="btn btn-danger">carica</button>
-                    </form>
+                        <form class="d-flex flex-column mt-3" action="{{route('admin.setImage')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" name="image" id="image">
+                            <button type="submit" class="btn btn-danger">NUOVA IMMAGINE</button>
+                        </form>
+
                     @endif
-                    <div class="user_details d-flex flex-column">
-                        <div class="localita d-flex justify-content-between">
-                            <span> <strong>Città: </strong>{{Auth::user()->city}}</span>
-                        <span><strong>Indirizzo: </strong>{{Auth::user()->address}}</span>
+                        <div class="user_details d-flex flex-column mt-3">
+                            <div class="localita d-flex flex-column">
+                                <span><strong>Città: </strong>{{Auth::user()->city}}</span>
+                                <span><strong>Indirizzo: </strong>{{Auth::user()->address}}</span>
+                            </div>
+                            
+                            <span class="w-100"> <strong>Partita IVA: </strong>{{Auth::user()->p_iva}}</span>
                         </div>
-                        
-                        <span class="w-100 text-center"> <strong>Partita IVA: </strong>{{Auth::user()->p_iva}}</span>
-                    </div>
                 </div>
         </div>
     </div>
