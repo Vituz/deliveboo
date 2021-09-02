@@ -5,19 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <!-- <div class="card">
-               
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <p>Benvenuto {{ Auth::user()->name }} sulla tua Dashboard</p>
-                    
-                </div>
-               
-            </div> -->
+            
                 <div class="user_profile">
                     <h2 class="text-center"> Benvenuto {{Auth::user()->name}}</h2>
                     <hr>
