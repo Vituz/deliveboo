@@ -20,6 +20,8 @@ class DishController extends Controller
     {
         $user = Auth::user()->id;
         $dishes = Dish::where('user_id', $user)->get()->sortBy('name');
+        
+        /* ddd($links); */
         return view('admin.dishes.index', compact('dishes'));
     }
 
