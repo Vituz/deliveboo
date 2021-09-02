@@ -20,10 +20,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
     Route::get('/', 'HomeController@index')->name('dashboard');
-    Route::post('/','HomeController@setImage')->name('setImage');
-    Route::put('/{admin}','HomeController@changeImage')->name('changeImage');
-    Route::resource('/dishes', DishController::class); 
+    Route::post('/', 'HomeController@setImage')->name('setImage');
+    Route::put('/{admin}', 'HomeController@changeImage')->name('changeImage');
+    Route::resource('/dishes', DishController::class);
+    Route::resource('/orders', OrderController::class);
 });
-

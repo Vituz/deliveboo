@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Dish;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -15,7 +18,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user()->id;
+        $orders = Order::orderBY('id', 'desc')->where('user_id', $user)->get();
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**
@@ -25,7 +30,6 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
