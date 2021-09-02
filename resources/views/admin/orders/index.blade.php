@@ -10,6 +10,7 @@
             <tr>
                 <th>ID</th>
                 <th>NAME</th>
+                <th>PICK UP TIME</th>
                 <th>SURNAME</th>
                 <th>ADDRESS</th>
                 <th>PRICE</th>
@@ -27,6 +28,9 @@
                     {{$order->ui_name}}
                 </td>
                 <td>
+                    {{$order->created_at}}
+                </td>
+                <td>
                     {{$order->ui_surname}}
                 </td>
                 <td>
@@ -35,6 +39,7 @@
                 <td>
                     {{$order->amount}}
                 </td>
+                
             </tr>
 
             @endforeach

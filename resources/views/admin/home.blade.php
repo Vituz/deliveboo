@@ -22,6 +22,7 @@
                     <h2 class="text-center"> Benvenuto {{Auth::user()->name}}</h2>
                     <hr>
                     @if (Auth::user()->image)
+
                         <img src="{{asset('storage/' . Auth::user()->image)}}" width="100%" alt="immagine profilo"> 
                         <form class="d-flex flex-column mt-3" action="{{route('admin.changeImage',$user)}}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -36,6 +37,7 @@
                             <input type="file" name="image" id="image">
                             <button type="submit" class="btn btn-danger">NUOVA IMMAGINE</button>
                         </form>
+
                     @endif
                         <div class="user_details d-flex flex-column mt-3">
                             <div class="localita d-flex flex-column">
