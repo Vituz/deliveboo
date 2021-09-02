@@ -100,7 +100,7 @@ class DishController extends Controller
     {
         $current_user_id=$request->user()->id;
         $validatedData = $request ->validate([
-            'name' => 'required | max:50 | min:5',
+            'name' => 'required | max:50 | min:1',
             'type' => 'required',
             'description' => 'nullable',
             'ingredients' => 'nullable',
@@ -108,8 +108,11 @@ class DishController extends Controller
             'price' => 'required | numeric',
             'visibility' => 'required | boolean'
         ]);
+        
+        if ($request->hasFile('img')) {
         $img = Storage::disk('public')->put('dish_images', $request->img);
         $validatedData['img'] = $img;
+        }
 
         $validatedData['user_id']=$current_user_id;
 
