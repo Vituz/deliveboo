@@ -100,14 +100,14 @@
    
     {{--Immagini--}}
         <div class="form-group">
-            <input type="file" class="form-control-file @error('img') is invalid @enderror" name="img"
+            <input type="file" class="form-control-file  name="img"
                 id="img" aria-describedby="imgId"
-                value="{{ old('img') }}" max="300" required>
+                value="{{ old('img') }}" max="300">
             <small id="imgId" class="form-text text-muted">Place an Url image</small>
         </div>
-          @error('img')
+          {{-- @error('img')
             <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+        @enderror --}}
     {{--/Immagini--}}
 
 
