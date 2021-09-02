@@ -21,7 +21,7 @@
             <div class="user_profile">
                     <h2 class="text-center">{{Auth::user()->name}}</h2>
                     @if (Auth::user()->image)
-                        <img src="{{Auth::user()->image}}" width=100% alt="immagine profilo"> 
+                        <img src="{{asset('storage/' . Auth::user()->image)}}" width=100% alt="immagine profilo"> 
                         <form action="{{route('admin.changeImage',$user)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')

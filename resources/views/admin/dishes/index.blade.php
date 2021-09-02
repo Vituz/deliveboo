@@ -4,6 +4,7 @@
 
 @section('content')
     <h1>Dishes table</h1>
+
     <div class="col-md-10 p-2">
         <table class="table table-striped table-inverse ">
             <thead class="thead-inverse">
@@ -21,8 +22,7 @@
                 <tr>
                     <td scope="row">{{$dish->id}}</td>
                     <td>
-                        <!-- <img width="100" src="{{asset('storage/' . $dish->img)}}" alt="{{$dish->name}}">  -->
-                        <img src="{{$dish->img}}" width="150" alt="">
+                        <img src="{{asset('storage/' . $dish->img)}}" width="200" height="150" alt="">
                     </td>
                     <td>
                         {{$dish->name}}
@@ -47,7 +47,8 @@
                 @endforeach
             </tbody>
         </table>
+
+        <a href="{{route('admin.dishes.create')}}" class="btn btn-primary">Add New Dish</a>
     </div>
     
-
 @endsection

@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use App\Dish;
-use App\User;
 use App\Http\Controllers\Controller;
-// use Illuminate\Support\Facade\Auth;
 use Illuminate\Http\Request;
-use PHPUnit\Framework\MockObject\Builder\Identity;
+
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class DishController extends Controller
 {
@@ -18,11 +17,10 @@ class DishController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-
-
-        $dishes = Dish::all()->sortByDesc('id');
-        return view('admin.dishes.index', compact('dishes'));
+    {   
+       $user=Auth::user()->id;
+       $dishes=Dish::where('user_id',$user)->get();
+       return view('admin.dishes.index',compact('dishes'));
     }
 
     /**
@@ -54,9 +52,16 @@ class DishController extends Controller
             'price' => 'required | numeric',
             'visibility' => 'required | boolean'
             ]);
+
+            
+            $img = Storage::disk('public')->put('dish_images', $request->img);
+            $validatedData['img'] = $img;
+
             // ddd($validatedData);
-            // ddd($validatedData);
+
+
             $validatedData['user_id']=$current_user_id;
+
             Dish::create($validatedData);
             return redirect()->route('admin.dishes.index');
         }
@@ -103,7 +108,11 @@ class DishController extends Controller
             'price' => 'required | numeric',
             'visibility' => 'required | boolean'
         ]);
+        $img = Storage::disk('public')->put('dish_images', $request->img);
+        $validatedData['img'] = $img;
+
         $validatedData['user_id']=$current_user_id;
+
         $dish->update($validatedData);
         return redirect()->route('admin.dishes.index');
     }

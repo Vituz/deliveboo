@@ -8,7 +8,7 @@
                 <div class="card-top mb-3">
                     <!-- <img src="{{asset('storage/' . $dish->image)}}" alt="{{$dish->name}}"> -->
                     <img src="{{$dish->img}}" width="500" class="mb-4" alt="{{$dish->name}}">
-                    <h3>{{$dish->name}}</h3>
+                    <h3>King size {{$dish->name}} </h3>
                     <p>{{$dish->description}}</p>
                     <p>{{$dish->ingredients}}</p>
                     <span>{{$dish->price}} &euro;</span>
