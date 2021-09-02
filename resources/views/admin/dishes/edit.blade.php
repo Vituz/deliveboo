@@ -30,7 +30,7 @@
             <input type="text" class="form-control @error('name') is invalid @enderror" name="name" id="name"
                 aria-describedby="nameId" placeholder="Dish" minlength="1" max="50" value="{{ $dish->name}}"
                 max=50 required>
-            <small id="nameId" class="form-text text-muted pl-2">Add a name</small>
+            <small id="nameId" class="form-text text-muted pl-2">Inserisci nome piatto</small>
         </div>
         @error('name')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -40,7 +40,7 @@
         <div class="form-group">
 
             <select class="form-control" name="type" id="type" aria-describedby="typeId">
-                <option value="{{$dish->type}}" selected >{{$dish->type}}</option>
+                <option value="{{$dish->type}}" selected ></option>
                 <option value="Starters">Starters</option>
                 <option value="First courses">First courses</option>
                 <option value="Main courses">Main courses</option>
@@ -71,7 +71,7 @@
         {{-- ingredients --}}
         <div class="form-group">
             <textarea class="form-control @error('ingredients') is invalid @enderror" name="ingredients" id="ingredientsId" rows="3"
-            value="" >{{$dish->ingredients }}</textarea>
+            value="" >{{$dish->ingredients}}</textarea>
             <small id="ingredientsId" class="form-text text-muted pl-2">Ingredients</small>
         </div>
         @error('ingredients')
@@ -99,7 +99,7 @@
             <input type="file" class="form-control-file @error('img') is invalid @enderror" name="img"
                 id="img" aria-describedby="imgId" max="300">
             <small id="imgId" class="form-text text-muted">Place an Url image</small>
-            {{-- <img src="{{asset('storage/'.$dish->img)}} alt="{{$dish->img}}" width="200"> --}}
+             <img src="{{asset('storage/'. $dish->img)}}" alt="{{$dish->name}}" width="200">
         </div>
           @error('img')
             <div class="alert alert-danger">{{ $message }}</div>
