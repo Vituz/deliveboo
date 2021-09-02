@@ -30,11 +30,15 @@
                             <div class="col-md-6">
                                 <select multiple class="form-control @error('categories') is-invalid @enderror" name="categories[]" id="categories[]">
                                     <option value="" disabled>Seleziona una o più categorie</option>
-                                        @foreach($categories as $category )
-                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @foreach($categories as $category )
+                                                                          
+                                    @if (old('categories'))
+                                        <option value="{{$category->id}}" {{in_array($category->id, old('categories'))? 'selected': ''}}>{{$category->name}}</option>
+                                        @else
+                                        <option value="{{$category->id}}" >{{$category->name}}</option>
+                                    @endif
                                     @endforeach
                                    
-                                    
                                 </select>
                                 @error('categories')
                                 <div class="alert alert-danger">{{ $message }}</div>
