@@ -18,14 +18,8 @@ return [
                 'text' => 'About',
                 'href' => 'user.about'
             ],
-            [
-                'text' => 'Add Your Restarurant',
-                'href' => 'register'
-            ],
-            [
-                'text' => 'My Account',
-                'href' => 'admin.dishes.index'
-            ],
+            
+            
         ],
         'categories'=>[
             [
