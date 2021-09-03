@@ -53,6 +53,10 @@
     .m-b-md {
         margin-bottom: 30px;
     }
+
+    .clicked {
+        background-color: cornflowerblue;
+    }
 </style>
 
 <!-- Styles -->
@@ -62,14 +66,28 @@
 
 <div class="container">
 
-    <div class="card-group d-flex">
-        <div class="w-25" v-for="restaurant in restaurants">
-            <img class="card-img-top" :src="'storage/' + restaurant.image" :alt="restaurant.name">
+    <!-- <input type="text" v-model="query" @keyup.enter="search(query)" placeholder="Search by category"> -->
+
+    <div class="card-group d-flex justify-content-center">
+        <button class="w-25  rounded m-3" :class="clicked_categories.includes(category.id)? 'clicked' : ''" v-for="category in categories" v-on:click="filter_restaurants(category.id)">
+            <!-- <img class="card-img-top" :src="'storage/' + restaurant.image" :alt="restaurant.name"> -->
+            <div class="p-2">
+                <h4 class="card-title">@{{category.name}}</h4>
+                <p class="card-text">@{{category.users.length}} </p>
+            </div>
+        </button>
+    </div>
+
+    <div class="card-group">
+
+        <div class="card" v-for="restaurant in fill_restaurants">
+            <img class="card-img-top" data-src="holder.js/100x180/" alt="Card image cap">
             <div class="card-body">
                 <h4 class="card-title">@{{restaurant.name}}</h4>
-                <p class="card-text">2</p>
+                <p class="card-text">@{{category}}</p>
             </div>
         </div>
+
     </div>
 
 </div>

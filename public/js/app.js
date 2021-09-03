@@ -49921,13 +49921,62 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   data: {
-    restaurants: null
+    categories: null,
+    restaurants: null,
+    filtered: [],
+    clicked_categories: [],
+    fill_restaurants: []
+  },
+  methods: {
+    removeCategory: function removeCategory(arr, value) {
+      var index = arr.indexOf(value);
+
+      if (index > -1) {
+        arr.splice(index, 1);
+      }
+
+      return arr;
+    },
+    findRestaurant: function findRestaurant(arr, target) {
+      var checker = target.every(function (v) {
+        return arr.includes(v);
+      });
+      return checker;
+    },
+    filter_restaurants: function filter_restaurants(index) {
+      var _this = this;
+
+      if (!this.clicked_categories.includes(index)) {
+        this.clicked_categories.push(index);
+      } else {
+        this.removeCategory(this.clicked_categories, index);
+      }
+
+      this.restaurants.forEach(function (rest) {
+        var categories_id = [];
+        rest.categories.forEach(function (cat) {
+          var cat_id = cat.id;
+          categories_id.push(cat_id);
+        });
+
+        var prova = _this.findRestaurant(categories_id, _this.clicked_categories);
+
+        if (prova) {
+          _this.fill_restaurants.push(rest);
+        }
+      });
+    }
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
+    axios.get('/api/categories').then(function (resp) {
+      _this2.categories = resp.data.data;
+    })["catch"](function (e) {
+      console.error('API non caricata' + e);
+    });
     axios.get('/api/restaurants').then(function (resp) {
-      _this.restaurants = resp.data.data;
+      _this2.restaurants = resp.data.data;
     })["catch"](function (e) {
       console.error('API non caricata' + e);
     });

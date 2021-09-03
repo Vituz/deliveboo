@@ -18,4 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('categories', 'API\CategoryController@index');
 Route::get('restaurants', 'API\RestaurantController@index');

@@ -33,10 +33,67 @@ const app = new Vue({
     el: '#app',
 
     data: {
+        categories : null,
         restaurants : null,
+        filtered: [],
+        clicked_categories: [],
+        fill_restaurants: [],
+
+    },
+
+    methods:{
+
+        removeCategory(arr, value){
+            let index = arr.indexOf(value);
+            if (index > -1) {
+                arr.splice(index, 1);
+            }
+            return arr;
+        },
+
+        findRestaurant(arr, target){
+
+            let checker = target.every(v => arr.includes(v))
+            return checker;
+        },
+
+        filter_restaurants(index){
+            
+            if (!this.clicked_categories.includes(index)) {
+                this.clicked_categories.push(index);
+            } else {
+
+                this.removeCategory(this.clicked_categories, index);
+            }
+
+            this.restaurants.forEach(rest => {
+            
+                let categories_id = [];
+
+            rest.categories.forEach(cat=>{
+                let cat_id = cat.id;
+                categories_id.push(cat_id);
+            });
+
+            let prova =  this.findRestaurant(categories_id, this.clicked_categories);
+            
+            if (prova) {
+                
+                this.fill_restaurants.push(rest) 
+            }
+            
+            });
+        },
+
     },
 
     mounted(){
+        axios.get('/api/categories').then(resp => {
+            this.categories = resp.data.data;
+        }).catch(e => {
+            console.error('API non caricata' + e);
+        });
+
         axios.get('/api/restaurants').then(resp => {
             this.restaurants = resp.data.data;
         }).catch(e => {
