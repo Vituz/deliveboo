@@ -10942,3 +10942,84 @@ a.text-dark:focus {
   }
 }
 
+footer {
+  background-color: #f3ba4f;
+  width: 100%;
+  margin: auto;
+}
+
+footer ul {
+  list-style-type: none;
+}
+
+.top_footer {
+  border-bottom: 1px solid silver;
+}
+
+.top_footer ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.top_footer ul li a:hover {
+  margin-left: 3px;
+}
+
+.bottom_footer {
+  padding: 25px;
+}
+
+.bottom_footer .pay_methods .logo_btn {
+  margin-right: 10px;
+  height: 35px;
+  border: none;
+}
+
+.bottom_footer .pay_methods .logo_btn img {
+  width: 55px;
+  height: 35px;
+  border-color: white;
+}
+
+.bottom_footer .pay_methods .pay_card {
+  margin: 15px 15px 15px 0;
+  border: 1px solid #dadada;
+}
+
+.bottom_footer .pay_methods .pay_card:hover {
+  border-color: #e6e6e6;
+}
+
+.bottom_footer .pay_methods .pay_card a {
+  color: #868686;
+  text-decoration: none;
+}
+
+.bottom_footer .pay_methods .pay_card a:hover {
+  color: #8080f5;
+}
+
+.bottom_footer .socials .social_card {
+  margin: 10px;
+  border-radius: 15px;
+  width: 45px;
+  height: 45px;
+}
+
+.bottom_footer .socials .social_card img {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  border-color: white;
+}
+
+.bottom_footer .socials .social_card:hover {
+  width: 50px;
+  height: 50px;
+}
+
+.bottom_footer .socials .social_card:hover img {
+  width: 50px;
+  height: 50px;
+}
+

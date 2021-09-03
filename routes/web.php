@@ -15,8 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    
-    return view('welcome');
+    $links = config('dtype.links');
+    $categories = config('dtype.categories');
+    $contacts = config('dtype.contacts');
+    $pay_methods = config('dtype.pay_methods');
+    $socials = config('dtype.socials');
+
+    return view('welcome', compact('links', 'categories', 'contacts', 'pay_methods', 'socials'));
 });
 
 Auth::routes();
