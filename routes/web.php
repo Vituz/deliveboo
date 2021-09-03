@@ -15,13 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $links = config('dtype.links');
+    /* $links = config('dtype.links');
+    ddd($links[0]['text']);
     $categories = config('dtype.categories');
     $contacts = config('dtype.contacts');
     $pay_methods = config('dtype.pay_methods');
     $socials = config('dtype.socials');
-
-    return view('welcome', compact('links', 'categories', 'contacts', 'pay_methods', 'socials'));
+ */
+    return view('welcome');
 });
 
 Auth::routes();
@@ -33,3 +34,5 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::resource('/dishes', DishController::class);
     Route::resource('/orders', OrderController::class);
 });
+
+

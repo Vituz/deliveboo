@@ -12,19 +12,15 @@ return [
         'links'=>[
             [
                 'text' => 'Info',
-                'href' => 'info'
+                'href' => 'user.info'
             ],
             [
                 'text' => 'About',
-                'href' => 'about'
+                'href' => 'user.about'
             ],
             [
                 'text' => 'Add Your Restarurant',
-                'href' => 'auth.register'
-            ],
-            [
-                'text' => 'Contacts',
-                'href' => 'contacts'
+                'href' => 'register'
             ],
             [
                 'text' => 'My Account',
@@ -34,34 +30,23 @@ return [
         'categories'=>[
             [
                 'text' => 'Top Categories',
-                'href' => 'categories'
+                'href' => 'user.categories'
             ],
             [
                 'text' => 'Best Price',
-                'href' => 'best_price'
+                'href' => 'user.best_price'
             ],
         ],
         'contacts'=>[
             [
                 'text' => 'Info',
-                'href' => 'about'
-            ],
-            [
-                'text' => 'About',
-                'href' => 'about'
-            ],
-            [
-                'text' => 'Add Tour Restarurant',
-                'href' => 'about'
+                'href' => 'user.info'
             ],
             [
                 'text' => 'Contacts',
-                'href' => 'about'
+                'href' => 'user.contacts'
             ],
-            [
-                'text' => 'My Account',
-                'href' => 'about'
-            ],
+            
         ],
         'pay_methods'=>[
             [

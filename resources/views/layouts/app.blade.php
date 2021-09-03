@@ -1,3 +1,10 @@
+<?php
+    $links = config('dtype.links');
+    $categories = config('dtype.categories');
+    $contacts = config('dtype.contacts');
+    $pay_methods = config('dtype.pay_methods');
+    $socials = config('dtype.socials');  
+?>
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -85,9 +92,17 @@
                         </li>                       
                         @foreach($links as $link)
                         <li> 
-                            <a href="{{-- {{ route($item['href'])}} --}}">{{$link['text']}}</a>
+                            
+                            <a href="">{{$link['text']}} <i class="fas fa-arrow-circle-right arrow"></i></a> 
                         </li>     
-                        @endforeach                       
+                        @endforeach
+                        <li>
+                            <a href="{{route('register')}}">Add Restaurant <i class="fas fa-arrow-circle-right arrow"></i></a>
+                        </li>
+                        <li>
+                            <a href="{{route('login')}}">My Account<i class="fas fa-arrow-circle-right arrow"></i></a>
+                        </li>   
+                                            
                     </ul>
                 </div>
                 <div class="col-md-4 p-0">                   
@@ -97,7 +112,7 @@
                         </li>               
                         @foreach($categories as $category)
                         <li> 
-                            <a href="{{-- {{ route($item['href'])}} --}}">{{$category['text']}}</a>
+                            <a href="{{-- {{ route($item['href'])}} --}}">{{$category['text']}} <i class="fas fa-arrow-circle-right arrow"></i></a>
                         </li>     
                         @endforeach                       
                     </ul>
@@ -109,7 +124,7 @@
                         </li>                    
                         @foreach($contacts as $contact)
                         <li> 
-                            <a href="{{-- {{ route($item['href'])}} --}}">{{$contact['text']}}</a>
+                            <a href="{{-- {{ route($contact['href'])}} --}}">{{$contact['text']}} <i class="fas fa-arrow-circle-right arrow"></i></a>
                         </li>     
                         @endforeach                       
                     </ul>

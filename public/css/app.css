@@ -10961,8 +10961,16 @@ footer ul {
   color: black;
 }
 
+.top_footer ul li a i {
+  display: none;
+}
+
 .top_footer ul li a:hover {
   margin-left: 3px;
+}
+
+.top_footer ul li a:hover i {
+  display: inline-block;
 }
 
 .bottom_footer {
@@ -11002,24 +11010,24 @@ footer ul {
 .bottom_footer .socials .social_card {
   margin: 10px;
   border-radius: 15px;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
 }
 
 .bottom_footer .socials .social_card img {
   border-radius: 50%;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   border-color: white;
 }
 
 .bottom_footer .socials .social_card:hover {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 
 .bottom_footer .socials .social_card:hover img {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 
