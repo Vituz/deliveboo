@@ -73,13 +73,13 @@
                     <aside class="col-sm-2">
                         <ul class="nav flex-column py-3">
                             <li class="nav-item nav-pills">
-                                <a class="nav-link {{Route::currentRouteName() == '' ? 'active' : ''}}" href="{{route('admin.dashboard')}}"><i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a>
+                                <a class="nav-link {{Route::currentRouteName() == 'admin.dashboard' ? 'active' : ''}}" href="{{route('admin.dashboard')}}"><i class="fas fa-tachometer-alt mr-2"></i> Dashboard</a>
                             </li>
                             <li class="nav-item nav-pills">
-                                <a class="nav-link {{Route::currentRouteName() == '' ? 'active' : ''}}" href="{{route('admin.dishes.index')}}"><i class="fas fa-newspaper mr-2"></i> Piatti</a>
+                                <a class="nav-link {{Route::currentRouteName() == 'admin.dishes.index' ? 'active' : ''}}" href="{{route('admin.dishes.index')}}"><i class="fas fa-newspaper mr-2"></i> Piatti</a>
                             </li>
                             <li class="nav-item nav-pills">
-                                <a class="nav-link {{Route::currentRouteName() == '' ? 'active': ''}}" href="{{route('admin.orders.index')}}"><i class="fas fa-newspaper mr-2"></i> Ordini</a>
+                                <a class="nav-link {{Route::currentRouteName() == 'admin.orders.index' ? 'active': ''}}" href="{{route('admin.orders.index')}}"><i class="fas fa-newspaper mr-2"></i> Ordini</a>
                             </li>
                             <li class="nav-item nav-pills">
                                 <a class="nav-link {{Route::currentRouteName() == '' ? 'active': ''}}" href=""><i class="fas fa-newspaper mr-2"></i> Statistiche</a>
@@ -94,6 +94,7 @@
                 </div>
             </div>
         </main>
+        
     </div>
 </body>
 

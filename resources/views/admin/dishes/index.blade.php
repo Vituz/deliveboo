@@ -52,7 +52,7 @@
             @endforeach
         </tbody>
     </table>
-
+    
     <a href="{{route('admin.dishes.create')}}" class="btn btn-primary">Add New Dish</a>
 </div>
 
