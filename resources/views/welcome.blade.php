@@ -73,20 +73,14 @@
             <!-- <img class="card-img-top" :src="'storage/' + restaurant.image" :alt="restaurant.name"> -->
             <div class="p-2">
                 <h4 class="card-title">@{{category.name}}</h4>
-                <p class="card-text">@{{category.users.length}} </p>
+                <p class="card-text">@{{category.users.length}}</p>
             </div>
         </button>
     </div>
 
     <div class="card-group">
 
-        <div class="card" v-for="restaurant in fill_restaurants">
-            <img class="card-img-top" data-src="holder.js/100x180/" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title">@{{restaurant.name}}</h4>
-                <p class="card-text">@{{category}}</p>
-            </div>
-        </div>
+        <restaurant-section v-for="restaurant in fill_restaurants" :key="restaurant.id" :restaurant="restaurant" :id="restaurant.id"></restaurant-section>
 
     </div>
 
