@@ -10942,8 +10942,34 @@ a.text-dark:focus {
   }
 }
 
+/* JUMBOTRON */
+
+header {
+  height: 100vh;
+}
+
+.jumbo {
+  margin-top: 55px;
+  margin-bottom: 2rem;
+  background-color: #758795;
+  height: 100%;
+  background-image: url("https://f.vividscreen.info/soft/8c5dc18232b51fbb258e2575651b7b3c/Pizza-with-mushrooms-and-olives-1920x1200.jpg");
+  background-size: cover;
+  filter: grayscale(55%);
+  /* opacity: 0.8; */
+}
+
+.jumbo h1,
+.jumbo p {
+  font-size: 50px;
+  font-weight: 900;
+  color: white;
+}
+
+/* FOOTER */
+
 footer {
-  background-color: #f3ba4f;
+  background-color: #f6993f;
   width: 100%;
   margin: auto;
 }
