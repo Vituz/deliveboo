@@ -22,7 +22,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
+Vue.component('restaurant-section', require('./components/RestaurantComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -35,6 +35,10 @@ const app = new Vue({
     data: {
         categories : null,
         restaurants : null,
+
+        restaurant_path:'restaurants/',
+        single_restaurant:null,
+
         filtered: [],
         clicked_categories: [],
         fill_restaurants: [],
@@ -42,6 +46,15 @@ const app = new Vue({
     },
 
     methods:{
+
+        selectRestaurant(id){
+            axios.get('/api/restaurants/' + id).then(resp => {
+                this.single_restaurant=resp.data.data[0];
+                console.log(this.single_restaurant);
+            }).catch(e => {
+                console.error('API non caricata' + e);
+            })
+        },
 
         removeCategory(arr, value){
             let index = arr.indexOf(value);
@@ -96,6 +109,7 @@ const app = new Vue({
 
         axios.get('/api/restaurants').then(resp => {
             this.restaurants = resp.data.data;
+            // console.log(this.restaurants);
         }).catch(e => {
             console.error('API non caricata' + e);
         });
