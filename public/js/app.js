@@ -49975,6 +49975,9 @@ module.exports = function(module) {
 var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
     axios = _require["default"];
 
+var _require2 = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
+    get = _require2.get;
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -50033,7 +50036,7 @@ var app = new Vue({
       });
       return checker;
     },
-    filter_restaurants: function filter_restaurants(index) {
+    filterRestaurants: function filterRestaurants(index) {
       var _this2 = this;
 
       if (!this.clicked_categories.includes(index)) {
@@ -50042,6 +50045,7 @@ var app = new Vue({
         this.removeCategory(this.clicked_categories, index);
       }
 
+      this.fill_restaurants = [];
       this.restaurants.forEach(function (rest) {
         var categories_id = [];
         rest.categories.forEach(function (cat) {
@@ -50049,12 +50053,15 @@ var app = new Vue({
           categories_id.push(cat_id);
         });
 
-        var prova = _this2.findRestaurant(categories_id, _this2.clicked_categories);
+        var compare_cat = _this2.findRestaurant(categories_id, _this2.clicked_categories);
 
-        if (prova) {
+        if (compare_cat && !_this2.fill_restaurants.includes(rest)) {
           _this2.fill_restaurants.push(rest);
         }
       });
+    },
+    restaurantPage: function restaurantPage(index) {
+      console.log(index);
     }
   },
   mounted: function mounted() {
@@ -50265,7 +50272,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: expected \"{\".\n    ╷\n155 │ >>>>>>> 27664672e407cbebbacd6c2646b0866265309625\r\n    │                                                 ^\n    ╵\n  D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\resources\\sass\\app.scss 155:49  root stylesheet\n    at D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at context.callback (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass-loader\\dist\\index.js:73:7\n    at Function.call$2 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:94122:16)\n    at _render_closure1.call$2 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:82377:12)\n    at _RootZone.runBinary$3$3 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:27674:18)\n    at _FutureListener.handleError$1 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:26223:19)\n    at _Future__propagateToListeners_handleError.call$0 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:26521:49)\n    at Object._Future__propagateToListeners (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:4546:77)\n    at _Future._completeError$2 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:26353:9)\n    at _AsyncAwaitCompleter.completeError$2 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:26007:12)\n    at Object._asyncRethrow (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:4345:17)\n    at D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:12951:20\n    at _wrapJsFunctionForAsync_closure.$protected (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:4370:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:26028:12)\n    at _awaitOnObject_closure0.call$2 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:26020:25)\n    at _RootZone.runBinary$3$3 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:27674:18)\n    at _FutureListener.handleError$1 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:26223:19)\n    at _Future__propagateToListeners_handleError.call$0 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:26521:49)\n    at Object._Future__propagateToListeners (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:4546:77)\n    at _Future._completeError$2 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:26353:9)\n    at _Future__asyncCompleteError_closure.call$0 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:26449:18)\n    at Object._microtaskLoop (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:4602:24)\n    at StaticClosure._startMicrotaskLoop (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:4608:11)\n    at _AsyncRun__scheduleImmediateJsOverride_internalCallback.call$0 (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:25919:21)\n    at invokeClosure (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:1437:26)\n    at Immediate.<anonymous> (D:\\MAMP\\htdocs\\php\\deliveboo\\deliveboo\\node_modules\\sass\\sass.dart.js:1458:18)\n    at processImmediate (internal/timers.js:462:21)");
 
 /***/ }),
 

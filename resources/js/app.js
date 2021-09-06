@@ -5,6 +5,7 @@
  */
 
 const { default: axios } = require('axios');
+const { get } = require('lodash');
 
 require('./bootstrap');
 
@@ -54,6 +55,7 @@ const app = new Vue({
             }).catch(e => {
                 console.error('API non caricata' + e);
             })
+
         },
 
         removeCategory(arr, value){
@@ -70,8 +72,7 @@ const app = new Vue({
             return checker;
         },
 
-        filter_restaurants(index){
-            
+        filterRestaurants(index){
             if (!this.clicked_categories.includes(index)) {
                 this.clicked_categories.push(index);
             } else {
@@ -79,25 +80,28 @@ const app = new Vue({
                 this.removeCategory(this.clicked_categories, index);
             }
 
+            this.fill_restaurants = [];
             this.restaurants.forEach(rest => {
             
                 let categories_id = [];
 
-            rest.categories.forEach(cat=>{
-                let cat_id = cat.id;
-                categories_id.push(cat_id);
-            });
+                rest.categories.forEach(cat=>{
+                    let cat_id = cat.id;
+                    categories_id.push(cat_id);
+                });
 
-            let prova =  this.findRestaurant(categories_id, this.clicked_categories);
-            
-            if (prova) {
-                
-                this.fill_restaurants.push(rest) 
-            }
+                let compare_cat =  this.findRestaurant(categories_id, this.clicked_categories);
+
+                    if (compare_cat && !this.fill_restaurants.includes(rest)) {
+                        this.fill_restaurants.push(rest); 
+                    } 
             
             });
         },
 
+        restaurantPage(index){
+            console.log(index);
+        }
     },
 
     mounted(){
