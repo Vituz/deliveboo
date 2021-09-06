@@ -38,16 +38,14 @@
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
     
-</body>
+    <!-- <script src="{{asset('js/partials/navbar_scroll.js')}}"></script>       -->
     <script>
-    /* var navbar = document.getElementById('top_nav'); // Identify target
-    console.log(navbar);
-     */
-    let height = document.documentElement.clientHeight * 0.96;
-    window.onscroll = () => {
-    const nav = document.querySelector('#top_nav');
-    if(this.scrollY <= 55) nav.className = 'navbar navbar-expand-md navbar-light shadow-sm fixed-top'; else nav.className = 'nav_colored navbar navbar-expand-md navbar-light shadow-sm fixed-top';
-    };
+        let height = document.documentElement.clientHeight * 0.96;
+        window.onscroll = () => {
+        const nav = document.querySelector('#top_nav');
+        if(this.scrollY <= 55) nav.className = 'navbar navbar-expand-md navbar-light shadow-sm fixed-top'; else nav.className = 'nav_colored navbar navbar-expand-md navbar-light shadow-sm fixed-top';
+        };
 
     </script>
+</body>
 </html>
