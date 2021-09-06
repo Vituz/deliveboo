@@ -25,7 +25,10 @@ Route::get('categories', 'API\CategoryController@index');
 Route::get('restaurants', 'API\RestaurantController@index');
 
 Route::get('restaurants/{restaurant}', function (User $restaurant) {
-    return new RestaurantResource(User::find($restaurant));
+    
+    $restaurant_id=User::with('dishes')->where('id',$restaurant->id)->get();
+    return RestaurantResource::collection($restaurant_id);
+   
 })->name('restaurants.show');
 
 // Route::get('restaurants/{restaurant}', 'API\RestaurantController@show');

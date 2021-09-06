@@ -2105,6 +2105,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -38569,7 +38577,39 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.restaurant
-    ? _c("div", {}, [_c("h2", [_vm._v(_vm._s(_vm.restaurant.name))])])
+    ? _c(
+        "div",
+        { staticClass: "d-flex justify-content-around align-items-center" },
+        [
+          _c("div", { staticClass: "details" }, [
+            _c("h2", [_vm._v(_vm._s(_vm.restaurant.name))]),
+            _vm._v(" "),
+            _c("h4", [
+              _c("strong", [_vm._v("Indirizzo:")]),
+              _vm._v(" " + _vm._s(_vm.restaurant.address))
+            ]),
+            _vm._v(" "),
+            _c("img", {
+              attrs: { width: "200", src: _vm.restaurant.image, alt: "" }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "dishes" },
+            [
+              _c("h3", [_vm._v("Piatti d'asporto:")]),
+              _vm._v(" "),
+              _vm._l(_vm.restaurant.dishes, function(dish) {
+                return _c("div", { key: dish.id, staticClass: "dish" }, [
+                  _vm._v(_vm._s(dish.name))
+                ])
+              })
+            ],
+            2
+          )
+        ]
+      )
     : _vm._e()
 }
 var staticRenderFns = []
