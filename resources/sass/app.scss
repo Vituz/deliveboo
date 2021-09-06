@@ -3,12 +3,62 @@
 
 // Variables
 @import 'variables';
+@import 'footer';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+/* JUMBOTRON */
+
+.search_pill{
+    border-radius: 25px;
+    width: 25%;
+    margin:auto;
+    height:50px;
+    background-color: orangered;
+}
+.search_pill2{
+    border-radius: 25px;
+    margin:auto;
+    height:50px;
+    background-color: $orange;
+}
+
+header{
+    height: 100vh;
+}
+.jumbo::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    filter: grayscale(50%);
+    background-image: url('https://f.vividscreen.info/soft/8c5dc18232b51fbb258e2575651b7b3c/Pizza-with-mushrooms-and-olives-1920x1200.jpg');
+    background-size: cover;
+}
+.jumbo{
+    position:relative;
+    margin-top: 55px;
+    margin-bottom: 2rem;
+    background-color: #758795;
+    height: 100%;
+  
+   
+    /* opacity: 0.8; */
+    .jumbo_text{
+        position: absolute;
+        font-size: 50px;
+        font-weight: 900;
+        color:rgb(255, 255, 255);
+    }
+    
+
+
+
+
+/* FOOTER */
 footer{
-    background-color: rgb(243, 186, 79);
+    background-color: $orange;
     width:100%;
     margin:auto;
     ul{
@@ -46,11 +96,11 @@ footer{
             margin: 5px 5px 5px 0;
             height: 35px;
             border: none;
-                img{
-                    width:55px;
-                    height: 35px;
-                    border-color: rgb(255, 255, 255);
-                    
+            img{
+                width:55px;
+                height: 35px;
+                border-color: rgb(255, 255, 255);
+            }        
         }
        
     }
@@ -92,14 +142,12 @@ footer{
                 width:40px;            
                 height:40px;
                 img{
-                    
-        
-                    width:40px;            
-                    height: 40px;
-                    
-                    }
+                width:40px;            
+                height: 40px;        
+                }
             }
         }
         
     }
 }
+

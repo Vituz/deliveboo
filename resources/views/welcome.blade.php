@@ -57,6 +57,21 @@
     .clicked {
         background-color: cornflowerblue;
     }
+
+    .rest_card {
+        width: 15rem;
+    }
+
+    .rest_card:hover,
+    .category_card:hover {
+        cursor: pointer;
+        background-color: lightblue;
+    }
+
+    .rest_card h2,
+    .rest_card h3 {
+        font-size: 1rem;
+    }
 </style>
 
 <!-- Styles -->
@@ -68,26 +83,37 @@
 
     <!-- <input type="text" v-model="query" @keyup.enter="search(query)" placeholder="Search by category"> -->
 
-    <div class="card-group d-flex justify-content-center">
+    <!-- <div class="card-group d-flex justify-content-center">
         <button class="w-25  rounded m-3" :class="clicked_categories.includes(category.id)? 'clicked' : ''" v-for="category in categories" v-on:click="filter_restaurants(category.id)">
-            <!-- <img class="card-img-top" :src="'storage/' + restaurant.image" :alt="restaurant.name"> -->
+            <img class="card-img-top" :src="'storage/' + restaurant.image" :alt="restaurant.name">
             <div class="p-2">
                 <h4 class="card-title">@{{category.name}}</h4>
-                <p class="card-text">@{{category.users.length}} </p>
+                <p class="card-text">@{{category.users.length}}</p>
             </div>
         </button>
     </div>
 
-    <div class="card-group">
+    <div class="d-flex flex-wrap justify-content-center">
 
-        <div class="card" v-for="restaurant in fill_restaurants">
-            <img class="card-img-top" data-src="holder.js/100x180/" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title">@{{restaurant.name}}</h4>
-                <p class="card-text">@{{category}}</p>
-            </div>
+        <restaurant-section v-for="restaurant in fill_restaurants" :key="restaurant.id" :restaurant="restaurant" :id="restaurant.id" style="width: 20rem;"></restaurant-section>
+
+    </div> -->
+
+    <div class="card_container d-flex flex-wrap justify-content-center text-center">
+        <div class="category_card border border-primary rounded m-2" v-for="category in categories" style="width: 10rem" @click="filterRestaurants(category.id)" :class="clicked_categories.includes(category.id)? 'clicked' : ''">
+            <h2>@{{category.name}}</h2>
+            <h3>@{{category.users.length}}</h3>
         </div>
+    </div>
 
+    <div class="card_container d-flex flex-wrap justify-content-center">
+        <div class="rest_card p-3 m-2 ma border border-primary rounded" v-for="restaurant in fill_restaurants" @click="restaurantPage(restaurant.id)">
+            <h2>@{{restaurant.name}}</h2>
+            <h2>@{{restaurant.email}}</h2>
+            <h3 v-for="category in restaurant.categories">
+                @{{category.name}}
+            </h3>
+        </div>
     </div>
 
 </div>
