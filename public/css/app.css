@@ -11031,7 +11031,6 @@ a.text-dark:focus {
   }
 }
 
-<<<<<<< HEAD
 /* JUMBOTRON */
 
 .search_pill {
@@ -11072,7 +11071,6 @@ header {
   background-color: #758795;
   height: 100%;
   /* opacity: 0.8; */
-  /* FOOTER */
 }
 
 .jumbo .jumbo_text {
@@ -11082,94 +11080,3 @@ header {
   color: white;
 }
 
-.jumbo footer {
-  background-color: #f6993f;
-  width: 100%;
-  margin: auto;
-}
-
-.jumbo footer ul {
-  list-style-type: none;
-}
-
-.jumbo .top_footer {
-  border-bottom: 1px solid silver;
-}
-
-.jumbo .top_footer ul li a {
-  text-decoration: none;
-  color: black;
-}
-
-.jumbo .top_footer ul li a i {
-  display: none;
-}
-
-.jumbo .top_footer ul li a:hover {
-  margin-left: 3px;
-}
-
-.jumbo .top_footer ul li a:hover i {
-  display: inline-block;
-}
-
-.jumbo .bottom_footer {
-  padding: 25px;
-}
-
-.jumbo .bottom_footer .pay_methods .logo_btn {
-  margin: 5px 5px 5px 0;
-  height: 35px;
-  border: none;
-}
-
-.jumbo .bottom_footer .pay_methods .logo_btn img {
-  width: 55px;
-  height: 35px;
-  border-color: white;
-}
-
-.jumbo .bottom_footer .pay_card {
-  margin: 15px 15px 15px 0;
-  border: 1px solid #dadada;
-}
-
-.jumbo .bottom_footer .pay_card:hover {
-  border-color: #e6e6e6;
-}
-
-.jumbo .bottom_footer .pay_card a {
-  color: #868686;
-  text-decoration: none;
-}
-
-.jumbo .bottom_footer .pay_card a:hover {
-  color: #8080f5;
-}
-
-.jumbo .socials .social_card {
-  margin: 10px;
-  border-radius: 15px;
-  width: 35px;
-  height: 35px;
-}
-
-.jumbo .socials .social_card img {
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  border-color: white;
-}
-
-.jumbo .socials .social_card:hover {
-  width: 40px;
-  height: 40px;
-}
-
-.jumbo .socials .social_card:hover img {
-  width: 40px;
-  height: 40px;
-}
-
-=======
->>>>>>> 27664672e407cbebbacd6c2646b0866265309625
