@@ -1,18 +1,22 @@
 <template>
-<!-- <router-link> -->
-    <div class="card">
-            <img class="card-img-top" data-src="holder.js/100x180/" alt="Card image cap">
-            <div class="card-body">
-                <h4 class="card-title">{{restaurant.name}}</h4>
-                <p class="card-text">garcia</p>
-            </div>
-    </div>
-<!-- </router-link> -->
+<router-link class="rest_card p-3 m-2 ma border border-primary rounded" :to="{ name: 'RestaurantDetails', params:{ id: restaurant.id}}"> 
+   <div  >
+            <h2>{{restaurant.name}}</h2>
+            <h2>{{restaurant.email}}</h2>
+            <h3 v-for="category in restaurant.categories" :key="category.id">
+                {{category.name}}
+            </h3>
+        </div>
+</router-link>
 </template>
 
 <script>
 export default {
+    name:"RestaurantComponent",
     props:{
+        category:{
+            type: Array,
+        },
         restaurant:{
             type: Object,
             required:true
@@ -31,6 +35,9 @@ export default {
 // }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.rest_card{
+    text-decoration: none;
+}
 
 </style>
