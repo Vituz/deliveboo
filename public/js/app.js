@@ -50283,18 +50283,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
-=======
-<<<<<<< HEAD
-__webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> 23214e22514cef1b62da3ee036df64a998fd39a5
->>>>>>> 9a6a7c7188499844a963cb5f8c34ef522d9e1072
 
 
 /***/ })
