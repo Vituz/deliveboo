@@ -10944,115 +10944,139 @@ a.text-dark:focus {
 
 /* JUMBOTRON */
 
+.search_pill {
+  border-radius: 25px;
+  width: 25%;
+  margin: auto;
+  height: 50px;
+  background-color: orangered;
+}
+
+.search_pill2 {
+  border-radius: 25px;
+  margin: auto;
+  height: 50px;
+  background-color: #f6993f;
+}
+
 header {
   height: 100vh;
 }
 
+.jumbo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(50%);
+  background-image: url("https://f.vividscreen.info/soft/8c5dc18232b51fbb258e2575651b7b3c/Pizza-with-mushrooms-and-olives-1920x1200.jpg");
+  background-size: cover;
+}
+
 .jumbo {
+  position: relative;
   margin-top: 55px;
   margin-bottom: 2rem;
   background-color: #758795;
   height: 100%;
-  background-image: url("https://f.vividscreen.info/soft/8c5dc18232b51fbb258e2575651b7b3c/Pizza-with-mushrooms-and-olives-1920x1200.jpg");
-  background-size: cover;
-  filter: grayscale(55%);
   /* opacity: 0.8; */
+  /* FOOTER */
 }
 
-.jumbo h1,
-.jumbo p {
+.jumbo .jumbo_text {
+  position: absolute;
   font-size: 50px;
   font-weight: 900;
   color: white;
 }
 
-/* FOOTER */
-
-footer {
+.jumbo footer {
   background-color: #f6993f;
   width: 100%;
   margin: auto;
 }
 
-footer ul {
+.jumbo footer ul {
   list-style-type: none;
 }
 
-.top_footer {
+.jumbo .top_footer {
   border-bottom: 1px solid silver;
 }
 
-.top_footer ul li a {
+.jumbo .top_footer ul li a {
   text-decoration: none;
   color: black;
 }
 
-.top_footer ul li a i {
+.jumbo .top_footer ul li a i {
   display: none;
 }
 
-.top_footer ul li a:hover {
+.jumbo .top_footer ul li a:hover {
   margin-left: 3px;
 }
 
-.top_footer ul li a:hover i {
+.jumbo .top_footer ul li a:hover i {
   display: inline-block;
 }
 
-.bottom_footer {
+.jumbo .bottom_footer {
   padding: 25px;
 }
 
-.bottom_footer .pay_methods .logo_btn {
+.jumbo .bottom_footer .pay_methods .logo_btn {
   margin: 5px 5px 5px 0;
   height: 35px;
   border: none;
 }
 
-.bottom_footer .pay_methods .logo_btn img {
+.jumbo .bottom_footer .pay_methods .logo_btn img {
   width: 55px;
   height: 35px;
   border-color: white;
 }
 
-.bottom_footer .pay_methods .pay_card {
+.jumbo .bottom_footer .pay_card {
   margin: 15px 15px 15px 0;
   border: 1px solid #dadada;
 }
 
-.bottom_footer .pay_methods .pay_card:hover {
+.jumbo .bottom_footer .pay_card:hover {
   border-color: #e6e6e6;
 }
 
-.bottom_footer .pay_methods .pay_card a {
+.jumbo .bottom_footer .pay_card a {
   color: #868686;
   text-decoration: none;
 }
 
-.bottom_footer .pay_methods .pay_card a:hover {
+.jumbo .bottom_footer .pay_card a:hover {
   color: #8080f5;
 }
 
-.bottom_footer .socials .social_card {
+.jumbo .socials .social_card {
   margin: 10px;
   border-radius: 15px;
   width: 35px;
   height: 35px;
 }
 
-.bottom_footer .socials .social_card img {
+.jumbo .socials .social_card img {
   border-radius: 50%;
   width: 35px;
   height: 35px;
   border-color: white;
 }
 
-.bottom_footer .socials .social_card:hover {
+.jumbo .socials .social_card:hover {
   width: 40px;
   height: 40px;
 }
 
-.bottom_footer .socials .social_card:hover img {
+.jumbo .socials .social_card:hover img {
   width: 40px;
   height: 40px;
 }

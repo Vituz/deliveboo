@@ -53,11 +53,19 @@
     </nav>
     <div class="jumbo d-flex align-items-center justify-content-center text-center ">
         <div class="container text-center">
-            <h1>Eat Great Food</h1>
-            <p>Discover top restaurants and fastest riders</p>
+            <div class="jumbo_text">
+                
+                <h1>Eat Great Food</h1>
+                <p>Discover top restaurants and fastest riders</p>
+            </div>
             
-            <form class="d-flex ">
-                <input class="form-control me-2 " type="search" placeholder="Search Your Favorite Category" aria-label="Search">
+            <form class="d-flex">
+                    
+                    <div class="search_pill">
+
+                        <input class="search_pill2 navbar form-control me-2 " type="search" placeholder="Search Your Favorite Category" aria-label="Search">
+                    </div>
+                    
             </form>
         </div>
        
