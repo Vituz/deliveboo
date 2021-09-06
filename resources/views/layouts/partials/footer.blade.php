@@ -1,7 +1,7 @@
 <footer>
         <div class="container">
             <!-- TOP FOOTER -->
-            <div class="top_footer d-flex">
+            <div class="top_footer d-flex flex-wrap">
                 <div class="col-md-4 p-0">                                      
                     <ul>
                         <li>
@@ -69,7 +69,7 @@
                     
                 </div>
                 <div class="col-md-5  socials">
-                    <ul class="d-flex">
+                    <ul class="d-flex flex-wrap">
                         @foreach($socials as $item)
                         <li class="social_card">
                             <div class=" align-items-end">
