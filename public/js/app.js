@@ -49975,6 +49975,9 @@ module.exports = function(module) {
 var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
     axios = _require["default"];
 
+var _require2 = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
+    get = _require2.get;
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -50033,7 +50036,7 @@ var app = new Vue({
       });
       return checker;
     },
-    filter_restaurants: function filter_restaurants(index) {
+    filterRestaurants: function filterRestaurants(index) {
       var _this2 = this;
 
       if (!this.clicked_categories.includes(index)) {
@@ -50042,6 +50045,7 @@ var app = new Vue({
         this.removeCategory(this.clicked_categories, index);
       }
 
+      this.fill_restaurants = [];
       this.restaurants.forEach(function (rest) {
         var categories_id = [];
         rest.categories.forEach(function (cat) {
@@ -50049,12 +50053,15 @@ var app = new Vue({
           categories_id.push(cat_id);
         });
 
-        var prova = _this2.findRestaurant(categories_id, _this2.clicked_categories);
+        var compare_cat = _this2.findRestaurant(categories_id, _this2.clicked_categories);
 
-        if (prova) {
+        if (compare_cat && !_this2.fill_restaurants.includes(rest)) {
           _this2.fill_restaurants.push(rest);
         }
       });
+    },
+    restaurantPage: function restaurantPage(index) {
+      console.log(index);
     }
   },
   mounted: function mounted() {
@@ -50276,8 +50283,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
