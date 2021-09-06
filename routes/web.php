@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Resources\RestaurantResource;
+use App\Restaurant;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,13 +18,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    /* $links = config('dtype.links');
-    ddd($links[0]['text']);
-    $categories = config('dtype.categories');
-    $contacts = config('dtype.contacts');
-    $pay_methods = config('dtype.pay_methods');
-    $socials = config('dtype.socials');
- */
     return view('welcome');
 });
 
@@ -34,5 +30,3 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::resource('/dishes', DishController::class);
     Route::resource('/orders', OrderController::class);
 });
-
-

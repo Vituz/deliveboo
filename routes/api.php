@@ -1,7 +1,10 @@
 <?php
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Resources\RestaurantResource;
+use App\Restaurant;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +23,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('categories', 'API\CategoryController@index');
 Route::get('restaurants', 'API\RestaurantController@index');
+
+Route::get('restaurants/{restaurant}', function (User $restaurant) {
+    return new RestaurantResource(User::find($restaurant));
+})->name('restaurants.show');
+
+// Route::get('restaurants/{restaurant}', 'API\RestaurantController@show');
