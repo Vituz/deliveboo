@@ -78,8 +78,8 @@
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 @section('content')
-
 <div class="container">
+    
 
     <!-- <input type="text" v-model="query" @keyup.enter="search(query)" placeholder="Search by category"> -->
 
@@ -99,7 +99,7 @@
 
     </div> -->
 
-    <div class="card_container d-flex flex-wrap justify-content-center text-center">
+    <!-- <div class="card_container d-flex flex-wrap justify-content-center text-center">
         <div class="category_card border border-primary rounded m-2" v-for="category in categories" style="width: 10rem" @click="filterRestaurants(category.id)" :class="clicked_categories.includes(category.id)? 'clicked' : ''">
             <h2>@{{category.name}}</h2>
             <h3>@{{category.users.length}}</h3>
@@ -107,15 +107,11 @@
     </div>
 
     <div class="card_container d-flex flex-wrap justify-content-center">
-        <div class="rest_card p-3 m-2 ma border border-primary rounded" v-for="restaurant in fill_restaurants" @click="restaurantPage(restaurant.id)">
-            <h2>@{{restaurant.name}}</h2>
-            <h2>@{{restaurant.email}}</h2>
-            <h3 v-for="category in restaurant.categories">
-                @{{category.name}}
-            </h3>
-        </div>
-    </div>
-
+    <restaurant-section v-for="restaurant in fill_restaurants" :key="restaurant.id" :restaurant="restaurant" :categories="restaurant.categories" :id="restaurant.id" style="width: 20rem;" @click="restaurantPage(restaurant.id)"></restaurant-section>
+    
+    </div> -->
+    <!-- <example-component></example-component> -->
 </div>
+
 
 @endsection

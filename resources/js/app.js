@@ -9,7 +9,32 @@ const { get } = require('lodash');
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+/* window.Vue = require('vue'); */
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
+import Home from './views/Home'
+import RestaurantDetails from './views/RestaurantDetails'
+
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: Home
+        },
+        {
+            path: '/restaurant/:id',
+            name: 'RestaurantDetails',
+            props:true,
+            component: RestaurantDetails,
+        },
+    ],
+});
+
+
+  
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,7 +47,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+/* Vue.component('example-component', require('./components/ExampleComponent.vue').default); */
 Vue.component('restaurant-section', require('./components/RestaurantComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,9 +56,10 @@ Vue.component('restaurant-section', require('./components/RestaurantComponent.vu
  */
 
 const app = new Vue({
-    el: '#app',
+    
+    router,
 
-    data: {
+   /*  data: {
         categories : null,
         restaurants : null,
 
@@ -48,15 +74,7 @@ const app = new Vue({
 
     methods:{
 
-        selectRestaurant(id){
-            axios.get('/api/restaurants/' + id).then(resp => {
-                this.single_restaurant=resp.data.data[0];
-                console.log(this.single_restaurant);
-            }).catch(e => {
-                console.error('API non caricata' + e);
-            })
-
-        },
+        
 
         removeCategory(arr, value){
             let index = arr.indexOf(value);
@@ -118,5 +136,5 @@ const app = new Vue({
         }).catch(e => {
             console.error('API non caricata' + e);
         });
-    }
-});
+    } */
+}).$mount('#app');
