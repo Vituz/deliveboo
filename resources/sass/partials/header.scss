@@ -1,19 +1,8 @@
-.search_pill{
-    border-radius: 25px;
-    width: 25%;
-    margin:auto;
-    height:50px;
-    background-color: orangered;
-}
-.search_pill2{
-    border-radius: 25px;
-    margin:auto;
-    height:50px;
-    background-color: $orange;
-}
 
 header{
     height: 100vh;
+    min-height: 400px;
+    z-index: 44;
 }
 .jumbo::before{
     content: "";
@@ -28,7 +17,6 @@ header{
     /* position:relative; */
     
     margin-bottom: 2rem;
-    
     height: 100%;
     z-index: 0;
     .jumbo_text{
@@ -36,9 +24,14 @@ header{
         position: relative;
         font-size: 50px;
         font-weight: 900;
-        color:rgb(255, 255, 255);
+        /* color:rgb(255, 255, 255); */
         color: orange;
         z-index: 1;
     }
-    
+}
+.nav_colored{
+    background-color: rgb(255, 145, 0); 
+}
+.nav_transparent{
+    background-color: transparent;
 }

@@ -2,7 +2,8 @@ footer {
     background-color: rgb(243, 186, 79);
     width: 100%;
     margin: auto;
-
+    z-index: 55;
+    position: relative;
     ul {
         list-style-type: none;
     }

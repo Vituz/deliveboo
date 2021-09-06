@@ -36,6 +36,17 @@
         @include('layouts.partials.footer')
         
     </div>
+    
 </body>
+    <script>
+    /* var navbar = document.getElementById('top_nav'); // Identify target
+    console.log(navbar);
+     */
 
+    window.onscroll = () => {
+    const nav = document.querySelector('#top_nav');
+    if(this.scrollY <= 100) nav.className = 'navbar navbar-expand-md navbar-light shadow-sm fixed-top'; else nav.className = 'nav_colored navbar navbar-expand-md navbar-light shadow-sm fixed-top';
+    };
+
+    </script>
 </html>
