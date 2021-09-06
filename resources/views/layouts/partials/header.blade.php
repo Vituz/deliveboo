@@ -1,6 +1,6 @@
 <header class="d-block">
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
+    <nav id="topbar" class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'DeliveBoo') }}
@@ -57,13 +57,13 @@
                 
                 <h1>Eat Great Food</h1>
                 <p>Discover top restaurants and fastest riders</p>
-                <form class="d-flex">
+                <!-- <form class="d-flex">
                 
-                <!-- <div class="search_pill">
+                <div class="search_pill">
                     <input class="search_pill2 navbar form-control me-2 " type="search" placeholder="Search Your Favorite Category" aria-label="Search">
-                </div> -->
+                </div>
                     
-                </form>
+                </form> -->
             </div>
             
           
