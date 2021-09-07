@@ -103,7 +103,7 @@ header {
   position: absolute;
   width: 100%;
   height: 100%;
-  filter: grayscale(40%);
+  filter: grayscale(45%);
   background-image: url("https://f.vividscreen.info/soft/8c5dc18232b51fbb258e2575651b7b3c/Pizza-with-mushrooms-and-olives-1920x1200.jpg");
   background-size: cover;
 }
@@ -11071,5 +11071,32 @@ a.text-dark:focus {
   }
 }
 
-/* JUMBOTRON */
+/* BODY */
+
+.rest_card {
+  border-radius: 5px;
+  width: 100%;
+  word-wrap: break-word;
+  box-shadow: 10px 10px 10px gray;
+}
+
+.rest_card .rest_img {
+  width: 100%;
+}
+
+.rest_card .rest_img img {
+  width: 100%;
+}
+
+.rest_card:hover {
+  box-shadow: 15px 15px 15px gray;
+}
+
+.rest_card .pan img {
+  transition: all 1s ease;
+}
+
+.rest_card .rest_info {
+  color: black;
+}
 

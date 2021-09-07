@@ -1967,6 +1967,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantComponent",
   props: {
@@ -38443,25 +38447,33 @@ var render = function() {
   return _c(
     "router-link",
     {
-      staticClass: "rest_card p-3 m-2 ma border border-primary rounded",
+      staticClass: "rest_card col-md-4 p-0 m-3 ma b d-flex",
       attrs: {
         to: { name: "RestaurantDetails", params: { id: _vm.restaurant.id } }
       }
     },
     [
+      _c("div", { staticClass: "pan rest_img col-md-5 p-3" }, [
+        _c("img", {
+          attrs: {
+            src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
+            alt: ""
+          }
+        })
+      ]),
+      _vm._v(" "),
       _c(
         "div",
+        { staticClass: "rest_info col-md-7 text-left p-3" },
         [
-          _c("h2", [_vm._v(_vm._s(_vm.restaurant.name))]),
+          _c("h1", [_vm._v(_vm._s(_vm.restaurant.name))]),
           _vm._v(" "),
-          _c("h2", [_vm._v(_vm._s(_vm.restaurant.email))]),
+          _c("h2", [_vm._v(_vm._s(_vm.restaurant.address))]),
           _vm._v(" "),
           _vm._l(_vm.restaurant.categories, function(category) {
-            return _c("h3", { key: category.id }, [
+            return _c("span", { key: category.id }, [
               _vm._v(
-                "\r\n                " +
-                  _vm._s(category.name) +
-                  "\r\n            "
+                "\r\n            -" + _vm._s(category.name) + "\r\n        "
               )
             ])
           })
@@ -38536,6 +38548,7 @@ var render = function() {
         _vm._l(_vm.fill_restaurants, function(restaurant) {
           return _c("restaurant-section", {
             key: restaurant.id,
+            staticClass: "restaurant_card",
             staticStyle: { width: "20rem" },
             attrs: {
               restaurant: restaurant,
