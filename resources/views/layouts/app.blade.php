@@ -1,7 +1,7 @@
 <?php
     $links = config('dtype.links');
-    $categories = config('dtype.categories');
-    $contacts = config('dtype.contacts');
+    $helps = config('dtype.helps');
+    $legal_notices = config('dtype.legal_notices');
     $pay_methods = config('dtype.pay_methods');
     $socials = config('dtype.socials');  
 ?>

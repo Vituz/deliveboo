@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
 footer {
-  background-color: #f3ba4f;
+  background-color: #f6993f;
   width: 100%;
   margin: auto;
   z-index: 55;
@@ -14,6 +14,7 @@ footer ul {
 
 .top_footer {
   border-bottom: 1px solid silver;
+  padding-top: 2rem;
 }
 
 .top_footer ul li a {
@@ -120,16 +121,12 @@ header {
   font-size: 50px;
   font-weight: 900;
   /* color:rgb(255, 255, 255); */
-  color: orange;
+  color: #f6993f;
   z-index: 1;
 }
 
 .nav_colored {
-  background-color: #ff9100;
-}
-
-.nav_transparent {
-  background-color: transparent;
+  background-color: #f6993f;
 }
 
 /*!

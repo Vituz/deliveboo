@@ -2,42 +2,71 @@
 
 return [
 
-    'data'=>['Starters',
-            'Main courses', 
-            'Side dishes',
-            'Desserts', 
-            'Drinks'
+    'data'=>['Antipasto',
+            'Primo', 
+            'Secondo', 
+            'Contorno',
+            'Dessert', 
+            'Bevande'
     ],
     
         'links'=>[
             [
-                'text' => 'Info',
+                'text' => 'Chi siamo',
                 'href' => 'user.info'
             ],
             [
-                'text' => 'About',
+                'text' => 'Investitori',
+                'href' => 'user.investors'
+            ],
+            [
+                'text' => 'Diventa nostro partner',
                 'href' => 'user.about'
+            ],
+            [
+                'text' => 'Altro',
+                'href' => 'user.other'
             ],
             
             
-        ],
-        'categories'=>[
             [
-                'text' => 'Top Categories',
+                'text' => 'Categorie principali',
                 'href' => 'user.categories'
             ],
             [
-                'text' => 'Best Price',
+                'text' => 'Miglior prezzo',
                 'href' => 'user.best_price'
             ],
         ],
-        'contacts'=>[
+        'helps'=>[
             [
-                'text' => 'Info',
+                'text' => 'Contatti'
+            ],
+            [
+                'text' => 'Faq'
+
+            ],
+            [
+                'text' => 'Mappa del sito'
+
+            ],
+            [
+                'text' => 'Altro'
+
+            ],
+            
+        ],
+        'legal_notices'=>[
+            [
+                'text' => 'Termini & condizioni',
                 'href' => 'user.info'
             ],
             [
-                'text' => 'Contacts',
+                'text' => 'Informazioni sulla privacy',
+                'href' => 'user.contacts'
+            ],
+            [
+                'text' => 'Cookies',
                 'href' => 'user.contacts'
             ],
             

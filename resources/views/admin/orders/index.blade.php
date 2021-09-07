@@ -2,18 +2,18 @@
 
 @section('content')
 
-<h1>Orders List</h1>
+<h1>Lista ordini</h1>
 
 <div class="col-md-10 p-2">
     <table class="table table-striped table-inverse ">
         <thead class="thead-inverse">
             <tr>
                 <th>ID</th>
-                <th>NAME</th>
-                <th>PICK UP TIME</th>
-                <th>SURNAME</th>
-                <th>ADDRESS</th>
-                <th>PRICE</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Indirizzo</th>
+                <th>Prezzo</th>
+                <th>Ordine del</th>
             </tr>
         </thead>
         <tbody>
@@ -27,9 +27,7 @@
                 <td>
                     {{$order->ui_name}}
                 </td>
-                <td>
-                    {{$order->created_at}}
-                </td>
+                
                 <td>
                     {{$order->ui_surname}}
                 </td>
@@ -39,7 +37,9 @@
                 <td>
                     {{$order->amount}}
                 </td>
-                
+                <td>
+                    {{$order->created_at}}
+                </td>
             </tr>
 
             @endforeach

@@ -25,13 +25,10 @@ header{
         font-size: 50px;
         font-weight: 900;
         /* color:rgb(255, 255, 255); */
-        color: orange;
+        color: $orange;
         z-index: 1;
     }
 }
 .nav_colored{
-    background-color: rgb(255, 145, 0); 
-}
-.nav_transparent{
-    background-color: transparent;
+    background-color: $orange; 
 }

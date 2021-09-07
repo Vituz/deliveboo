@@ -3,16 +3,16 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<h1>Dishes table</h1>
+<h1>Il Tuo Menu</h1>
 
 <div class="col-md-10 p-2">
     <table class="table table-striped table-inverse ">
         <thead class="thead-inverse">
             <tr>
                 <th>ID</th>
-                <th>IMAGE</th>
-                <th>NAME</th>
-                <th>ACTIONS</th>
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>Opzioni</th>
             </tr>
         </thead>
         <tbody>
@@ -53,7 +53,7 @@
         </tbody>
     </table>
     
-    <a href="{{route('admin.dishes.create')}}" class="btn btn-primary">Add New Dish</a>
+    <a href="{{route('admin.dishes.create')}}" class="btn btn-primary">Aggiungi un nuovo piatto</a>
 </div>
 
 @endsection

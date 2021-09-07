@@ -17,11 +17,11 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link  text-white font-weight-bold" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link  text-white font-weight-bold" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link  text-white font-weight-bold" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link  text-white font-weight-bold" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                         </li>
                         @endif
                         @else
@@ -55,8 +55,8 @@
         <div class="container text-center">
             <div class="jumbo_text">
                 
-                <h1>Eat Great Food</h1>
-                <p>Discover top restaurants and fastest riders</p>
+                <h1>Mangi Da Paura</h1>
+                <p>Scopri i migliori ristoranti e i rider più veloci</p>
                 <!-- <form class="d-flex">
                 
                 <div class="search_pill">
