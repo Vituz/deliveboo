@@ -38590,7 +38590,11 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("img", {
-              attrs: { width: "200", src: _vm.restaurant.image, alt: "" }
+              attrs: {
+                width: "200",
+                src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
+                alt: ""
+              }
             })
           ]),
           _vm._v(" "),

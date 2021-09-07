@@ -3,7 +3,7 @@
     <div class="details">
         <h2>{{restaurant.name}}</h2>
         <h4><strong>Indirizzo:</strong> {{restaurant.address}}</h4>
-        <img width="200" :src="restaurant.image" alt="">
+        <img width="200" :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
     </div>
     <div class="dishes">
           <h3>Piatti d'asporto:</h3>
