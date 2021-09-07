@@ -1,0 +1,25 @@
+/* BODY */
+.rest_card{
+    border-radius: 5px;
+    width: 100%;
+    word-wrap: break-word;
+    box-shadow: 10px 10px 10px gray;      
+    .rest_img{
+        width:100%;
+        img{
+            width:100%;
+        }    
+    }
+    .rest_card:hover{
+        box-shadow: 15px 15px 15px gray;
+        background-color:whitesmoke;
+    }
+
+    
+    .rest_info{
+        color:black;
+    }
+}
+
+
+

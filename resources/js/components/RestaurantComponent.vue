@@ -1,6 +1,6 @@
 <template>
 <router-link class="rest_card col-md-4 p-0 m-3 ma b d-flex" :to="{ name: 'RestaurantDetails', params:{ id: restaurant.id}}"> 
-    <div class="pan rest_img col-md-5 p-3" >
+    <div class="rest_img col-md-5 p-3" >
         <img :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
     </div>
 

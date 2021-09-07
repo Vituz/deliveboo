@@ -38453,7 +38453,7 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "pan rest_img col-md-5 p-3" }, [
+      _c("div", { staticClass: "rest_img col-md-5 p-3" }, [
         _c("img", {
           attrs: {
             src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,

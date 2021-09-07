@@ -3,42 +3,10 @@
 
 // Variables
 @import 'variables';
-@import 'partials/footer';
 @import 'partials/header';
-@import 'partials/category_card';
+@import 'partials/rest_cards';
+@import 'partials/footer';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
-/* BODY */
-.rest_card{
-    border-radius: 5px;
-    width: 100%;
-    word-wrap: break-word;
-    box-shadow: 10px 10px 10px gray;      
-    .rest_img{
-        width:100%;
-        img{
-            width:100%;
-        }    
-    }
-    &:hover{
-        box-shadow: 15px 15px 15px gray;
-        
-    }
-
-    .pan img{
-        
-       -webkit-transition: all 1s ease;
-       -moz-transition: all 1s ease;
-       -o-transition: all 1s ease;
-       -ms-transition: all 1s ease;
-       transition: all 1s ease;
-    }
-    .rest_info{
-        color:black;
-    }
-}
-
-
 

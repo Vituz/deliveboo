@@ -65,7 +65,7 @@
     .rest_card:hover,
     .category_card:hover {
         cursor: pointer;
-        background-color: lightblue;
+        background-color:rgb(238, 238, 238);
     }
 
     .rest_card h2,
