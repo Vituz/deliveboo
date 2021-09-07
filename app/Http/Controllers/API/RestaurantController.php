@@ -48,10 +48,10 @@ class RestaurantController extends Controller
      * @param  \App\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function show(Restaurant $restaurant)
+    public function show(User $restaurant)
     {
-        return new RestaurantResource(User::find($restaurant));
-        return view('restaurants.show', compact('restaurant'));
+        $restaurant_id=User::with('dishes')->where('id',$restaurant->id)->get();
+        return RestaurantResource::collection($restaurant_id);
     }
 
     /**
