@@ -2125,8 +2125,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
 //
 //
 //
@@ -2155,7 +2153,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
->>>>>>> andreagavardi-main
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -38698,7 +38702,6 @@ var render = function() {
         "div",
         { staticClass: " single_rest container d-flex  align-items-center" },
         [
-<<<<<<< HEAD
           _c("div", { staticClass: "details col-md-4  " }, [
             _c("img", {
               attrs: {
@@ -38728,104 +38731,46 @@ var render = function() {
                 [
                   _c(
                     "div",
-                    {
-                      staticClass:
-                        "col-md-6 p-0 justify-content-center align-items-center d-flex"
-                    },
+                    { staticClass: "col-md-6 p-2 justify-content-center " },
                     [
                       _c("img", {
                         attrs: {
                           src: "http://127.0.0.1:8000/storage/" + dish.img,
                           alt: ""
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "overflo overflow-auto" }, [
+                        _c("p", [_vm._v(_vm._s(dish.description))])
+                      ])
                     ]
                   ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-8" }, [
+                  _c("div", { staticClass: "col-md-6 align-items-center" }, [
                     _c("h4", [_vm._v(_vm._s(dish.name))]),
                     _vm._v(" "),
-                    _c("p", [_vm._v(_vm._s(dish.description))]),
+                    _c("p", [_vm._v(_vm._s(dish.price) + " €")]),
                     _vm._v(" "),
-                    _c("p", [_vm._v(_vm._s(dish.price) + " €")])
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          " p-0 mt-3  shop_btn d-flex justify-content-center align-items-center ",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.addItemToCart(dish.name, dish.price)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-shopping-cart" })]
+                    )
                   ])
                 ]
               )
             }),
             0
-          )
-=======
-          _c("div", { staticClass: "restaurant col-md-7" }, [
-            _c(
-              "div",
-              { staticClass: "details d-flex flex-column align-items-center " },
-              [
-                _c("h2", [_vm._v(_vm._s(_vm.restaurant.name))]),
-                _vm._v(" "),
-                _c("h4", [
-                  _c("strong", [_vm._v("Indirizzo:")]),
-                  _vm._v(" " + _vm._s(_vm.restaurant.address))
-                ]),
-                _vm._v(" "),
-                _c("img", {
-                  attrs: {
-                    width: "200",
-                    src:
-                      "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
-                    alt: ""
-                  }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "dishes shop-items d-flex my-3" },
-              [
-                _c("h3", [_vm._v("Piatti")]),
-                _vm._v(" "),
-                _vm._l(_vm.restaurant.dishes, function(dish) {
-                  return _c(
-                    "div",
-                    { key: dish.id, staticClass: "shop-item " },
-                    [
-                      _c("span", { staticClass: "shop-item-title" }, [
-                        _vm._v(_vm._s(dish.name))
-                      ]),
-                      _vm._v(" "),
-                      _c("img", {
-                        staticClass: "shop-item-image",
-                        attrs: {
-                          src: "http://127.0.0.1:8000/storage/" + dish.img
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "shop-item-details" }, [
-                        _c("span", { staticClass: "shop-item-price" }, [
-                          _vm._v("€ " + _vm._s(dish.price))
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary shop-item-button",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.addItemToCart(dish.name, dish.price)
-                              }
-                            }
-                          },
-                          [_vm._v("ADD TO CART")]
-                        )
-                      ])
-                    ]
-                  )
-                })
-              ],
-              2
-            )
-          ]),
+          ),
           _vm._v(" "),
           _c("section", { staticClass: "container content-section col-md-5" }, [
             _c("h2", { staticClass: "section-header" }, [_vm._v("CART")]),
@@ -38920,7 +38865,6 @@ var render = function() {
               [_vm._v("PURCHASE")]
             )
           ])
->>>>>>> andreagavardi-main
         ]
       )
     : _vm._e()
@@ -54345,8 +54289,6 @@ var _require2 = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.
     get = _require2.get;
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-__webpack_require__(/*! ./cart */ "./resources/js/cart.js");
 /* window.Vue = require('vue'); */
 
 
@@ -54496,17 +54438,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
-
-/***/ }),
-
-/***/ "./resources/js/cart.js":
-/*!******************************!*\
-  !*** ./resources/js/cart.js ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
 
 /***/ }),
 

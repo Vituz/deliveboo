@@ -37,7 +37,7 @@ header {
   background-color: #f6993f;
 }
 
-/* BODY */
+/* VIEW RISTORANTI PAGINA PRINCIPALE */
 
 .rest_card {
   border-radius: 5px;
@@ -53,6 +53,7 @@ header {
 
 .rest_card .rest_img img {
   width: 100%;
+  border-radius: 5px;
 }
 
 .rest_card:hover {
@@ -68,8 +69,11 @@ header {
   color: black;
 }
 
+/* VIEW RISTORANTE SINGOLO */
+
 .single_rest img {
   width: 100%;
+  border-radius: 5px;
 }
 
 .pic {
@@ -86,20 +90,65 @@ header {
   border-radius: 5px;
   margin: 20px 20px 10px 0;
   width: 90%;
-  height: 90%;
+  min-height: 150px;
+  max-height: 150px;
   box-shadow: 5px 5px 5px #bdbdbd;
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
 }
 
 .dish_card img {
-  width: 80%;
-  height: 80%;
-  /* margin:20px 0; */
-  padding: 5px;
+  width: 100%;
+  height: 40%;
+  border-radius: 5px;
 }
 
 .dish_card:hover {
   box-shadow: 10px 10px 10px #bdbdbd;
   background-color: #fff7f7;
+}
+
+.dish_card ::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.dish_card ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 5px;
+}
+
+.dish_card ::-webkit-scrollbar-thumb {
+  background: #575757;
+  border-radius: 5px;
+}
+
+.dish_card ::-webkit-scrollbar-thumb:hover {
+  background: #575757;
+}
+
+.shop_btn {
+  width: 35px;
+  height: 35px;
+  background-color: green;
+  color: white;
+  border-radius: 50%;
+  justify-content: center;
+}
+
+.overflo {
+  margin-top: 5px;
+  padding-right: 10px;
+  overflow-y: auto;
+  height: 60%;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 footer {

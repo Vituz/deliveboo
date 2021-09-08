@@ -7,15 +7,23 @@
     </div>
     <div class="dishes d-flex flex-wrap mt-2 col-md-8">
           <div class="dish pl-0 dish_card col-md-5 d-flex " v-for="dish in restaurant.dishes" :key="dish.id">
-            <div class="col-md-6 p-0 justify-content-center align-items-center d-flex">
+            <div class="col-md-6 p-2 justify-content-center ">
               <img :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
+              <div class="overflo overflow-auto">   
+                <p >{{dish.description}}</p>
+              </div>
+
+             
             </div>
-            <div class="col-md-8">
+            <div class="col-md-6 align-items-center">
               <h4>{{dish.name}}</h4>
-              <p>{{dish.description}}</p>
               <p>{{dish.price}} &euro;</p>
+            <!-- <button class=" p-0 m-3  shop_btn " @click="addItemToCart(dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></button> -->
+               <div class=" p-0 mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
             </div>
+            
           </div>
+          
     </div>
     <section class="container content-section col-md-5">
             <h2 class="section-header">CART</h2>
