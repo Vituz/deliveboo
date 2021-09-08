@@ -1,7 +1,7 @@
 <?php
     $links = config('dtype.links');
-    $categories = config('dtype.categories');
-    $contacts = config('dtype.contacts');
+    $helps = config('dtype.helps');
+    $legal_notices = config('dtype.legal_notices');
     $pay_methods = config('dtype.pay_methods');
     $socials = config('dtype.socials');  
 ?>
@@ -38,7 +38,16 @@
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
     
+    <!-- <script src="{{asset('js/partials/navbar_scroll.js')}}"></script>       -->
     
 </body>
+    <script>
+        let height = document.documentElement.clientHeight * 0.96;
+        window.onscroll = () => {
+        const nav = document.querySelector('#top_nav');
+        if(this.scrollY <= 55) nav.className = 'navbar navbar-expand-md navbar-light shadow-sm fixed-top'; else nav.className = 'nav_colored navbar navbar-expand-md navbar-light shadow-sm fixed-top';
+        };
 
+    </script>
+</body>
 </html>

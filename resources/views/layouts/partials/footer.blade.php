@@ -1,35 +1,35 @@
 <footer>
         <div class="container">
             <!-- TOP FOOTER -->
-            <div class="top_footer d-flex">
+            <div class="top_footer d-flex flex-wrap">
                 <div class="col-md-4 p-0">                                      
                     <ul>
                         <li>
-                            <h2>Quick links</h2>
+                            <h2>Scopri DeliveBooh</h2>
                         </li>                       
+                        <li>
+                            <a href="{{route('register')}}">Aggiungi un ristorante<i class="fas fa-arrow-circle-right arrow"></i></a>
+                        </li>
+                        <li>
+                            <a href="{{route('login')}}">Il mio profilo<i class="fas fa-arrow-circle-right arrow"></i></a>
+                        </li>   
                         @foreach($links as $link)
                         <li> 
                             
                             <a href="">{{$link['text']}} <i class="fas fa-arrow-circle-right arrow"></i></a> 
                         </li>     
                         @endforeach
-                        <li>
-                            <a href="{{route('register')}}">Add Restaurant <i class="fas fa-arrow-circle-right arrow"></i></a>
-                        </li>
-                        <li>
-                            <a href="{{route('login')}}">My Account<i class="fas fa-arrow-circle-right arrow"></i></a>
-                        </li>   
                                             
                     </ul>
                 </div>
                 <div class="col-md-4 p-0">                   
                    <ul>        
                         <li>
-                            <h2>Categories</h2>
+                            <h2>Aiuto</h2>
                         </li>               
-                        @foreach($categories as $category)
+                        @foreach($helps as $help)
                         <li> 
-                            <a href="{{-- {{ route($item['href'])}} --}}">{{$category['text']}} <i class="fas fa-arrow-circle-right arrow"></i></a>
+                            <a href="">{{$help['text']}} <i class="fas fa-arrow-circle-right arrow"></i></a>
                         </li>     
                         @endforeach                       
                     </ul>
@@ -37,11 +37,11 @@
                 <div class="col-md-4 p-0">
                     <ul>   
                         <li>
-                            <h2>Contacts</h2>
+                            <h2>Note legali</h2>
                         </li>                    
-                        @foreach($contacts as $contact)
+                        @foreach($legal_notices as $item)
                         <li> 
-                            <a href="{{-- {{ route($contact['href'])}} --}}">{{$contact['text']}} <i class="fas fa-arrow-circle-right arrow"></i></a>
+                            <a href="{{-- {{ route($contact['href'])}} --}}">{{$item['text']}} <i class="fas fa-arrow-circle-right arrow"></i></a>
                         </li>     
                         @endforeach                       
                     </ul>
@@ -69,7 +69,7 @@
                     
                 </div>
                 <div class="col-md-5  socials">
-                    <ul class="d-flex">
+                    <ul class="d-flex flex-wrap">
                         @foreach($socials as $item)
                         <li class="social_card">
                             <div class=" align-items-end">

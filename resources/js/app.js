@@ -119,7 +119,8 @@ const app = new Vue({
 
         restaurantPage(index){
             console.log(index);
-        }
+        },
+
     },
 
     mounted(){

@@ -1,0 +1,121 @@
+/* VIEW RISTORANTI PAGINA PRINCIPALE */
+.rest_card{
+    border-radius: 5px;
+    width: 100%;
+    word-wrap: break-word;
+    box-shadow: 10px 10px 10px gray;  
+    .rest_img{
+        width:100%;
+        img{
+            width:100%;
+            border-radius: 5px;
+            
+        }   
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+    &:hover{
+        box-shadow: 15px 15px 15px gray;      
+        background-color:rgb(219, 219, 219);
+        .rest_img{
+            -webkit-transform: rotate(-10deg);
+            -moz-transform: rotate(-10deg);
+            -o-transform: rotate(-10deg);
+            -ms-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+        }
+    }
+    .rest_info{
+        color:black;
+    }
+    
+}
+
+/* VIEW RISTORANTE SINGOLO */
+.single_rest{
+    img{
+      width:100%;
+      border-radius: 5px;
+
+    }
+}
+
+.pic{
+    
+      float: left;
+      margin: 20px;
+      overflow: hidden;
+}
+
+
+
+.dishes{
+    margin-top: 20px;
+}
+.dish_card{
+    border-radius: 5px;
+    margin:20px 20px 10px 0;
+    width:90%;
+    min-height: 150px;
+    max-height: 150px;
+
+    box-shadow: 5px 5px 5px rgb(189, 189, 189);
+    
+    img{
+        width:100%;
+        height: 40%;
+        border-radius: 5px;
+    }
+    &:hover{
+        box-shadow: 10px 10px 10px rgb(189, 189, 189);
+        background-color: rgb(255, 247, 247);
+    }
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+      }
+      
+      /* Track */
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey; 
+        border-radius: 5px;
+      }
+       
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: rgb(87, 87, 87); 
+        border-radius: 5px;
+      }
+      
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgb(87, 87, 87); 
+      }
+    
+    
+}
+.shop_btn{
+   width:35px;
+   height:35px; 
+   background-color: green;
+   color:white;
+   border-radius: 50%;
+   justify-content: center;
+}
+.overflo{
+    margin-top: 5px;
+    padding-right: 10px;
+    overflow-y:auto;
+    height:60%;
+    width:100%;
+    
+}
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+

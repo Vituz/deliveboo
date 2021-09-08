@@ -1,9 +1,162 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+header {
+  height: 100vh;
+  min-height: 400px;
+  z-index: 44;
+}
+
+.jumbo::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(45%);
+  background-image: url("https://f.vividscreen.info/soft/8c5dc18232b51fbb258e2575651b7b3c/Pizza-with-mushrooms-and-olives-1920x1200.jpg");
+  background-size: cover;
+}
+
+.jumbo {
+  /* position:relative; */
+  margin-bottom: 2rem;
+  height: 100%;
+  z-index: 0;
+}
+
+.jumbo .jumbo_text {
+  margin-top: 5rem;
+  position: relative;
+  font-size: 50px;
+  font-weight: 900;
+  /* color:rgb(255, 255, 255); */
+  color: #f6993f;
+  z-index: 1;
+}
+
+.nav_colored {
+  background-color: #f6993f;
+}
+
+/* VIEW RISTORANTI PAGINA PRINCIPALE */
+
+.rest_card {
+  border-radius: 5px;
+  width: 100%;
+  word-wrap: break-word;
+  box-shadow: 10px 10px 10px gray;
+}
+
+.rest_card .rest_img {
+  width: 100%;
+  transition: all 0.5s ease;
+}
+
+.rest_card .rest_img img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.rest_card:hover {
+  box-shadow: 15px 15px 15px gray;
+  background-color: #dbdbdb;
+}
+
+.rest_card:hover .rest_img {
+  transform: rotate(-10deg);
+}
+
+.rest_card .rest_info {
+  color: black;
+}
+
+/* VIEW RISTORANTE SINGOLO */
+
+.single_rest img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.pic {
+  float: left;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.dishes {
+  margin-top: 20px;
+}
+
+.dish_card {
+  border-radius: 5px;
+  margin: 20px 20px 10px 0;
+  width: 90%;
+  min-height: 150px;
+  max-height: 150px;
+  box-shadow: 5px 5px 5px #bdbdbd;
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+
+.dish_card img {
+  width: 100%;
+  height: 40%;
+  border-radius: 5px;
+}
+
+.dish_card:hover {
+  box-shadow: 10px 10px 10px #bdbdbd;
+  background-color: #fff7f7;
+}
+
+.dish_card ::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.dish_card ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 5px;
+}
+
+.dish_card ::-webkit-scrollbar-thumb {
+  background: #575757;
+  border-radius: 5px;
+}
+
+.dish_card ::-webkit-scrollbar-thumb:hover {
+  background: #575757;
+}
+
+.shop_btn {
+  width: 35px;
+  height: 35px;
+  background-color: green;
+  color: white;
+  border-radius: 50%;
+  justify-content: center;
+}
+
+.overflo {
+  margin-top: 5px;
+  padding-right: 10px;
+  overflow-y: auto;
+  height: 60%;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 footer {
-  background-color: #f3ba4f;
+  background-color: #f6993f;
   width: 100%;
   margin: auto;
+  z-index: 55;
+  position: relative;
 }
 
 footer ul {
@@ -12,6 +165,7 @@ footer ul {
 
 .top_footer {
   border-bottom: 1px solid silver;
+  padding-top: 2rem;
 }
 
 .top_footer ul li a {
@@ -11029,144 +11183,5 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
-}
-
-/* JUMBOTRON */
-
-.search_pill {
-  border-radius: 25px;
-  width: 25%;
-  margin: auto;
-  height: 50px;
-  background-color: orangered;
-}
-
-.search_pill2 {
-  border-radius: 25px;
-  margin: auto;
-  height: 50px;
-  background-color: #f6993f;
-}
-
-header {
-  height: 100vh;
-}
-
-.jumbo::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  filter: grayscale(50%);
-  background-image: url("https://f.vividscreen.info/soft/8c5dc18232b51fbb258e2575651b7b3c/Pizza-with-mushrooms-and-olives-1920x1200.jpg");
-  background-size: cover;
-}
-
-.jumbo {
-  position: relative;
-  margin-top: 55px;
-  margin-bottom: 2rem;
-  background-color: #758795;
-  height: 100%;
-  /* opacity: 0.8; */
-  /* FOOTER */
-}
-
-.jumbo .jumbo_text {
-  position: absolute;
-  font-size: 50px;
-  font-weight: 900;
-  color: white;
-}
-
-.jumbo footer {
-  background-color: #f6993f;
-  width: 100%;
-  margin: auto;
-}
-
-.jumbo footer ul {
-  list-style-type: none;
-}
-
-.jumbo .top_footer {
-  border-bottom: 1px solid silver;
-}
-
-.jumbo .top_footer ul li a {
-  text-decoration: none;
-  color: black;
-}
-
-.jumbo .top_footer ul li a i {
-  display: none;
-}
-
-.jumbo .top_footer ul li a:hover {
-  margin-left: 3px;
-}
-
-.jumbo .top_footer ul li a:hover i {
-  display: inline-block;
-}
-
-.jumbo .bottom_footer {
-  padding: 25px;
-}
-
-.jumbo .bottom_footer .pay_methods .logo_btn {
-  margin: 5px 5px 5px 0;
-  height: 35px;
-  border: none;
-}
-
-.jumbo .bottom_footer .pay_methods .logo_btn img {
-  width: 55px;
-  height: 35px;
-  border-color: white;
-}
-
-.jumbo .bottom_footer .pay_card {
-  margin: 15px 15px 15px 0;
-  border: 1px solid #dadada;
-}
-
-.jumbo .bottom_footer .pay_card:hover {
-  border-color: #e6e6e6;
-}
-
-.jumbo .bottom_footer .pay_card a {
-  color: #868686;
-  text-decoration: none;
-}
-
-.jumbo .bottom_footer .pay_card a:hover {
-  color: #8080f5;
-}
-
-.jumbo .socials .social_card {
-  margin: 10px;
-  border-radius: 15px;
-  width: 35px;
-  height: 35px;
-}
-
-.jumbo .socials .social_card img {
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  border-color: white;
-}
-
-.jumbo .socials .social_card:hover {
-  width: 40px;
-  height: 40px;
-}
-
-.jumbo .socials .social_card:hover img {
-  width: 40px;
-  height: 40px;
 }
 

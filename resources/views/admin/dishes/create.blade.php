@@ -21,7 +21,7 @@
 
 <div class="container">
 
-    <h1>Add single dish</h1>
+    <h1>Aggiungi un nuovo piatto</h1>
 
     <form action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
 
@@ -29,8 +29,8 @@
 
 
         <div class="form-group">
-            <input type="text" class="form-control @error('name') is invalid @enderror" name="name" id="name" aria-describedby="nameId" placeholder="Dish" minlength="1" max="50" value="{{ old('name') }}" max=50 required>
-            <small id="nameId" class="form-text text-muted pl-2">Add a name</small>
+            <input type="text" class="form-control @error('name') is invalid @enderror" name="name" id="name" aria-describedby="nameId" placeholder="Pasta al pomodoro" minlength="1" max="50" value="{{ old('name') }}" max=50 required>
+            <small id="nameId" class="form-text text-muted pl-2">Dagli un nome</small>
         </div>
         @error('name')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -40,12 +40,12 @@
         <div class="form-group">
 
             <select class="form-control" name="type" id="type" aria-describedby="typeId">
-                <option value="" selected disabled>Select the dish type</option>
+                <option value="" selected disabled>Seleziona il tipo</option>
                 @foreach ($datatypes as $key=>$datatype)                
                     <option value="{{$datatype}}">{{$datatype}}</option>
                 @endforeach
             </select>
-            {{-- <small id="typeId" class="form-text text-muted pl-2">Add a type</small> --}}
+            {{-- <small id="typeId" class="form-text text-muted pl-2">Aggiungi un nuovo tipo</small> --}}
         </div>
         @error('type')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -56,7 +56,7 @@
         {{-- description --}}
         <div class="form-group">
             <textarea class="form-control @error('description') is invalid @enderror" name="description" id="descriptionId" rows="3" value="">{{ old('description') }}</textarea>
-            <small id="descriptionId" class="form-text text-muted pl-2">Add a description</small>
+            <small id="descriptionId" class="form-text text-muted pl-2">Aggiungi una descrizione del piatto</small>
         </div>
         @error('description')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -67,7 +67,7 @@
         {{-- ingredients --}}
         <div class="form-group">
             <textarea class="form-control @error('ingredients') is invalid @enderror" name="ingredients" id="ingredientsId" rows="3" value="">{{ old('ingredients') }}</textarea>
-            <small id="ingredientsId" class="form-text text-muted pl-2">Ingredients</small>
+            <small id="ingredientsId" class="form-text text-muted pl-2">Ingredienti</small>
         </div>
         @error('ingredients')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -121,7 +121,7 @@
         {{-- /visibility --}}
 
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Invia</button>
     </form>
 </div>
 @endsection

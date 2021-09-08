@@ -20,7 +20,7 @@
 
 <div class="container">
     @if(Auth::user()->id == $dish->user_id)
-    <h1>Edit single dish</h1>
+    <h1>Modifica il tuo piatto</h1>
     <form action="{{ route('admin.dishes.update', $dish->id) }}" method="post" enctype="multipart/form-data">
 
         @csrf
@@ -44,7 +44,7 @@
                     <option value="{{$datatype}}" {{$datatype==$dish->type ? 'selected' : '' }}>{{$datatype}}</option>
                 @endforeach
             </select>
-            {{-- <small id="typeId" class="form-text text-muted pl-2">Add a type</small> --}}
+            <small id="typeId" class="form-text text-muted pl-2">Modifica tipologia</small>
         </div>
         @error('type')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -56,7 +56,7 @@
         <div class="form-group">
             <textarea class="form-control @error('description') is invalid @enderror" name="description" id="descriptionId" rows="3"
             value="" >{{$dish->description}}</textarea>
-            <small id="descriptionId" class="form-text text-muted pl-2">Add a description</small>
+            <small id="descriptionId" class="form-text text-muted pl-2">Descrizione del piatto</small>
         </div>
         @error('description')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -68,7 +68,7 @@
         <div class="form-group">
             <textarea class="form-control @error('ingredients') is invalid @enderror" name="ingredients" id="ingredientsId" rows="3"
             value="" >{{$dish->ingredients}}</textarea>
-            <small id="ingredientsId" class="form-text text-muted pl-2">Ingredients</small>
+            <small id="ingredientsId" class="form-text text-muted pl-2">Ingredienti</small>
         </div>
         @error('ingredients')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -82,7 +82,7 @@
                   <span class="input-group-text">&euro;</span>
                 </div>
                 <input type="text" class="form-control" name="price"  id="price" required value="{{$dish->price}}">
-              </div>          
+            </div>          
 
         @error('price')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -94,7 +94,7 @@
         <div class="form-group">
             <input type="file" class="form-control-file @error('img') is invalid @enderror" name="img"
                 id="img" aria-describedby="imgId" max="300">
-            <small id="imgId" class="form-text text-muted">Place an Url image</small>
+            <small id="imgId" class="form-text text-muted">Cambia immagine</small>
              <img src="{{asset('storage/'. $dish->img)}}" alt="{{$dish->name}}" width="200">
         </div>
           @error('img')
@@ -120,7 +120,7 @@
     {{-- /visibility --}}
 
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Invia</button>
     </form>
     @else
         <div class="alert alert-danger">{{Auth::user()->name}} non sei autorizzato alla modifica di questo piatto</div>
