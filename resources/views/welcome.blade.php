@@ -81,36 +81,7 @@
 <div class="container">
     
 
-    <!-- <input type="text" v-model="query" @keyup.enter="search(query)" placeholder="Search by category"> -->
-
-    <!-- <div class="card-group d-flex justify-content-center">
-        <button class="w-25  rounded m-3" :class="clicked_categories.includes(category.id)? 'clicked' : ''" v-for="category in categories" v-on:click="filter_restaurants(category.id)">
-            <img class="card-img-top" :src="'storage/' + restaurant.image" :alt="restaurant.name">
-            <div class="p-2">
-                <h4 class="card-title">@{{category.name}}</h4>
-                <p class="card-text">@{{category.users.length}}</p>
-            </div>
-        </button>
-    </div>
-
-    <div class="d-flex flex-wrap justify-content-center">
-
-        <restaurant-section v-for="restaurant in fill_restaurants" :key="restaurant.id" :restaurant="restaurant" :id="restaurant.id" style="width: 20rem;"></restaurant-section>
-
-    </div> -->
-
-    <!-- <div class="card_container d-flex flex-wrap justify-content-center text-center">
-        <div class="category_card border border-primary rounded m-2" v-for="category in categories" style="width: 10rem" @click="filterRestaurants(category.id)" :class="clicked_categories.includes(category.id)? 'clicked' : ''">
-            <h2>@{{category.name}}</h2>
-            <h3>@{{category.users.length}}</h3>
-        </div>
-    </div>
-
-    <div class="card_container d-flex flex-wrap justify-content-center">
-    <restaurant-section v-for="restaurant in fill_restaurants" :key="restaurant.id" :restaurant="restaurant" :categories="restaurant.categories" :id="restaurant.id" style="width: 20rem;" @click="restaurantPage(restaurant.id)"></restaurant-section>
     
-    </div> -->
-    <!-- <example-component></example-component> -->
 </div>
 
 
