@@ -69,13 +69,37 @@ header {
 }
 
 .single_rest img {
-  width: 60%;
+  width: 100%;
 }
 
 .pic {
   float: left;
   margin: 20px;
   overflow: hidden;
+}
+
+.dishes {
+  margin-top: 20px;
+}
+
+.dish_card {
+  border-radius: 5px;
+  margin: 20px 20px 10px 0;
+  width: 90%;
+  height: 90%;
+  box-shadow: 5px 5px 5px #bdbdbd;
+}
+
+.dish_card img {
+  width: 80%;
+  height: 80%;
+  /* margin:20px 0; */
+  padding: 5px;
+}
+
+.dish_card:hover {
+  box-shadow: 10px 10px 10px #bdbdbd;
+  background-color: #fff7f7;
 }
 
 footer {

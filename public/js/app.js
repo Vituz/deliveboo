@@ -2117,6 +2117,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -38594,20 +38602,17 @@ var render = function() {
   return _vm.restaurant
     ? _c(
         "div",
-        {
-          staticClass:
-            " single_rest container d-flex justify-content-around align-items-center"
-        },
+        { staticClass: " single_rest container d-flex  align-items-center" },
         [
-          _c("div", { staticClass: "details " }, [
-            _c("h2", [_vm._v(_vm._s(_vm.restaurant.name))]),
-            _vm._v(" "),
+          _c("div", { staticClass: "details col-md-4  " }, [
             _c("img", {
               attrs: {
                 src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
                 alt: ""
               }
             }),
+            _vm._v(" "),
+            _c("h2", [_vm._v(_vm._s(_vm.restaurant.name))]),
             _vm._v(" "),
             _c("h4", [
               _c("strong", [_vm._v("Indirizzo:")]),
@@ -38617,17 +38622,42 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "dishes text-right" },
-            [
-              _c("h3", [_vm._v("Piatti da asporto:")]),
-              _vm._v(" "),
-              _vm._l(_vm.restaurant.dishes, function(dish) {
-                return _c("div", { key: dish.id, staticClass: "dish" }, [
-                  _vm._v(_vm._s(dish.name))
-                ])
-              })
-            ],
-            2
+            { staticClass: "dishes d-flex flex-wrap mt-2 col-md-8" },
+            _vm._l(_vm.restaurant.dishes, function(dish) {
+              return _c(
+                "div",
+                {
+                  key: dish.id,
+                  staticClass: "dish pl-0 dish_card col-md-5 d-flex "
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "col-md-6 p-0 justify-content-center align-items-center d-flex"
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "http://127.0.0.1:8000/storage/" + dish.img,
+                          alt: ""
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-8" }, [
+                    _c("h4", [_vm._v(_vm._s(dish.name))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(_vm._s(dish.description))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(_vm._s(dish.price) + " €")])
+                  ])
+                ]
+              )
+            }),
+            0
           )
         ]
       )
