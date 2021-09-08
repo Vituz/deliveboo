@@ -2105,22 +2105,129 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
     return {
-      restaurant: null
+      restaurant: null,
+      cart: [],
+      total: 0
     };
   },
-  mounted: function mounted() {
+  methods: {
+    removeItemOnce: function removeItemOnce(arr, value) {
+      var index = arr.indexOf(value);
+
+      if (index > -1) {
+        arr.splice(index, 1);
+      }
+
+      return arr;
+    },
+    removeCartItem: function removeCartItem(item) {
+      var arr = this.cart;
+      this.removeItemOnce(arr, item);
+      this.total -= item.item_price;
+      this.updateQuantity();
+    },
+    purchaseClicked: function purchaseClicked() {
+      alert('Thank you for your purchase');
+      this.cart = [];
+      this.total = 0;
+    },
+    addItemToCart: function addItemToCart(title, price) {
+      var item = {
+        item_name: "",
+        item_price: "",
+        quantity: 1
+      };
+      item.item_name = title;
+      item.item_price = price;
+      this.cart.push(item);
+      this.total += item.item_price;
+      this.updateQuantity();
+    },
+    addQuanity: function addQuanity(item) {
+      item.quantity++;
+      this.total += item.item_price;
+      this.updateQuantity();
+      /* console.log(item.item_price); */
+
+      /* return quantity++ */
+    },
+    removeQuantity: function removeQuantity(item) {
+      if (item.quantity != 1) {
+        item.quantity--;
+        this.total -= item.item_price;
+        this.updateQuantity();
+      } else {
+        this.removeCartItem(item);
+      }
+    },
+    updateQuantity: function updateQuantity() {
+      return this.total = Math.round(this.total * 100) / 100;
+    }
+  },
+  created: function created() {
     var _this = this;
 
     axios.get('/api/restaurants/' + this.id).then(function (resp) {
-      _this.restaurant = resp.data.data[0];
-      console.log(resp.data.data[0].name);
+      _this.restaurant = resp.data.data[0]; //console.log(resp.data.data[0].name);
     })["catch"](function (e) {
       console.error('API non caricata' + e);
     });
+  },
+  mounted: function mounted() {
+    var quantityInputs = document.getElementsByClassName('cart-quantity-input'); //console.log(quantityInputs);
+
+    for (var i = 0; i < quantityInputs.length; i++) {
+      var input = quantityInputs[i];
+      input.addEventListener('change', this.quantityChanged());
+    }
   }
 });
 
@@ -38571,10 +38678,199 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.restaurant
-    ? _c("div", {}, [_c("h2", [_vm._v(_vm._s(_vm.restaurant.name))])])
+    ? _c(
+        "div",
+        { staticClass: "d-flex justify-content-around align-items-center" },
+        [
+          _c("div", { staticClass: "restaurant col-md-7" }, [
+            _c(
+              "div",
+              { staticClass: "details d-flex flex-column align-items-center " },
+              [
+                _c("h2", [_vm._v(_vm._s(_vm.restaurant.name))]),
+                _vm._v(" "),
+                _c("h4", [
+                  _c("strong", [_vm._v("Indirizzo:")]),
+                  _vm._v(" " + _vm._s(_vm.restaurant.address))
+                ]),
+                _vm._v(" "),
+                _c("img", {
+                  attrs: {
+                    width: "200",
+                    src:
+                      "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
+                    alt: ""
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "dishes shop-items d-flex my-3" },
+              [
+                _c("h3", [_vm._v("Piatti")]),
+                _vm._v(" "),
+                _vm._l(_vm.restaurant.dishes, function(dish) {
+                  return _c(
+                    "div",
+                    { key: dish.id, staticClass: "shop-item " },
+                    [
+                      _c("span", { staticClass: "shop-item-title" }, [
+                        _vm._v(_vm._s(dish.name))
+                      ]),
+                      _vm._v(" "),
+                      _c("img", {
+                        staticClass: "shop-item-image",
+                        attrs: {
+                          src: "http://127.0.0.1:8000/storage/" + dish.img
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "shop-item-details" }, [
+                        _c("span", { staticClass: "shop-item-price" }, [
+                          _vm._v("€ " + _vm._s(dish.price))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary shop-item-button",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.addItemToCart(dish.name, dish.price)
+                              }
+                            }
+                          },
+                          [_vm._v("ADD TO CART")]
+                        )
+                      ])
+                    ]
+                  )
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("section", { staticClass: "container content-section col-md-5" }, [
+            _c("h2", { staticClass: "section-header" }, [_vm._v("CART")]),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "cart-items" },
+              _vm._l(_vm.cart, function(item) {
+                return _c("div", { key: item.id, staticClass: "cart-row" }, [
+                  _c("div", { staticClass: "cart-item cart-column" }, [
+                    _c("span", { staticClass: "cart-item-title" }, [
+                      _vm._v(_vm._s(item.item_name))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "cart-price cart-column" }, [
+                    _vm._v(_vm._s(item.item_price))
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "cart-quantity cart-column" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-warning",
+                        on: {
+                          click: function($event) {
+                            return _vm.removeQuantity(item)
+                          }
+                        }
+                      },
+                      [_vm._v("-")]
+                    ),
+                    _c("div", { staticClass: "quantity" }, [
+                      _vm._v(_vm._s(item.quantity))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        on: {
+                          click: function($event) {
+                            return _vm.addQuanity(item)
+                          }
+                        }
+                      },
+                      [_vm._v("+")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.removeCartItem(item)
+                          }
+                        }
+                      },
+                      [_vm._v("REMOVE")]
+                    )
+                  ])
+                ])
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "cart-total" }, [
+              _c("strong", { staticClass: "cart-total-title" }, [
+                _vm._v("Total")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "cart-total-price" }, [
+                _vm._v("€" + _vm._s(_vm.total))
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary btn-purchase",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.purchaseClicked()
+                  }
+                }
+              },
+              [_vm._v("PURCHASE")]
+            )
+          ])
+        ]
+      )
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "cart-row" }, [
+      _c("span", { staticClass: "cart-item cart-header cart-column" }, [
+        _vm._v("ITEM")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "cart-price cart-header cart-column" }, [
+        _vm._v("PRICE")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "cart-quantity cart-header cart-column" }, [
+        _vm._v("QUANTITY")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -50818,6 +51114,8 @@ var _require2 = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.
     get = _require2.get;
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+__webpack_require__(/*! ./cart */ "./resources/js/cart.js");
 /* window.Vue = require('vue'); */
 
 
@@ -50967,6 +51265,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/cart.js":
+/*!******************************!*\
+  !*** ./resources/js/cart.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
 
 /***/ }),
 

@@ -8,7 +8,7 @@ const { default: axios } = require('axios');
 const { get } = require('lodash');
 
 require('./bootstrap');
-
+require('./cart');
 /* window.Vue = require('vue'); */
 import Vue from 'vue'
 import VueRouter from 'vue-router'

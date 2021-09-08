@@ -38,6 +38,7 @@
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
     
+    
 </body>
     <script>
     /* var navbar = document.getElementById('top_nav'); // Identify target
