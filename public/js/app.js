@@ -2175,19 +2175,34 @@ __webpack_require__.r(__webpack_exports__);
       this.updateQuantity();
     },
     purchaseClicked: function purchaseClicked() {
-      alert('Thank you for your purchase');
-      this.cart = [];
-      this.total = 0;
+      if (this.cart.length !== 0) {
+        alert('Thank you for your purchase');
+        this.cart = [];
+        this.total = 0;
+      } else {
+        alert('non hai aggiunto nulla al tuo ordine');
+      }
     },
-    addItemToCart: function addItemToCart(title, price) {
+    addItemToCart: function addItemToCart(id, title, price) {
+      for (var i = 0; i < this.cart.length; i++) {
+        var cart_item = this.cart[i];
+
+        if (cart_item.item_id == id) {
+          this.addQuanity(cart_item);
+          return;
+        }
+      }
+
       var item = {
+        item_id: "",
         item_name: "",
         item_price: "",
         quantity: 1
       };
+      item.item_id = id;
       item.item_name = title;
       item.item_price = price;
-      this.cart.push(item);
+      this.cart.unshift(item);
       this.total += item.item_price;
       this.updateQuantity();
     },
@@ -38737,7 +38752,11 @@ var render = function() {
                             attrs: { type: "button" },
                             on: {
                               click: function($event) {
-                                return _vm.addItemToCart(dish.name, dish.price)
+                                return _vm.addItemToCart(
+                                  dish.id,
+                                  dish.name,
+                                  dish.price
+                                )
                               }
                             }
                           },
@@ -54269,8 +54288,6 @@ var _require2 = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.
     get = _require2.get;
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-__webpack_require__(/*! ./cart */ "./resources/js/cart.js");
 /* window.Vue = require('vue'); */
 
 
@@ -54420,17 +54437,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
-
-/***/ }),
-
-/***/ "./resources/js/cart.js":
-/*!******************************!*\
-  !*** ./resources/js/cart.js ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
 
 /***/ }),
 

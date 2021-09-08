@@ -13,7 +13,7 @@
         <img class="shop-item-image" :src="'http://127.0.0.1:8000/storage/' + dish.img">
         <div class="shop-item-details">
           <span class="shop-item-price">€ {{dish.price}}</span>                
-          <button class="btn btn-primary shop-item-button" @click="addItemToCart(dish.name, dish.price)" type="button">ADD TO CART</button>            
+          <button class="btn btn-primary shop-item-button" @click="addItemToCart(dish.id,dish.name, dish.price)" type="button">ADD TO CART</button>            
         </div>
         </div>
       </div>
@@ -76,24 +76,39 @@ export default {
       },
 
       purchaseClicked() {
-        alert('Thank you for your purchase')
-        this.cart=[];
-        this.total=0
+        if (this.cart.length !== 0) {
+          alert('Thank you for your purchase')
+          this.cart=[];
+          this.total=0
+          
+        }else{
+          alert('non hai aggiunto nulla al tuo ordine')
+        }
       },
      
-      addItemToCart(title, price) {
-        let item={
-          item_name : "",
-          item_price :"",
-          quantity:1
-
-        };
-
-        item.item_name = title;
-        item.item_price = price;
-        this.cart.push(item);
-        this.total+=item.item_price;
-        this.updateQuantity() 
+      addItemToCart(id,title, price) {
+        
+        
+       for (var i = 0; i < this.cart.length; i++) {
+        let cart_item=this.cart[i];
+        if (cart_item.item_id == id) {
+            this.addQuanity(cart_item)
+            return
+        }
+    }
+            let item={
+              item_id : "",
+              item_name : "",
+              item_price :"",
+              quantity:1
+    
+            };
+            item.item_id = id;
+            item.item_name = title;
+            item.item_price = price;
+            this.cart.unshift(item);
+            this.total+=item.item_price;
+            this.updateQuantity() 
        
         
       },
