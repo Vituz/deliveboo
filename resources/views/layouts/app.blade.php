@@ -39,6 +39,8 @@
     <script src="{{ asset('js/app.js') }}"></script>
     
     <!-- <script src="{{asset('js/partials/navbar_scroll.js')}}"></script>       -->
+    
+</body>
     <script>
         let height = document.documentElement.clientHeight * 0.96;
         window.onscroll = () => {

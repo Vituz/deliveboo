@@ -18,7 +18,7 @@ class RestaurantController extends Controller
     public function index()
     {
         $restaurants = User::with(['dishes', 'categories'])->paginate(30);
-        return RestaurantResource::collection($restaurants);
+        return  RestaurantResource::collection($restaurants);
     }
 
     /**
@@ -51,7 +51,7 @@ class RestaurantController extends Controller
     public function show(User $restaurant)
     {
         $restaurant_id=User::with('dishes')->where('id',$restaurant->id)->get();
-        return RestaurantResource::collection($restaurant_id);
+        return new RestaurantResource($restaurant_id);
     }
 
     /**
