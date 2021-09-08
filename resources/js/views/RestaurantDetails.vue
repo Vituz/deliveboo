@@ -1,12 +1,12 @@
 <template>
-  <div class="d-flex justify-content-around align-items-center" v-if="restaurant" >
-    <div class="details">
+  <div class=" single_rest container d-flex justify-content-around align-items-center" v-if="restaurant" >
+    <div class="details ">
         <h2>{{restaurant.name}}</h2>
+        <img  :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
         <h4><strong>Indirizzo:</strong> {{restaurant.address}}</h4>
-        <img width="200" :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
     </div>
-    <div class="dishes">
-          <h3>Piatti d'asporto:</h3>
+    <div class="dishes text-right">
+          <h3>Piatti da asporto:</h3>
           <div class="dish" v-for="dish in restaurant.dishes" :key="dish.id">{{dish.name}}</div>
     </div>
   </div>

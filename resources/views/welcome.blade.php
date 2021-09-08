@@ -62,7 +62,7 @@
         width: 15rem;
     }
 
-    .rest_card:hover,
+    /* .rest_card:hover,
     .category_card:hover {
         cursor: pointer;
         background-color:rgb(238, 238, 238);
@@ -71,7 +71,7 @@
     .rest_card h2,
     .rest_card h3 {
         font-size: 1rem;
-    }
+    } */
 </style>
 
 <!-- Styles -->

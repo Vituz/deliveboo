@@ -38447,13 +38447,13 @@ var render = function() {
   return _c(
     "router-link",
     {
-      staticClass: "rest_card col-md-4 p-0 m-3 ma b d-flex",
+      staticClass: "rest_card pic col-md-4 p-0 m-3 ma b d-flex",
       attrs: {
         to: { name: "RestaurantDetails", params: { id: _vm.restaurant.id } }
       }
     },
     [
-      _c("div", { staticClass: "rest_img col-md-5 p-3" }, [
+      _c("div", { staticClass: "rest_img  col-md-5 p-3" }, [
         _c("img", {
           attrs: {
             src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
@@ -38594,30 +38594,32 @@ var render = function() {
   return _vm.restaurant
     ? _c(
         "div",
-        { staticClass: "d-flex justify-content-around align-items-center" },
+        {
+          staticClass:
+            " single_rest container d-flex justify-content-around align-items-center"
+        },
         [
-          _c("div", { staticClass: "details" }, [
+          _c("div", { staticClass: "details " }, [
             _c("h2", [_vm._v(_vm._s(_vm.restaurant.name))]),
+            _vm._v(" "),
+            _c("img", {
+              attrs: {
+                src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
+                alt: ""
+              }
+            }),
             _vm._v(" "),
             _c("h4", [
               _c("strong", [_vm._v("Indirizzo:")]),
               _vm._v(" " + _vm._s(_vm.restaurant.address))
-            ]),
-            _vm._v(" "),
-            _c("img", {
-              attrs: {
-                width: "200",
-                src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
-                alt: ""
-              }
-            })
+            ])
           ]),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "dishes" },
+            { staticClass: "dishes text-right" },
             [
-              _c("h3", [_vm._v("Piatti d'asporto:")]),
+              _c("h3", [_vm._v("Piatti da asporto:")]),
               _vm._v(" "),
               _vm._l(_vm.restaurant.dishes, function(dish) {
                 return _c("div", { key: dish.id, staticClass: "dish" }, [

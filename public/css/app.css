@@ -48,19 +48,34 @@ header {
 
 .rest_card .rest_img {
   width: 100%;
+  transition: all 0.5s ease;
 }
 
 .rest_card .rest_img img {
   width: 100%;
 }
 
-.rest_card .rest_card:hover {
+.rest_card:hover {
   box-shadow: 15px 15px 15px gray;
-  background-color: whitesmoke;
+  background-color: #dbdbdb;
+}
+
+.rest_card:hover .rest_img {
+  transform: rotate(-10deg);
 }
 
 .rest_card .rest_info {
   color: black;
+}
+
+.single_rest img {
+  width: 60%;
+}
+
+.pic {
+  float: left;
+  margin: 20px;
+  overflow: hidden;
 }
 
 footer {

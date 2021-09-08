@@ -3,22 +3,51 @@
     border-radius: 5px;
     width: 100%;
     word-wrap: break-word;
-    box-shadow: 10px 10px 10px gray;      
+    box-shadow: 10px 10px 10px gray;  
     .rest_img{
         width:100%;
         img{
             width:100%;
-        }    
+            
+        }   
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        transition: all 0.5s ease;
     }
-    .rest_card:hover{
-        box-shadow: 15px 15px 15px gray;
-        background-color:whitesmoke;
+    &:hover{
+        box-shadow: 15px 15px 15px gray;      
+        background-color:rgb(219, 219, 219);
+        .rest_img{
+            -webkit-transform: rotate(-10deg);
+       -moz-transform: rotate(-10deg);
+       -o-transform: rotate(-10deg);
+       -ms-transform: rotate(-10deg);
+       transform: rotate(-10deg);
+        }
+        img{
+            
+        }
     }
 
     
     .rest_info{
         color:black;
     }
+    
+}
+.single_rest{
+    img{
+      width:60%;
+    }
+}
+
+.pic{
+    
+      float: left;
+      margin: 20px;
+      overflow: hidden;
 }
 
 
