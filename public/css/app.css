@@ -75,8 +75,9 @@ header {
   margin-top: 25px;
 }
 
-.single_rest img {
+.single_rest .details img {
   width: 100%;
+  height: 50%;
   border-radius: 5px;
 }
 
@@ -93,7 +94,7 @@ header {
 .dish_card {
   border-radius: 5px;
   margin: 10px 10px 5px 0;
-  width: 90%;
+  width: 100%;
   min-height: 150px;
   max-height: 150px;
   box-shadow: 5px 5px 5px #bdbdbd;
@@ -102,9 +103,14 @@ header {
   /* Handle on hover */
 }
 
-.dish_card img {
+.dish_card .wrapper {
+  width: 50%;
+  height: 100%;
+}
+
+.dish_card .wrapper img {
+  height: 100%;
   width: 100%;
-  height: 40%;
   border-radius: 5px;
 }
 
@@ -132,19 +138,12 @@ header {
   background: #575757;
 }
 
-.overflo {
-  margin-top: 5px;
-  padding-right: 10px;
-  overflow-y: auto;
-  height: 60%;
-  width: 100%;
-}
-
-.right_card {
+.dish_card .right_card {
   position: relative;
+  height: 100%;
 }
 
-.right_card .shop_btn {
+.dish_card .right_card .shop_btn {
   width: 35px;
   height: 35px;
   background-color: green;
@@ -153,7 +152,19 @@ header {
   justify-content: center;
   position: absolute;
   bottom: 10px;
-  right: 0;
+  right: 10px;
+}
+
+.overflo {
+  margin-top: 5px;
+  padding-right: 10px;
+  overflow-y: auto;
+  height: 60%;
+  width: 100%;
+}
+
+.cart {
+  border: 1px solid black;
 }
 
 footer {

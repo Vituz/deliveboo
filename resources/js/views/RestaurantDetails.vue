@@ -1,57 +1,55 @@
 <template>
-  <div class=" single_rest container d-flex" v-if="restaurant" >
-    <div class="details col-md-4  ">
+  <div class=" single_rest container " v-if="restaurant" >
+    <div class="details col-md-12  ">
         <img  :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
         <h2>{{restaurant.name}}</h2>
         <h4><strong>Indirizzo:</strong> {{restaurant.address}}</h4>
     </div>
-    <div class="dishes d-flex flex-wrap mt-2 col-md-8">
-          <div class="dish pl-0 dish_card col-md-5 d-flex " v-for="dish in restaurant.dishes" :key="dish.id">
-            <div class="col-md-6 p-2 justify-content-center ">
-              <img :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
-              <div class="overflo overflow-auto">   
-                <p >{{dish.description}}</p>
+    <div class="d-flex">
+      <div class="dishes d-flex flex-wrap mt-2 col-md-8">
+            <div class="dish pl-0 dish_card  d-flex justify-content-center" v-for="dish in restaurant.dishes" :key="dish.id">
+              <div class="wrapper col-md-4 p-2 ">
+                  <img :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
               </div>
-
-             
+              <div class="d-flex flex-column justify-content-center col-md-8 right_card">
+                <h4>{{dish.name}}</h4>
+                <p >{{dish.description}}</p>
+                <p>{{dish.price}} &euro;</p>
+              <!-- <button class=" p-0 m-3  shop_btn " @click="addItemToCart(dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></button> -->
+                <div class="mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
+              </div>
+              
             </div>
-            <div class="col-md-6 align-items-center right_card">
-              <h4>{{dish.name}}</h4>
-              <p>{{dish.price}} &euro;</p>
-            <!-- <button class=" p-0 m-3  shop_btn " @click="addItemToCart(dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></button> -->
-               <div class=" p-0 mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
-            </div>
-            
-          </div>
-          
-    </div>
-    <section class="container content-section col-md-5">
-            <h2 class="section-header">Il tuo ordine</h2>
-           <!--  <div class="cart-row">
-                <span class="cart-item cart-header cart-column">Piatto</span>
-                <span class="cart-price cart-header cart-column">Prezzo</span>
-                <span class="cart-quantity cart-header cart-column">Quantità</span>
-            </div> -->
-            <div class="cart-items">
-                <div class="cart-row" v-for="item in cart" :key="item.id">
-                    <div class="cart-item cart-column">
-                        
-                        <span class="cart-item-title">{{item.item_name}}</span>
-                    </div>
-                    <span class="cart-price cart-column">{{item.item_price}} €</span>
-                    <div class="cart-quantity cart-column">
-                       <button class="btn btn-warning" @click="removeQuantity(item)">-</button><div class="quantity">{{item.quantity}}</div> <button class="btn btn-success" @click="addQuanity(item)">+</button>
-                        <button class="btn btn-danger" @click="removeCartItem(item)" type="button">Rimuovi</button>
-                    </div>
-                </div>
                 
-            </div>
-            <div class="cart-total">
-                <strong class="cart-total-title">Totale</strong>
-                <span class="cart-total-price">€ {{total}}</span>
-            </div>
-            <button class="btn btn-primary btn-purchase" @click="purchaseClicked()" type="button">Ordina</button>
-        </section>
+      </div>
+
+      <section class="content-section col-md-4 cart p-3">
+        <div class="">
+
+              <h2 class="section-header">Il tuo ordine</h2>
+              <div class="cart-items">
+                  <div class="cart-row" v-for="item in cart" :key="item.id">
+                      <div class="cart-item cart-column">
+
+                          <span class="cart-item-title">{{item.item_name}}</span>
+                      </div>
+                      <span class="cart-price cart-column">{{item.item_price}} €</span>
+                      <div class="cart-quantity cart-column">
+                        <button class="btn btn-warning" @click="removeQuantity(item)">-</button><div class="quantity">{{item.quantity}}</div> <button class="btn btn-success" @click="addQuanity(item)">+</button>
+                          <button class="btn btn-danger" @click="removeCartItem(item)" type="button">Rimuovi</button>
+                      </div>
+                  </div>
+                  
+              </div>
+              <div class="cart-total">
+                  <strong class="cart-total-title">Totale</strong>
+                  <span class="cart-total-price">€ {{total}}</span>
+              </div>
+              <button class="btn btn-primary btn-purchase" @click="purchaseClicked()" type="button">Ordina</button>
+        </div>
+      </section>
+    </div>
+    
   </div>
 </template>
 
