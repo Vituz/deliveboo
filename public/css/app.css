@@ -12,6 +12,7 @@ header {
   width: 100%;
   height: 100%;
   filter: grayscale(45%);
+  filter: brightness(0.4);
   background-image: url("https://f.vividscreen.info/soft/8c5dc18232b51fbb258e2575651b7b3c/Pizza-with-mushrooms-and-olives-1920x1200.jpg");
   background-size: cover;
 }

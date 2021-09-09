@@ -1,6 +1,6 @@
 <template>
   <div class=" single_rest container " v-if="restaurant" >
-    <div class="details col-md-12  ">
+    <div class="details col-md-12">
         <img  :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
         <h2>{{restaurant.name}}</h2>
         <h4><strong>Indirizzo:</strong> {{restaurant.address}}</h4>

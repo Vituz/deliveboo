@@ -1,6 +1,6 @@
 <header class="d-block">
     <!-- NAVBAR -->
-    <nav id="top_nav"  class="" >
+    <nav id="top_nav"  class="navbar navbar-expand-md navbar-light shadow-sm fixed-top" >
             <div class="container">
                 <a class="navbar-brand text-white font-weight-bold" href="{{ url('/') }}">
                     {{ config('app.name', 'DeliveBoo') }}

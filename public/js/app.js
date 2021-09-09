@@ -38712,7 +38712,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.restaurant
     ? _c("div", { staticClass: " single_rest container " }, [
-        _c("div", { staticClass: "details col-md-12  " }, [
+        _c("div", { staticClass: "details col-md-12" }, [
           _c("img", {
             attrs: {
               src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
