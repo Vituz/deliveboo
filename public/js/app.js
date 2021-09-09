@@ -2182,7 +2182,7 @@ __webpack_require__.r(__webpack_exports__);
     removeCartItem: function removeCartItem(item) {
       var arr = this.cart;
       this.removeItemOnce(arr, item);
-      this.total -= item.item_price;
+      this.total -= item.item_price * item.quantity;
       this.updateQuantity();
     },
     purchaseClicked: function purchaseClicked() {
@@ -38593,9 +38593,7 @@ var render = function() {
           _vm._v(" "),
           _vm._l(_vm.restaurant.categories, function(category) {
             return _c("span", { key: category.id }, [
-              _vm._v(
-                "\r\n            -" + _vm._s(category.name) + "\r\n        "
-              )
+              _vm._v("\n            -" + _vm._s(category.name) + "\n        ")
             ])
           })
         ],
@@ -38755,33 +38753,8 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-<<<<<<< HEAD
-                      _c("div", { staticClass: "shop-item-details" }, [
-                        _c("span", { staticClass: "shop-item-price" }, [
-                          _vm._v("€ " + _vm._s(dish.price))
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary shop-item-button",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.addItemToCart(
-                                  dish.id,
-                                  dish.name,
-                                  dish.price
-                                )
-                              }
-                            }
-                          },
-                          [_vm._v("ADD TO CART")]
-                        )
-=======
                       _c("div", { staticClass: "overflo overflow-auto" }, [
                         _c("p", [_vm._v(_vm._s(dish.description))])
->>>>>>> 64116bdcd60f0b82e5740fe2b4074041b81044ee
                       ])
                     ]
                   ),
@@ -38799,7 +38772,11 @@ var render = function() {
                         attrs: { type: "button" },
                         on: {
                           click: function($event) {
-                            return _vm.addItemToCart(dish.name, dish.price)
+                            return _vm.addItemToCart(
+                              dish.id,
+                              dish.name,
+                              dish.price
+                            )
                           }
                         }
                       },
@@ -38887,7 +38864,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "cart-total-price" }, [
-                _vm._v("€" + _vm._s(_vm.total))
+                _vm._v("€ " + _vm._s(_vm.total))
               ])
             ]),
             _vm._v(" "),
@@ -54374,57 +54351,57 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   /*  data: {
        categories : null,
        restaurants : null,
-         restaurant_path:'restaurants/',
+        restaurant_path:'restaurants/',
        single_restaurant:null,
-         filtered: [],
+        filtered: [],
        clicked_categories: [],
        fill_restaurants: [],
-     },
-     methods:{
-         
-         removeCategory(arr, value){
+    },
+    methods:{
+        
+        removeCategory(arr, value){
            let index = arr.indexOf(value);
            if (index > -1) {
                arr.splice(index, 1);
            }
            return arr;
        },
-         findRestaurant(arr, target){
-             let checker = target.every(v => arr.includes(v))
+        findRestaurant(arr, target){
+            let checker = target.every(v => arr.includes(v))
            return checker;
        },
-         filterRestaurants(index){
+        filterRestaurants(index){
            if (!this.clicked_categories.includes(index)) {
                this.clicked_categories.push(index);
            } else {
-                 this.removeCategory(this.clicked_categories, index);
+                this.removeCategory(this.clicked_categories, index);
            }
-             this.fill_restaurants = [];
+            this.fill_restaurants = [];
            this.restaurants.forEach(rest => {
            
                let categories_id = [];
-                 rest.categories.forEach(cat=>{
+                rest.categories.forEach(cat=>{
                    let cat_id = cat.id;
                    categories_id.push(cat_id);
                });
-                 let compare_cat =  this.findRestaurant(categories_id, this.clicked_categories);
-                     if (compare_cat && !this.fill_restaurants.includes(rest)) {
+                let compare_cat =  this.findRestaurant(categories_id, this.clicked_categories);
+                    if (compare_cat && !this.fill_restaurants.includes(rest)) {
                        this.fill_restaurants.push(rest); 
                    } 
            
            });
        },
-         restaurantPage(index){
+        restaurantPage(index){
            console.log(index);
        },
-     },
-     mounted(){
+    },
+    mounted(){
        axios.get('/api/categories').then(resp => {
            this.categories = resp.data.data;
        }).catch(e => {
            console.error('API non caricata' + e);
        });
-         axios.get('/api/restaurants').then(resp => {
+        axios.get('/api/restaurants').then(resp => {
            this.restaurants = resp.data.data;
            // console.log(this.restaurants);
        }).catch(e => {
@@ -54724,8 +54701,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
