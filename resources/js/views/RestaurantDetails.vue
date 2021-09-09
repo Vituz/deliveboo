@@ -19,7 +19,7 @@
               <h4>{{dish.name}}</h4>
               <p>{{dish.price}} &euro;</p>
             <!-- <button class=" p-0 m-3  shop_btn " @click="addItemToCart(dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></button> -->
-               <div class=" p-0 mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
+               <div class=" p-0 mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
             </div>
             
           </div>
@@ -48,7 +48,7 @@
             </div>
             <div class="cart-total">
                 <strong class="cart-total-title">Total</strong>
-                <span class="cart-total-price">€{{total}}</span>
+                <span class="cart-total-price">€ {{total}}</span>
             </div>
             <button class="btn btn-primary btn-purchase" @click="purchaseClicked()" type="button">PURCHASE</button>
         </section>
@@ -78,7 +78,7 @@ export default {
       removeCartItem(item) {
         let arr = this.cart;
         this.removeItemOnce(arr, item)
-        this.total-=item.item_price;
+        this.total-=item.item_price * item.quantity
        this.updateQuantity()
       },
 
