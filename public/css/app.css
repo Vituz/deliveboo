@@ -71,6 +71,10 @@ header {
 
 /* VIEW RISTORANTE SINGOLO */
 
+.single_rest .details {
+  margin-top: 25px;
+}
+
 .single_rest img {
   width: 100%;
   border-radius: 5px;
@@ -88,7 +92,7 @@ header {
 
 .dish_card {
   border-radius: 5px;
-  margin: 20px 20px 10px 0;
+  margin: 10px 10px 5px 0;
   width: 90%;
   min-height: 150px;
   max-height: 150px;
@@ -128,15 +132,6 @@ header {
   background: #575757;
 }
 
-.shop_btn {
-  width: 35px;
-  height: 35px;
-  background-color: green;
-  color: white;
-  border-radius: 50%;
-  justify-content: center;
-}
-
 .overflo {
   margin-top: 5px;
   padding-right: 10px;
@@ -145,10 +140,20 @@ header {
   width: 100%;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.right_card {
+  position: relative;
+}
+
+.right_card .shop_btn {
+  width: 35px;
+  height: 35px;
+  background-color: green;
+  color: white;
+  border-radius: 50%;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  right: 0;
 }
 
 footer {

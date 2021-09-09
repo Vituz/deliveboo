@@ -1,5 +1,5 @@
 <template>
-  <div class=" single_rest container d-flex  align-items-center" v-if="restaurant" >
+  <div class=" single_rest container d-flex" v-if="restaurant" >
     <div class="details col-md-4  ">
         <img  :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
         <h2>{{restaurant.name}}</h2>
@@ -15,7 +15,7 @@
 
              
             </div>
-            <div class="col-md-6 align-items-center">
+            <div class="col-md-6 align-items-center right_card">
               <h4>{{dish.name}}</h4>
               <p>{{dish.price}} &euro;</p>
             <!-- <button class=" p-0 m-3  shop_btn " @click="addItemToCart(dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></button> -->
@@ -83,24 +83,39 @@ export default {
       },
 
       purchaseClicked() {
-        alert('Thank you for your purchase')
-        this.cart=[];
-        this.total=0
+        if (this.cart.length !== 0) {
+          alert('Thank you for your purchase')
+          this.cart=[];
+          this.total=0
+          
+        }else{
+          alert('non hai aggiunto nulla al tuo ordine')
+        }
       },
      
-      addItemToCart(title, price) {
-        let item={
-          item_name : "",
-          item_price :"",
-          quantity:1
-
-        };
-
-        item.item_name = title;
-        item.item_price = price;
-        this.cart.push(item);
-        this.total+=item.item_price;
-        this.updateQuantity() 
+      addItemToCart(id,title, price) {
+        
+        
+       for (var i = 0; i < this.cart.length; i++) {
+        let cart_item=this.cart[i];
+        if (cart_item.item_id == id) {
+            this.addQuanity(cart_item)
+            return
+        }
+    }
+            let item={
+              item_id : "",
+              item_name : "",
+              item_price :"",
+              quantity:1
+    
+            };
+            item.item_id = id;
+            item.item_name = title;
+            item.item_price = price;
+            this.cart.unshift(item);
+            this.total+=item.item_price;
+            this.updateQuantity() 
        
         
       },
