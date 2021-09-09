@@ -2187,11 +2187,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     purchaseClicked: function purchaseClicked() {
       if (this.cart.length !== 0) {
-        alert('Thank you for your purchase');
+        alert('Grazie per aver effettuato l\'ordine');
         this.cart = [];
         this.total = 0;
       } else {
-        alert('non hai aggiunto nulla al tuo ordine');
+        alert('Non hai aggiunto nulla al tuo ordine');
       }
     },
     addItemToCart: function addItemToCart(id, title, price) {
@@ -38793,9 +38793,9 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("section", { staticClass: "container content-section col-md-5" }, [
-          _c("h2", { staticClass: "section-header" }, [_vm._v("CART")]),
-          _vm._v(" "),
-          _vm._m(0),
+          _c("h2", { staticClass: "section-header" }, [
+            _vm._v("Il tuo ordine")
+          ]),
           _vm._v(" "),
           _c(
             "div",
@@ -38809,7 +38809,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("span", { staticClass: "cart-price cart-column" }, [
-                  _vm._v(_vm._s(item.item_price))
+                  _vm._v(_vm._s(item.item_price) + " €")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "cart-quantity cart-column" }, [
@@ -38853,7 +38853,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("REMOVE")]
+                    [_vm._v("Rimuovi")]
                   )
                 ])
               ])
@@ -38863,7 +38863,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "cart-total" }, [
             _c("strong", { staticClass: "cart-total-title" }, [
-              _vm._v("Total")
+              _vm._v("Totale")
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "cart-total-price" }, [
@@ -38882,32 +38882,13 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("PURCHASE")]
+            [_vm._v("Ordina")]
           )
         ])
       ])
     : _vm._e()
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "cart-row" }, [
-      _c("span", { staticClass: "cart-item cart-header cart-column" }, [
-        _vm._v("ITEM")
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "cart-price cart-header cart-column" }, [
-        _vm._v("PRICE")
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "cart-quantity cart-header cart-column" }, [
-        _vm._v("QUANTITY")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

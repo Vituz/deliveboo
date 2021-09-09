@@ -26,31 +26,31 @@
           
     </div>
     <section class="container content-section col-md-5">
-            <h2 class="section-header">CART</h2>
-            <div class="cart-row">
-                <span class="cart-item cart-header cart-column">ITEM</span>
-                <span class="cart-price cart-header cart-column">PRICE</span>
-                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
-            </div>
+            <h2 class="section-header">Il tuo ordine</h2>
+           <!--  <div class="cart-row">
+                <span class="cart-item cart-header cart-column">Piatto</span>
+                <span class="cart-price cart-header cart-column">Prezzo</span>
+                <span class="cart-quantity cart-header cart-column">Quantità</span>
+            </div> -->
             <div class="cart-items">
                 <div class="cart-row" v-for="item in cart" :key="item.id">
                     <div class="cart-item cart-column">
                         
                         <span class="cart-item-title">{{item.item_name}}</span>
                     </div>
-                    <span class="cart-price cart-column">{{item.item_price}}</span>
+                    <span class="cart-price cart-column">{{item.item_price}} €</span>
                     <div class="cart-quantity cart-column">
                        <button class="btn btn-warning" @click="removeQuantity(item)">-</button><div class="quantity">{{item.quantity}}</div> <button class="btn btn-success" @click="addQuanity(item)">+</button>
-                        <button class="btn btn-danger" @click="removeCartItem(item)" type="button">REMOVE</button>
+                        <button class="btn btn-danger" @click="removeCartItem(item)" type="button">Rimuovi</button>
                     </div>
                 </div>
                 
             </div>
             <div class="cart-total">
-                <strong class="cart-total-title">Total</strong>
+                <strong class="cart-total-title">Totale</strong>
                 <span class="cart-total-price">€ {{total}}</span>
             </div>
-            <button class="btn btn-primary btn-purchase" @click="purchaseClicked()" type="button">PURCHASE</button>
+            <button class="btn btn-primary btn-purchase" @click="purchaseClicked()" type="button">Ordina</button>
         </section>
   </div>
 </template>
@@ -84,12 +84,12 @@ export default {
 
       purchaseClicked() {
         if (this.cart.length !== 0) {
-          alert('Thank you for your purchase')
+          alert('Grazie per aver effettuato l\'ordine')
           this.cart=[];
           this.total=0
           
         }else{
-          alert('non hai aggiunto nulla al tuo ordine')
+          alert('Non hai aggiunto nulla al tuo ordine')
         }
       },
      
