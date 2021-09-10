@@ -48,8 +48,8 @@ class DishController extends Controller
         $validatedData = $request->validate([
             'name' => 'required | max:50 | min:1',
             'type' => 'required',
-            'description' => 'nullable',
-            'ingredients' => 'nullable',
+            'description' => 'nullable | max:100',
+            'ingredients' => 'nullable | max:50',
             'img' => 'nullable | mimes:jpeg,jpg,png| max: 5000',
             'price' => 'required | numeric',
             'visibility' => 'required | boolean'
@@ -108,8 +108,8 @@ class DishController extends Controller
         $validatedData = $request ->validate([
             'name' => 'required | max:50 | min:1',
             'type' => 'required',
-            'description' => 'nullable',
-            'ingredients' => 'nullable',
+            'description' => 'nullable | max:100',
+            'ingredients' => 'nullable | max:50',
             'img' => 'nullable | mimes:jpeg,jpg,png| max: 5000',
             'price' => 'required | numeric',
             'visibility' => 'required | boolean'

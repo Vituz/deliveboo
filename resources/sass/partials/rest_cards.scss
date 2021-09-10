@@ -37,12 +37,15 @@
 /* VIEW RISTORANTE SINGOLO */
 .single_rest{
     .details{
-        margin-top: 25px;
+        margin-top: 100px;
+        position: relative;
         img{
-        width:100%;
-        height: 50%;
+        width: 100%;
+        height: 300px;
+        margin-bottom: 30px;
         border-radius: 5px;
-    
+        position: absolute;
+        bottom: 70px;
         }
     }
     
@@ -106,6 +109,7 @@
     }
 }
 
+<<<<<<< HEAD
 /* .overflo{
     margin-top: 5px;
     padding-right: 10px;
@@ -114,9 +118,19 @@
     width:100%;
     
 } */
+=======
+// .overflo{
+//     margin-top: 5px;
+//     padding-right: 10px;
+//     overflow-y:auto;
+//     height:60%;
+//     width:100%;
+    
+// }
+>>>>>>> e4762a55d6b3bf83e938b2cd79e249563528e15d
 
 
-.cart{
-    border: 1px solid black;
-}
+// .cart{
+//     border: 1px solid black;
+// }
 
