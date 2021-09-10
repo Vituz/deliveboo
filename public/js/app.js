@@ -38772,7 +38772,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "m-0" }, [
-                        _vm._v(_vm._s(dish.price) + " €")
+                        _vm._v("Prezzo: " + _vm._s(dish.price) + " €")
                       ]),
                       _vm._v(" "),
                       _c(

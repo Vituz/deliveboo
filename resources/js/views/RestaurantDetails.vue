@@ -18,7 +18,7 @@
                 <h4 class="m-0">{{dish.name}}</h4>
                 <p class="m-0">{{dish.description}}</p>
                 <p class="m-0">Ingredienti: {{dish.ingredients}}</p>
-                <p class="m-0">{{dish.price}} &euro;</p>
+                <p class="m-0">Prezzo: {{dish.price}} &euro;</p>
                 <div class="mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
                 </div>
             </div>                
