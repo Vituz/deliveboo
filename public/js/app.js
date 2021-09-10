@@ -2160,9 +2160,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -38775,9 +38772,6 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-<<<<<<< HEAD
-var render = function () {}
-=======
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -38805,21 +38799,17 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "d-flex flex-wrap" }, [
+        _c("div", { staticClass: "d-flex" }, [
           _c(
             "div",
             { staticClass: "dishes d-flex flex-wrap mt-0 col-md-8" },
             _vm._l(_vm.restaurant.dishes, function(dish) {
               return _c(
                 "div",
-<<<<<<< HEAD
                 {
                   key: dish.id,
                   staticClass: "dish pl-0 dish_card  d-flex flex-start"
                 },
-=======
-                { key: dish.id, staticClass: "dish pl-0 dish_card d-flex " },
->>>>>>> e4762a55d6b3bf83e938b2cd79e249563528e15d
                 [
                   _c("div", { staticClass: "wrapper col-md-4 pl-0" }, [
                     _c("img", {
@@ -38830,29 +38820,6 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-<<<<<<< HEAD
-                  _c("div", { staticClass: "pt-2 col-md-8 right_card " }, [
-                    _c("h4", [_vm._v(_vm._s(dish.name))]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v(_vm._s(dish.description))]),
-                    _vm._v(" "),
-                    _c("p", [_vm._v(_vm._s(dish.price) + " €")]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "mt-3  shop_btn d-flex justify-content-center align-items-center ",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.addItemToCart(
-                              dish.user_id,
-                              dish.id,
-                              dish.name,
-                              dish.price
-                            )
-=======
                   _c(
                     "div",
                     {
@@ -38885,18 +38852,18 @@ var render = function() {
                           on: {
                             click: function($event) {
                               return _vm.addItemToCart(
+                                dish.user_id,
                                 dish.id,
                                 dish.name,
                                 dish.price
                               )
                             }
->>>>>>> e4762a55d6b3bf83e938b2cd79e249563528e15d
                           }
-                        }
-                      },
-                      [_c("i", { staticClass: "fas fa-shopping-cart" })]
-                    )
-                  ])
+                        },
+                        [_c("i", { staticClass: "fas fa-shopping-cart" })]
+                      )
+                    ]
+                  )
                 ]
               )
             }),
@@ -38905,10 +38872,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            {
-              staticClass:
-                "d-flex flex-column content-section col-md-4 cart p-3"
-            },
+            { staticClass: "d-flex flex-column content-section col-md-4 cart" },
             [
               _c("h2", { staticClass: "section-header" }, [
                 _vm._v("Il tuo ordine")
@@ -39043,8 +39007,8 @@ var render = function() {
       ])
     : _vm._e()
 }
->>>>>>> 4508faf0a02add1fc7f7a3c846bd5ae9a3fafa38
 var staticRenderFns = []
+render._withStripped = true
 
 
 
