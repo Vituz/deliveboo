@@ -38803,10 +38803,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            {
-              staticClass:
-                "d-flex flex-column content-section col-md-4 cart p-3"
-            },
+            { staticClass: "d-flex flex-column content-section col-md-4 cart" },
             [
               _c("h2", { staticClass: "section-header" }, [
                 _vm._v("Il tuo ordine")

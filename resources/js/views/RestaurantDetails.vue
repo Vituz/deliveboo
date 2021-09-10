@@ -24,7 +24,7 @@
             </div>                
         </div>
 
-        <div class="d-flex flex-column content-section col-md-4 cart p-3">
+        <div class="d-flex flex-column content-section col-md-4 cart">
               <h2 class="section-header">Il tuo ordine</h2>
               <div class="d-flex flex-column cart-items border border-success p-2 mb-2">
                   <div class="cart-row" v-for="item in cart" :key="item.id">
