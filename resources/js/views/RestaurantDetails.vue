@@ -14,19 +14,17 @@
               <div class="wrapper col-md-4 pl-0">
                   <img :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
               </div>
-              <div class="pt-2 col-md-8 right_card ">
-                <h4>{{dish.name}}</h4>
-                <p >{{dish.description}}</p>
-                <p>{{dish.price}} &euro;</p>
-              <!-- <button class=" p-0 m-3  shop_btn " @click="addItemToCart(dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></button> -->
-                <div class="mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.user_id, dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
-              </div>
-              
-            </div>
-      </div>
 
-      <section class="content-section col-md-4 cart p-3">
-        <div class="">
+              <div class="right_card d-flex flex-column justify-content-center col-md-8 p-2">
+                <h4 class="m-0">{{dish.name}}</h4>
+                <p class="m-0">{{dish.description}}</p>
+                <p class="m-0">Ingredienti: {{dish.ingredients}}</p>
+                <p class="m-0">Prezzo: {{dish.price}} &euro;</p>
+                <div class="mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.user_id, dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
+                </div>
+            </div>                
+        </div>
+
 
         <div class="d-flex flex-column content-section col-md-4 cart p-3">
               <h2 class="section-header">Il tuo ordine</h2>
