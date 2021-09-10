@@ -49,7 +49,7 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(User $restaurant)
-    {
+    {   
         $restaurant_id=User::with('dishes')->where('id',$restaurant->id)->get();
         return new RestaurantResource($restaurant_id);
     }
