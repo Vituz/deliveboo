@@ -2174,11 +2174,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addItemToCart: function addItemToCart(restaurant, id, title, price) {
-      console.log(this.contenutoArchiviato);
-
+      //console.log(this.contenutoArchiviato);
       if (this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
         alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');
       } else {
+        console.log(this.contenutoArchiviato);
+
         for (var i = 0; i < this.cart.length; i++) {
           var cart_item = this.cart[i];
 
@@ -2199,7 +2200,7 @@ __webpack_require__.r(__webpack_exports__);
         item.user_id = restaurant;
         item.item_name = title;
         item.item_price = price;
-        this.cart.unshift(item);
+        this.cart.push(item);
         localStorage.setItem("cartStored", JSON.stringify(this.cart));
         this.total += item.item_price;
         this.updateQuantity();
@@ -2233,9 +2234,8 @@ __webpack_require__.r(__webpack_exports__);
             cartStored.splice(index, 1);
           }
 
-          if (cartStored.lenght == 0) {
-            this.contenutoArchiviato = null;
-            return;
+          if (cartStored.lenght == 1) {
+            return this.contenutoArchiviato = [];
           }
 
           return cartStored;
@@ -2285,6 +2285,9 @@ __webpack_require__.r(__webpack_exports__);
         this.cart = [];
         this.total = 0;
         localStorage.clear();
+        this.contenutoArchiviato = [];
+        console.log(this.myStorage);
+        console.log(this.contenutoArchiviato);
       } else {
         alert('non hai aggiunto nulla al tuo ordine');
       }
@@ -2306,11 +2309,16 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
+    if (this.contenutoArchiviato == null) {
+      this.contenutoArchiviato = [];
+    }
+
     var sommaArchiviata = JSON.parse(localStorage.getItem("sumStored"));
+    /* console.log(this.contenutoArchiviato); */
 
     if (this.contenutoArchiviato) {
       this.contenutoArchiviato.forEach(function (elem) {
-        _this2.cart.unshift(elem);
+        _this2.cart.push(elem);
       });
       this.total = sommaArchiviata;
     }

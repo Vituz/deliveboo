@@ -75,13 +75,15 @@ export default {
       addItemToCart(restaurant, id,title, price) {
         
           
-          console.log(this.contenutoArchiviato);
-           
+          //console.log(this.contenutoArchiviato);
+
+          
             if(this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
-            alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');
-              
-              
-            }else {
+            alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');             
+            
+            }          
+            else{
+              console.log(this.contenutoArchiviato);
           
             for (var i = 0; i < this.cart.length; i++) {
             let cart_item=this.cart[i];
@@ -102,12 +104,13 @@ export default {
                item.user_id=restaurant;
                 item.item_name = title;
                 item.item_price = price;
-                this.cart.unshift(item);
+                this.cart.push(item);
                 localStorage.setItem("cartStored", JSON.stringify(this.cart));              
                 this.total+=item.item_price;
                 this.updateQuantity() 
           
             } 
+             
             
           
       },
@@ -138,10 +141,10 @@ export default {
               if (index > -1) {
                 cartStored.splice(index, 1);
               }
-              if (cartStored.lenght == 0) {
+              if (cartStored.lenght == 1) {
                
-                this.contenutoArchiviato = null;
-                return
+                
+                return this.contenutoArchiviato = [];
               }
               return cartStored;
           }
@@ -200,6 +203,9 @@ export default {
           this.cart=[];
           this.total=0
           localStorage.clear()
+          this.contenutoArchiviato = [];
+          console.log(this.myStorage);
+          console.log(this.contenutoArchiviato);
           
         }else{
           alert('non hai aggiunto nulla al tuo ordine')
@@ -225,12 +231,14 @@ export default {
             })
     },
     mounted(){
-      
+       if (this.contenutoArchiviato == null) {
+             this.contenutoArchiviato = [];
+            }
       const sommaArchiviata = JSON.parse(localStorage.getItem("sumStored"));
-      
+        /* console.log(this.contenutoArchiviato); */
          if (this.contenutoArchiviato) {
            this.contenutoArchiviato.forEach(elem => {
-             this.cart.unshift(elem);
+             this.cart.push(elem);
            });
 
            this.total = sommaArchiviata
