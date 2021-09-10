@@ -16,7 +16,7 @@
                 <p >{{dish.description}}</p>
                 <p>{{dish.price}} &euro;</p>
               <!-- <button class=" p-0 m-3  shop_btn " @click="addItemToCart(dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></button> -->
-                <div class="mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
+                <div class="mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.user_id, dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
               </div>
               
             </div>
@@ -196,7 +196,7 @@ export default {
           this.cart=[];
           this.total=0
           localStorage.clear()
-          
+          this.contenutoArchiviato = [];
         }else{
           alert('Non hai aggiunto nulla al tuo ordine')
         }
@@ -221,7 +221,9 @@ export default {
             })
     },
     mounted(){
-      
+      if(this.contenutoArchiviato == null){
+        this.contenutoArchiviato = [];
+      }
       const sommaArchiviata = JSON.parse(localStorage.getItem("sumStored"));
       
          if (this.contenutoArchiviato) {

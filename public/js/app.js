@@ -2281,6 +2281,7 @@ __webpack_require__.r(__webpack_exports__);
         this.cart = [];
         this.total = 0;
         localStorage.clear();
+        this.contenutoArchiviato = [];
       } else {
         alert('Non hai aggiunto nulla al tuo ordine');
       }
@@ -2301,6 +2302,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var _this2 = this;
+
+    if (this.contenutoArchiviato == null) {
+      this.contenutoArchiviato = [];
+    }
 
     var sommaArchiviata = JSON.parse(localStorage.getItem("sumStored"));
 
@@ -38823,6 +38828,7 @@ var render = function() {
                         on: {
                           click: function($event) {
                             return _vm.addItemToCart(
+                              dish.user_id,
                               dish.id,
                               dish.name,
                               dish.price
