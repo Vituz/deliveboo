@@ -59,81 +59,154 @@ export default {
         return {
             restaurant: null,
             cart:[],
-            total:0
+            total:0,
+            myStorage:window.localStorage,
+            contenutoArchiviato:JSON.parse(localStorage.getItem("cartStored"))
           }
     },
     methods:{
 
+      
+
+      addItemToCart(restaurant, id,title, price) {
+        
+          
+          console.log(this.contenutoArchiviato);
+           
+            if(this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
+            alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');
+              
+              
+            }else {
+          
+            for (var i = 0; i < this.cart.length; i++) {
+            let cart_item=this.cart[i];
+            if (cart_item.item_id == id) {
+              alert('questo piatto è già presente nel carrello');               
+              return
+            }
+            }         
+                let item={
+                  item_id : "",
+                  user_id:"",
+                  item_name : "",
+                  item_price :"",
+                  quantity:1
+        
+                };
+               item.item_id = id;
+               item.user_id=restaurant;
+                item.item_name = title;
+                item.item_price = price;
+                this.cart.unshift(item);
+                localStorage.setItem("cartStored", JSON.stringify(this.cart));              
+                this.total+=item.item_price;
+                this.updateQuantity() 
+          
+            } 
+            
+          
+      },
 
       removeItemOnce(arr, value) {
         var index = arr.indexOf(value);
         if (index > -1) {
           arr.splice(index, 1);
+          
         }
         return arr;
       },
       removeCartItem(item) {
-        let arr = this.cart;
-        this.removeItemOnce(arr, item)
-        this.total-=item.item_price * item.quantity
+        
+        this.removeItemOnce(this.cart, item)
+        this.total-=item.item_price * item.quantity;
+        let cartStored = JSON.parse(localStorage.getItem("cartStored"));
+        this.removeCartItemStored(item,cartStored)
+        localStorage.setItem("cartStored", JSON.stringify(cartStored));
        this.updateQuantity()
       },
+       removeCartItemStored(item,cartStored) {
+        
+        for(var i =0; i< cartStored.length; i++) {
+          let el=cartStored[i];
+          if(el.item_id == item.item_id){
+            let index = cartStored.indexOf(el);
+              if (index > -1) {
+                cartStored.splice(index, 1);
+              }
+              if (cartStored.lenght == 0) {
+               
+                this.contenutoArchiviato = null;
+                return
+              }
+              return cartStored;
+          }
+                
+        }
+       
+      },
 
+        addQuanity(item){
+          item.quantity++;
+          this.total+=item.item_price;
+          this.updateQuantity();
+
+           let cartStored = JSON.parse(localStorage.getItem("cartStored"));
+                cartStored.forEach(element => {
+                  if(element.item_id == item.item_id){
+                    element.quantity++
+                    
+                    localStorage.setItem("cartStored", JSON.stringify(cartStored));
+                   
+                  }
+                });
+         
+        },
+        removeQuantity(item){
+          //console.log(item);
+          if (item.quantity!=1) {
+
+            //rimuovo dal carrello
+            item.quantity--;
+            this.total-=item.item_price;
+           this.updateQuantity();
+          //rimuovo dallo storage
+          let cartStored = JSON.parse(localStorage.getItem("cartStored"));
+                cartStored.forEach(element => {
+                  if(element.item_id == item.item_id){
+                    element.quantity--
+                   
+                    localStorage.setItem("cartStored", JSON.stringify(cartStored));
+                    
+                  }
+                });
+
+          }else{
+             this.removeCartItem(item,this.cart);
+              let cartStored = JSON.parse(localStorage.getItem("cartStored"));
+              this.removeCartItemStored(item,cartStored)
+              localStorage.setItem("cartStored", JSON.stringify(cartStored));
+              console.log(this.myStorage);
+              
+          }
+        },
       purchaseClicked() {
         if (this.cart.length !== 0) {
           alert('Grazie per aver effettuato l\'ordine')
           this.cart=[];
           this.total=0
+          localStorage.clear()
           
         }else{
           alert('Non hai aggiunto nulla al tuo ordine')
         }
       },
      
-      addItemToCart(id,title, price) {
-        
-        
-       for (var i = 0; i < this.cart.length; i++) {
-        let cart_item=this.cart[i];
-        if (cart_item.item_id == id) {
-            this.addQuanity(cart_item)
-            return
-        }
-    }
-            let item={
-              item_id : "",
-              item_name : "",
-              item_price :"",
-              quantity:1
     
-            };
-            item.item_id = id;
-            item.item_name = title;
-            item.item_price = price;
-            this.cart.unshift(item);
-            this.total+=item.item_price;
-            this.updateQuantity() 
-       
-        
-      },
-      addQuanity(item){
-        item.quantity++;
-        this.total+=item.item_price;
-        this.updateQuantity()
-        /* console.log(item.item_price); */
-        /* return quantity++ */
-      },
-      removeQuantity(item){
-        if (item.quantity!=1) {
-          item.quantity--;
-          this.total-=item.item_price;
-         this.updateQuantity()
-        }else{
-           this.removeCartItem(item);
-        }
-      },
       updateQuantity(){
-        return this.total= Math.round(this.total * 100) / 100
+        this.total= Math.round(this.total * 100) / 100;
+        localStorage.setItem("sumStored", JSON.stringify(this.total));
+        //console.log(this.myStorage);
       }
       
     },
@@ -148,12 +221,16 @@ export default {
             })
     },
     mounted(){
-          var quantityInputs = document.getElementsByClassName('cart-quantity-input')
-          //console.log(quantityInputs);
-          for (var i = 0; i < quantityInputs.length; i++) {
-            var input = quantityInputs[i]
-            input.addEventListener('change', this.quantityChanged())
-          }
+      
+      const sommaArchiviata = JSON.parse(localStorage.getItem("sumStored"));
+      
+         if (this.contenutoArchiviato) {
+           this.contenutoArchiviato.forEach(elem => {
+             this.cart.unshift(elem);
+           });
+
+           this.total = sommaArchiviata
+         }
     }
 }
 </script>
