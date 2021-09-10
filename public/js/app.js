@@ -2157,7 +2157,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -38737,8 +38736,7 @@ var render = function() {
                 "div",
                 {
                   key: dish.id,
-                  staticClass:
-                    "dish pl-0 dish_card  d-flex justify-content-center"
+                  staticClass: "dish pl-0 dish_card  d-flex flex-start"
                 },
                 [
                   _c("div", { staticClass: "wrapper col-md-4 pl-0" }, [
@@ -38750,39 +38748,32 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "d-flex flex-column justify-content-center pt-2 col-md-8 right_card"
-                    },
-                    [
-                      _c("h4", [_vm._v(_vm._s(dish.name))]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(dish.description))]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(dish.price) + " €")]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "mt-3  shop_btn d-flex justify-content-center align-items-center ",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              return _vm.addItemToCart(
-                                dish.id,
-                                dish.name,
-                                dish.price
-                              )
-                            }
+                  _c("div", { staticClass: "pt-2 col-md-8 right_card " }, [
+                    _c("h4", [_vm._v(_vm._s(dish.name))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(_vm._s(dish.description))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(_vm._s(dish.price) + " €")]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "mt-3  shop_btn d-flex justify-content-center align-items-center ",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.addItemToCart(
+                              dish.id,
+                              dish.name,
+                              dish.price
+                            )
                           }
-                        },
-                        [_c("i", { staticClass: "fas fa-shopping-cart" })]
-                      )
-                    ]
-                  )
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-shopping-cart" })]
+                    )
+                  ])
                 ]
               )
             }),

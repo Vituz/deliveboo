@@ -7,11 +7,11 @@
     </div>
     <div class="d-flex">
       <div class="dishes d-flex flex-wrap mt-0 col-md-8">
-            <div class="dish pl-0 dish_card  d-flex justify-content-center" v-for="dish in restaurant.dishes" :key="dish.id">
+            <div class="dish pl-0 dish_card  d-flex flex-start" v-for="dish in restaurant.dishes" :key="dish.id">
               <div class="wrapper col-md-4 pl-0">
                   <img :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
               </div>
-              <div class="d-flex flex-column justify-content-center pt-2 col-md-8 right_card">
+              <div class="pt-2 col-md-8 right_card ">
                 <h4>{{dish.name}}</h4>
                 <p >{{dish.description}}</p>
                 <p>{{dish.price}} &euro;</p>
@@ -20,7 +20,6 @@
               </div>
               
             </div>
-                
       </div>
 
       <section class="content-section col-md-4 cart p-3">
