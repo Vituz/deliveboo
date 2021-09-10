@@ -1,53 +1,54 @@
 <template>
-  <div class=" single_rest container " v-if="restaurant" >
-    <div class="details col-md-12">
-        <img  :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
-        <h2>{{restaurant.name}}</h2>
-        <h4><strong>Indirizzo:</strong> {{restaurant.address}}</h4>
+  <div class=" single_rest container" v-if="restaurant" >
+    <div class="details d-flex flex-column col-md-12">
+        <img class="align-self-center" :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
+        <div class="single_rest_info pt-5">
+          <h2 class="mx-auto">{{restaurant.name}}</h2>
+          <!-- <hr> -->
+          <h4><strong>Indirizzo:</strong> {{restaurant.address}}</h4>
+        </div>
     </div>
-    <div class="d-flex">
+    <div class="d-flex flex-wrap">
       <div class="dishes d-flex flex-wrap mt-2 col-md-8">
-            <div class="dish pl-0 dish_card  d-flex justify-content-center" v-for="dish in restaurant.dishes" :key="dish.id">
+            <div class="dish pl-0 dish_card d-flex " v-for="dish in restaurant.dishes" :key="dish.id">
               <div class="wrapper col-md-4 p-2 ">
                   <img :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
               </div>
-              <div class="d-flex flex-column justify-content-center col-md-8 right_card">
-                <h4>{{dish.name}}</h4>
-                <p >{{dish.description}}</p>
-                <p>{{dish.price}} &euro;</p>
-              <!-- <button class=" p-0 m-3  shop_btn " @click="addItemToCart(dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></button> -->
+              <div class="right_card d-flex flex-column justify-content-center col-md-8 p-2">
+                <h4 class="m-0">{{dish.name}}</h4>
+                <p class="m-0">{{dish.description}}</p>
+                <p class="m-0">Ingredienti: {{dish.ingredients}}</p>
+                <p class="m-0">{{dish.price}} &euro;</p>
                 <div class="mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
-              </div>
-              
-            </div>
-                
-      </div>
+                </div>
+            </div>                
+        </div>
 
-      <section class="content-section col-md-4 cart p-3">
-        <div class="">
-
+        <div class="d-flex flex-column content-section col-md-4 cart p-3">
               <h2 class="section-header">Il tuo ordine</h2>
-              <div class="cart-items">
+              <div class="d-flex flex-column cart-items border border-success p-2 mb-2">
                   <div class="cart-row" v-for="item in cart" :key="item.id">
-                      <div class="cart-item cart-column">
-
-                          <span class="cart-item-title">{{item.item_name}}</span>
+                      <div class="cart-item cart-column mb-2">
+                          <span class="cart-item-title text-uppercase">{{item.item_name}}</span>
+                          <span class="cart-price cart-column text-align-right">{{item.item_price}} €</span>
                       </div>
-                      <span class="cart-price cart-column">{{item.item_price}} €</span>
-                      <div class="cart-quantity cart-column">
-                        <button class="btn btn-warning" @click="removeQuantity(item)">-</button><div class="quantity">{{item.quantity}}</div> <button class="btn btn-success" @click="addQuanity(item)">+</button>
-                          <button class="btn btn-danger" @click="removeCartItem(item)" type="button">Rimuovi</button>
+                      <div class="cart-quantity cart-column d-flex align-items-center mb-2">
+                        <button class="btn btn-warning btn-sm mr-3" @click="removeQuantity(item)">-</button>
+                        <div class="quantity mr-3 bg-light py-1 px-2">{{item.quantity}}</div>
+                        <button class="btn btn-success btn-sm mr-3" @click="addQuanity(item)">+</button>
+                        <button class="btn btn-danger" @click="removeCartItem(item)" type="button"><i class="fas fa-trash-alt"></i></button>
                       </div>
+                        <hr>
                   </div>
                   
+                  <div class="cart-total align-self-end">
+                      <strong class="cart-total-title text-success">Totale</strong>
+                      <span class="cart-total-price">€ {{total}}</span>
+                  </div>
               </div>
-              <div class="cart-total">
-                  <strong class="cart-total-title">Totale</strong>
-                  <span class="cart-total-price">€ {{total}}</span>
-              </div>
-              <button class="btn btn-primary btn-purchase" @click="purchaseClicked()" type="button">Ordina</button>
+              <button class="btn btn-success btn-purchase text-uppercase" @click="purchaseClicked()" type="button"> <strong>Ordina</strong> </button>
         </div>
-      </section>
+      
     </div>
     
   </div>

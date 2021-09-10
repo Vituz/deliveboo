@@ -55,7 +55,7 @@
 
         {{-- description --}}
         <div class="form-group">
-            <textarea class="form-control @error('description') is invalid @enderror" name="description" id="descriptionId" rows="3" value="">{{ old('description') }}</textarea>
+            <textarea class="form-control @error('description') is invalid @enderror" name="description" id="descriptionId" maxlength="100" rows="3" value="">{{ old('description') }}</textarea>
             <small id="descriptionId" class="form-text text-muted pl-2">Aggiungi una descrizione del piatto</small>
         </div>
         @error('description')
@@ -66,7 +66,7 @@
 
         {{-- ingredients --}}
         <div class="form-group">
-            <textarea class="form-control @error('ingredients') is invalid @enderror" name="ingredients" id="ingredientsId" rows="3" value="">{{ old('ingredients') }}</textarea>
+            <textarea class="form-control @error('ingredients') is invalid @enderror" name="ingredients" id="ingredientsId" maxlength="50" rows="3" value="">{{ old('ingredients') }}</textarea>
             <small id="ingredientsId" class="form-text text-muted pl-2">Ingredienti</small>
         </div>
         @error('ingredients')
