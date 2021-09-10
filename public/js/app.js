@@ -38731,7 +38731,7 @@ var render = function() {
         _c("div", { staticClass: "d-flex" }, [
           _c(
             "div",
-            { staticClass: "dishes d-flex flex-wrap mt-2 col-md-8" },
+            { staticClass: "dishes d-flex flex-wrap mt-0 col-md-8" },
             _vm._l(_vm.restaurant.dishes, function(dish) {
               return _c(
                 "div",
@@ -38741,7 +38741,7 @@ var render = function() {
                     "dish pl-0 dish_card  d-flex justify-content-center"
                 },
                 [
-                  _c("div", { staticClass: "wrapper col-md-4 p-2 " }, [
+                  _c("div", { staticClass: "wrapper col-md-4 pl-0" }, [
                     _c("img", {
                       attrs: {
                         src: "http://127.0.0.1:8000/storage/" + dish.img,
@@ -38754,7 +38754,7 @@ var render = function() {
                     "div",
                     {
                       staticClass:
-                        "d-flex flex-column justify-content-center col-md-8 right_card"
+                        "d-flex flex-column justify-content-center pt-2 col-md-8 right_card"
                     },
                     [
                       _c("h4", [_vm._v(_vm._s(dish.name))]),
