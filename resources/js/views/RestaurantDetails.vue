@@ -203,12 +203,6 @@ export default {
           this.total=0
           localStorage.clear()
           this.contenutoArchiviato = [];
-<<<<<<< HEAD
-          console.log(this.myStorage);
-          console.log(this.contenutoArchiviato);
-          
-=======
->>>>>>> d1716486744b6f02ef4baa38accf93674051414c
         }else{
           alert('Non hai aggiunto nulla al tuo ordine')
         }
@@ -233,15 +227,9 @@ export default {
             })
     },
     mounted(){
-<<<<<<< HEAD
        if (this.contenutoArchiviato == null) {
              this.contenutoArchiviato = [];
             }
-=======
-      if(this.contenutoArchiviato == null){
-        this.contenutoArchiviato = [];
-      }
->>>>>>> d1716486744b6f02ef4baa38accf93674051414c
       const sommaArchiviata = JSON.parse(localStorage.getItem("sumStored"));
         /* console.log(this.contenutoArchiviato); */
          if (this.contenutoArchiviato) {

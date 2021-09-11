@@ -2285,11 +2285,6 @@ __webpack_require__.r(__webpack_exports__);
         this.total = 0;
         localStorage.clear();
         this.contenutoArchiviato = [];
-<<<<<<< HEAD
-        console.log(this.myStorage);
-        console.log(this.contenutoArchiviato);
-=======
->>>>>>> d1716486744b6f02ef4baa38accf93674051414c
       } else {
         alert('Non hai aggiunto nulla al tuo ordine');
       }
@@ -38663,9 +38658,7 @@ var render = function() {
           _vm._v(" "),
           _vm._l(_vm.restaurant.categories, function(category) {
             return _c("span", { key: category.id }, [
-              _vm._v(
-                "\r\n            -" + _vm._s(category.name) + "\r\n        "
-              )
+              _vm._v("\n            -" + _vm._s(category.name) + "\n        ")
             ])
           })
         ],
@@ -54459,57 +54452,57 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   /*  data: {
        categories : null,
        restaurants : null,
-         restaurant_path:'restaurants/',
+        restaurant_path:'restaurants/',
        single_restaurant:null,
-         filtered: [],
+        filtered: [],
        clicked_categories: [],
        fill_restaurants: [],
-     },
-     methods:{
-         
-         removeCategory(arr, value){
+    },
+    methods:{
+        
+        removeCategory(arr, value){
            let index = arr.indexOf(value);
            if (index > -1) {
                arr.splice(index, 1);
            }
            return arr;
        },
-         findRestaurant(arr, target){
-             let checker = target.every(v => arr.includes(v))
+        findRestaurant(arr, target){
+            let checker = target.every(v => arr.includes(v))
            return checker;
        },
-         filterRestaurants(index){
+        filterRestaurants(index){
            if (!this.clicked_categories.includes(index)) {
                this.clicked_categories.push(index);
            } else {
-                 this.removeCategory(this.clicked_categories, index);
+                this.removeCategory(this.clicked_categories, index);
            }
-             this.fill_restaurants = [];
+            this.fill_restaurants = [];
            this.restaurants.forEach(rest => {
            
                let categories_id = [];
-                 rest.categories.forEach(cat=>{
+                rest.categories.forEach(cat=>{
                    let cat_id = cat.id;
                    categories_id.push(cat_id);
                });
-                 let compare_cat =  this.findRestaurant(categories_id, this.clicked_categories);
-                     if (compare_cat && !this.fill_restaurants.includes(rest)) {
+                let compare_cat =  this.findRestaurant(categories_id, this.clicked_categories);
+                    if (compare_cat && !this.fill_restaurants.includes(rest)) {
                        this.fill_restaurants.push(rest); 
                    } 
            
            });
        },
-         restaurantPage(index){
+        restaurantPage(index){
            console.log(index);
        },
-     },
-     mounted(){
+    },
+    mounted(){
        axios.get('/api/categories').then(resp => {
            this.categories = resp.data.data;
        }).catch(e => {
            console.error('API non caricata' + e);
        });
-         axios.get('/api/restaurants').then(resp => {
+        axios.get('/api/restaurants').then(resp => {
            this.restaurants = resp.data.data;
            // console.log(this.restaurants);
        }).catch(e => {
@@ -54726,14 +54719,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************!*\
   !*** ./resources/js/views/RestaurantDetails.vue ***!
   \**************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _RestaurantDetails_vue_vue_type_template_id_4a47e294___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RestaurantDetails.vue?vue&type=template&id=4a47e294& */ "./resources/js/views/RestaurantDetails.vue?vue&type=template&id=4a47e294&");
 /* harmony import */ var _RestaurantDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RestaurantDetails.vue?vue&type=script&lang=js& */ "./resources/js/views/RestaurantDetails.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _RestaurantDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _RestaurantDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -54763,7 +54757,7 @@ component.options.__file = "resources/js/views/RestaurantDetails.vue"
 /*!***************************************************************************!*\
   !*** ./resources/js/views/RestaurantDetails.vue?vue&type=script&lang=js& ***!
   \***************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54809,8 +54803,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
