@@ -70,17 +70,26 @@ header {
 /* VIEW RISTORANTE SINGOLO */
 
 .single_rest .details {
+  width: 100%;
   margin-top: 100px;
   position: relative;
 }
 
-.single_rest .details img {
+.single_rest .details .single_rest_img_wrapper {
   width: 100%;
   height: 300px;
   margin-bottom: 30px;
-  border-radius: 5px;
   position: absolute;
-  bottom: 70px;
+  bottom: 55px;
+  border-radius: 5px;
+}
+
+.single_rest .details .single_rest_img_wrapper img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
 }
 
 .dishes {
@@ -88,7 +97,6 @@ header {
 }
 
 .dish_card {
-  border: 1px solid gray;
   border-radius: 5px;
   margin: 0px 10px 10px 0;
   width: 100%;
@@ -98,14 +106,18 @@ header {
 }
 
 .dish_card .wrapper {
-  height: 100%;
+  height: 80%;
 }
 
 .dish_card .wrapper img {
   height: 100%;
   width: 100%;
   z-index: 2;
+<<<<<<< HEAD
   border-radius: 5px 0 0 5px;
+=======
+  border-radius: 5px;
+>>>>>>> f3a3b26719d65f0bd598fb64cb94d50bd5cf92e1
 }
 
 .dish_card:hover {
