@@ -9,7 +9,7 @@
         </div>
 
         <div class="card_container d-flex flex-wrap justify-content-center">
-        <restaurant-section class="restaurant_card" v-for="restaurant in fill_restaurants" :key="restaurant.id" :restaurant="restaurant" :categories="restaurant.categories"  style="width: 20rem;" @click="restaurantPage(restaurant.id)"></restaurant-section>
+        <restaurant-section class="restaurant_card col-sm-10" v-for="restaurant in fill_restaurants" :key="restaurant.id" :restaurant="restaurant" :categories="restaurant.categories"  style="width: 20rem;" @click="restaurantPage(restaurant.id)"></restaurant-section>
         </div>
 
     <router-view />

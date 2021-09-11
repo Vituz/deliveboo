@@ -2161,13 +2161,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
 //
 //
 //
 //
->>>>>>> f3a3b26719d65f0bd598fb64cb94d50bd5cf92e1
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -38737,7 +38734,7 @@ var render = function() {
         _vm._l(_vm.fill_restaurants, function(restaurant) {
           return _c("restaurant-section", {
             key: restaurant.id,
-            staticClass: "restaurant_card",
+            staticClass: "restaurant_card col-sm-10",
             staticStyle: { width: "20rem" },
             attrs: {
               restaurant: restaurant,
@@ -38782,10 +38779,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.restaurant
     ? _c("div", { staticClass: " single_rest container" }, [
-        _c("div", { staticClass: "details d-flex col-md-12" }, [
+        _c("div", { staticClass: "details d-flex col-sm-12" }, [
           _c(
             "div",
-            { staticClass: "single_rest_img_wrapper align-self-center" },
+            { staticClass: "single_rest_img_wrapper pt-4 align-self-center" },
             [
               _c("img", {
                 attrs: {
@@ -38808,33 +38805,13 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "d-flex" }, [
+        _c("div", { staticClass: "d-flex flex-wrap" }, [
           _c(
             "div",
-            { staticClass: "dishes d-flex flex-wrap mt-0 col-md-8 p-3" },
+            { staticClass: "dishes d-flex flex-wrap mt-0 col-md-8 " },
             _vm._l(_vm.restaurant.dishes, function(dish) {
-<<<<<<< HEAD
-              return _c(
-                "div",
-                {
-                  key: dish.id,
-                  staticClass: "dish pl-0 dish_card  d-flex flex-start"
-                },
-                [
-                  _c("div", { staticClass: "wrapper col-md-4 pl-0" }, [
-                    _c("img", {
-                      attrs: {
-                        src: "http://127.0.0.1:8000/storage/" + dish.img,
-                        alt: ""
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
-=======
               return dish.visibility
                 ? _c(
->>>>>>> f3a3b26719d65f0bd598fb64cb94d50bd5cf92e1
                     "div",
                     {
                       key: dish.id,
@@ -38844,7 +38821,7 @@ var render = function() {
                       _c(
                         "div",
                         {
-                          staticClass: "wrapper col-md-4 pl-2 align-self-center"
+                          staticClass: "wrapper col-sm-4 pl-2 align-self-center"
                         },
                         [
                           _c("img", {
@@ -38860,28 +38837,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-<<<<<<< HEAD
-                            "mt-3  shop_btn d-flex justify-content-center align-items-center ",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              return _vm.addItemToCart(
-                                dish.user_id,
-                                dish.id,
-                                dish.name,
-                                dish.price
-                              )
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fas fa-shopping-cart" })]
-                      )
-                    ]
-                  )
-                ]
-              )
-=======
-                            "right_card d-flex flex-column justify-content-center col-md-8 p-2"
+                            "right_card d-flex flex-column justify-content-center col-sm-8 p-2"
                         },
                         [
                           _c("h4", { staticClass: "m-0" }, [
@@ -38924,7 +38880,6 @@ var render = function() {
                     ]
                   )
                 : _vm._e()
->>>>>>> f3a3b26719d65f0bd598fb64cb94d50bd5cf92e1
             }),
             0
           ),
@@ -54862,8 +54817,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

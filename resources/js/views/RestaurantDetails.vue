@@ -1,8 +1,8 @@
 <template>
   <div class=" single_rest container" v-if="restaurant" >
-    <div class="details d-flex col-md-12">
+    <div class="details d-flex col-sm-12">
 
-      <div class="single_rest_img_wrapper align-self-center">
+      <div class="single_rest_img_wrapper pt-4 align-self-center">
         <img :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
       </div>
 
@@ -12,14 +12,14 @@
           <h4><strong>Indirizzo:</strong> {{restaurant.address}}</h4>
         </div>
     </div>
-    <div class="d-flex">
-      <div class="dishes d-flex flex-wrap mt-0 col-md-8 p-3">
+    <div class="d-flex flex-wrap">
+      <div class="dishes d-flex flex-wrap mt-0 col-md-8 ">
             <div class="dish pl-0 dish_card d-flex flex-start" v-if="dish.visibility" v-for="dish in restaurant.dishes" :key="dish.id" >
-                <div class="wrapper col-md-4 pl-2 align-self-center">
+                <div class="wrapper col-sm-4 pl-2 align-self-center">
                     <img :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
                 </div>
 
-                <div class="right_card d-flex flex-column justify-content-center col-md-8 p-2">
+                <div class="right_card d-flex flex-column justify-content-center col-sm-8 p-2">
                   <h4 class="m-0">{{dish.name}}</h4>
                   <p class="m-0">{{dish.description}}</p>
                   <p class="m-0">Ingredienti: {{dish.ingredients}}</p>

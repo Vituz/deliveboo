@@ -23,7 +23,7 @@
                     </ul>
                 </div>
                 <div class="col-md-4 p-0">                   
-                   <ul>        
+                   <ul class="pl-0">        
                         <li>
                             <h2>Aiuto</h2>
                         </li>               
@@ -35,7 +35,7 @@
                     </ul>
                 </div>
                 <div class="col-md-4 p-0">
-                    <ul>   
+                    <ul class="pl-0">   
                         <li>
                             <h2>Note legali</h2>
                         </li>                    

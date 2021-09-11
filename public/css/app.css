@@ -35,6 +35,16 @@ header {
   background-color: #f6993f;
 }
 
+@media only screen and (max-width: 600px) {
+  .jumbo_text h1 {
+    font-size: 55px;
+  }
+
+  .jumbo_text h2 {
+    font-size: 45px;
+  }
+}
+
 /* VIEW RISTORANTI PAGINA PRINCIPALE */
 
 .rest_card {
@@ -113,11 +123,7 @@ header {
   height: 100%;
   width: 100%;
   z-index: 2;
-<<<<<<< HEAD
-  border-radius: 5px 0 0 5px;
-=======
   border-radius: 5px;
->>>>>>> f3a3b26719d65f0bd598fb64cb94d50bd5cf92e1
 }
 
 .dish_card:hover {
@@ -143,6 +149,110 @@ header {
   position: absolute;
   bottom: 10px;
   right: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .rest_card h1 {
+    font-size: 13px;
+  }
+
+  .rest_card h4 {
+    font-size: 13px;
+  }
+
+  .rest_card span {
+    font-size: 11px;
+  }
+
+  .single_rest {
+    padding-top: 0px !important;
+  }
+
+  .single_rest .details {
+    margin-top: 0;
+  }
+
+  .single_rest .details .single_rest_img_wrapper {
+    width: 200px;
+    height: 180px;
+    margin-bottom: 30px;
+    position: absolute;
+    bottom: 100px;
+    border-radius: 5px;
+  }
+
+  .single_rest .dishes .right_card h4 {
+    font-size: 14px;
+  }
+
+  .single_rest .dishes .right_card p {
+    font-size: 11px;
+  }
+
+  .single_rest .dishes .dish .wrapper {
+    padding-right: 0;
+  }
+
+  .single_rest .dishes .dish .wrapper img {
+    padding-right: 0;
+    width: 80%;
+    height: 60%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .single_rest h2 {
+    /* padding-top: 10px; */
+  }
+
+  .single_rest .details .single_rest_img_wrapper {
+    width: 200px;
+    width: 100%;
+    height: 180px;
+    margin-bottom: 70px;
+    position: absolute;
+    bottom: 55px;
+    border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  .dishes .dish_card {
+    padding-right: 0;
+    min-height: 140px;
+    max-height: 140px;
+  }
+
+  .dishes .right_card h4 {
+    font-size: 15px;
+  }
+
+  .dishes .right_card p {
+    font-size: 12px;
+  }
+
+  .card_container .rest_card {
+    min-height: 140px;
+  }
+
+  .card_container .rest_card .rest_img img {
+    width: 90%;
+    height: 90%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .restaurant_card {
+    min-height: 150px;
+    max-height: 150px;
+  }
+
+  .restaurant_card h1 {
+    font-size: 18px;
+  }
+
+  .restaurant_card h4 {
+    font-size: 15px;
+  }
 }
 
 footer {
@@ -11183,6 +11293,10 @@ a.text-dark:focus {
   background-color: white;
 }
 
+main {
+  min-height: 150px;
+}
+
 .category_card {
   justify-content: center;
   height: 5rem;
@@ -11192,6 +11306,7 @@ a.text-dark:focus {
   align-items: center;
   color: white;
   border-radius: 50%;
+  box-shadow: 5px 5px 6px gray;
   background-image: url("https://www.frasimania.it/wp-content/uploads/2019/08/hashtag-cibo-food.jpg");
   background-size: cover;
   background-position: center;

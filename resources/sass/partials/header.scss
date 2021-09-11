@@ -33,3 +33,18 @@ header{
 .nav_colored{
     background-color: $orange; 
 }
+
+@media only screen and (max-width: 600px) {
+    .jumbo_text{
+        h1{
+            font-size: 55px;
+        }
+        h2{
+            font-size: 45px;
+
+        }
+    }
+    
+   
+    
+}
