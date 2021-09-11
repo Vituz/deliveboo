@@ -2020,6 +2020,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2160,6 +2161,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
+=======
+//
+//
+//
+//
+>>>>>>> f3a3b26719d65f0bd598fb64cb94d50bd5cf92e1
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -38638,8 +38646,9 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "rest_img  col-md-5 p-3" }, [
+      _c("div", { staticClass: "rest_img d-flex col-md-5 p-3" }, [
         _c("img", {
+          staticClass: "align-self-center",
           attrs: {
             src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
             alt: ""
@@ -38653,7 +38662,7 @@ var render = function() {
         [
           _c("h1", [_vm._v(_vm._s(_vm.restaurant.name))]),
           _vm._v(" "),
-          _c("h2", [_vm._v(_vm._s(_vm.restaurant.address))]),
+          _c("h4", [_vm._v(_vm._s(_vm.restaurant.address))]),
           _vm._v(" "),
           _vm._l(_vm.restaurant.categories, function(category) {
             return _c("span", { key: category.id }, [
@@ -38697,29 +38706,24 @@ var render = function() {
         "div",
         {
           staticClass:
-            "card_container d-flex flex-wrap justify-content-center text-center"
+            "card_container container d-flex flex-wrap justify-content-center text-center"
         },
         _vm._l(_vm.categories, function(category) {
           return _c(
             "div",
             {
               key: category.id,
-              staticClass: "category_card border border-primary rounded m-2",
+              staticClass: "category_card m-2",
               class: _vm.clicked_categories.includes(category.id)
                 ? "clicked"
                 : "",
-              staticStyle: { width: "10rem" },
               on: {
                 click: function($event) {
                   return _vm.filterRestaurants(category.id)
                 }
               }
             },
-            [
-              _c("h2", [_vm._v(_vm._s(category.name))]),
-              _vm._v(" "),
-              _c("h3", [_vm._v(_vm._s(category.users.length))])
-            ]
+            [_c("p", { staticClass: "mb-0" }, [_vm._v(_vm._s(category.name))])]
           )
         }),
         0
@@ -38778,17 +38782,22 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.restaurant
     ? _c("div", { staticClass: " single_rest container" }, [
-        _c("div", { staticClass: "details d-flex flex-column col-md-12" }, [
-          _c("img", {
-            staticClass: "align-self-center",
-            attrs: {
-              src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
-              alt: ""
-            }
-          }),
+        _c("div", { staticClass: "details d-flex col-md-12" }, [
+          _c(
+            "div",
+            { staticClass: "single_rest_img_wrapper align-self-center" },
+            [
+              _c("img", {
+                attrs: {
+                  src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
+                  alt: ""
+                }
+              })
+            ]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "single_rest_info pt-5" }, [
-            _c("h2", { staticClass: "mx-auto" }, [
+            _c("h2", { staticClass: "mx-auto pt-3" }, [
               _vm._v(_vm._s(_vm.restaurant.name))
             ]),
             _vm._v(" "),
@@ -38802,8 +38811,9 @@ var render = function() {
         _c("div", { staticClass: "d-flex" }, [
           _c(
             "div",
-            { staticClass: "dishes d-flex flex-wrap mt-0 col-md-8" },
+            { staticClass: "dishes d-flex flex-wrap mt-0 col-md-8 p-3" },
             _vm._l(_vm.restaurant.dishes, function(dish) {
+<<<<<<< HEAD
               return _c(
                 "div",
                 {
@@ -38821,32 +38831,36 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c(
+=======
+              return dish.visibility
+                ? _c(
+>>>>>>> f3a3b26719d65f0bd598fb64cb94d50bd5cf92e1
                     "div",
                     {
-                      staticClass:
-                        "right_card d-flex flex-column justify-content-center col-md-8 p-2"
+                      key: dish.id,
+                      staticClass: "dish pl-0 dish_card d-flex flex-start"
                     },
                     [
-                      _c("h4", { staticClass: "m-0" }, [
-                        _vm._v(_vm._s(dish.name))
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _vm._v(_vm._s(dish.description))
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _vm._v("Ingredienti: " + _vm._s(dish.ingredients))
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _vm._v("Prezzo: " + _vm._s(dish.price) + " €")
-                      ]),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "wrapper col-md-4 pl-2 align-self-center"
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src: "http://127.0.0.1:8000/storage/" + dish.img,
+                              alt: ""
+                            }
+                          })
+                        ]
+                      ),
                       _vm._v(" "),
                       _c(
                         "div",
                         {
                           staticClass:
+<<<<<<< HEAD
                             "mt-3  shop_btn d-flex justify-content-center align-items-center ",
                           attrs: { type: "button" },
                           on: {
@@ -38866,6 +38880,51 @@ var render = function() {
                   )
                 ]
               )
+=======
+                            "right_card d-flex flex-column justify-content-center col-md-8 p-2"
+                        },
+                        [
+                          _c("h4", { staticClass: "m-0" }, [
+                            _vm._v(_vm._s(dish.name))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _vm._v(_vm._s(dish.description))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _vm._v("Ingredienti: " + _vm._s(dish.ingredients))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _vm._v("Prezzo: " + _vm._s(dish.price) + " €")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "mt-3  shop_btn d-flex justify-content-center align-items-center ",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.addItemToCart(
+                                    dish.user_id,
+                                    dish.id,
+                                    dish.name,
+                                    dish.price
+                                  )
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-shopping-cart" })]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                : _vm._e()
+>>>>>>> f3a3b26719d65f0bd598fb64cb94d50bd5cf92e1
             }),
             0
           ),
@@ -54803,8 +54862,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,12 +1,12 @@
 <template>
 <router-link class="rest_card pic col-md-4 p-0 m-3 ma b d-flex" :to="{ name: 'RestaurantDetails', params:{ id: restaurant.id}}"> 
-    <div class="rest_img  col-md-5 p-3" >
-        <img :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
+    <div class="rest_img d-flex col-md-5 p-3" >
+        <img :src="'http://127.0.0.1:8000/storage/' + restaurant.image" class="align-self-center" alt="">
     </div>
 
     <div class="rest_info col-md-7 text-left p-3">
         <h1>{{restaurant.name}}</h1>
-        <h2>{{restaurant.address}}</h2>
+        <h4>{{restaurant.address}}</h4>
         <span v-for="category in restaurant.categories" :key="category.id">
             -{{category.name}}
         </span>

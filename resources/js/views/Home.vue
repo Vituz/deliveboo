@@ -1,9 +1,10 @@
 <template>
     <div>
-        <div class="card_container d-flex flex-wrap justify-content-center text-center">
-            <div class="category_card border border-primary rounded m-2" v-for="category in categories" :key="category.id" style="width: 10rem" @click="filterRestaurants(category.id)" :class="clicked_categories.includes(category.id)? 'clicked' : ''">
-                <h2>{{category.name}}</h2>
-                <h3>{{category.users.length}}</h3>
+        <div class="card_container container d-flex flex-wrap justify-content-center text-center">
+            <div class="category_card m-2" v-for="category in categories" :key="category.id"  @click="filterRestaurants(category.id)" :class="clicked_categories.includes(category.id)? 'clicked' : ''">
+                <p class="mb-0">{{category.name}}</p>
+                <!-- <img :src="'http://127.0.0.1:8000/storage/' + category.img" alt=""> -->
+                <!-- <h3 class="d-block">{{category.users.length}}</h3>  -->  
             </div>
         </div>
 
