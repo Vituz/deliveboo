@@ -1,26 +1,30 @@
 <template>
   <div class=" single_rest container" v-if="restaurant" >
-    <div class="details d-flex flex-column col-md-12">
-        <img class="align-self-center" :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
+    <div class="details d-flex col-md-12">
+
+      <div class="single_rest_img_wrapper align-self-center">
+        <img :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
+      </div>
+
         <div class="single_rest_info pt-5">
-          <h2 class="mx-auto">{{restaurant.name}}</h2>
+          <h2 class="mx-auto pt-3">{{restaurant.name}}</h2>
           <!-- <hr> -->
           <h4><strong>Indirizzo:</strong> {{restaurant.address}}</h4>
         </div>
     </div>
     <div class="d-flex">
-      <div class="dishes d-flex flex-wrap mt-0 col-md-8">
-            <div class="dish pl-0 dish_card  d-flex flex-start" v-for="dish in restaurant.dishes" :key="dish.id">
-              <div class="wrapper col-md-4 pl-0">
-                  <img :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
-              </div>
+      <div class="dishes d-flex flex-wrap mt-0 col-md-8 p-3">
+            <div class="dish pl-0 dish_card d-flex flex-start" v-if="dish.visibility" v-for="dish in restaurant.dishes" :key="dish.id" >
+                <div class="wrapper col-md-4 pl-2 align-self-center">
+                    <img :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
+                </div>
 
-              <div class="right_card d-flex flex-column justify-content-center col-md-8 p-2">
-                <h4 class="m-0">{{dish.name}}</h4>
-                <p class="m-0">{{dish.description}}</p>
-                <p class="m-0">Ingredienti: {{dish.ingredients}}</p>
-                <p class="m-0">Prezzo: {{dish.price}} &euro;</p>
-                <div class="mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.user_id, dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
+                <div class="right_card d-flex flex-column justify-content-center col-md-8 p-2">
+                  <h4 class="m-0">{{dish.name}}</h4>
+                  <p class="m-0">{{dish.description}}</p>
+                  <p class="m-0">Ingredienti: {{dish.ingredients}}</p>
+                  <p class="m-0">Prezzo: {{dish.price}} &euro;</p>
+                  <div class="mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.user_id, dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
                 </div>
             </div>                
         </div>
@@ -243,3 +247,4 @@ export default {
 <style>
 
 </style>
+

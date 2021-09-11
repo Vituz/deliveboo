@@ -2160,12 +2160,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
 //
 //
 //
->>>>>>> b423125631a343cf535377809403ee3e936f64f0
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -38644,8 +38642,9 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "rest_img  col-md-5 p-3" }, [
+      _c("div", { staticClass: "rest_img d-flex col-md-5 p-3" }, [
         _c("img", {
+          staticClass: "align-self-center",
           attrs: {
             src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
             alt: ""
@@ -38659,7 +38658,7 @@ var render = function() {
         [
           _c("h1", [_vm._v(_vm._s(_vm.restaurant.name))]),
           _vm._v(" "),
-          _c("h2", [_vm._v(_vm._s(_vm.restaurant.address))]),
+          _c("h4", [_vm._v(_vm._s(_vm.restaurant.address))]),
           _vm._v(" "),
           _vm._l(_vm.restaurant.categories, function(category) {
             return _c("span", { key: category.id }, [
@@ -38778,26 +38777,28 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-<<<<<<< HEAD
-var render = function () {}
-=======
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.restaurant
     ? _c("div", { staticClass: " single_rest container" }, [
-        _c("div", { staticClass: "details d-flex flex-column col-md-12" }, [
-          _c("img", {
-            staticClass: "align-self-center",
-            attrs: {
-              src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
-              alt: ""
-            }
-          }),
+        _c("div", { staticClass: "details d-flex col-md-12" }, [
+          _c(
+            "div",
+            { staticClass: "single_rest_img_wrapper align-self-center" },
+            [
+              _c("img", {
+                attrs: {
+                  src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
+                  alt: ""
+                }
+              })
+            ]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "single_rest_info pt-5" }, [
-            _c("h2", { staticClass: "mx-auto" }, [
+            _c("h2", { staticClass: "mx-auto pt-3" }, [
               _vm._v(_vm._s(_vm.restaurant.name))
             ]),
             _vm._v(" "),
@@ -38811,70 +38812,78 @@ var render = function() {
         _c("div", { staticClass: "d-flex" }, [
           _c(
             "div",
-            { staticClass: "dishes d-flex flex-wrap mt-0 col-md-8" },
+            { staticClass: "dishes d-flex flex-wrap mt-0 col-md-8 p-3" },
             _vm._l(_vm.restaurant.dishes, function(dish) {
-              return _c(
-                "div",
-                {
-                  key: dish.id,
-                  staticClass: "dish pl-0 dish_card  d-flex flex-start"
-                },
-                [
-                  _c("div", { staticClass: "wrapper col-md-4 pl-0" }, [
-                    _c("img", {
-                      attrs: {
-                        src: "http://127.0.0.1:8000/storage/" + dish.img,
-                        alt: ""
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
+              return dish.visibility
+                ? _c(
                     "div",
                     {
-                      staticClass:
-                        "right_card d-flex flex-column justify-content-center col-md-8 p-2"
+                      key: dish.id,
+                      staticClass: "dish pl-0 dish_card d-flex flex-start"
                     },
                     [
-                      _c("h4", { staticClass: "m-0" }, [
-                        _vm._v(_vm._s(dish.name))
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _vm._v(_vm._s(dish.description))
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _vm._v("Ingredienti: " + _vm._s(dish.ingredients))
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _vm._v("Prezzo: " + _vm._s(dish.price) + " €")
-                      ]),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "wrapper col-md-4 pl-2 align-self-center"
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src: "http://127.0.0.1:8000/storage/" + dish.img,
+                              alt: ""
+                            }
+                          })
+                        ]
+                      ),
                       _vm._v(" "),
                       _c(
                         "div",
                         {
                           staticClass:
-                            "mt-3  shop_btn d-flex justify-content-center align-items-center ",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              return _vm.addItemToCart(
-                                dish.user_id,
-                                dish.id,
-                                dish.name,
-                                dish.price
-                              )
-                            }
-                          }
+                            "right_card d-flex flex-column justify-content-center col-md-8 p-2"
                         },
-                        [_c("i", { staticClass: "fas fa-shopping-cart" })]
+                        [
+                          _c("h4", { staticClass: "m-0" }, [
+                            _vm._v(_vm._s(dish.name))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _vm._v(_vm._s(dish.description))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _vm._v("Ingredienti: " + _vm._s(dish.ingredients))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _vm._v("Prezzo: " + _vm._s(dish.price) + " €")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "mt-3  shop_btn d-flex justify-content-center align-items-center ",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.addItemToCart(
+                                    dish.user_id,
+                                    dish.id,
+                                    dish.name,
+                                    dish.price
+                                  )
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-shopping-cart" })]
+                          )
+                        ]
                       )
                     ]
                   )
-                ]
-              )
+                : _vm._e()
             }),
             0
           ),
@@ -39016,8 +39025,8 @@ var render = function() {
       ])
     : _vm._e()
 }
->>>>>>> 4508faf0a02add1fc7f7a3c846bd5ae9a3fafa38
 var staticRenderFns = []
+render._withStripped = true
 
 
 
@@ -54801,7 +54810,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: expected \"{\".\n    ╷\n135 │ // }\r\n    │     ^\n    ╵\n  resources\\sass\\partials\\rest_cards.scss 135:5  @import\n  C:\\MAMP\\htdocs\\php\\deliveboo\\resources\\sass\\app.scss 7:9                                      root stylesheet\n    at C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at context.callback (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass-loader\\dist\\index.js:73:7\n    at Function.call$2 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:94122:16)\n    at _render_closure1.call$2 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:82377:12)\n    at _RootZone.runBinary$3$3 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:27674:18)\n    at _FutureListener.handleError$1 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26223:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26521:49)\n    at Object._Future__propagateToListeners (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:4546:77)\n    at _Future._completeError$2 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26353:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26007:12)\n    at Object._asyncRethrow (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:4345:17)\n    at C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:12951:20\n    at _wrapJsFunctionForAsync_closure.$protected (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:4370:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26028:12)\n    at _awaitOnObject_closure0.call$2 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26020:25)\n    at _RootZone.runBinary$3$3 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:27674:18)\n    at _FutureListener.handleError$1 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26223:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26521:49)\n    at Object._Future__propagateToListeners (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:4546:77)\n    at _Future._completeError$2 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26353:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26007:12)\n    at Object._asyncRethrow (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:4345:17)\n    at C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:18269:20\n    at _wrapJsFunctionForAsync_closure.$protected (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:4370:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26028:12)\n    at _awaitOnObject_closure0.call$2 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26020:25)\n    at _RootZone.runBinary$3$3 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:27674:18)\n    at _FutureListener.handleError$1 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26223:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26521:49)\n    at Object._Future__propagateToListeners (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:4546:77)\n    at _Future._completeError$2 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26353:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:26007:12)\n    at Object._asyncRethrow (C:\\MAMP\\htdocs\\php\\deliveboo\\node_modules\\sass\\sass.dart.js:4345:17)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -54812,8 +54821,8 @@ throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
