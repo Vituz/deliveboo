@@ -1,6 +1,6 @@
 <header class="d-block">
     <!-- NAVBAR -->
-    <nav id="top_nav"  class="" >
+    <nav id="top_nav"  class="navbar navbar-expand-md navbar-light shadow-sm fixed-top" >
             <div class="container">
                 <a class="navbar-brand text-white font-weight-bold" href="{{ url('/') }}">
                     {{ config('app.name', 'DeliveBoo') }}
@@ -54,16 +54,10 @@
     <div class="jumbo d-flex align-items-center justify-content-center text-center ">
         <div class="container text-center">
             <div class="jumbo_text">
-                
+            <!-- {{Route::currentRouteName() !== 'welcome' ? 'd-none' : ''}} -->
                 <h1>Mangi Da Paura</h1>
                 <p>Scopri i migliori ristoranti e i rider più veloci</p>
-                <!-- <form class="d-flex">
                 
-                <div class="search_pill">
-                    <input class="search_pill2 navbar form-control me-2 " type="search" placeholder="Search Your Favorite Category" aria-label="Search">
-                </div>
-                    
-                </form> -->
             </div>        
         </div>
     </div>

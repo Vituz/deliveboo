@@ -1,58 +1,57 @@
 <template>
-  <div class=" single_rest container d-flex  align-items-center" v-if="restaurant" >
-    <div class="details col-md-4  ">
-        <img  :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
-        <h2>{{restaurant.name}}</h2>
-        <h4><strong>Indirizzo:</strong> {{restaurant.address}}</h4>
+  <div class=" single_rest container" v-if="restaurant" >
+    <div class="details d-flex flex-column col-md-12">
+        <img class="align-self-center" :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
+        <div class="single_rest_info pt-5">
+          <h2 class="mx-auto">{{restaurant.name}}</h2>
+          <!-- <hr> -->
+          <h4><strong>Indirizzo:</strong> {{restaurant.address}}</h4>
+        </div>
     </div>
-    <div class="dishes d-flex flex-wrap mt-2 col-md-8">
-          <div class="dish pl-0 dish_card col-md-5 d-flex " v-for="dish in restaurant.dishes" :key="dish.id">
-            <div class="col-md-6 p-2 justify-content-center ">
-              
-              <img :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
-              <div class="overflo overflow-auto">   
-                <p >{{dish.description}}</p>
+    <div class="d-flex">
+      <div class="dishes d-flex flex-wrap mt-0 col-md-8">
+            <div class="dish pl-0 dish_card  d-flex flex-start" v-for="dish in restaurant.dishes " :key="dish.id">
+              <div class="wrapper col-md-4 pl-0">
+                  <img :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
               </div>
 
-             
-            </div>
-            <div class="col-md-6 align-items-center">
-              <h4>{{dish.name}}</h4>
-              <p>{{dish.price}} &euro;</p>
-            <!-- <button class=" p-0 m-3  shop_btn " @click="addItemToCart(dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></button> -->
-               <div class=" p-0 mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart( dish.user_id,dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
-            </div>
-            
-          </div>
-          
-    </div>
-    <section class="container content-section col-md-5">
-            <h2 class="section-header">CART</h2>
-            <div class="cart-row">
-                <span class="cart-item cart-header cart-column">ITEM</span>
-                <span class="cart-price cart-header cart-column">PRICE</span>
-                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
-            </div>
-            <div class="cart-items">
-                <div class="cart-row" v-for="item in cart" :key="item.id">
-                    <div class="cart-item cart-column">
-                        
-                        <span class="cart-item-title">{{item.item_name}}</span>
-                    </div>
-                    <span class="cart-price cart-column">{{item.item_price}}</span>
-                    <div class="cart-quantity cart-column">
-                       <button class="btn btn-warning" @click="removeQuantity(item)">-</button><div class="quantity">{{item.quantity}}</div> <button class="btn btn-success" @click="addQuanity(item)">+</button>
-                        <button class="btn btn-danger" @click="removeCartItem(item)" type="button">REMOVE</button>
-                    </div>
+              <div class="right_card d-flex flex-column justify-content-center col-md-8 p-2">
+                <h4 class="m-0">{{dish.name}}</h4>
+                <p class="m-0">{{dish.description}}</p>
+                <p class="m-0">Ingredienti: {{dish.ingredients}}</p>
+                <p class="m-0">Prezzo: {{dish.price}} &euro;</p>
+                <div class="mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.user_id, dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
                 </div>
-                
-            </div>
-            <div class="cart-total">
-                <strong class="cart-total-title">Total</strong>
-                <span class="cart-total-price">€ {{total}}</span>
-            </div>
-            <button class="btn btn-primary btn-purchase" @click="purchaseClicked()" type="button">PURCHASE</button>
-        </section>
+            </div>                
+        </div>
+
+        <div class="d-flex flex-column content-section col-md-4 cart">
+              <h2 class="section-header">Il tuo ordine</h2>
+              <div class="d-flex flex-column cart-items border border-success p-2 mb-2">
+                  <div class="cart-row" v-for="item in cart" :key="item.id">
+                      <div class="cart-item cart-column mb-2">
+                          <span class="cart-item-title text-uppercase">{{item.item_name}}</span>
+                          <span class="cart-price cart-column text-align-right">{{item.item_price}} €</span>
+                      </div>
+                      <div class="cart-quantity cart-column d-flex align-items-center mb-2">
+                        <button class="btn btn-warning btn-sm mr-3" @click="removeQuantity(item)">-</button>
+                        <div class="quantity mr-3 bg-light py-1 px-2">{{item.quantity}}</div>
+                        <button class="btn btn-success btn-sm mr-3" @click="addQuanity(item)">+</button>
+                        <button class="btn btn-danger" @click="removeCartItem(item)" type="button"><i class="fas fa-trash-alt"></i></button>
+                      </div>
+                        <hr>
+                  </div>
+                  
+                  <div class="cart-total align-self-end">
+                      <strong class="cart-total-title text-success">Totale</strong>
+                      <span class="cart-total-price">€ {{total}}</span>
+                  </div>
+              </div>
+              <button class="btn btn-success btn-purchase text-uppercase" @click="purchaseClicked()" type="button"> <strong>Ordina</strong> </button>
+        </div>
+      
+    </div>
+    
   </div>
 </template>
 
@@ -199,16 +198,19 @@ export default {
         },
       purchaseClicked() {
         if (this.cart.length !== 0) {
-          alert('Thank you for your purchase')
+          alert('Grazie per aver effettuato l\'ordine')
           this.cart=[];
           this.total=0
           localStorage.clear()
           this.contenutoArchiviato = [];
+<<<<<<< HEAD
           console.log(this.myStorage);
           console.log(this.contenutoArchiviato);
           
+=======
+>>>>>>> d1716486744b6f02ef4baa38accf93674051414c
         }else{
-          alert('non hai aggiunto nulla al tuo ordine')
+          alert('Non hai aggiunto nulla al tuo ordine')
         }
       },
      
@@ -231,9 +233,15 @@ export default {
             })
     },
     mounted(){
+<<<<<<< HEAD
        if (this.contenutoArchiviato == null) {
              this.contenutoArchiviato = [];
             }
+=======
+      if(this.contenutoArchiviato == null){
+        this.contenutoArchiviato = [];
+      }
+>>>>>>> d1716486744b6f02ef4baa38accf93674051414c
       const sommaArchiviata = JSON.parse(localStorage.getItem("sumStored"));
         /* console.log(this.contenutoArchiviato); */
          if (this.contenutoArchiviato) {
