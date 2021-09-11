@@ -3,7 +3,7 @@
             <!-- TOP FOOTER -->
             <div class="top_footer d-flex flex-wrap">
                 <div class="col-md-4 p-0">                                      
-                    <ul>
+                    <ul class="pl-0">
                         <li>
                             <h2>Scopri DeliveBooh</h2>
                         </li>                       

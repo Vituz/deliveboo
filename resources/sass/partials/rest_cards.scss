@@ -47,18 +47,8 @@
         position: absolute;
         bottom: 70px;
         }
-    }
-    
+    }   
 }
-
-.pic{
-    
-      float: left;
-      margin: 20px;
-      overflow: hidden;
-}
-
-
 
 .dishes{
     margin-top: 20px;
@@ -68,7 +58,6 @@
     border-radius: 5px;
     margin:0px 10px 10px 0;
     width:100%;
-
     min-height: 180px;
     max-height: 180px;
     box-shadow: 5px 5px 5px rgb(189, 189, 189); 
@@ -80,9 +69,7 @@
             width:100%;
             z-index: 2;
             border-radius: 5px 0 0 5px ;
-            
-        }
-        
+        } 
     }    
     &:hover{
         width:100%;
@@ -108,18 +95,3 @@
         }
     }
 }
-
-/* .overflo{
-    margin-top: 5px;
-    padding-right: 10px;
-    overflow-y:auto;
-    height:60%;
-    width:100%;
-    
-} */
-
-
-// .cart{
-//     border: 1px solid black;
-// }
-

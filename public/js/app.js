@@ -2020,6 +2020,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38697,29 +38698,24 @@ var render = function() {
         "div",
         {
           staticClass:
-            "card_container d-flex flex-wrap justify-content-center text-center"
+            "card_container container d-flex flex-wrap justify-content-center text-center"
         },
         _vm._l(_vm.categories, function(category) {
           return _c(
             "div",
             {
               key: category.id,
-              staticClass: "category_card border border-primary rounded m-2",
+              staticClass: "category_card m-2",
               class: _vm.clicked_categories.includes(category.id)
                 ? "clicked"
                 : "",
-              staticStyle: { width: "10rem" },
               on: {
                 click: function($event) {
                   return _vm.filterRestaurants(category.id)
                 }
               }
             },
-            [
-              _c("h2", [_vm._v(_vm._s(category.name))]),
-              _vm._v(" "),
-              _c("h3", [_vm._v(_vm._s(category.users.length))])
-            ]
+            [_c("p", { staticClass: "mb-0" }, [_vm._v(_vm._s(category.name))])]
           )
         }),
         0
