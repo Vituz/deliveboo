@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Category_Users;
+use App\CategoryUser;
+use App\CategoryUsers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RestaurantResource;
 use App\Restaurant;
 use App\User;
+use CreateCategoriesTable;
+use Facade\Ignition\QueryRecorder\Query;
+use Hamcrest\Core\HasToString;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Spatie\QueryBuilder\QueryBuilder;
+use Symfony\Component\Console\Helper\TableSeparator;
 
 class RestaurantController extends Controller
 {
@@ -15,10 +24,39 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $restaurants = User::with(['dishes', 'categories'])->paginate(30);
-        return  RestaurantResource::collection($restaurants);
+
+        $cat = $request->categories;
+
+        $cat_exploded = explode(',', $cat);
+        sort($cat_exploded);
+
+        $categories = implode(',', $cat_exploded);
+
+        $sql_quey =
+            'SELECT u.*, GROUP_CONCAT(DISTINCT(cu.category_id) SEPARATOR ",") 
+            AS category 
+            FROM users u 
+            LEFT JOIN category_user cu 
+            ON u.id = cu.user_id 
+            WHERE cu.category_id 
+            IN (' . $cat . ') GROUP BY u.id';
+
+        $restaurants = DB::select(DB::raw($sql_quey));
+
+        $final = [];
+
+        foreach ($restaurants as $restaurant) {
+
+            if ($categories == $restaurant->category) {
+
+                array_push($final, $restaurant);
+            }
+        }
+
+        // return  RestaurantResource::collection($final);
+        return ['data' => $final];
     }
 
     /**
@@ -50,7 +88,7 @@ class RestaurantController extends Controller
      */
     public function show(User $restaurant)
     {
-        $restaurant_id=User::with('dishes')->where('id',$restaurant->id)->get();
+        $restaurant_id = User::with('dishes')->where('id', $restaurant->id)->get();
         return new RestaurantResource($restaurant_id);
     }
 
