@@ -47,7 +47,7 @@
                       <span class="cart-total-price">€ {{total}}</span>
                   </div>
               </div>
-              <button class="btn btn-success btn-purchase text-uppercase" @click="purchaseClicked()" type="button"> <strong>Ordina</strong> </button>
+              <a href="/payment" class="btn btn-success btn-purchase text-uppercase" @click="purchaseClicked()" type="button"> <strong>Ordina</strong> </a>
         </div>
       
     </div>
@@ -197,12 +197,11 @@ export default {
           }
         },
       purchaseClicked() {
-        if (this.cart.length !== 0) {
+        if (this.cart.length == 0) {
           alert('Grazie per aver effettuato l\'ordine')
           this.cart=[];
           this.total=0
-          localStorage.clear()
-          this.contenutoArchiviato = [];
+      
         }else{
           alert('Non hai aggiunto nulla al tuo ordine')
         }

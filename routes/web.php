@@ -25,6 +25,11 @@ Route::any('/restaurant/{any}', function() {
     return view('welcome');
 })->where('any', '.*');
 
+/* route for payment form and get token */
+Route::get('/payment', 'PaymentsController@make');
+
+/* route for sending payment response */
+Route::post('/checkout', 'PaymentsController@checkout')->name('checkout');
 Auth::routes();
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
