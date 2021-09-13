@@ -38862,7 +38862,7 @@ var render = function() {
                       _c(
                         "div",
                         {
-                          staticClass: "wrapper col-sm-4 pl-2 align-self-center"
+                          staticClass: "wrapper col-xs-4 pl-2 align-self-center"
                         },
                         [
                           _c("img", {
@@ -38879,7 +38879,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "right_card d-flex flex-column justify-content-center col-sm-8 p-2"
+                            "right_card d-flex flex-column col-sm-8 p-3"
                         },
                         [
                           _c("h4", { staticClass: "m-0" }, [

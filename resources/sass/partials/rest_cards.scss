@@ -34,7 +34,7 @@
     
 }
 
-/* VIEW RISTORANTE SINGOLO */
+/* RESTAURANT DETAILS */
 .single_rest{
     .details{
         width: 100%;
@@ -92,7 +92,7 @@
         .shop_btn{
             width:35px;
             height:35px; 
-            background-color: green;
+            background-color: #38c172;
             color:white;
             border-radius: 50%;
             justify-content: center;
@@ -102,6 +102,27 @@
         }
     }
 }
+
+/* @media only screen and (max-width:430px){
+    .single_rest{
+        .details{
+            .single_rest_img_wrapper{
+                width: 100%;
+                height: 300px;
+                margin-bottom: 30px;
+                position: absolute;
+                bottom: 15px;
+                border-radius: 5px;
+                img{
+                    width: 90%;
+                    height: 65%;
+                    
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+} */
 
 @media only screen and (max-width: 600px) {
     
@@ -122,12 +143,19 @@
         .details{
             margin-top: 0;
             .single_rest_img_wrapper {
-                width: 200px;
-                height: 180px;
+                width: 80%;
+                height: 100px;
+                margin:auto;
                 margin-bottom: 30px;
                 position: absolute;
                 bottom: 100px;
                 border-radius: 5px;
+                img{
+                    width: 95%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 5px;
+                }
             }
         }
         .dishes{
@@ -145,8 +173,8 @@
                     padding-right: 0;
                     img{
                         padding-right: 0;
-                        width: 80%;
-                        height: 60%;
+                        width: 100%;
+                        height: 100%;
                     }
                 }
             }
@@ -154,6 +182,26 @@
     }
 }
 
+@media only screen and (max-width:600px){
+    .single_rest {
+        .details{
+            
+            .single_rest_img_wrapper {
+                
+                width: 200px;
+                width: 100%;
+                height: 180px;
+                margin-bottom: 70px;
+                position: absolute;
+                bottom: 35px;
+                border-radius: 5px;
+                
+                border-radius: 5px;
+            }
+    
+        }
+    }
+}
 
 @media only screen and (max-width:800px){
     .single_rest {
@@ -226,6 +274,19 @@
                 height: 80%;
                 margin:auto;
                 
+            }
+        }
+    }
+    .single_rest{
+        .details{
+
+            .single_rest_img_wrapper{
+                width: 100%;
+                height: 280px;
+                margin-bottom: 30px;
+                position: absolute;
+                bottom: 54px;
+                border-radius: 5px
             }
         }
     }
