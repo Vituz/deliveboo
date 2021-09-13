@@ -1,26 +1,30 @@
 <template>
   <div class=" single_rest container" v-if="restaurant" >
-    <div class="details d-flex flex-column col-md-12">
-        <img class="align-self-center" :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
+    <div class="details d-flex col-sm-12">
+
+      <div class="single_rest_img_wrapper pt-4 align-self-center">
+        <img :src="'http://127.0.0.1:8000/storage/' + restaurant.image" alt="">
+      </div>
+
         <div class="single_rest_info pt-5">
-          <h2 class="mx-auto">{{restaurant.name}}</h2>
+          <h2 class="mx-auto pt-3">{{restaurant.name}}</h2>
           <!-- <hr> -->
           <h4><strong>Indirizzo:</strong> {{restaurant.address}}</h4>
         </div>
     </div>
-    <div class="d-flex">
-      <div class="dishes d-flex flex-wrap mt-0 col-md-8">
-            <div class="dish pl-0 dish_card  d-flex flex-start" v-for="dish in restaurant.dishes " :key="dish.id">
-              <div class="wrapper col-md-4 pl-0">
-                  <img :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
-              </div>
+    <div class="d-flex flex-wrap">
+      <div class="dishes d-flex flex-wrap mt-0 col-md-8 ">
+            <div class="dish pl-0 dish_card d-flex flex-start" v-if="dish.visibility" v-for="dish in restaurant.dishes" :key="dish.id" >
+                <div class="wrapper col-sm-4 pl-2 align-self-center">
+                    <img :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
+                </div>
 
-              <div class="right_card d-flex flex-column justify-content-center col-md-8 p-2">
-                <h4 class="m-0">{{dish.name}}</h4>
-                <p class="m-0">{{dish.description}}</p>
-                <p class="m-0">Ingredienti: {{dish.ingredients}}</p>
-                <p class="m-0">Prezzo: {{dish.price}} &euro;</p>
-                <div class="mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.user_id, dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
+                <div class="right_card d-flex flex-column justify-content-center col-sm-8 p-2">
+                  <h4 class="m-0">{{dish.name}}</h4>
+                  <p class="m-0">{{dish.description}}</p>
+                  <p class="m-0">Ingredienti: {{dish.ingredients}}</p>
+                  <p class="m-0">Prezzo: {{dish.price}} &euro;</p>
+                  <div class="mt-3  shop_btn d-flex justify-content-center align-items-center " @click="addItemToCart(dish.user_id, dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
                 </div>
             </div>                
         </div>
@@ -47,7 +51,7 @@
                       <span class="cart-total-price">€ {{total}}</span>
                   </div>
               </div>
-              <button class="btn btn-success btn-purchase text-uppercase" @click="purchaseClicked()" type="button"> <strong>Ordina</strong> </button>
+              <a href="/payment" class="btn btn-success btn-purchase text-uppercase" @click="purchaseClicked()" type="button"> <strong>Ordina</strong> </a>
         </div>
       
     </div>
@@ -63,8 +67,8 @@ export default {
             restaurant: null,
             cart:[],
             total:0,
-            myStorage:window.localStorage,
-            contenutoArchiviato:JSON.parse(localStorage.getItem("cartStored"))
+            myStorage:window.sessionStorage,
+            contenutoArchiviato:JSON.parse(sessionStorage.getItem("cartStored"))
           }
     },
     methods:{
@@ -74,7 +78,7 @@ export default {
       addItemToCart(restaurant, id,title, price) {
         
           
-          //console.log(this.contenutoArchiviato);
+          
 
           
             if(this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
@@ -104,11 +108,12 @@ export default {
                 item.item_name = title;
                 item.item_price = price;
                 this.cart.push(item);
-                localStorage.setItem("cartStored", JSON.stringify(this.cart));              
+                sessionStorage.setItem("cartStored", JSON.stringify(this.cart));              
                 this.total+=item.item_price;
                 this.updateQuantity() 
           
             } 
+            console.log(this.contenutoArchiviato);
              
             
           
@@ -126,9 +131,9 @@ export default {
         
         this.removeItemOnce(this.cart, item)
         this.total-=item.item_price * item.quantity;
-        let cartStored = JSON.parse(localStorage.getItem("cartStored"));
+        let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
         this.removeCartItemStored(item,cartStored)
-        localStorage.setItem("cartStored", JSON.stringify(cartStored));
+        sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
        this.updateQuantity()
       },
        removeCartItemStored(item,cartStored) {
@@ -157,12 +162,12 @@ export default {
           this.total+=item.item_price;
           this.updateQuantity();
 
-           let cartStored = JSON.parse(localStorage.getItem("cartStored"));
+           let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
                 cartStored.forEach(element => {
                   if(element.item_id == item.item_id){
                     element.quantity++
                     
-                    localStorage.setItem("cartStored", JSON.stringify(cartStored));
+                    sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
                    
                   }
                 });
@@ -177,21 +182,21 @@ export default {
             this.total-=item.item_price;
            this.updateQuantity();
           //rimuovo dallo storage
-          let cartStored = JSON.parse(localStorage.getItem("cartStored"));
+          let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
                 cartStored.forEach(element => {
                   if(element.item_id == item.item_id){
                     element.quantity--
                    
-                    localStorage.setItem("cartStored", JSON.stringify(cartStored));
+                    sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
                     
                   }
                 });
 
           }else{
              this.removeCartItem(item,this.cart);
-              let cartStored = JSON.parse(localStorage.getItem("cartStored"));
+              let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
               this.removeCartItemStored(item,cartStored)
-              localStorage.setItem("cartStored", JSON.stringify(cartStored));
+              sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
               console.log(this.myStorage);
               
           }
@@ -201,8 +206,7 @@ export default {
           alert('Grazie per aver effettuato l\'ordine')
           this.cart=[];
           this.total=0
-          localStorage.clear()
-          this.contenutoArchiviato = [];
+      
         }else{
           alert('Non hai aggiunto nulla al tuo ordine')
         }
@@ -211,7 +215,7 @@ export default {
     
       updateQuantity(){
         this.total= Math.round(this.total * 100) / 100;
-        localStorage.setItem("sumStored", JSON.stringify(this.total));
+        sessionStorage.setItem("sumStored", JSON.stringify(this.total));
         //console.log(this.myStorage);
       }
       
@@ -230,7 +234,7 @@ export default {
        if (this.contenutoArchiviato == null) {
              this.contenutoArchiviato = [];
             }
-      const sommaArchiviata = JSON.parse(localStorage.getItem("sumStored"));
+      const sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
         /* console.log(this.contenutoArchiviato); */
          if (this.contenutoArchiviato) {
            this.contenutoArchiviato.forEach(elem => {
@@ -246,3 +250,8 @@ export default {
 <style>
 
 </style>
+
+
+
+
+

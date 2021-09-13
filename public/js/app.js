@@ -2020,19 +2020,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       categories: null,
       restaurants: null,
-      restaurant_path: 'restaurants/',
+      restaurant_path: "restaurants/",
       single_restaurant: null,
       filtered: [],
       clicked_categories: [],
-      fill_restaurants: []
+      fill_restaurants: [],
+      prova: [],
+      token: "{{ csrf_token() }}"
     };
   },
   methods: {
+    restCall: function restCall() {
+      var _this = this;
+
+      var clicked = this.clicked_categories;
+      axios.get("/api/restaurants?categories=" + clicked).then(function (resp) {
+        _this.fill_restaurants = resp.data.data;
+      })["catch"](function (e) {
+        console.error("API non caricata" + e);
+      });
+    },
     removeCategory: function removeCategory(arr, value) {
       var index = arr.indexOf(value);
 
@@ -2049,8 +2079,6 @@ __webpack_require__.r(__webpack_exports__);
       return checker;
     },
     filterRestaurants: function filterRestaurants(index) {
-      var _this = this;
-
       if (!this.clicked_categories.includes(index)) {
         this.clicked_categories.push(index);
       } else {
@@ -2058,19 +2086,25 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.fill_restaurants = [];
-      this.restaurants.forEach(function (rest) {
-        var categories_id = [];
-        rest.categories.forEach(function (cat) {
-          var cat_id = cat.id;
-          categories_id.push(cat_id);
-        });
 
-        var compare_cat = _this.findRestaurant(categories_id, _this.clicked_categories);
+      if (this.clicked_categories.length != 0) {
+        this.restCall();
+      } // this.restaurants.forEach((rest) => {
+      // let categories_id = [];
+      // rest.categories.forEach((cat) => {
+      //   let cat_id = cat.id;
+      //   categories_id.push(cat_id);
+      // });
+      // let compare_cat = this.findRestaurant(
+      //   categories_id,
+      //   this.clicked_categories
+      // );
+      // if (compare_cat && !this.fill_restaurants.includes(rest)) {
+      //   this.fill_restaurants.push(rest);
+      // }
+      // });
+      //   $request = this.clicked_categories;
 
-        if (compare_cat && !_this.fill_restaurants.includes(rest)) {
-          _this.fill_restaurants.push(rest);
-        }
-      });
     },
     restaurantPage: function restaurantPage(index) {
       console.log(index);
@@ -2079,16 +2113,19 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    axios.get('/api/categories').then(function (resp) {
+    axios.get("/api/categories").then(function (resp) {
       _this2.categories = resp.data.data;
     })["catch"](function (e) {
-      console.error('API non caricata' + e);
-    });
-    axios.get('/api/restaurants').then(function (resp) {
-      _this2.restaurants = resp.data.data; // console.log(this.restaurants);
-    })["catch"](function (e) {
-      console.error('API non caricata' + e);
-    });
+      console.error("API non caricata" + e);
+    }); // axios
+    //   .get("/api/restaurants")
+    //   .then((resp) => {
+    //     this.restaurants = resp.data.data;
+    //     // console.log(this.restaurants);
+    //   })
+    //   .catch((e) => {
+    //     console.error("API non caricata" + e);
+    //   });
   }
 });
 
@@ -2160,6 +2197,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -2167,13 +2208,12 @@ __webpack_require__.r(__webpack_exports__);
       restaurant: null,
       cart: [],
       total: 0,
-      myStorage: window.localStorage,
-      contenutoArchiviato: JSON.parse(localStorage.getItem("cartStored"))
+      myStorage: window.sessionStorage,
+      contenutoArchiviato: JSON.parse(sessionStorage.getItem("cartStored"))
     };
   },
   methods: {
     addItemToCart: function addItemToCart(restaurant, id, title, price) {
-      //console.log(this.contenutoArchiviato);
       if (this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
         alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');
       } else {
@@ -2200,10 +2240,12 @@ __webpack_require__.r(__webpack_exports__);
         item.item_name = title;
         item.item_price = price;
         this.cart.push(item);
-        localStorage.setItem("cartStored", JSON.stringify(this.cart));
+        sessionStorage.setItem("cartStored", JSON.stringify(this.cart));
         this.total += item.item_price;
         this.updateQuantity();
       }
+
+      console.log(this.contenutoArchiviato);
     },
     removeItemOnce: function removeItemOnce(arr, value) {
       var index = arr.indexOf(value);
@@ -2217,9 +2259,9 @@ __webpack_require__.r(__webpack_exports__);
     removeCartItem: function removeCartItem(item) {
       this.removeItemOnce(this.cart, item);
       this.total -= item.item_price * item.quantity;
-      var cartStored = JSON.parse(localStorage.getItem("cartStored"));
+      var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
       this.removeCartItemStored(item, cartStored);
-      localStorage.setItem("cartStored", JSON.stringify(cartStored));
+      sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
       this.updateQuantity();
     },
     removeCartItemStored: function removeCartItemStored(item, cartStored) {
@@ -2245,11 +2287,11 @@ __webpack_require__.r(__webpack_exports__);
       item.quantity++;
       this.total += item.item_price;
       this.updateQuantity();
-      var cartStored = JSON.parse(localStorage.getItem("cartStored"));
+      var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
       cartStored.forEach(function (element) {
         if (element.item_id == item.item_id) {
           element.quantity++;
-          localStorage.setItem("cartStored", JSON.stringify(cartStored));
+          sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
         }
       });
     },
@@ -2261,20 +2303,20 @@ __webpack_require__.r(__webpack_exports__);
         this.total -= item.item_price;
         this.updateQuantity(); //rimuovo dallo storage
 
-        var cartStored = JSON.parse(localStorage.getItem("cartStored"));
+        var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
         cartStored.forEach(function (element) {
           if (element.item_id == item.item_id) {
             element.quantity--;
-            localStorage.setItem("cartStored", JSON.stringify(cartStored));
+            sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
           }
         });
       } else {
         this.removeCartItem(item, this.cart);
 
-        var _cartStored = JSON.parse(localStorage.getItem("cartStored"));
+        var _cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
 
         this.removeCartItemStored(item, _cartStored);
-        localStorage.setItem("cartStored", JSON.stringify(_cartStored));
+        sessionStorage.setItem("cartStored", JSON.stringify(_cartStored));
         console.log(this.myStorage);
       }
     },
@@ -2283,15 +2325,13 @@ __webpack_require__.r(__webpack_exports__);
         alert('Grazie per aver effettuato l\'ordine');
         this.cart = [];
         this.total = 0;
-        localStorage.clear();
-        this.contenutoArchiviato = [];
       } else {
         alert('Non hai aggiunto nulla al tuo ordine');
       }
     },
     updateQuantity: function updateQuantity() {
       this.total = Math.round(this.total * 100) / 100;
-      localStorage.setItem("sumStored", JSON.stringify(this.total)); //console.log(this.myStorage);
+      sessionStorage.setItem("sumStored", JSON.stringify(this.total)); //console.log(this.myStorage);
     }
   },
   created: function created() {
@@ -2310,7 +2350,7 @@ __webpack_require__.r(__webpack_exports__);
       this.contenutoArchiviato = [];
     }
 
-    var sommaArchiviata = JSON.parse(localStorage.getItem("sumStored"));
+    var sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
     /* console.log(this.contenutoArchiviato); */
 
     if (this.contenutoArchiviato) {
@@ -38639,8 +38679,9 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "rest_img  col-md-5 p-3" }, [
+      _c("div", { staticClass: "rest_img d-flex col-md-5 p-3" }, [
         _c("img", {
+          staticClass: "align-self-center",
           attrs: {
             src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
             alt: ""
@@ -38654,7 +38695,7 @@ var render = function() {
         [
           _c("h1", [_vm._v(_vm._s(_vm.restaurant.name))]),
           _vm._v(" "),
-          _c("h2", [_vm._v(_vm._s(_vm.restaurant.address))]),
+          _c("h4", [_vm._v(_vm._s(_vm.restaurant.address))]),
           _vm._v(" "),
           _vm._l(_vm.restaurant.categories, function(category) {
             return _c("span", { key: category.id }, [
@@ -38777,17 +38818,22 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.restaurant
     ? _c("div", { staticClass: " single_rest container" }, [
-        _c("div", { staticClass: "details d-flex flex-column col-md-12" }, [
-          _c("img", {
-            staticClass: "align-self-center",
-            attrs: {
-              src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
-              alt: ""
-            }
-          }),
+        _c("div", { staticClass: "details d-flex col-sm-12" }, [
+          _c(
+            "div",
+            { staticClass: "single_rest_img_wrapper pt-4 align-self-center" },
+            [
+              _c("img", {
+                attrs: {
+                  src: "http://127.0.0.1:8000/storage/" + _vm.restaurant.image,
+                  alt: ""
+                }
+              })
+            ]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "single_rest_info pt-5" }, [
-            _c("h2", { staticClass: "mx-auto" }, [
+            _c("h2", { staticClass: "mx-auto pt-3" }, [
               _vm._v(_vm._s(_vm.restaurant.name))
             ]),
             _vm._v(" "),
@@ -38798,73 +38844,81 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "d-flex" }, [
+        _c("div", { staticClass: "d-flex flex-wrap" }, [
           _c(
             "div",
-            { staticClass: "dishes d-flex flex-wrap mt-0 col-md-8" },
+            { staticClass: "dishes d-flex flex-wrap mt-0 col-md-8 " },
             _vm._l(_vm.restaurant.dishes, function(dish) {
-              return _c(
-                "div",
-                {
-                  key: dish.id,
-                  staticClass: "dish pl-0 dish_card  d-flex flex-start"
-                },
-                [
-                  _c("div", { staticClass: "wrapper col-md-4 pl-0" }, [
-                    _c("img", {
-                      attrs: {
-                        src: "http://127.0.0.1:8000/storage/" + dish.img,
-                        alt: ""
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c(
+              return dish.visibility
+                ? _c(
                     "div",
                     {
-                      staticClass:
-                        "right_card d-flex flex-column justify-content-center col-md-8 p-2"
+                      key: dish.id,
+                      staticClass: "dish pl-0 dish_card d-flex flex-start"
                     },
                     [
-                      _c("h4", { staticClass: "m-0" }, [
-                        _vm._v(_vm._s(dish.name))
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _vm._v(_vm._s(dish.description))
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _vm._v("Ingredienti: " + _vm._s(dish.ingredients))
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "m-0" }, [
-                        _vm._v("Prezzo: " + _vm._s(dish.price) + " €")
-                      ]),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "wrapper col-sm-4 pl-2 align-self-center"
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src: "http://127.0.0.1:8000/storage/" + dish.img,
+                              alt: ""
+                            }
+                          })
+                        ]
+                      ),
                       _vm._v(" "),
                       _c(
                         "div",
                         {
                           staticClass:
-                            "mt-3  shop_btn d-flex justify-content-center align-items-center ",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              return _vm.addItemToCart(
-                                dish.user_id,
-                                dish.id,
-                                dish.name,
-                                dish.price
-                              )
-                            }
-                          }
+                            "right_card d-flex flex-column justify-content-center col-sm-8 p-2"
                         },
-                        [_c("i", { staticClass: "fas fa-shopping-cart" })]
+                        [
+                          _c("h4", { staticClass: "m-0" }, [
+                            _vm._v(_vm._s(dish.name))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _vm._v(_vm._s(dish.description))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _vm._v("Ingredienti: " + _vm._s(dish.ingredients))
+                          ]),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "m-0" }, [
+                            _vm._v("Prezzo: " + _vm._s(dish.price) + " €")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "mt-3  shop_btn d-flex justify-content-center align-items-center ",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.addItemToCart(
+                                    dish.user_id,
+                                    dish.id,
+                                    dish.name,
+                                    dish.price
+                                  )
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-shopping-cart" })]
+                          )
+                        ]
                       )
                     ]
                   )
-                ]
-              )
+                : _vm._e()
             }),
             0
           ),
@@ -38988,10 +39042,10 @@ var render = function() {
               ),
               _vm._v(" "),
               _c(
-                "button",
+                "a",
                 {
                   staticClass: "btn btn-success btn-purchase text-uppercase",
-                  attrs: { type: "button" },
+                  attrs: { href: "/payment", type: "button" },
                   on: {
                     click: function($event) {
                       return _vm.purchaseClicked()

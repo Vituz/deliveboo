@@ -53,12 +53,14 @@
     </nav>
     <div class="jumbo d-flex align-items-center justify-content-center text-center ">
         <div class="container text-center">
-            <div class="jumbo_text">
-            <!-- {{Route::currentRouteName() !== 'welcome' ? 'd-none' : ''}} -->
-                <h1>Mangi Da Paura</h1>
-                <p>Scopri i migliori ristoranti e i rider più veloci</p>
+
+            <div class="jumbo_text p-5">
                 
-            </div>        
+                <h1 class="display-2"> <strong>Deliveboo</strong> </h1>
+                <h2 class="display-4">Mangia cosa, dove e quando vuoi tu.</h2>
+            
+            </div>
+        
         </div>
     </div>
 </header>
