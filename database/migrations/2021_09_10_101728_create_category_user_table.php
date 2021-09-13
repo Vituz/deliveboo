@@ -21,8 +21,8 @@ class CreateCategoryUserTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->primary(['category_id','user_id']);
-            
+            $table->primary(['category_id', 'user_id']);
+
             $table->timestamps();
         });
     }
