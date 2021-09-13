@@ -2167,13 +2167,12 @@ __webpack_require__.r(__webpack_exports__);
       restaurant: null,
       cart: [],
       total: 0,
-      myStorage: window.localStorage,
-      contenutoArchiviato: JSON.parse(localStorage.getItem("cartStored"))
+      myStorage: window.sessionStorage,
+      contenutoArchiviato: JSON.parse(sessionStorage.getItem("cartStored"))
     };
   },
   methods: {
     addItemToCart: function addItemToCart(restaurant, id, title, price) {
-      //console.log(this.contenutoArchiviato);
       if (this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
         alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');
       } else {
@@ -2200,10 +2199,12 @@ __webpack_require__.r(__webpack_exports__);
         item.item_name = title;
         item.item_price = price;
         this.cart.push(item);
-        localStorage.setItem("cartStored", JSON.stringify(this.cart));
+        sessionStorage.setItem("cartStored", JSON.stringify(this.cart));
         this.total += item.item_price;
         this.updateQuantity();
       }
+
+      console.log(this.contenutoArchiviato);
     },
     removeItemOnce: function removeItemOnce(arr, value) {
       var index = arr.indexOf(value);
@@ -2217,9 +2218,9 @@ __webpack_require__.r(__webpack_exports__);
     removeCartItem: function removeCartItem(item) {
       this.removeItemOnce(this.cart, item);
       this.total -= item.item_price * item.quantity;
-      var cartStored = JSON.parse(localStorage.getItem("cartStored"));
+      var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
       this.removeCartItemStored(item, cartStored);
-      localStorage.setItem("cartStored", JSON.stringify(cartStored));
+      sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
       this.updateQuantity();
     },
     removeCartItemStored: function removeCartItemStored(item, cartStored) {
@@ -2245,11 +2246,11 @@ __webpack_require__.r(__webpack_exports__);
       item.quantity++;
       this.total += item.item_price;
       this.updateQuantity();
-      var cartStored = JSON.parse(localStorage.getItem("cartStored"));
+      var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
       cartStored.forEach(function (element) {
         if (element.item_id == item.item_id) {
           element.quantity++;
-          localStorage.setItem("cartStored", JSON.stringify(cartStored));
+          sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
         }
       });
     },
@@ -2261,25 +2262,25 @@ __webpack_require__.r(__webpack_exports__);
         this.total -= item.item_price;
         this.updateQuantity(); //rimuovo dallo storage
 
-        var cartStored = JSON.parse(localStorage.getItem("cartStored"));
+        var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
         cartStored.forEach(function (element) {
           if (element.item_id == item.item_id) {
             element.quantity--;
-            localStorage.setItem("cartStored", JSON.stringify(cartStored));
+            sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
           }
         });
       } else {
         this.removeCartItem(item, this.cart);
 
-        var _cartStored = JSON.parse(localStorage.getItem("cartStored"));
+        var _cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
 
         this.removeCartItemStored(item, _cartStored);
-        localStorage.setItem("cartStored", JSON.stringify(_cartStored));
+        sessionStorage.setItem("cartStored", JSON.stringify(_cartStored));
         console.log(this.myStorage);
       }
     },
     purchaseClicked: function purchaseClicked() {
-      if (this.cart.length == 0) {
+      if (this.cart.length !== 0) {
         alert('Grazie per aver effettuato l\'ordine');
         this.cart = [];
         this.total = 0;
@@ -2289,7 +2290,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateQuantity: function updateQuantity() {
       this.total = Math.round(this.total * 100) / 100;
-      localStorage.setItem("sumStored", JSON.stringify(this.total)); //console.log(this.myStorage);
+      sessionStorage.setItem("sumStored", JSON.stringify(this.total)); //console.log(this.myStorage);
     }
   },
   created: function created() {
@@ -2308,7 +2309,7 @@ __webpack_require__.r(__webpack_exports__);
       this.contenutoArchiviato = [];
     }
 
-    var sommaArchiviata = JSON.parse(localStorage.getItem("sumStored"));
+    var sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
     /* console.log(this.contenutoArchiviato); */
 
     if (this.contenutoArchiviato) {

@@ -50,7 +50,7 @@ class PaymentsController extends Controller
         if ($result->success) {
             $transaction = $result->transaction;
             // header("Location: transaction.php?id=" . $transaction->id);
-            
+          
             return back()->with('success_message', 'La transazione è avvenuta con successo. ID transazione: '. $transaction->id);
         } else {
             $errorString = "";

@@ -16,6 +16,10 @@
                 <div class="alert alert-success">
                     {{ session('success_message') }}
                 </div>
+                <script>                   
+                    sessionStorage.clear();
+                    //console.log(window.sessionStorage);
+                </script>
             @endif
 
             @if(count($errors) > 0)
@@ -44,16 +48,18 @@
                     <input id="cart" type="hidden"/>
                     <input id="nonce" name="payment_method_nonce" type="hidden" />
                     <button class="btn btn-success" type="submit"><span>Procedi al pagamento</span></button>
+                    <a class="btn btn-warning" href="{{url('/restaurant')}}">Torna al carrello</a>
                 </form>           
         </div>
     <script src="https://js.braintreegateway.com/web/dropin/1.13.0/js/dropin.min.js"></script>
     <script>
                
-        var totale = sommaArchiviata = JSON.parse(localStorage.getItem("sumStored"));        
+        var totale = sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
+        //console.log(totale);        
         var amount = document.querySelector('#amount');
         amount.value = totale;
         
-        var cart = localStorage.getItem("cartStored");
+        var cart = sessionStorage.getItem("cartStored");
        
         
         
@@ -62,6 +68,7 @@
         braintree.dropin.create({
           authorization: client_token,
           selector: '#bt-dropin',
+         
           
         }, function (createErr, instance) {
           if (createErr) {

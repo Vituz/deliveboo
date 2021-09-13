@@ -63,8 +63,8 @@ export default {
             restaurant: null,
             cart:[],
             total:0,
-            myStorage:window.localStorage,
-            contenutoArchiviato:JSON.parse(localStorage.getItem("cartStored"))
+            myStorage:window.sessionStorage,
+            contenutoArchiviato:JSON.parse(sessionStorage.getItem("cartStored"))
           }
     },
     methods:{
@@ -74,7 +74,7 @@ export default {
       addItemToCart(restaurant, id,title, price) {
         
           
-          //console.log(this.contenutoArchiviato);
+          
 
           
             if(this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
@@ -104,11 +104,12 @@ export default {
                 item.item_name = title;
                 item.item_price = price;
                 this.cart.push(item);
-                localStorage.setItem("cartStored", JSON.stringify(this.cart));              
+                sessionStorage.setItem("cartStored", JSON.stringify(this.cart));              
                 this.total+=item.item_price;
                 this.updateQuantity() 
           
             } 
+            console.log(this.contenutoArchiviato);
              
             
           
@@ -126,9 +127,9 @@ export default {
         
         this.removeItemOnce(this.cart, item)
         this.total-=item.item_price * item.quantity;
-        let cartStored = JSON.parse(localStorage.getItem("cartStored"));
+        let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
         this.removeCartItemStored(item,cartStored)
-        localStorage.setItem("cartStored", JSON.stringify(cartStored));
+        sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
        this.updateQuantity()
       },
        removeCartItemStored(item,cartStored) {
@@ -157,12 +158,12 @@ export default {
           this.total+=item.item_price;
           this.updateQuantity();
 
-           let cartStored = JSON.parse(localStorage.getItem("cartStored"));
+           let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
                 cartStored.forEach(element => {
                   if(element.item_id == item.item_id){
                     element.quantity++
                     
-                    localStorage.setItem("cartStored", JSON.stringify(cartStored));
+                    sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
                    
                   }
                 });
@@ -177,27 +178,27 @@ export default {
             this.total-=item.item_price;
            this.updateQuantity();
           //rimuovo dallo storage
-          let cartStored = JSON.parse(localStorage.getItem("cartStored"));
+          let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
                 cartStored.forEach(element => {
                   if(element.item_id == item.item_id){
                     element.quantity--
                    
-                    localStorage.setItem("cartStored", JSON.stringify(cartStored));
+                    sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
                     
                   }
                 });
 
           }else{
              this.removeCartItem(item,this.cart);
-              let cartStored = JSON.parse(localStorage.getItem("cartStored"));
+              let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
               this.removeCartItemStored(item,cartStored)
-              localStorage.setItem("cartStored", JSON.stringify(cartStored));
+              sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
               console.log(this.myStorage);
               
           }
         },
       purchaseClicked() {
-        if (this.cart.length == 0) {
+        if (this.cart.length !== 0) {
           alert('Grazie per aver effettuato l\'ordine')
           this.cart=[];
           this.total=0
@@ -210,7 +211,7 @@ export default {
     
       updateQuantity(){
         this.total= Math.round(this.total * 100) / 100;
-        localStorage.setItem("sumStored", JSON.stringify(this.total));
+        sessionStorage.setItem("sumStored", JSON.stringify(this.total));
         //console.log(this.myStorage);
       }
       
@@ -229,7 +230,7 @@ export default {
        if (this.contenutoArchiviato == null) {
              this.contenutoArchiviato = [];
             }
-      const sommaArchiviata = JSON.parse(localStorage.getItem("sumStored"));
+      const sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
         /* console.log(this.contenutoArchiviato); */
          if (this.contenutoArchiviato) {
            this.contenutoArchiviato.forEach(elem => {
