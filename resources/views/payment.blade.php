@@ -52,17 +52,17 @@
                     
 
                     <div class="form-group">
-                        <label for="name_on_card">Nome</label>
+                        <label for="name">Nome</label>
                         <input type="text" class="form-control" id="name" name="name">
                     </div>
                     <div class="form-group">
-                        <label for="name_on_card">Cognome</label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <label for="surname">Cognome</label>
+                        <input type="text" class="form-control" id="surname" name="surname">
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Indirizzo Email</label>
-                        <input type="email" class="form-control" id="email">
+                        <input type="email" class="form-control" id="email" name="mail">
                     </div>
 
                     <div class="row">
@@ -103,8 +103,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="amount">Totale Ordine €:</label>
-                                <input type="text" class="form-control" id="amount" name="amount">
+                                <h3>Totale Ordine €:</h3><span id="prezzo"></span>
+                                <input type="hidden" class="form-control" id="amount" name="amount" />
                             </div>
                         </div>
                     </div>
@@ -127,9 +127,10 @@
 
                     </div>
                     <input id="user_id" name="user_id" type="hidden" />
+                    <input id="cart" name="cart" type="hidden" />
                     <input id="nonce" name="payment_method_nonce" type="hidden" />
                     <button class="btn btn-success" type="submit"><span>Procedi al pagamento</span></button>
-                    <a class="btn btn-warning" href="{{url('/restaurant')}}">Torna al carrello</a>
+                    <a class="btn btn-warning" href="{{url('/')}}">Torna al carrello</a>
                 </form>
                     
                     
@@ -141,19 +142,24 @@
     <script src="https://js.braintreegateway.com/web/3.38.1/js/hosted-fields.min.js"></script>
     <script>
                
-        var totale = sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
-        //console.log(totale);        
-        var amount = document.querySelector('#amount');
-        amount.value = totale;
+        if(window.sessionStorage.length !=0){
+        //console.log(window.sessionStorage);
+        const cart = JSON.parse(sessionStorage.getItem("cartStored"));
+        var cartJson=JSON.stringify(cart)
+        console.log(cart,cartJson);
         
-        var cart = JSON.parse(sessionStorage.getItem("cartStored"));
+        carrelloForm = document.querySelector('#cart');
+
         var user = document.querySelector('#user_id');
-        console.log(user, cart[0].user_id);
+        //console.log(user, cart[0].user_id);
         user.value = cart[0].user_id;
-        
-       
-        
-        
+       /*  if (JSON.parse(sessionStorage.getItem("sumStored"))) { */
+            
+            sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
+            var prezzo = document.querySelector('#prezzo')
+            prezzo.innerHTML = sommaArchiviata
+        /* } */
+    }
         var form = document.querySelector('#payment-form');
       var submit = document.querySelector('input[type="submit"]');
       braintree.client.create({
@@ -166,6 +172,7 @@
         // This example shows Hosted Fields, but you can also use this
         // client instance to create additional components here, such as
         // PayPal or Data Collector.
+       
         braintree.hostedFields.create({
           client: clientInstance,
           styles: {
@@ -208,7 +215,16 @@
               }
               // If this was a real integration, this is where you would
               // send the nonce to your server.
-              // console.log('Got a nonce: ' + payload.nonce);
+              // console.log('Got a nonce: ' + payload.nonce);            
+           
+              carrelloForm.value = cartJson;
+              
+              if (JSON.parse(sessionStorage.getItem("sumStored"))) {
+                const totale = JSON.parse(sessionStorage.getItem("sumStored"));
+                var amount = document.querySelector('#amount');
+                amount.value = totale;
+                
+            }       
               document.querySelector('#nonce').value = payload.nonce;
               form.submit();
             });

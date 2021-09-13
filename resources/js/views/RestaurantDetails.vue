@@ -51,7 +51,9 @@
                       <span class="cart-total-price">€ {{total}}</span>
                   </div>
               </div>
-              <a href="/payment" class="btn btn-success btn-purchase text-uppercase" @click="purchaseClicked()" type="button"> <strong>Ordina</strong> </a>
+
+               <a :href="url" class="btn btn-success btn-purchase text-uppercase" @click="purchaseClicked()" type="button"> <strong>Ordina</strong> </a>
+              
         </div>
       
     </div>
@@ -65,6 +67,7 @@ export default {
     data(){
         return {
             restaurant: null,
+            url:'',
             cart:[],
             total:0,
             myStorage:window.sessionStorage,
@@ -75,23 +78,32 @@ export default {
 
       
 
-      addItemToCart(restaurant, id,title, price) {
-        
-          
-          
-
-          
+      addItemToCart(restaurant, id,title, price) {       
+                          
             if(this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
             alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');             
             
             }          
             else{
-              console.log(this.contenutoArchiviato);
+              //console.log(this.contenutoArchiviato);
           
             for (var i = 0; i < this.cart.length; i++) {
             let cart_item=this.cart[i];
             if (cart_item.item_id == id) {
-              alert('questo piatto è già presente nel carrello');               
+              cart_item.quantity++
+              this.total+=cart_item.item_price;
+              this.updateQuantity();
+              let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
+                cartStored.forEach(element => {
+                  if(element.item_id == cart_item.item_id){
+                    element.quantity++
+                    
+                    sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
+                   
+                  }
+                });
+                console.log(cartStored);
+
               return
             }
             }         
@@ -113,7 +125,7 @@ export default {
                 this.updateQuantity() 
           
             } 
-            console.log(this.contenutoArchiviato);
+            
              
             
           
@@ -203,12 +215,14 @@ export default {
         },
       purchaseClicked() {
         if (this.cart.length !== 0) {
-          alert('Grazie per aver effettuato l\'ordine')
+          this.url = '/payment';
+          
           this.cart=[];
           this.total=0
       
         }else{
           alert('Non hai aggiunto nulla al tuo ordine')
+          return;
         }
       },
      
