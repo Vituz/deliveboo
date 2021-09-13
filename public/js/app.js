@@ -2021,8 +2021,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
 //
 //
 //
@@ -2040,7 +2038,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
->>>>>>> f651f7a3350b9b1a559c9659c639633518e062a7
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2060,15 +2057,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var clicked = this.clicked_categories;
-      axios // .get("/api/restaurants/", {
-      //   params: clicked,
-      // })
-      .get("/api/restaurants?categories=" + clicked) // .get("/api/restaurants", {
-      //   categories: this.clicked_categories,
-      // })
-      .then(function (resp) {
+      axios.get("/api/restaurants?categories=" + clicked).then(function (resp) {
         _this.fill_restaurants = resp.data.data;
-        console.log(resp.data.data);
       })["catch"](function (e) {
         console.error("API non caricata" + e);
       });
@@ -38709,7 +38699,9 @@ var render = function() {
           _vm._v(" "),
           _vm._l(_vm.restaurant.categories, function(category) {
             return _c("span", { key: category.id }, [
-              _vm._v("\n            -" + _vm._s(category.name) + "\n        ")
+              _vm._v(
+                "\r\n            -" + _vm._s(category.name) + "\r\n        "
+              )
             ])
           })
         ],
@@ -38747,24 +38739,29 @@ var render = function() {
         "div",
         {
           staticClass:
-            "card_container container d-flex flex-wrap justify-content-center text-center"
+            "card_container d-flex flex-wrap justify-content-center text-center"
         },
         _vm._l(_vm.categories, function(category) {
           return _c(
             "div",
             {
               key: category.id,
-              staticClass: "category_card m-2",
+              staticClass: "category_card border border-primary rounded m-2",
               class: _vm.clicked_categories.includes(category.id)
                 ? "clicked"
                 : "",
+              staticStyle: { width: "10rem" },
               on: {
                 click: function($event) {
                   return _vm.filterRestaurants(category.id)
                 }
               }
             },
-            [_c("p", { staticClass: "mb-0" }, [_vm._v(_vm._s(category.name))])]
+            [
+              _c("h2", [_vm._v(_vm._s(category.name))]),
+              _vm._v(" "),
+              _c("h3", [_vm._v(_vm._s(category.users.length))])
+            ]
           )
         }),
         0
@@ -38778,7 +38775,7 @@ var render = function() {
         _vm._l(_vm.fill_restaurants, function(restaurant) {
           return _c("restaurant-section", {
             key: restaurant.id,
-            staticClass: "restaurant_card col-sm-10",
+            staticClass: "restaurant_card",
             staticStyle: { width: "20rem" },
             attrs: {
               restaurant: restaurant,
@@ -54861,13 +54858,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> f651f7a3350b9b1a559c9659c639633518e062a7
+__webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
