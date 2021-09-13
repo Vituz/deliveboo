@@ -12,6 +12,7 @@
                 <th>ID</th>
                 <th>Foto</th>
                 <th>Nome</th>
+                <th>Visibilità</th>
                 <th>Opzioni</th>
             </tr>
         </thead>
@@ -26,6 +27,13 @@
                 </td>
                 <td>
                     {{$dish->name}}
+                </td>
+                <td>
+                    @if ($dish->visibility == 0)
+                    <span class="text-danger">Piatto non visibile nel menù</span> 
+                    @else
+                    <span class="text-primary">Piatto visibile nel menù</span> 
+                    @endif
                 </td>
                 <td class="d-flex ">
                     <a href="{{route('admin.dishes.show', $dish->id )}}" class="btn btn-primary btn-sm">
