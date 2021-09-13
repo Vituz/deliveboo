@@ -10,6 +10,7 @@
     border-radius: 50%;
     box-shadow: 5px 5px 6px gray;
     background-image: url('https://www.frasimania.it/wp-content/uploads/2019/08/hashtag-cibo-food.jpg');
+    //background-image: url({{category->img}});
     background-size: cover;
     background-position: center;
     &:hover{
