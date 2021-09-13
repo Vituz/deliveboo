@@ -40,7 +40,7 @@ class RestaurantController extends Controller
             FROM users u 
             LEFT JOIN category_user cu 
             ON u.id = cu.user_id 
-            WHERE cu.category_id 
+            WHERE cu.category_id
             IN (' . $cat . ') GROUP BY u.id';
 
         $restaurants = DB::select(DB::raw($sql_quey));
@@ -54,8 +54,8 @@ class RestaurantController extends Controller
                 array_push($final, $restaurant);
             }
         }
-
         // return  RestaurantResource::collection($final);
+
         return ['data' => $final];
     }
 

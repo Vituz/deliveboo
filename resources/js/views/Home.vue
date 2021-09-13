@@ -53,17 +53,9 @@ export default {
     restCall() {
       let clicked = this.clicked_categories;
       axios
-        // .get("/api/restaurants/", {
-        //   params: clicked,
-        // })
         .get("/api/restaurants?categories=" + clicked)
-        // .get("/api/restaurants", {
-        //   categories: this.clicked_categories,
-        // })
-
         .then((resp) => {
           this.fill_restaurants = resp.data.data;
-          console.log(resp.data.data);
         })
         .catch((e) => {
           console.error("API non caricata" + e);
