@@ -23,7 +23,7 @@ class PaymentsController extends Controller
     
     public function checkout(Request $request){
 
-       
+      /*  ddd($request->all()); */
         $gateway = new Gateway([
             'environment' => config('services.braintree.environment'),
             'merchantId' => config('services.braintree.merchantId'),
