@@ -2172,17 +2172,17 @@ __webpack_require__.r(__webpack_exports__);
       restaurant: null,
       cart: [],
       total: 0,
-      myStorage: window.localStorage,
-      contenutoArchiviato: JSON.parse(localStorage.getItem("cartStored"))
+      myStorage: window.sessionStorage,
+      contenutoArchiviato: JSON.parse(sessionStorage.getItem("cartStored"))
     };
   },
   methods: {
     addItemToCart: function addItemToCart(restaurant, id, title, price) {
-      console.log(this.contenutoArchiviato);
-
       if (this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
         alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');
       } else {
+        console.log(this.contenutoArchiviato);
+
         for (var i = 0; i < this.cart.length; i++) {
           var cart_item = this.cart[i];
 
@@ -2203,11 +2203,13 @@ __webpack_require__.r(__webpack_exports__);
         item.user_id = restaurant;
         item.item_name = title;
         item.item_price = price;
-        this.cart.unshift(item);
-        localStorage.setItem("cartStored", JSON.stringify(this.cart));
+        this.cart.push(item);
+        sessionStorage.setItem("cartStored", JSON.stringify(this.cart));
         this.total += item.item_price;
         this.updateQuantity();
       }
+
+      console.log(this.contenutoArchiviato);
     },
     removeItemOnce: function removeItemOnce(arr, value) {
       var index = arr.indexOf(value);
@@ -2221,9 +2223,9 @@ __webpack_require__.r(__webpack_exports__);
     removeCartItem: function removeCartItem(item) {
       this.removeItemOnce(this.cart, item);
       this.total -= item.item_price * item.quantity;
-      var cartStored = JSON.parse(localStorage.getItem("cartStored"));
+      var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
       this.removeCartItemStored(item, cartStored);
-      localStorage.setItem("cartStored", JSON.stringify(cartStored));
+      sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
       this.updateQuantity();
     },
     removeCartItemStored: function removeCartItemStored(item, cartStored) {
@@ -2237,9 +2239,8 @@ __webpack_require__.r(__webpack_exports__);
             cartStored.splice(index, 1);
           }
 
-          if (cartStored.lenght == 0) {
-            this.contenutoArchiviato = null;
-            return;
+          if (cartStored.lenght == 1) {
+            return this.contenutoArchiviato = [];
           }
 
           return cartStored;
@@ -2250,11 +2251,11 @@ __webpack_require__.r(__webpack_exports__);
       item.quantity++;
       this.total += item.item_price;
       this.updateQuantity();
-      var cartStored = JSON.parse(localStorage.getItem("cartStored"));
+      var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
       cartStored.forEach(function (element) {
         if (element.item_id == item.item_id) {
           element.quantity++;
-          localStorage.setItem("cartStored", JSON.stringify(cartStored));
+          sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
         }
       });
     },
@@ -2266,20 +2267,20 @@ __webpack_require__.r(__webpack_exports__);
         this.total -= item.item_price;
         this.updateQuantity(); //rimuovo dallo storage
 
-        var cartStored = JSON.parse(localStorage.getItem("cartStored"));
+        var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
         cartStored.forEach(function (element) {
           if (element.item_id == item.item_id) {
             element.quantity--;
-            localStorage.setItem("cartStored", JSON.stringify(cartStored));
+            sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
           }
         });
       } else {
         this.removeCartItem(item, this.cart);
 
-        var _cartStored = JSON.parse(localStorage.getItem("cartStored"));
+        var _cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
 
         this.removeCartItemStored(item, _cartStored);
-        localStorage.setItem("cartStored", JSON.stringify(_cartStored));
+        sessionStorage.setItem("cartStored", JSON.stringify(_cartStored));
         console.log(this.myStorage);
       }
     },
@@ -2288,15 +2289,13 @@ __webpack_require__.r(__webpack_exports__);
         alert('Grazie per aver effettuato l\'ordine');
         this.cart = [];
         this.total = 0;
-        localStorage.clear();
-        this.contenutoArchiviato = [];
       } else {
         alert('Non hai aggiunto nulla al tuo ordine');
       }
     },
     updateQuantity: function updateQuantity() {
       this.total = Math.round(this.total * 100) / 100;
-      localStorage.setItem("sumStored", JSON.stringify(this.total)); //console.log(this.myStorage);
+      sessionStorage.setItem("sumStored", JSON.stringify(this.total)); //console.log(this.myStorage);
     }
   },
   created: function created() {
@@ -2315,11 +2314,12 @@ __webpack_require__.r(__webpack_exports__);
       this.contenutoArchiviato = [];
     }
 
-    var sommaArchiviata = JSON.parse(localStorage.getItem("sumStored"));
+    var sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
+    /* console.log(this.contenutoArchiviato); */
 
     if (this.contenutoArchiviato) {
       this.contenutoArchiviato.forEach(function (elem) {
-        _this2.cart.unshift(elem);
+        _this2.cart.push(elem);
       });
       this.total = sommaArchiviata;
     }
@@ -38663,9 +38663,7 @@ var render = function() {
           _vm._v(" "),
           _vm._l(_vm.restaurant.categories, function(category) {
             return _c("span", { key: category.id }, [
-              _vm._v(
-                "\r\n            -" + _vm._s(category.name) + "\r\n        "
-              )
+              _vm._v("\n            -" + _vm._s(category.name) + "\n        ")
             ])
           })
         ],
@@ -39003,10 +39001,10 @@ var render = function() {
               ),
               _vm._v(" "),
               _c(
-                "button",
+                "a",
                 {
                   staticClass: "btn btn-success btn-purchase text-uppercase",
-                  attrs: { type: "button" },
+                  attrs: { href: "/payment", type: "button" },
                   on: {
                     click: function($event) {
                       return _vm.purchaseClicked()
@@ -54817,8 +54815,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
