@@ -38679,7 +38679,7 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "rest_img d-flex col-md-5 p-3" }, [
+      _c("div", { staticClass: "rest_img d-flex col-xs-5 pl-2" }, [
         _c("img", {
           staticClass: "align-self-center",
           attrs: {
@@ -38866,6 +38866,7 @@ var render = function() {
                         },
                         [
                           _c("img", {
+                            staticClass: "img-fluid",
                             attrs: {
                               src: "http://127.0.0.1:8000/storage/" + dish.img,
                               alt: ""

@@ -16,7 +16,7 @@
       <div class="dishes d-flex flex-wrap mt-0 col-md-8 ">
             <div class="dish pl-0 dish_card d-flex flex-start" v-if="dish.visibility" v-for="dish in restaurant.dishes" :key="dish.id" >
                 <div class="wrapper col-sm-4 pl-2 align-self-center">
-                    <img :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
+                    <img class="img-fluid" :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
                 </div>
 
                 <div class="right_card d-flex flex-column justify-content-center col-sm-8 p-2">

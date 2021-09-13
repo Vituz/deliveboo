@@ -45,6 +45,27 @@ header {
   }
 }
 
+.category_card {
+  justify-content: center;
+  height: 5rem;
+  width: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 50%;
+  box-shadow: 5px 5px 6px gray;
+  background-image: url("https://www.frasimania.it/wp-content/uploads/2019/08/hashtag-cibo-food.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.category_card:hover {
+  height: 5.2rem;
+  width: 5.2rem;
+  color: #f6993f;
+}
+
 /* VIEW RISTORANTI PAGINA PRINCIPALE */
 
 .rest_card {
@@ -226,28 +247,40 @@ header {
     font-size: 12px;
   }
 
-  .card_container .rest_card {
+  .card_container .restaurant_card {
     min-height: 140px;
   }
 
-  .card_container .rest_card .rest_img img {
-    width: 90%;
+  .card_container .restaurant_card .rest_img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .card_container .restaurant_card .rest_img img {
+    width: 100%;
     height: 90%;
   }
 }
 
 @media only screen and (max-width: 1200px) {
   .restaurant_card {
-    min-height: 150px;
-    max-height: 150px;
+    min-height: 130px;
+    max-height: 130px;
   }
 
   .restaurant_card h1 {
+    font-weight: 600;
     font-size: 18px;
   }
 
   .restaurant_card h4 {
     font-size: 15px;
+  }
+
+  .restaurant_card .rest_img img {
+    width: 100%;
+    height: 80%;
+    margin: auto;
   }
 }
 
@@ -286,7 +319,12 @@ footer ul {
 }
 
 .bottom_footer {
-  padding: 25px;
+  padding: 25px 0;
+}
+
+.bottom_footer .pay_methods {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
 }
 
 .bottom_footer .pay_methods .logo_btn {
@@ -317,6 +355,10 @@ footer ul {
 
 .bottom_footer .pay_methods .pay_card a:hover {
   color: #8080f5;
+}
+
+.bottom_footer .socials {
+  padding-right: 0 !important;
 }
 
 .bottom_footer .socials .social_card {
@@ -11291,26 +11333,5 @@ a.text-dark:focus {
 
 main {
   min-height: 150px;
-}
-
-.category_card {
-  justify-content: center;
-  height: 5rem;
-  width: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  border-radius: 50%;
-  box-shadow: 5px 5px 6px gray;
-  background-image: url("https://www.frasimania.it/wp-content/uploads/2019/08/hashtag-cibo-food.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
-.category_card:hover {
-  height: 5.2rem;
-  width: 5.2rem;
-  color: #f6993f;
 }
 
