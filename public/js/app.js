@@ -2140,6 +2140,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+//
+//
 //
 //
 //
@@ -2206,6 +2210,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       restaurant: null,
+      url: '',
       cart: [],
       total: 0,
       myStorage: window.sessionStorage,
@@ -2214,18 +2219,39 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addItemToCart: function addItemToCart(restaurant, id, title, price) {
+      var _this = this;
+
       if (this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
         alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');
       } else {
-        console.log(this.contenutoArchiviato);
-
-        for (var i = 0; i < this.cart.length; i++) {
-          var cart_item = this.cart[i];
+        var _loop = function _loop() {
+          var cart_item = _this.cart[i];
 
           if (cart_item.item_id == id) {
-            alert('questo piatto è già presente nel carrello');
-            return;
+            cart_item.quantity++;
+            _this.total += cart_item.item_price;
+
+            _this.updateQuantity();
+
+            var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
+            cartStored.forEach(function (element) {
+              if (element.item_id == cart_item.item_id) {
+                element.quantity++;
+                sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
+              }
+            });
+            console.log(cartStored);
+            return {
+              v: void 0
+            };
           }
+        };
+
+        //console.log(this.contenutoArchiviato);
+        for (var i = 0; i < this.cart.length; i++) {
+          var _ret = _loop();
+
+          if (_typeof(_ret) === "object") return _ret.v;
         }
 
         var item = {
@@ -2244,8 +2270,6 @@ __webpack_require__.r(__webpack_exports__);
         this.total += item.item_price;
         this.updateQuantity();
       }
-
-      console.log(this.contenutoArchiviato);
     },
     removeItemOnce: function removeItemOnce(arr, value) {
       var index = arr.indexOf(value);
@@ -2322,11 +2346,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     purchaseClicked: function purchaseClicked() {
       if (this.cart.length !== 0) {
-        alert('Grazie per aver effettuato l\'ordine');
+        this.url = '/payment';
         this.cart = [];
         this.total = 0;
       } else {
         alert('Non hai aggiunto nulla al tuo ordine');
+        return;
       }
     },
     updateQuantity: function updateQuantity() {
@@ -2335,16 +2360,16 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get('/api/restaurants/' + this.id).then(function (resp) {
-      _this.restaurant = resp.data.data[0]; //console.log(resp.data.data[0].name);
+      _this2.restaurant = resp.data.data[0]; //console.log(resp.data.data[0].name);
     })["catch"](function (e) {
       console.error('API non caricata' + e);
     });
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this3 = this;
 
     if (this.contenutoArchiviato == null) {
       this.contenutoArchiviato = [];
@@ -2355,7 +2380,7 @@ __webpack_require__.r(__webpack_exports__);
 
     if (this.contenutoArchiviato) {
       this.contenutoArchiviato.forEach(function (elem) {
-        _this2.cart.push(elem);
+        _this3.cart.push(elem);
       });
       this.total = sommaArchiviata;
     }
@@ -38699,9 +38724,7 @@ var render = function() {
           _vm._v(" "),
           _vm._l(_vm.restaurant.categories, function(category) {
             return _c("span", { key: category.id }, [
-              _vm._v(
-                "\r\n            -" + _vm._s(category.name) + "\r\n        "
-              )
+              _vm._v("\n            -" + _vm._s(category.name) + "\n        ")
             ])
           })
         ],
@@ -39048,7 +39071,7 @@ var render = function() {
                 "a",
                 {
                   staticClass: "btn btn-success btn-purchase text-uppercase",
-                  attrs: { href: "/payment", type: "button" },
+                  attrs: { href: _vm.url, type: "button" },
                   on: {
                     click: function($event) {
                       return _vm.purchaseClicked()
@@ -54859,8 +54882,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

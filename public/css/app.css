@@ -11388,3 +11388,24 @@ main {
   min-height: 150px;
 }
 
+
+.category_card {
+  justify-content: center;
+  height: 5rem;
+  width: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 50%;
+  box-shadow: 5px 5px 6px gray;
+  background-size: cover;
+  background-position: center;
+}
+
+.category_card:hover {
+  height: 5.2rem;
+  width: 5.2rem;
+  color: #f6993f;
+}
+
