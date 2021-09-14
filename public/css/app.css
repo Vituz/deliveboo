@@ -1,5 +1,30 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+.buy_btn {
+  background: linear-gradient(82.72deg, #da5b00 0%, #f6993f 64.04%);
+  border: none;
+}
+
+.buy_btn:hover {
+  background: linear-gradient(277.33deg, #da5b00 36.28%, #f6993f 100%);
+}
+
+.trash_btn {
+  background: linear-gradient(82.72deg, #ec5853 0%, #e3342f 64.04%);
+}
+
+.trash_btn:hover {
+  background: linear-gradient(277.33deg, #ec5853 36.28%, #e3342f 100%);
+}
+
+.remove_btn {
+  background: linear-gradient(82.72deg, #ffa530 0%, #ffeb4a 64.04%);
+}
+
+.remove_btn:hover {
+  background: linear-gradient(277.33deg, #ffa530 36.28%, #ffeb4a 100%);
+}
+
 header {
   height: 70vh;
   z-index: 44;
@@ -88,7 +113,7 @@ header {
 
 .rest_card:hover {
   box-shadow: 15px 15px 15px gray;
-  background-color: #dbdbdb;
+  background-color: #f2f2f2;
 }
 
 .rest_card:hover .rest_img {
@@ -173,38 +198,17 @@ header {
   right: 10px;
 }
 
-/* @media only screen and (max-width:430px){
-    .single_rest{
-        .details{
-            .single_rest_img_wrapper{
-                width: 100%;
-                height: 300px;
-                margin-bottom: 30px;
-                position: absolute;
-                bottom: 15px;
-                border-radius: 5px;
-                img{
-                    width: 90%;
-                    height: 65%;
-
-                    border-radius: 5px;
-                }
-            }
-        }
-    }
-} */
-
 @media only screen and (max-width: 600px) {
   .rest_card h1 {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .rest_card h4 {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .rest_card span {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .single_rest {
@@ -234,18 +238,18 @@ header {
   }
 
   .single_rest .dishes .right_card h4 {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .single_rest .dishes .right_card p {
-    font-size: 11px;
+    font-size: 10px;
   }
 
-  .single_rest .dishes .dish .wrapper {
+  .single_rest .dishes .dish_card .wrapper {
     padding-right: 0;
   }
 
-  .single_rest .dishes .dish .wrapper img {
+  .single_rest .dishes .dish_card .wrapper img {
     padding-right: 0;
     width: 100%;
     height: 100%;
@@ -263,6 +267,13 @@ header {
     border-radius: 5px;
     border-radius: 5px;
   }
+
+  .dishes .right_card .shop_btn {
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+    /* background-color: $buy_btn; */
+  }
 }
 
 @media only screen and (max-width: 800px) {
@@ -279,16 +290,16 @@ header {
 
   .dishes .dish_card {
     padding-right: 0;
-    min-height: 140px;
-    max-height: 140px;
+    min-height: 145px;
+    max-height: 145px;
   }
 
   .dishes .right_card h4 {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .dishes .right_card p {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .card_container .restaurant_card {
@@ -329,7 +340,7 @@ header {
 
   .single_rest .details .single_rest_img_wrapper {
     width: 100%;
-    height: 280px;
+    height: 230px;
     margin-bottom: 30px;
     position: absolute;
     bottom: 54px;
@@ -11386,26 +11397,5 @@ a.text-dark:focus {
 
 main {
   min-height: 150px;
-}
-
-
-.category_card {
-  justify-content: center;
-  height: 5rem;
-  width: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  border-radius: 50%;
-  box-shadow: 5px 5px 6px gray;
-  background-size: cover;
-  background-position: center;
-}
-
-.category_card:hover {
-  height: 5.2rem;
-  width: 5.2rem;
-  color: #f6993f;
 }
 

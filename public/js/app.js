@@ -2205,6 +2205,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -38724,7 +38725,9 @@ var render = function() {
           _vm._v(" "),
           _vm._l(_vm.restaurant.categories, function(category) {
             return _c("span", { key: category.id }, [
-              _vm._v("\n            -" + _vm._s(category.name) + "\n        ")
+              _vm._v(
+                "\r\n            -" + _vm._s(category.name) + "\r\n        "
+              )
             ])
           })
         ],
@@ -38879,7 +38882,7 @@ var render = function() {
                     "div",
                     {
                       key: dish.id,
-                      staticClass: "dish pl-0 dish_card d-flex flex-start"
+                      staticClass: "pl-0 dish_card d-flex flex-start"
                     },
                     [
                       _c(
@@ -38925,7 +38928,7 @@ var render = function() {
                             "div",
                             {
                               staticClass:
-                                "mt-3  shop_btn d-flex justify-content-center align-items-center ",
+                                "mt-3  shop_btn buy_btn text-white d-flex justify-content-center align-items-center ",
                               attrs: { type: "button" },
                               on: {
                                 click: function($event) {
@@ -39000,7 +39003,7 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "btn btn-warning btn-sm mr-3",
+                                staticClass: "btn remove_btn btn-sm mr-3 ",
                                 on: {
                                   click: function($event) {
                                     return _vm.removeQuantity(item)
@@ -39021,7 +39024,7 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "btn btn-success btn-sm mr-3",
+                                staticClass: "btn buy_btn btn-sm mr-3 ",
                                 on: {
                                   click: function($event) {
                                     return _vm.addQuanity(item)
@@ -39034,7 +39037,7 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "btn btn-danger",
+                                staticClass: "btn trash_btn text-white",
                                 attrs: { type: "button" },
                                 on: {
                                   click: function($event) {
@@ -39070,7 +39073,8 @@ var render = function() {
               _c(
                 "a",
                 {
-                  staticClass: "btn btn-success btn-purchase text-uppercase",
+                  staticClass:
+                    "btn buy_btn btn-purchase text-uppercase text-white",
                   attrs: { href: _vm.url, type: "button" },
                   on: {
                     click: function($event) {
@@ -54882,8 +54886,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
