@@ -38704,7 +38704,7 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "rest_img d-flex col-md-5 p-3" }, [
+      _c("div", { staticClass: "rest_img d-flex col-xs-5 pl-2" }, [
         _c("img", {
           staticClass: "align-self-center",
           attrs: {
@@ -38885,10 +38885,11 @@ var render = function() {
                       _c(
                         "div",
                         {
-                          staticClass: "wrapper col-sm-4 pl-2 align-self-center"
+                          staticClass: "wrapper col-xs-4 pl-2 align-self-center"
                         },
                         [
                           _c("img", {
+                            staticClass: "img-fluid",
                             attrs: {
                               src: "http://127.0.0.1:8000/storage/" + dish.img,
                               alt: ""
@@ -38901,7 +38902,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "right_card d-flex flex-column justify-content-center col-sm-8 p-2"
+                            "right_card d-flex flex-column col-sm-8 p-3"
                         },
                         [
                           _c("h4", { staticClass: "m-0" }, [

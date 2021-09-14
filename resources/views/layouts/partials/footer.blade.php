@@ -69,7 +69,7 @@
                     
                 </div>
                 <div class="col-md-5  socials">
-                    <ul class="d-flex flex-wrap">
+                    <ul class="d-flex flex-wrap justify-content-end">
                         @foreach($socials as $item)
                         <li class="social_card">
                             <div class=" align-items-end">

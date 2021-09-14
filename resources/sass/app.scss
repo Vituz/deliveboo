@@ -4,6 +4,7 @@
 // Variables
 @import 'variables';
 @import 'partials/header';
+@import 'partials/category';
 @import 'partials/rest_cards';
 @import 'partials/footer';
 
@@ -16,6 +17,7 @@
 main{
     min-height: 150px;
 }
+
 .category_card{
     justify-content: center;
     height: 5rem;
@@ -36,3 +38,4 @@ main{
         color:$orange;
     }
 }
+
