@@ -29,6 +29,54 @@
       ></restaurant-section>
     </div>
 
+    <!-- Pagination buttons -->
+    <nav
+      v-if="fill_restaurants.length != 0"
+      class="text-center d-flex justify-content-center"
+    >
+      <div class="first">
+        <!-- First Page -->
+        <button
+          v-if="first_page != '/?page=' + current_page"
+          @click="pagination(first_page)"
+        >
+          <i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i>
+        </button>
+        <!-- Prev Page -->
+        <button v-if="prev_page != null" @click="pagination(prev_page)">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </div>
+
+      <!-- Page Numbers -->
+      <div class="number">
+        <button
+          :class="page == current_page ? 'active' : 'no_active'"
+          v-for="page in total_page"
+          :key="page"
+          @click="singlePage(page)"
+        >
+          {{ page }}
+        </button>
+      </div>
+
+      <div class="last">
+        <!-- Next Page -->
+        <button v-if="next_page != null" @click="pagination(next_page)">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Last Page -->
+        <button
+          v-if="last_page != '/?page=' + current_page"
+          @click="pagination(last_page)"
+        >
+          <i class="fas fa-chevron-right"></i
+          ><i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </nav>
+
     <router-view />
   </div>
 </template>
@@ -38,15 +86,19 @@ export default {
   data() {
     return {
       categories: null,
-      restaurants: null,
+      // restaurants: null,
       restaurant_path: "restaurants/",
       single_restaurant: null,
       filtered: [],
       clicked_categories: [],
       fill_restaurants: [],
 
-      prova: [],
-      token: "{{ csrf_token() }}",
+      current_page: "",
+      first_page: "",
+      last_page: "",
+      next_page: "",
+      prev_page: "",
+      total_page: [],
     };
   },
   methods: {
@@ -55,10 +107,50 @@ export default {
       axios
         .get("/api/restaurants?categories=" + clicked)
         .then((resp) => {
-          this.fill_restaurants = resp.data.data;
+          this.fill_restaurants = resp.data[0].data;
+          this.current_page = resp.data[0].current_page;
+          this.first_page = resp.data[0].first_page_url;
+          this.last_page = resp.data[0].last_page_url;
+          this.next_page = resp.data[0].next_page_url;
+          this.prev_page = resp.data[0].prev_page_url;
+
+          let n_page = resp.data[0].total;
+          this.total_page = [];
+          for (let i = 0; i < n_page; i++) {
+            this.total_page.push(i + 1);
+          }
+          // console.log(this.total_page);
         })
         .catch((e) => {
           console.error("API non caricata" + e);
+        });
+    },
+
+    pagination(page) {
+      let clicked = this.clicked_categories;
+      axios
+        .get("/api/restaurants" + page + "&categories=" + clicked)
+        .then((resp) => {
+          this.fill_restaurants = resp.data[0].data;
+          this.current_page = resp.data[0].current_page;
+          this.first_page = resp.data[0].first_page_url;
+          this.last_page = resp.data[0].last_page_url;
+          this.next_page = resp.data[0].next_page_url;
+          this.prev_page = resp.data[0].prev_page_url;
+        });
+    },
+
+    singlePage(number) {
+      let clicked = this.clicked_categories;
+      axios
+        .get("/api/restaurants/?page=" + number + "&categories=" + clicked)
+        .then((resp) => {
+          this.fill_restaurants = resp.data[0].data;
+          this.current_page = resp.data[0].current_page;
+          this.first_page = resp.data[0].first_page_url;
+          this.last_page = resp.data[0].last_page_url;
+          this.next_page = resp.data[0].next_page_url;
+          this.prev_page = resp.data[0].prev_page_url;
         });
     },
 
@@ -87,26 +179,6 @@ export default {
       if (this.clicked_categories.length != 0) {
         this.restCall();
       }
-
-      // this.restaurants.forEach((rest) => {
-      // let categories_id = [];
-
-      // rest.categories.forEach((cat) => {
-      //   let cat_id = cat.id;
-      //   categories_id.push(cat_id);
-      // });
-
-      // let compare_cat = this.findRestaurant(
-      //   categories_id,
-      //   this.clicked_categories
-      // );
-
-      // if (compare_cat && !this.fill_restaurants.includes(rest)) {
-      //   this.fill_restaurants.push(rest);
-      // }
-      // });
-
-      //   $request = this.clicked_categories;
     },
 
     restaurantPage(index) {
@@ -123,16 +195,73 @@ export default {
       .catch((e) => {
         console.error("API non caricata" + e);
       });
-
-    // axios
-    //   .get("/api/restaurants")
-    //   .then((resp) => {
-    //     this.restaurants = resp.data.data;
-    //     // console.log(this.restaurants);
-    //   })
-    //   .catch((e) => {
-    //     console.error("API non caricata" + e);
-    //   });
   },
 };
 </script>
+
+<style lang="scss" scoped>
+nav {
+  .first {
+    text-align: end;
+
+    button:first-child {
+      border-radius: 1rem 0 0 1rem;
+      padding: 0.2rem 0.8rem;
+      height: 2rem;
+      margin-right: 0.1rem;
+    }
+    button:last-child {
+      padding: 0.2rem 0.8rem;
+      height: 2rem;
+    }
+  }
+
+  .number {
+    text-align: center;
+    > button {
+      border: 1px solid cadetblue;
+      height: 2rem;
+
+      padding: 0.2rem 0.8rem;
+    }
+  }
+
+  .last {
+    text-align: start;
+    button:last-child {
+      border-radius: 0 1rem 1rem 0;
+      height: 2rem;
+      padding: 0.2rem 0.8rem;
+      margin-left: 0.1rem;
+    }
+    button:first-child {
+      height: 2rem;
+
+      padding: 0.2rem 0.8rem;
+    }
+  }
+
+  .first,
+  .last {
+    > button {
+      background-color: transparent;
+      border: 1px solid grey;
+    }
+  }
+
+  .active {
+    background-color: orange;
+    color: black;
+  }
+
+  .no_active {
+    background-color: transparent;
+  }
+
+  .first,
+  .number,
+  .last {
+    width: auto;
+  }
+}
+</style>

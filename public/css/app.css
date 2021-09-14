@@ -11300,10 +11300,9 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: black;
   border-radius: 50%;
   box-shadow: 5px 5px 6px gray;
-  background-image: url("https://www.frasimania.it/wp-content/uploads/2019/08/hashtag-cibo-food.jpg");
   background-size: cover;
   background-position: center;
 }
