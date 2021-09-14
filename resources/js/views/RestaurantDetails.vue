@@ -71,7 +71,7 @@ export default {
             cart:[],
             total:0,
             myStorage:window.sessionStorage,
-            contenutoArchiviato:JSON.parse(sessionStorage.getItem("cartStored"))
+            contenutoArchiviato: JSON.parse(sessionStorage.getItem("cartStored"))
           }
     },
     methods:{
@@ -93,16 +93,16 @@ export default {
               cart_item.quantity++
               this.total+=cart_item.item_price;
               this.updateQuantity();
-              let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-                cartStored.forEach(element => {
+              
+                this.contenutoArchiviato.forEach(element => {
                   if(element.item_id == cart_item.item_id){
                     element.quantity++
                     
-                    sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
+                    sessionStorage.setItem("cartStored", JSON.stringify(this.contenutoArchiviato));
                    
                   }
                 });
-                console.log(cartStored);
+                /* console.log(cartStored); */
 
               return
             }
@@ -143,9 +143,9 @@ export default {
         
         this.removeItemOnce(this.cart, item)
         this.total-=item.item_price * item.quantity;
-        let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-        this.removeCartItemStored(item,cartStored)
-        sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
+        
+        this.removeCartItemStored(item,this.contenutoArchiviato)
+        sessionStorage.setItem("cartStored", JSON.stringify(this.contenutoArchiviato));
        this.updateQuantity()
       },
        removeCartItemStored(item,cartStored) {
@@ -159,8 +159,9 @@ export default {
               }
               if (cartStored.lenght == 1) {
                
+                //console.log(this.contenutoArchiviato);
                 
-                return this.contenutoArchiviato = [];
+                return cartStored = [];
               }
               return cartStored;
           }
@@ -187,29 +188,29 @@ export default {
         },
         removeQuantity(item){
           //console.log(item);
-          if (item.quantity!=1) {
+          if (item.quantity != 1) {
 
             //rimuovo dal carrello
             item.quantity--;
             this.total-=item.item_price;
            this.updateQuantity();
           //rimuovo dallo storage
-          let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-                cartStored.forEach(element => {
+          
+                this.contenutoArchiviato.forEach(element => {
                   if(element.item_id == item.item_id){
                     element.quantity--
                    
-                    sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
                     
                   }
+                    sessionStorage.setItem("cartStored", JSON.stringify(this.contenutoArchiviato));
                 });
 
           }else{
              this.removeCartItem(item,this.cart);
-              let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-              this.removeCartItemStored(item,cartStored)
-              sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
-              console.log(this.myStorage);
+              
+              this.removeCartItemStored(item,this.contenutoArchiviato)
+              sessionStorage.setItem("cartStored", JSON.stringify(this.contenutoArchiviato));
+              //console.log(this.myStorage);
               
           }
         },
@@ -245,11 +246,12 @@ export default {
             })
     },
     mounted(){
+      
        if (this.contenutoArchiviato == null) {
              this.contenutoArchiviato = [];
             }
       const sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
-        /* console.log(this.contenutoArchiviato); */
+        //console.log(sommaArchiviata);
          if (this.contenutoArchiviato) {
            this.contenutoArchiviato.forEach(elem => {
              this.cart.push(elem);

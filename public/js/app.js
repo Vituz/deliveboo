@@ -2233,14 +2233,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
             _this.updateQuantity();
 
-            var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-            cartStored.forEach(function (element) {
+            _this.contenutoArchiviato.forEach(function (element) {
               if (element.item_id == cart_item.item_id) {
                 element.quantity++;
-                sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
+                sessionStorage.setItem("cartStored", JSON.stringify(_this.contenutoArchiviato));
               }
             });
-            console.log(cartStored);
+            /* console.log(cartStored); */
+
+
             return {
               v: void 0
             };
@@ -2283,9 +2284,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     removeCartItem: function removeCartItem(item) {
       this.removeItemOnce(this.cart, item);
       this.total -= item.item_price * item.quantity;
-      var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-      this.removeCartItemStored(item, cartStored);
-      sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
+      this.removeCartItemStored(item, this.contenutoArchiviato);
+      sessionStorage.setItem("cartStored", JSON.stringify(this.contenutoArchiviato));
       this.updateQuantity();
     },
     removeCartItemStored: function removeCartItemStored(item, cartStored) {
@@ -2300,7 +2300,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           }
 
           if (cartStored.lenght == 1) {
-            return this.contenutoArchiviato = [];
+            //console.log(this.contenutoArchiviato);
+            return cartStored = [];
           }
 
           return cartStored;
@@ -2320,6 +2321,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       });
     },
     removeQuantity: function removeQuantity(item) {
+      var _this2 = this;
+
       //console.log(item);
       if (item.quantity != 1) {
         //rimuovo dal carrello
@@ -2327,21 +2330,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         this.total -= item.item_price;
         this.updateQuantity(); //rimuovo dallo storage
 
-        var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-        cartStored.forEach(function (element) {
+        this.contenutoArchiviato.forEach(function (element) {
           if (element.item_id == item.item_id) {
             element.quantity--;
-            sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
           }
+
+          sessionStorage.setItem("cartStored", JSON.stringify(_this2.contenutoArchiviato));
         });
       } else {
         this.removeCartItem(item, this.cart);
-
-        var _cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-
-        this.removeCartItemStored(item, _cartStored);
-        sessionStorage.setItem("cartStored", JSON.stringify(_cartStored));
-        console.log(this.myStorage);
+        this.removeCartItemStored(item, this.contenutoArchiviato);
+        sessionStorage.setItem("cartStored", JSON.stringify(this.contenutoArchiviato)); //console.log(this.myStorage);
       }
     },
     purchaseClicked: function purchaseClicked() {
@@ -2360,27 +2359,26 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
 
     axios.get('/api/restaurants/' + this.id).then(function (resp) {
-      _this2.restaurant = resp.data.data[0]; //console.log(resp.data.data[0].name);
+      _this3.restaurant = resp.data.data[0]; //console.log(resp.data.data[0].name);
     })["catch"](function (e) {
       console.error('API non caricata' + e);
     });
   },
   mounted: function mounted() {
-    var _this3 = this;
+    var _this4 = this;
 
     if (this.contenutoArchiviato == null) {
       this.contenutoArchiviato = [];
     }
 
-    var sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
-    /* console.log(this.contenutoArchiviato); */
+    var sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored")); //console.log(sommaArchiviata);
 
     if (this.contenutoArchiviato) {
       this.contenutoArchiviato.forEach(function (elem) {
-        _this3.cart.push(elem);
+        _this4.cart.push(elem);
       });
       this.total = sommaArchiviata;
     }
