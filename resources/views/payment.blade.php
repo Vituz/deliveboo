@@ -5,8 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DeliveBooh Payment</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://js.braintreegateway.com/web/dropin/1.8.1/js/dropin.min.js"></script>
+
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <style>
     .hosted-field {
@@ -27,7 +26,7 @@
 </head>
     <body>
    
-        <div class="container w-75 py-5 ">
+        <div class="container w-75 py-5 bt-drop-in-wrapper">
             @if (session('success_message'))
                 <div class="alert alert-success">
                     {{ session('success_message') }}
@@ -47,7 +46,7 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{ url('/checkout') }}" method="POST" id="payment-form">
+            <form action="{{ url('/checkout') }}" method="POST" id="payment-form" id="bt-dropin">
                     @csrf
                     
 
@@ -130,7 +129,7 @@
                     <input id="cart" name="cart" type="hidden" />
                     <input id="nonce" name="payment_method_nonce" type="hidden" />
                     <button class="btn btn-success" type="submit"><span>Procedi al pagamento</span></button>
-                    <a class="btn btn-warning" href="{{url('/')}}">Torna al carrello</a>
+                    <a class="btn btn-warning" id="back" href="{{url('/')}}">Torna al carrello</a>
                 </form>
                     
                     
@@ -138,6 +137,7 @@
                          
         </div>
     <!-- <script src="https://js.braintreegateway.com/web/dropin/1.13.0/js/dropin.min.js"></script> -->
+   
     <script src="https://js.braintreegateway.com/web/3.38.1/js/client.min.js"></script>
     <script src="https://js.braintreegateway.com/web/3.38.1/js/hosted-fields.min.js"></script>
     <script>
@@ -146,9 +146,11 @@
         //console.log(window.sessionStorage);
         const cart = JSON.parse(sessionStorage.getItem("cartStored"));
         var cartJson=JSON.stringify(cart)
-        console.log(cart,cartJson);
+        //console.log(cart,cartJson);
         
         carrelloForm = document.querySelector('#cart');
+        backButton = document.querySelector('#back');
+        backButton.href="/restaurant/" + cart[0].user_id;
 
         var user = document.querySelector('#user_id');
         //console.log(user, cart[0].user_id);

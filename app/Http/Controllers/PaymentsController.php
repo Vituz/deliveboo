@@ -24,7 +24,7 @@ class PaymentsController extends Controller
     public function checkout(Request $request){
 
         $cart = json_decode($request->cart, true);
-       ddd($cart);
+       
         $gateway = new Gateway([
             'environment' => config('services.braintree.environment'),
             'merchantId' => config('services.braintree.merchantId'),
