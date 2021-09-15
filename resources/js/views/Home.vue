@@ -4,15 +4,20 @@
       class="card_container d-flex flex-wrap justify-content-center text-center"
     >
       <div
-        class="category_card border border-primary rounded m-2"
+        class="category_card"
         v-for="category in categories"
         :key="category.id"
-        style="width: 10rem"
         @click="filterRestaurants(category.id)"
         :class="clicked_categories.includes(category.id) ? 'clicked' : ''"
       >
+        <div class="card_image">
+          <img :src="category.img" alt="" />
+        </div>
         <!-- <input type="hidden" name="pass_data">     -->
-        <h2>{{ category.name }}</h2>
+        <div class="card_title">
+          <i class="fas fa-check"></i>
+          <h2>{{ category.name }}</h2>
+        </div>
       </div>
     </div>
 
@@ -186,7 +191,6 @@ export default {
       if (this.clicked_categories.length != 0) {
         this.restCall();
       }
-
     },
 
     restaurantPage(index) {
@@ -203,7 +207,6 @@ export default {
       .catch((e) => {
         console.error("API non caricata" + e);
       });
-
   },
 };
 </script>

@@ -2085,6 +2085,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2276,12 +2281,42 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['id'],
+  props: ["id"],
   data: function data() {
     return {
       restaurant: null,
-      url: '',
+      url: "",
       cart: [],
       total: 0,
       myStorage: window.sessionStorage,
@@ -2425,11 +2460,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     },
     purchaseClicked: function purchaseClicked() {
       if (this.cart.length !== 0) {
-        this.url = '/payment';
+        this.url = "/payment";
         this.cart = [];
         this.total = 0;
       } else {
-        alert('Non hai aggiunto nulla al tuo ordine');
+        alert("Non hai aggiunto nulla al tuo ordine");
         return;
       }
     },
@@ -2441,10 +2476,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   created: function created() {
     var _this2 = this;
 
-    axios.get('/api/restaurants/' + this.id).then(function (resp) {
+    axios.get("/api/restaurants/" + this.id).then(function (resp) {
       _this2.restaurant = resp.data.data[0]; //console.log(resp.data.data[0].name);
     })["catch"](function (e) {
-      console.error('API non caricata' + e);
+      console.error("API non caricata" + e);
     });
   },
   mounted: function mounted() {
@@ -38901,18 +38936,27 @@ var render = function() {
             "div",
             {
               key: category.id,
-              staticClass: "category_card border border-primary rounded m-2",
+              staticClass: "category_card",
               class: _vm.clicked_categories.includes(category.id)
                 ? "clicked"
                 : "",
-              staticStyle: { width: "10rem" },
               on: {
                 click: function($event) {
                   return _vm.filterRestaurants(category.id)
                 }
               }
             },
-            [_c("h2", [_vm._v(_vm._s(category.name))])]
+            [
+              _c("div", { staticClass: "card_image" }, [
+                _c("img", { attrs: { src: category.img, alt: "" } })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card_title" }, [
+                _c("i", { staticClass: "fas fa-check" }),
+                _vm._v(" "),
+                _c("h2", [_vm._v(_vm._s(category.name))])
+              ])
+            ]
           )
         }),
         0
@@ -39065,7 +39109,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.restaurant
-    ? _c("div", { staticClass: " single_rest container" }, [
+    ? _c("div", { staticClass: "single_rest container" }, [
         _c("div", { staticClass: "details d-flex col-sm-12" }, [
           _c(
             "div",
@@ -39095,7 +39139,7 @@ var render = function() {
         _c("div", { staticClass: "d-flex flex-wrap" }, [
           _c(
             "div",
-            { staticClass: "dishes d-flex flex-wrap mt-0 col-md-8 " },
+            { staticClass: "dishes d-flex flex-wrap mt-0 col-md-8" },
             _vm._l(_vm.restaurant.dishes, function(dish) {
               return dish.visibility
                 ? _c(
@@ -39170,122 +39214,147 @@ var render = function() {
                 : _vm._e()
             }),
             0
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "d-flex flex-column content-section col-md-4 cart" },
-            [
-              _c("h2", { staticClass: "section-header" }, [
-                _vm._v("Il tuo ordine")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "d-flex flex-column cart-items p-2 mb-2" },
-                [
-                  _vm._l(_vm.cart, function(item) {
-                    return _c(
-                      "div",
-                      { key: item.id, staticClass: "cart-row" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "cart-item cart-column mb-2" },
-                          [
-                            _c(
-                              "span",
-                              { staticClass: "cart-item-title text-uppercase" },
-                              [_vm._v(_vm._s(item.item_name))]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "span",
-                              {
-                                staticClass:
-                                  "cart-price cart-column text-align-right"
-                              },
-                              [_vm._v(_vm._s(item.item_price) + " €")]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "cart-quantity cart-column d-flex align-items-center mb-2"
-                          },
-                          [
-                            _c(
-                              "button",
-                              {
-                                staticClass:
-                                  "remove_btn btn-sm mr-3 text-white",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.removeQuantity(item)
-                                  }
-                                }
-                              },
-                              [_vm._v("-")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "quantity mr-3 bg-light py-1 px-2"
-                              },
-                              [_vm._v(_vm._s(item.quantity))]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: " add_btn btn-sm mr-3 text-white",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.addQuanity(item)
-                                  }
-                                }
-                              },
-                              [_vm._v("+")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "trash_btn text-white",
-                                attrs: { type: "button" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.removeCartItem(item)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "fas fa-trash-alt" })]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("hr")
-                      ]
-                    )
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "cart-total align-self-end" }, [
-                    _c("strong", { staticClass: "cart-total-title " }, [
-                      _vm._v("Totale")
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "d-flex flex-column content-section col-md-4 cart" },
+          [
+            _c("h2", { staticClass: "section-header" }, [
+              _vm._v("Il tuo ordine")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "d-flex flex-column cart-items p-2 mb-2" },
+              [
+                _vm._l(_vm.cart, function(item) {
+                  return _c("div", { key: item.id, staticClass: "cart-row" }, [
+                    _c("div", { staticClass: "cart-item cart-column mb-2" }, [
+                      _c(
+                        "span",
+                        { staticClass: "cart-item-title text-uppercase" },
+                        [_vm._v(_vm._s(item.item_name))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "cart-price cart-column text-align-right"
+                        },
+                        [_vm._v(_vm._s(item.item_price) + " €")]
+                      )
                     ]),
                     _vm._v(" "),
-                    _c("span", { staticClass: "cart-total-price" }, [
-                      _vm._v("€ " + _vm._s(_vm.total))
-                    ])
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "cart-quantity cart-column d-flex align-items-center mb-2"
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "remove_btn btn-sm mr-3 text-white",
+                            on: {
+                              click: function($event) {
+                                return _vm.removeQuantity(item)
+                              }
+                            }
+                          },
+                          [_vm._v("-")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "quantity mr-3 bg-light py-1 px-2" },
+                          [
+                            _vm._v(
+                              "\n                          " +
+                                _vm._s(item.quantity) +
+                                "\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: " add_btn btn-sm mr-3 text-white",
+                            on: {
+                              click: function($event) {
+                                return _vm.addQuanity(item)
+                              }
+                            }
+                          },
+                          [_vm._v("+")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "trash_btn text-white",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.removeCartItem(item)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-trash-alt" })]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("hr")
                   ])
-                ],
-                2
-              ),
-              _vm._v(" "),
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "cart-total align-self-end" }, [
+                  _c("strong", { staticClass: "cart-total-title " }, [
+                    _vm._v("Totale")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "cart-total-price" }, [
+                    _vm._v("€ " + _vm._s(_vm.total))
+                  ])
+                ])
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn buy_btn btn-sm mr-3",
+                on: {
+                  click: function($event) {
+                    return _vm.addQuanity(_vm.item)
+                  }
+                }
+              },
+              [_vm._v("\n              +\n            ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn trash_btn text-white",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.removeCartItem(_vm.item)
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-trash-alt" })]
+            ),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c("div", [
               _c(
                 "a",
                 {
@@ -39300,9 +39369,9 @@ var render = function() {
                 },
                 [_c("strong", [_vm._v("Ordina")])]
               )
-            ]
-          )
-        ])
+            ])
+          ]
+        )
       ])
     : _vm._e()
 }
