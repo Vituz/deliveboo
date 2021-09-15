@@ -38906,9 +38906,9 @@ var render = function() {
         "div",
         { staticClass: "rest_info col-sm-7 text-left p-3" },
         [
-          _c("h3", [_vm._v(_vm._s(_vm.restaurant.name))]),
+          _c("h4", [_vm._v(_vm._s(_vm.restaurant.name))]),
           _vm._v(" "),
-          _c("h5", [_vm._v(_vm._s(_vm.restaurant.address))]),
+          _c("h6", [_vm._v(_vm._s(_vm.restaurant.address))]),
           _vm._v(" "),
           _vm._l(_vm.restaurant.categories, function(category) {
             return _c("span", { key: category.id }, [

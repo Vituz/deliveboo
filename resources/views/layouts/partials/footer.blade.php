@@ -1,4 +1,4 @@
-<footer class="mt-3">
+<footer>
         <div class="container">
             <!-- TOP FOOTER -->
             <div class="top_footer d-flex flex-wrap ">
