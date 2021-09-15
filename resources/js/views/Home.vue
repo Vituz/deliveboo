@@ -13,7 +13,6 @@
       >
         <!-- <input type="hidden" name="pass_data">     -->
         <h2>{{ category.name }}</h2>
-        <h3>{{ category.users.length }}</h3>
       </div>
     </div>
 
@@ -98,6 +97,7 @@ export default {
       last_page: "",
       next_page: "",
       prev_page: "",
+
       total_page: [],
     };
   },
@@ -114,8 +114,15 @@ export default {
           this.next_page = resp.data[0].next_page_url;
           this.prev_page = resp.data[0].prev_page_url;
 
-          let n_page = resp.data[0].total;
+          // numero di record per pagina
+          let pagination = resp.data[0].per_page;
+
           this.total_page = [];
+          // numero di record caricati
+          let total_record = resp.data[0].total;
+
+          let n_page = Math.ceil(total_record / pagination);
+
           for (let i = 0; i < n_page; i++) {
             this.total_page.push(i + 1);
           }

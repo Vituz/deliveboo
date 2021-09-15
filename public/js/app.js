@@ -2085,7 +2085,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2115,9 +2114,13 @@ __webpack_require__.r(__webpack_exports__);
         _this.first_page = resp.data[0].first_page_url;
         _this.last_page = resp.data[0].last_page_url;
         _this.next_page = resp.data[0].next_page_url;
-        _this.prev_page = resp.data[0].prev_page_url;
-        var n_page = resp.data[0].total;
-        _this.total_page = [];
+        _this.prev_page = resp.data[0].prev_page_url; // numero di record per pagina
+
+        var pagination = resp.data[0].per_page;
+        _this.total_page = []; // numero di record caricati
+
+        var total_record = resp.data[0].total;
+        var n_page = Math.ceil(total_record / pagination);
 
         for (var i = 0; i < n_page; i++) {
           _this.total_page.push(i + 1);
@@ -38873,11 +38876,7 @@ var render = function() {
                 }
               }
             },
-            [
-              _c("h2", [_vm._v(_vm._s(category.name))]),
-              _vm._v(" "),
-              _c("h3", [_vm._v(_vm._s(category.users.length))])
-            ]
+            [_c("h2", [_vm._v(_vm._s(category.name))])]
           )
         }),
         0
