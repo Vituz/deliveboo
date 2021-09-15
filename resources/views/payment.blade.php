@@ -29,8 +29,10 @@
         <div class="container w-75 py-5 bt-drop-in-wrapper">
             @if (session('success_message'))
                 <div class="alert alert-success">
-                    {{ session('success_message') }}
+                    <p>{{ session('success_message') }}</p>
+                    <p>{!! Session::get("msg", '') !!}</p>
                 </div>
+               
                 <script>                   
                     sessionStorage.clear();
                     //console.log(window.sessionStorage);
@@ -46,43 +48,44 @@
                     </ul>
                 </div>
             @endif
+            
             <form action="{{ url('/checkout') }}" method="POST" id="payment-form" id="bt-dropin">
                     @csrf
                     
 
                     <div class="form-group">
                         <label for="name">Nome</label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <input type="text" class="form-control" id="name" name="name" maxlength=20 required>
                     </div>
                     <div class="form-group">
                         <label for="surname">Cognome</label>
-                        <input type="text" class="form-control" id="surname" name="surname">
+                        <input type="text" class="form-control" id="surname" name="surname" maxlength=20 required>
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Indirizzo Email</label>
-                        <input type="email" class="form-control" id="email" name="mail">
+                        <input type="email" class="form-control" id="email" name="mail" required>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="address">Indirizzo</label>
-                                <input type="text" class="form-control" id="address" name="address">
+                                <input type="text" class="form-control" id="address" name="address" required>
                             </div>
                         </div>
 
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="city">Città</label>
-                                <input type="text" class="form-control" id="city" name="city">
+                                <input type="text" class="form-control" id="city" name="city" required>
                             </div>
                         </div>
 
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="province">Provincia</label>
-                                <input type="text" class="form-control" id="province" name="province">
+                                <input type="text" class="form-control" id="province" name="province" required>
                             </div>
                         </div>
 
@@ -93,7 +96,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="phone">Numero di Telefono</label>
-                                <input type="text" class="form-control" id="phone" name="phone">
+                                <input type="tel" class="form-control" id="phone" name="phone" maxlength=13 required>
                             </div>
                         </div>
 
@@ -129,8 +132,8 @@
                     <input id="cart" name="cart" type="hidden" />
                     <input id="nonce" name="payment_method_nonce" type="hidden" />
 
-                    <button class="pay_btn text-white" type="submit"><span>Procedi al pagamento</span></button>
-                    <a class="btn btn-secondary" id="back" href="{{url('/')}}">Torna al carrello</a>
+                    <button class="btn buy_btn text-white" type="submit"><span>Procedi al pagamento</span></button>
+                    <a class="btn btn-secondary" id="back" href="{{url('/')}}">Indietro</a>
                 </form>
                     
                     
