@@ -59,11 +59,12 @@ class DishController extends Controller
             
             if ($request->hasFile('img')) {
                 $file_path=Storage::put('dish_images',$validatedData['img']);
-                $validatedData['img']=$file_path;}
+                $validatedData['img']=$file_path;
+            }
 
 
         // ddd($validatedData);
-
+        $validatedData['name'] = ucfirst($validatedData['name']);
 
         $validatedData['user_id'] = $current_user_id;
 
@@ -119,8 +120,10 @@ class DishController extends Controller
             if ($request->hasFile('img')) {
                 Storage::delete($dish->img);
                 $file_path=Storage::put('dish_images',$validatedData['img']);
-                $validatedData['img']=$file_path;}
+                $validatedData['img']=$file_path;
+            }
                 $validatedData['user_id']=$current_user_id;
+                $validatedData['name'] = ucfirst($validatedData['name']);
              
 
 

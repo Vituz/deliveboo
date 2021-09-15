@@ -9,9 +9,8 @@
     <table class="table table-striped table-inverse ">
         <thead class="thead-inverse">
             <tr>
-                <th>ID</th>
                 <th>Foto</th>
-                <th>Nome</th>
+                <th>Piatto</th>
                 <th>Visibilità</th>
                 <th>Opzioni</th>
             </tr>
@@ -21,7 +20,6 @@
             @foreach($dishes as $dish)
 
             <tr>
-                <td scope="row">{{$dish->id}}</td>
                 <td>
                     <img src="{{asset('storage/' . $dish->img)}}" width="200" height="150" alt="">
                 </td>

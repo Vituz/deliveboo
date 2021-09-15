@@ -254,9 +254,11 @@ export default {
     },
     mounted(){
       
-       if (this.contenutoArchiviato == null) {
-             this.contenutoArchiviato = [];
+       let carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+       if (carStored == null) {
+             carStored = [];
             }
+            sessionStorage.setItem("cartStored", JSON.stringify(carStored));
       const sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
         //console.log(sommaArchiviata);
          if (this.contenutoArchiviato) {
