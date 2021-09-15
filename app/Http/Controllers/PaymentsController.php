@@ -50,8 +50,8 @@ class PaymentsController extends Controller
             'amount' => $amount,
             'paymentMethodNonce' => $nonce,
             'customer' => [
-                'firstName' => 'Tony',
-                'lastName' => 'Stark',
+                'firstName' => $request->name,
+                'lastName' => $request->surname,
                 'email' => 'tony@avengers.com',
             ],
             'options' => [

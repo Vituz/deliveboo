@@ -81,9 +81,9 @@
                             <li class="nav-item nav-pills">
                                 <a class="nav-link {{Route::currentRouteName() == 'admin.orders.index' ? 'active': ''}}" href="{{route('admin.orders.index')}}"><i class="fas fa-newspaper mr-2"></i> Ordini</a>
                             </li>
-                            <li class="nav-item nav-pills">
-                                <a class="nav-link {{Route::currentRouteName() == '' ? 'active': ''}}" href=""><i class="fas fa-newspaper mr-2"></i> Statistiche</a>
-                            </li>
+                           <!--  <li class="nav-item nav-pills">
+                                <a class="nav-link {{Route::currentRouteName() == '' ? 'active': ''}}" disabled><i class="fas fa-newspaper mr-2"></i> Statistiche</a>
+                            </li> -->
 
                         </ul>
                     </aside>

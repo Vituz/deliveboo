@@ -79,8 +79,9 @@ export default {
       
 
       addItemToCart(restaurant, id,title, price) {       
-                          
-            if(this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
+               let carStored = JSON.parse(sessionStorage.getItem("cartStored"))
+               console.log(carStored, this.contenutoArchiviato);           
+            if(carStored != 0 && carStored[0].user_id != restaurant) {
             alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');             
             
             }          
@@ -93,16 +94,16 @@ export default {
               cart_item.quantity++
               this.total+=cart_item.item_price;
               this.updateQuantity();
-              
-                this.contenutoArchiviato.forEach(element => {
+              let carStored = JSON.parse(sessionStorage.getItem("cartStored"))
+               carStored.forEach(element => {
                   if(element.item_id == cart_item.item_id){
                     element.quantity++
                     
-                    sessionStorage.setItem("cartStored", JSON.stringify(this.contenutoArchiviato));
+                    sessionStorage.setItem("cartStored", JSON.stringify(carStored));
                    
                   }
+                console.log(carStored);
                 });
-                /* console.log(cartStored); */
 
               return
             }
@@ -120,7 +121,10 @@ export default {
                 item.item_name = title;
                 item.item_price = price;
                 this.cart.push(item);
-                sessionStorage.setItem("cartStored", JSON.stringify(this.cart));              
+                sessionStorage.setItem("cartStored", JSON.stringify(this.cart)); 
+
+                console.log(JSON.parse(sessionStorage.getItem("cartStored")));
+
                 this.total+=item.item_price;
                 this.updateQuantity() 
           
@@ -143,9 +147,9 @@ export default {
         
         this.removeItemOnce(this.cart, item)
         this.total-=item.item_price * item.quantity;
-        
-        this.removeCartItemStored(item,this.contenutoArchiviato)
-        sessionStorage.setItem("cartStored", JSON.stringify(this.contenutoArchiviato));
+        let cartStored = JSON.parse(sessionStorage.getItem("cartStored"))
+        this.removeCartItemStored(item,cartStored)
+        sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
        this.updateQuantity()
       },
        removeCartItemStored(item,cartStored) {
@@ -173,17 +177,18 @@ export default {
         addQuanity(item){
           item.quantity++;
           this.total+=item.item_price;
-          this.updateQuantity();
+          
 
-           let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-                cartStored.forEach(element => {
+           let carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+               carStored.forEach(element => {
                   if(element.item_id == item.item_id){
-                    element.quantity++
+                    element.quantity++;
                     
-                    sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
                    
                   }
                 });
+                sessionStorage.setItem("cartStored", JSON.stringify(carStored));
+                this.updateQuantity();
          
         },
         removeQuantity(item){
@@ -195,21 +200,22 @@ export default {
             this.total-=item.item_price;
            this.updateQuantity();
           //rimuovo dallo storage
-          
-                this.contenutoArchiviato.forEach(element => {
+           let carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+
+                carStored.forEach(element => {
                   if(element.item_id == item.item_id){
                     element.quantity--
                    
                     
                   }
-                    sessionStorage.setItem("cartStored", JSON.stringify(this.contenutoArchiviato));
+                    sessionStorage.setItem("cartStored", JSON.stringify(carStored));
                 });
 
           }else{
              this.removeCartItem(item,this.cart);
-              
-              this.removeCartItemStored(item,this.contenutoArchiviato)
-              sessionStorage.setItem("cartStored", JSON.stringify(this.contenutoArchiviato));
+              let carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+              this.removeCartItemStored(item,carStored)
+              sessionStorage.setItem("cartStored", JSON.stringify(carStored));
               //console.log(this.myStorage);
               
           }

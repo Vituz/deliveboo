@@ -18,24 +18,4 @@ main{
     min-height: 150px;
 }
 
-.category_card{
-    justify-content: center;
-    height: 5rem;
-    width:5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color:white;
-
-    border-radius: 50%;
-    box-shadow: 5px 5px 6px gray;
-    //background-image: url('https://www.frasimania.it/wp-content/uploads/2019/08/hashtag-cibo-food.jpg');
-    background-size: cover;
-    background-position: center;
-    &:hover{
-        height: 5.2rem;
-        width:5.2rem;
-        color:$orange;
-    }
-}
 

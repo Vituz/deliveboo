@@ -13,6 +13,10 @@
     //background-image: url({{category->img}});
     background-size: cover;
     background-position: center;
+    &.clicked {
+        //filter: invert(1);
+        box-shadow: 5px 5px 6px #f6993f;
+    }
     &:hover{
         height: 5.2rem;
         width:5.2rem;

@@ -2089,22 +2089,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.clicked_categories.length != 0) {
         this.restCall();
-      } // this.restaurants.forEach((rest) => {
-      // let categories_id = [];
-      // rest.categories.forEach((cat) => {
-      //   let cat_id = cat.id;
-      //   categories_id.push(cat_id);
-      // });
-      // let compare_cat = this.findRestaurant(
-      //   categories_id,
-      //   this.clicked_categories
-      // );
-      // if (compare_cat && !this.fill_restaurants.includes(rest)) {
-      //   this.fill_restaurants.push(rest);
-      // }
-      // });
-      //   $request = this.clicked_categories;
-
+      }
     },
     restaurantPage: function restaurantPage(index) {
       console.log(index);
@@ -2117,15 +2102,7 @@ __webpack_require__.r(__webpack_exports__);
       _this2.categories = resp.data.data;
     })["catch"](function (e) {
       console.error("API non caricata" + e);
-    }); // axios
-    //   .get("/api/restaurants")
-    //   .then((resp) => {
-    //     this.restaurants = resp.data.data;
-    //     // console.log(this.restaurants);
-    //   })
-    //   .catch((e) => {
-    //     console.error("API non caricata" + e);
-    //   });
+    });
   }
 });
 
@@ -2221,7 +2198,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     addItemToCart: function addItemToCart(restaurant, id, title, price) {
       var _this = this;
 
-      if (this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
+      var carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+      console.log(carStored, this.contenutoArchiviato);
+
+      if (carStored != 0 && carStored[0].user_id != restaurant) {
         alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');
       } else {
         var _loop = function _loop() {
@@ -2233,14 +2213,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
             _this.updateQuantity();
 
-            _this.contenutoArchiviato.forEach(function (element) {
+            var _carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+
+            _carStored.forEach(function (element) {
               if (element.item_id == cart_item.item_id) {
                 element.quantity++;
-                sessionStorage.setItem("cartStored", JSON.stringify(_this.contenutoArchiviato));
+                sessionStorage.setItem("cartStored", JSON.stringify(_carStored));
               }
-            });
-            /* console.log(cartStored); */
 
+              console.log(_carStored);
+            });
 
             return {
               v: void 0
@@ -2268,6 +2250,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         item.item_price = price;
         this.cart.push(item);
         sessionStorage.setItem("cartStored", JSON.stringify(this.cart));
+        console.log(JSON.parse(sessionStorage.getItem("cartStored")));
         this.total += item.item_price;
         this.updateQuantity();
       }
@@ -2284,8 +2267,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     removeCartItem: function removeCartItem(item) {
       this.removeItemOnce(this.cart, item);
       this.total -= item.item_price * item.quantity;
-      this.removeCartItemStored(item, this.contenutoArchiviato);
-      sessionStorage.setItem("cartStored", JSON.stringify(this.contenutoArchiviato));
+      var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
+      this.removeCartItemStored(item, cartStored);
+      sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
       this.updateQuantity();
     },
     removeCartItemStored: function removeCartItemStored(item, cartStored) {
@@ -2311,18 +2295,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     addQuanity: function addQuanity(item) {
       item.quantity++;
       this.total += item.item_price;
-      this.updateQuantity();
-      var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-      cartStored.forEach(function (element) {
+      var carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+      carStored.forEach(function (element) {
         if (element.item_id == item.item_id) {
           element.quantity++;
-          sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
         }
       });
+      sessionStorage.setItem("cartStored", JSON.stringify(carStored));
+      this.updateQuantity();
     },
     removeQuantity: function removeQuantity(item) {
-      var _this2 = this;
-
       //console.log(item);
       if (item.quantity != 1) {
         //rimuovo dal carrello
@@ -2330,17 +2312,21 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         this.total -= item.item_price;
         this.updateQuantity(); //rimuovo dallo storage
 
-        this.contenutoArchiviato.forEach(function (element) {
+        var carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+        carStored.forEach(function (element) {
           if (element.item_id == item.item_id) {
             element.quantity--;
           }
 
-          sessionStorage.setItem("cartStored", JSON.stringify(_this2.contenutoArchiviato));
+          sessionStorage.setItem("cartStored", JSON.stringify(carStored));
         });
       } else {
         this.removeCartItem(item, this.cart);
-        this.removeCartItemStored(item, this.contenutoArchiviato);
-        sessionStorage.setItem("cartStored", JSON.stringify(this.contenutoArchiviato)); //console.log(this.myStorage);
+
+        var _carStored2 = JSON.parse(sessionStorage.getItem("cartStored"));
+
+        this.removeCartItemStored(item, _carStored2);
+        sessionStorage.setItem("cartStored", JSON.stringify(_carStored2)); //console.log(this.myStorage);
       }
     },
     purchaseClicked: function purchaseClicked() {
@@ -2359,16 +2345,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   },
   created: function created() {
-    var _this3 = this;
+    var _this2 = this;
 
     axios.get('/api/restaurants/' + this.id).then(function (resp) {
-      _this3.restaurant = resp.data.data[0]; //console.log(resp.data.data[0].name);
+      _this2.restaurant = resp.data.data[0]; //console.log(resp.data.data[0].name);
     })["catch"](function (e) {
       console.error('API non caricata' + e);
     });
   },
   mounted: function mounted() {
-    var _this4 = this;
+    var _this3 = this;
 
     if (this.contenutoArchiviato == null) {
       this.contenutoArchiviato = [];
@@ -2378,7 +2364,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
     if (this.contenutoArchiviato) {
       this.contenutoArchiviato.forEach(function (elem) {
-        _this4.cart.push(elem);
+        _this3.cart.push(elem);
       });
       this.total = sommaArchiviata;
     }

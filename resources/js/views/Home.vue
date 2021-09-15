@@ -88,25 +88,6 @@ export default {
         this.restCall();
       }
 
-      // this.restaurants.forEach((rest) => {
-      // let categories_id = [];
-
-      // rest.categories.forEach((cat) => {
-      //   let cat_id = cat.id;
-      //   categories_id.push(cat_id);
-      // });
-
-      // let compare_cat = this.findRestaurant(
-      //   categories_id,
-      //   this.clicked_categories
-      // );
-
-      // if (compare_cat && !this.fill_restaurants.includes(rest)) {
-      //   this.fill_restaurants.push(rest);
-      // }
-      // });
-
-      //   $request = this.clicked_categories;
     },
 
     restaurantPage(index) {
@@ -124,15 +105,7 @@ export default {
         console.error("API non caricata" + e);
       });
 
-    // axios
-    //   .get("/api/restaurants")
-    //   .then((resp) => {
-    //     this.restaurants = resp.data.data;
-    //     // console.log(this.restaurants);
-    //   })
-    //   .catch((e) => {
-    //     console.error("API non caricata" + e);
-    //   });
+   
   },
 };
 </script>

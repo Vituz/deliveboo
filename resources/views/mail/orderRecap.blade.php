@@ -15,7 +15,7 @@
        <span><strong>Cliente:</strong></span>
        <div class="cliente d-flex flex-column ">
             <div>
-               <span> <strong> Nome: </strong>{{$data['name']}}</span> <span> Cognome: {{$data['surname']}}</span>
+               <span> <strong> Nome: </strong>{{$data['name']}}</span> <span> <strong>Cognome: </strong>{{$data['surname']}}</span>
             </div>
             
                 <span><strong>Indirizzo di consegna: </strong> {{$data['address']}}</span>
@@ -24,7 +24,7 @@
             <span><strong>Numero di Telefono: </strong> {{$data['phone']}}</span>
         
             <span> <strong>Email: </strong>{{$data['mail']}}</span>
-            <div class="dettagli_ordine mb-4">
+            <div class="dettagli_ordine my-4">
                 <h4>Lista piatti ordinati</h4>
                @foreach($cart as $dish)
                <div class="piatto">
