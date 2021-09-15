@@ -108,13 +108,14 @@ header {
 }
 
 .rest_card .rest_img {
-  width: 100%;
+  width: 155px;
   padding: 10px;
   transition: all 0.5s ease;
 }
 
 .rest_card .rest_img img {
   width: 100%;
+  height: 100%;
   border-radius: 5px;
 }
 
