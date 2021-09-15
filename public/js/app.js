@@ -2331,6 +2331,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["id"],
   data: function data() {
@@ -39294,13 +39295,19 @@ var render = function() {
                           staticClass: "wrapper col-xs-4 pl-2 align-self-center"
                         },
                         [
-                          _c("img", {
-                            staticClass: "img-fluid",
-                            attrs: {
-                              src: "http://127.0.0.1:8000/storage/" + dish.img,
-                              alt: ""
-                            }
-                          })
+                          dish.img != null
+                            ? _c("img", {
+                                staticClass: "img-fluid",
+                                attrs: {
+                                  src:
+                                    "http://127.0.0.1:8000/storage/" + dish.img,
+                                  alt: ""
+                                }
+                              })
+                            : _c("img", {
+                                staticClass: "img-fluid",
+                                attrs: { src: "/images/not-found.png", alt: "" }
+                              })
                         ]
                       ),
                       _vm._v(" "),
