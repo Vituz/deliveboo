@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $categories=['Italiano','Indiano','Africano','Cinese','Etnico','Pizzeria','Carne','Pesce','Vegetariano','Vegano','Sushi'];
+        $categories=['Italiano','Indiano','Americano','Cinese','Pizza','Giapponese','Panini','Hamburger'];
 
         foreach ($categories as $cat) {
             $new_cat= new Category();
