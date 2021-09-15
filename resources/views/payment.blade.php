@@ -128,8 +128,9 @@
                     <input id="user_id" name="user_id" type="hidden" />
                     <input id="cart" name="cart" type="hidden" />
                     <input id="nonce" name="payment_method_nonce" type="hidden" />
-                    <button class="btn btn-success" type="submit"><span>Procedi al pagamento</span></button>
-                    <a class="btn btn-warning" id="back" href="{{url('/')}}">Indietro</a>
+
+                    <button class="btn buy_btn text-white" type="submit"><span>Procedi al pagamento</span></button>
+                    <a class="btn btn-secondary" id="back" href="{{url('/')}}">Torna al carrello</a>
                 </form>
                     
                     

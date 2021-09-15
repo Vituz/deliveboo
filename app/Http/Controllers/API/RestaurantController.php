@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Category_Users;
-use App\CategoryUser;
-use App\CategoryUsers;
+
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RestaurantResource;
 use App\Restaurant;
 use App\User;
-use CreateCategoriesTable;
-use Facade\Ignition\QueryRecorder\Query;
-use Hamcrest\Core\HasToString;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator as PaginationPaginator;
 use Illuminate\Support\Facades\DB;
-use Spatie\QueryBuilder\QueryBuilder;
-use Symfony\Component\Console\Helper\TableSeparator;
+
 
 class RestaurantController extends Controller
 {
@@ -26,7 +23,6 @@ class RestaurantController extends Controller
      */
     public function index(Request $request)
     {
-
         $cat = $request->categories;
 
         $cat_exploded = explode(',', $cat);
@@ -43,6 +39,7 @@ class RestaurantController extends Controller
             WHERE cu.category_id
             IN (' . $cat . ') GROUP BY u.id';
 
+
         $restaurants = DB::select(DB::raw($sql_quey));
 
         $final = [];
@@ -54,9 +51,18 @@ class RestaurantController extends Controller
                 array_push($final, $restaurant);
             }
         }
-        // return  RestaurantResource::collection($final);
 
-        return ['data' => $final];
+        $data = $this->paginate($final);
+
+        return [$data];
+    }
+
+
+    public function paginate($items, $perPage = 10, $page = null, $options = [])
+    {
+        $page = $page ?: (PaginationPaginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 
     /**

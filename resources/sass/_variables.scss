@@ -1,12 +1,37 @@
 // Body
 $body-bg: #f8fafc;
 
+//Btns
+.buy_btn{
+    background: linear-gradient(82.72deg, #da5b00 0%, #f6993f 64.04%);
+    border:none;
+    &:hover{
+        background: linear-gradient(277.33deg, #da5b00 36.28%, #f6993f 100%);
+    }
+}
+.trash_btn{
+   background: linear-gradient(82.72deg, #ec5853 0%, #e3342f 64.04%); 
+   &:hover{
+    background: linear-gradient(277.33deg, #ec5853 36.28%, #e3342f 100%);
+    }
+}  
+.remove_btn{
+    background: linear-gradient(82.72deg, #ffa530 0%, #ffeb4a 64.04%);
+    &:hover{
+     background: linear-gradient(277.33deg, #ffa530 36.28%, #ffeb4a 100%);
+     }
+}
+
+
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: 'Nunito',
+sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 // Colors
+
+$buy_button:linear-gradient(82.72deg, #F4934C 0%, #E64850 64.04%);
 $blue: #3490dc;
 $indigo: #6574cd;
 $purple: #9561e2;
