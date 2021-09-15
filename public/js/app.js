@@ -2090,6 +2090,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
+=======
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+>>>>>>> f0701c578d607e6cb7f4062473b9a6e95aea0fbe
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -6978,7 +7020,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "nav .first[data-v-63cd6604] {\n  text-align: end;\n}\nnav .first button[data-v-63cd6604]:first-child {\n  border-radius: 1rem 0 0 1rem;\n  padding: 0.2rem 0.8rem;\n  height: 2rem;\n  margin-right: 0.1rem;\n}\nnav .first button[data-v-63cd6604]:last-child {\n  padding: 0.2rem 0.8rem;\n  height: 2rem;\n}\nnav .number[data-v-63cd6604] {\n  text-align: center;\n}\nnav .number > button[data-v-63cd6604] {\n  border: 1px solid cadetblue;\n  height: 2rem;\n  padding: 0.2rem 0.8rem;\n}\nnav .last[data-v-63cd6604] {\n  text-align: start;\n}\nnav .last button[data-v-63cd6604]:last-child {\n  border-radius: 0 1rem 1rem 0;\n  height: 2rem;\n  padding: 0.2rem 0.8rem;\n  margin-left: 0.1rem;\n}\nnav .last button[data-v-63cd6604]:first-child {\n  height: 2rem;\n  padding: 0.2rem 0.8rem;\n}\nnav .first > button[data-v-63cd6604],\nnav .last > button[data-v-63cd6604] {\n  background-color: transparent;\n  border: 1px solid grey;\n}\nnav .active[data-v-63cd6604] {\n  background-color: orange;\n  color: black;\n}\nnav .no_active[data-v-63cd6604] {\n  background-color: transparent;\n}\nnav .first[data-v-63cd6604],\nnav .number[data-v-63cd6604],\nnav .last[data-v-63cd6604] {\n  width: auto;\n}", ""]);
+exports.push([module.i, "nav .first[data-v-63cd6604] {\n  text-align: end;\n}\nnav .first button[data-v-63cd6604]:first-child {\n  border-radius: 1rem 0 0 1rem;\n  padding: 0.2rem 0.8rem;\n  height: 2rem;\n  margin-right: 0.1rem;\n}\nnav .first button[data-v-63cd6604]:last-child {\n  padding: 0.2rem 0.8rem;\n  height: 2rem;\n}\nnav .number[data-v-63cd6604] {\n  text-align: center;\n}\nnav .number > button[data-v-63cd6604] {\n  border: 1px solid cadetblue;\n  height: 2rem;\n  padding: 0.2rem 0.8rem;\n}\nnav .last[data-v-63cd6604] {\n  text-align: start;\n}\nnav .last button[data-v-63cd6604]:last-child {\n  border-radius: 0 1rem 1rem 0;\n  height: 2rem;\n  padding: 0.2rem 0.8rem;\n  margin-left: 0.1rem;\n}\nnav .last button[data-v-63cd6604]:first-child {\n  height: 2rem;\n  padding: 0.2rem 0.8rem;\n}\nnav .first > button[data-v-63cd6604],\nnav .last > button[data-v-63cd6604] {\n  background-color: transparent;\n  border: 1px solid grey;\n}\nnav .active[data-v-63cd6604] {\n  background-color: orange;\n  color: black;\n}\nnav .no_active[data-v-63cd6604] {\n  background-color: transparent;\n}\nnav .first[data-v-63cd6604],\nnav .number[data-v-63cd6604],\nnav .last[data-v-63cd6604] {\n  width: auto;\n}\n.contenuti_random[data-v-63cd6604] {\n  background-color: #ffeae4;\n  padding: 50px 0 80px;\n}\n.contenuti_random .card-custom .top_img[data-v-63cd6604] {\n  height: 200px;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}", ""]);
 
 // exports
 
@@ -38924,12 +38966,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: " " },
     [
       _c(
         "div",
         {
           staticClass:
-            "card_container d-flex flex-wrap justify-content-center text-center"
+            "card_container d-flex flex-wrap justify-content-center text-center py-4"
         },
         _vm._l(_vm.categories, function(category) {
           return _c(
@@ -38965,7 +39008,8 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "card_container d-flex flex-wrap justify-content-center"
+          staticClass:
+            "card_container d-flex flex-wrap justify-content-center py-4"
         },
         _vm._l(_vm.fill_restaurants, function(restaurant) {
           return _c("restaurant-section", {
@@ -38989,7 +39033,7 @@ var render = function() {
       _vm.fill_restaurants.length != 0
         ? _c(
             "nav",
-            { staticClass: "text-center d-flex justify-content-center" },
+            { staticClass: "text-center d-flex justify-content-center pb-3" },
             [
               _c("div", { staticClass: "first" }, [
                 _vm.first_page != "/?page=" + _vm.current_page
@@ -39081,12 +39125,131 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _c("router-view")
+      _c("router-view"),
+      _vm._v(" "),
+      _vm._m(0)
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "contenuti_random py-4" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("h2", { staticClass: " font-weight-bold mb-3" }, [
+          _vm._v("I tuoi piatti preferiti, consegnati da noi.")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row row-cols-1 row-cols-md-2 row-cols-lg-3 py-3" },
+          [
+            _c("div", { staticClass: "col card-custom" }, [
+              _c("img", {
+                staticClass: "top_img",
+                attrs: { src: "images/steak.jpg", alt: "" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "details mt-2" }, [
+                _c("h3", [_vm._v("Roadhouse")]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Ordina il tuo piatto preferito a casa tua da Roadhouse grazie alla consegna a domicilio di Delivebooh."
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col card-custom" }, [
+              _c("img", {
+                staticClass: "top_img",
+                attrs: { src: "images/images.jpg", alt: "" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "details mt-2" }, [
+                _c("h3", [_vm._v("Daruma Sushi")]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Ordina il tuo sushi preferito a casa tua da Daruma Sushi grazie alla consegna a domicilio di Delivebooh."
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col card-custom" }, [
+              _c("img", {
+                staticClass: "top_img",
+                attrs: { src: "images/hamburger.jpg", alt: "" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "details mt-2" }, [
+                _c("h3", [_vm._v("Old Wild West")]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Il menù potrebbe temporaneamente subire alcune variazioni di ingredienti. Per maggiori informazioni contattare il punto vendita o consultare la sezione “lista ingredienti ed allergeni”"
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col card-custom" }, [
+              _c("img", {
+                staticClass: "top_img",
+                attrs: { src: "images/gelato.jpg", alt: "" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "details mt-2" }, [
+                _c("h3", [_vm._v("Grom")]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Tutti i prodotti sono senza glutine. Sono realizzati senza aggiunta di aromi, coloranti o emulsionanti e creati scegliendo solo il meglio della natura. Innamorati del nostro gelato e gusta anche i nostri biscotti, le creme spalmabili e il nostro cioccolato"
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col card-custom" }, [
+              _c("img", {
+                staticClass: "top_img",
+                attrs: { src: "images/KFC.jpg", alt: "" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "details mt-2" }, [
+                _c("h3", [_vm._v("KFC")]),
+                _vm._v(" "),
+                _c("p")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col card-custom" }, [
+              _c("img", {
+                staticClass: "top_img",
+                attrs: { src: "images/ramen.jpg", alt: "" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "details mt-2" }, [
+                _c("h3", [_vm._v("Chashu Ramen")]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    "Prepariamo esclusivamente pasta fatta in casa con farina apposita per la creazione dello “Iekei Ramen” così da creare un connubio perfetto tra pasta e zuppa."
+                  )
+                ])
+              ])
+            ])
+          ]
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
