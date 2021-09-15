@@ -102,8 +102,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <h3>Totale Ordine €:</h3><span id="prezzo"></span>
-                                <input type="hidden" class="form-control" id="amount" name="amount" />
+                                <h3>Totale Ordine:</h3><span id="prezzo"></span>
+                                <input type="hidden" class="form-control" id="amount" name="amount" /> &euro;
                             </div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                     <input id="cart" name="cart" type="hidden" />
                     <input id="nonce" name="payment_method_nonce" type="hidden" />
 
-                    <button class="btn buy_btn text-white" type="submit"><span>Procedi al pagamento</span></button>
+                    <button class="pay_btn text-white" type="submit"><span>Procedi al pagamento</span></button>
                     <a class="btn btn-secondary" id="back" href="{{url('/')}}">Torna al carrello</a>
                 </form>
                     

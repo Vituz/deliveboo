@@ -8,6 +8,18 @@ a.buy_btn{
         transform: scale(0.9);
     }
 }
+.pay_btn{
+    border-radius: 3px;
+    height: 37px;
+    background-color:#32affc ;
+    //background: linear-gradient(82.72deg, #32affc 0%, #32affc 64.04%);
+    border:none;
+    transition: all 0.5s ease-out ;
+    &:hover{
+        background-color:#159cf0 ;
+        
+    }
+}
 .trash_btn{
     background-color: #ec5853;
     width: 30px;

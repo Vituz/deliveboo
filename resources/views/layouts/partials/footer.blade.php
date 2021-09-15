@@ -8,7 +8,7 @@
                             <h2>Scopri DeliveBooh</h2>
                         </li>                       
                         <li>
-                            <a href="{{route('register')}}">Aggiungi un ristorante<i class="fas fa-arrow-circle-right arrow"></i></a>
+                            <a href="{{route('register')}}">Diventa nostro partner<i class="fas fa-arrow-circle-right arrow"></i></a>
                         </li>
                         <li>
                             <a href="{{route('login')}}">Il mio profilo<i class="fas fa-arrow-circle-right arrow"></i></a>

@@ -22,10 +22,6 @@ return [
             'href' => 'user.investors'
         ],
         [
-            'text' => 'Diventa nostro partner',
-            'href' => 'user.about'
-        ],
-        [
             'text' => 'Categorie principali',
             'href' => 'user.categories'
         ],
