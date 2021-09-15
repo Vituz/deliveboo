@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
                 ->onDelete('set null');
             $table->string('ui_name', 15);
             $table->string('ui_surname', 15);
-            $table->string('ui_email', 80)->unique();
+            $table->string('ui_email', 80);
             $table->string('ui_address', 80);
             $table->string('ui_phone_number', 20);
             $table->decimal('amount', 5, 2);
