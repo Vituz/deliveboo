@@ -2085,6 +2085,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2276,12 +2281,66 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['id'],
+  props: ["id"],
   data: function data() {
     return {
       restaurant: null,
-      url: '',
+      url: "",
       cart: [],
       total: 0,
       myStorage: window.sessionStorage,
@@ -2296,7 +2355,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       console.log(carStored, this.contenutoArchiviato);
 
       if (carStored != 0 && carStored[0].user_id != restaurant) {
-        alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');
+        alert("concludi l'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine");
       } else {
         var _loop = function _loop() {
           var cart_item = _this.cart[i];
@@ -2425,11 +2484,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     },
     purchaseClicked: function purchaseClicked() {
       if (this.cart.length !== 0) {
-        this.url = '/payment';
+        this.url = "/payment";
         this.cart = [];
         this.total = 0;
       } else {
-        alert('Non hai aggiunto nulla al tuo ordine');
+        alert("Non hai aggiunto nulla al tuo ordine");
         return;
       }
     },
@@ -2441,19 +2500,22 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   created: function created() {
     var _this2 = this;
 
-    axios.get('/api/restaurants/' + this.id).then(function (resp) {
+    axios.get("/api/restaurants/" + this.id).then(function (resp) {
       _this2.restaurant = resp.data.data[0]; //console.log(resp.data.data[0].name);
     })["catch"](function (e) {
-      console.error('API non caricata' + e);
+      console.error("API non caricata" + e);
     });
   },
   mounted: function mounted() {
     var _this3 = this;
 
-    if (this.contenutoArchiviato == null) {
-      this.contenutoArchiviato = [];
+    var carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+
+    if (carStored == null) {
+      carStored = [];
     }
 
+    sessionStorage.setItem("cartStored", JSON.stringify(carStored));
     var sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored")); //console.log(sommaArchiviata);
 
     if (this.contenutoArchiviato) {
@@ -38898,18 +38960,27 @@ var render = function() {
             "div",
             {
               key: category.id,
-              staticClass: "category_card border border-primary rounded m-2",
+              staticClass: "category_card",
               class: _vm.clicked_categories.includes(category.id)
                 ? "clicked"
                 : "",
-              staticStyle: { width: "10rem" },
               on: {
                 click: function($event) {
                   return _vm.filterRestaurants(category.id)
                 }
               }
             },
-            [_c("h2", [_vm._v(_vm._s(category.name))])]
+            [
+              _c("div", { staticClass: "card_image" }, [
+                _c("img", { attrs: { src: category.img, alt: "" } })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card_title" }, [
+                _c("i", { staticClass: "fas fa-check" }),
+                _vm._v(" "),
+                _c("h2", [_vm._v(_vm._s(category.name))])
+              ])
+            ]
           )
         }),
         0
@@ -39062,7 +39133,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.restaurant
-    ? _c("div", { staticClass: " single_rest container" }, [
+    ? _c("div", { staticClass: "single_rest container" }, [
         _c("div", { staticClass: "details d-flex col-sm-12" }, [
           _c(
             "div",
@@ -39092,7 +39163,7 @@ var render = function() {
         _c("div", { staticClass: "d-flex flex-wrap" }, [
           _c(
             "div",
-            { staticClass: "dishes d-flex flex-wrap mt-0 col-md-8 " },
+            { staticClass: "dishes d-flex flex-wrap mt-0 col-md-8" },
             _vm._l(_vm.restaurant.dishes, function(dish) {
               return dish.visibility
                 ? _c(
@@ -39145,7 +39216,7 @@ var render = function() {
                             "div",
                             {
                               staticClass:
-                                "mt-3  shop_btn buy_btn text-white d-flex justify-content-center align-items-center ",
+                                "\n              mt-3\n              shop_btn\n              buy_btn\n              text-white\n              d-flex\n              justify-content-center\n              align-items-center\n            ",
                               attrs: { type: "button" },
                               on: {
                                 click: function($event) {
@@ -39220,14 +39291,14 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "btn remove_btn btn-sm mr-3 ",
+                                staticClass: "btn remove_btn btn-sm mr-3",
                                 on: {
                                   click: function($event) {
                                     return _vm.removeQuantity(item)
                                   }
                                 }
                               },
-                              [_vm._v("-")]
+                              [_vm._v("\n              -\n            ")]
                             ),
                             _vm._v(" "),
                             _c(
@@ -39235,20 +39306,26 @@ var render = function() {
                               {
                                 staticClass: "quantity mr-3 bg-light py-1 px-2"
                               },
-                              [_vm._v(_vm._s(item.quantity))]
+                              [
+                                _vm._v(
+                                  "\n              " +
+                                    _vm._s(item.quantity) +
+                                    "\n            "
+                                )
+                              ]
                             ),
                             _vm._v(" "),
                             _c(
                               "button",
                               {
-                                staticClass: "btn buy_btn btn-sm mr-3 ",
+                                staticClass: "btn buy_btn btn-sm mr-3",
                                 on: {
                                   click: function($event) {
                                     return _vm.addQuanity(item)
                                   }
                                 }
                               },
-                              [_vm._v("+")]
+                              [_vm._v("\n              +\n            ")]
                             ),
                             _vm._v(" "),
                             _c(
