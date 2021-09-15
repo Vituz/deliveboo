@@ -81,7 +81,7 @@ export default {
       addItemToCart(restaurant, id,title, price) {       
                let carStored = JSON.parse(sessionStorage.getItem("cartStored"))
                console.log(carStored, this.contenutoArchiviato);           
-            if(carStored != 0 && carStored[0].user_id != restaurant) {
+            if(carStored.length != 0 && carStored[0].user_id != restaurant) {
             alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');             
             
             }          
@@ -252,10 +252,12 @@ export default {
             })
     },
     mounted(){
-      
-       if (this.contenutoArchiviato == null) {
-             this.contenutoArchiviato = [];
+      let carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+       if (carStored == null) {
+             carStored = [];
             }
+            sessionStorage.setItem("cartStored", JSON.stringify(carStored));
+
       const sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
         //console.log(sommaArchiviata);
          if (this.contenutoArchiviato) {

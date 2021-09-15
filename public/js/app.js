@@ -2201,7 +2201,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       var carStored = JSON.parse(sessionStorage.getItem("cartStored"));
       console.log(carStored, this.contenutoArchiviato);
 
-      if (carStored != 0 && carStored[0].user_id != restaurant) {
+      if (carStored.length != 0 && carStored[0].user_id != restaurant) {
         alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');
       } else {
         var _loop = function _loop() {
@@ -2356,10 +2356,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   mounted: function mounted() {
     var _this3 = this;
 
-    if (this.contenutoArchiviato == null) {
-      this.contenutoArchiviato = [];
+    var carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+
+    if (carStored == null) {
+      carStored = [];
     }
 
+    sessionStorage.setItem("cartStored", JSON.stringify(carStored));
     var sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored")); //console.log(sommaArchiviata);
 
     if (this.contenutoArchiviato) {
