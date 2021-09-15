@@ -57,8 +57,8 @@
 
             <div class="jumbo_text p-5">
                 
-                <h1 class="display-2"> <strong>Deliveboo</strong> </h1>
-                <h2 class="display-4">Mangia cosa, dove e quando vuoi tu.</h2>
+                <h1 class="display-3"> <strong>Deliveboo</strong> </h1>
+                <h2 class="display-5">Mangia cosa, dove e quando vuoi tu.</h2>
             
             </div>
         

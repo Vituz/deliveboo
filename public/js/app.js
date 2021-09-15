@@ -38947,7 +38947,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: " " },
+    {},
     [
       _c(
         "div",
@@ -39253,7 +39253,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.restaurant
-    ? _c("div", { staticClass: "single_rest container" }, [
+    ? _c("div", { staticClass: "single_rest container mb-4" }, [
         _c("div", { staticClass: "details d-flex col-sm-12" }, [
           _c(
             "div",
