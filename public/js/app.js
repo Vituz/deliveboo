@@ -38906,9 +38906,9 @@ var render = function() {
         "div",
         { staticClass: "rest_info col-sm-7 text-left p-3" },
         [
-          _c("h3", [_vm._v(_vm._s(_vm.restaurant.name))]),
+          _c("h4", [_vm._v(_vm._s(_vm.restaurant.name))]),
           _vm._v(" "),
-          _c("h5", [_vm._v(_vm._s(_vm.restaurant.address))]),
+          _c("h6", [_vm._v(_vm._s(_vm.restaurant.address))]),
           _vm._v(" "),
           _vm._l(_vm.restaurant.categories, function(category) {
             return _c("span", { key: category.id }, [
@@ -55323,8 +55323,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

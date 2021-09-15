@@ -7,8 +7,8 @@
     </div>
 
     <div class="rest_info col-sm-7 text-left p-3">
-        <h3>{{restaurant.name}}</h3>
-        <h5>{{restaurant.address}}</h5>
+        <h4>{{restaurant.name}}</h4>
+        <h6>{{restaurant.address}}</h6>
         <span v-for="category in restaurant.categories" :key="category.id">
             -{{category.name}}
         </span>
