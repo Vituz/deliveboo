@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class=" ">
     <div
-      class="card_container d-flex flex-wrap justify-content-center text-center"
+      class="card_container d-flex flex-wrap justify-content-center text-center py-4"
     >
       <div
         class="category_card border border-primary rounded m-2"
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="card_container d-flex flex-wrap justify-content-center">
+    <div class="card_container d-flex flex-wrap justify-content-center py-4">
       <restaurant-section
         class="restaurant_card"
         v-for="restaurant in fill_restaurants"
@@ -31,7 +31,7 @@
     <!-- Pagination buttons -->
     <nav
       v-if="fill_restaurants.length != 0"
-      class="text-center d-flex justify-content-center"
+      class="text-center d-flex justify-content-center pb-3"
     >
       <div class="first">
         <!-- First Page -->
@@ -77,7 +77,51 @@
     </nav>
 
     <router-view />
+    <section class="contenuti_random py-4">
+      <div class="container">
+        <h2 class=" font-weight-bold mb-3">I tuoi piatti preferiti, consegnati da noi.</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 py-3">
+            <div class="col card-custom">
+              <img class="top_img" src="images/steak.jpg" alt="">
+              <div class="details mt-2">
+                <h3>Roadhouse</h3>
+                <p>Ordina il tuo piatto preferito a casa tua da Roadhouse grazie alla consegna a domicilio di Delivebooh.</p>
+              </div>
+            </div>
+            <div class="col card-custom"> <img class="top_img" src="images/images.jpg" alt="">
+              <div class="details mt-2">
+                <h3>Daruma Sushi</h3>
+                <p>Ordina il tuo sushi preferito a casa tua da Daruma Sushi grazie alla consegna a domicilio di Delivebooh.</p>
+              </div></div>
+            <div class="col card-custom"> <img class="top_img" src="images/hamburger.jpg" alt="">
+              <div class="details mt-2">
+                <h3>Old Wild West</h3>
+                <p>Il menù potrebbe temporaneamente subire alcune variazioni di ingredienti. Per maggiori informazioni contattare il punto vendita o consultare la sezione “lista ingredienti ed allergeni”</p>
+              </div></div>
+            <div class="col card-custom"> <img class="top_img" src="images/gelato.jpg" alt="">
+              <div class="details mt-2">
+                <h3>Grom</h3>
+                <p>Tutti i prodotti sono senza glutine. Sono realizzati senza aggiunta di aromi, coloranti o emulsionanti e creati scegliendo solo il meglio della natura. Innamorati del nostro gelato e gusta anche i nostri biscotti, le creme spalmabili e il nostro cioccolato</p>
+              </div>
+            </div>
+             <div class="col card-custom"> <img class="top_img" src="images/KFC.jpg" alt="">
+              <div class="details mt-2">
+                <h3>KFC</h3>
+                <p></p>
+              </div>
+            </div>
+             <div class="col card-custom"> <img class="top_img" src="images/ramen.jpg" alt="">
+              <div class="details mt-2">
+                <h3>Chashu Ramen</h3>
+                <p>Prepariamo esclusivamente pasta fatta in casa con farina apposita per la creazione dello “Iekei Ramen” così da creare un connubio perfetto tra pasta e zuppa.</p>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </section>
   </div>
+  
 </template>
 
 <script>
@@ -272,5 +316,17 @@ nav {
   .last {
     width: auto;
   }
+}
+.contenuti_random{
+      background-color: #ffeae4;
+    padding: 50px 0 80px;
+    .card-custom{
+
+      .top_img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+      }
+    }
 }
 </style>
