@@ -24,36 +24,36 @@
                   <p class="m-0">{{dish.description}}</p>
                   <p class="m-0">Ingredienti: {{dish.ingredients}}</p>
                   <p class="m-0">Prezzo: {{dish.price}} &euro;</p>
-                  <div class="mt-3  shop_btn buy_btn text-white d-flex justify-content-center align-items-center " @click="addItemToCart(dish.user_id, dish.id, dish.name, dish.price)" type="button"><i class="fas fa-shopping-cart"></i></div>
+                  <div class="mt-3  shop_btn buy_btn text-white d-flex justify-content-center align-items-center " @click="addItemToCart(dish.user_id, dish.id, dish.name, dish.price)" type="button"><i class="fas fa-plus"></i></div>
                 </div>
             </div>                
         </div>
 
         <div class="d-flex flex-column content-section col-md-4 cart">
               <h2 class="section-header">Il tuo ordine</h2>
-              <div class="d-flex flex-column cart-items border border-success p-2 mb-2">
+              <div class="d-flex flex-column cart-items p-2 mb-2">
                   <div class="cart-row" v-for="item in cart" :key="item.id">
                       <div class="cart-item cart-column mb-2">
                           <span class="cart-item-title text-uppercase">{{item.item_name}}</span>
                           <span class="cart-price cart-column text-align-right">{{item.item_price}} €</span>
                       </div>
                       <div class="cart-quantity cart-column d-flex align-items-center mb-2">
-                        <button class="btn remove_btn btn-sm mr-3 " @click="removeQuantity(item)">-</button>
+                        <button class="remove_btn btn-sm mr-3 text-white" @click="removeQuantity(item)">-</button>
                         <div class="quantity mr-3 bg-light py-1 px-2">{{item.quantity}}</div>
                         <!-- <div class="add_btn btn  btn-sm mr-3" @click="addQuanity(item)">+</div> -->
-                        <button class="btn buy_btn btn-sm mr-3 " @click="addQuanity(item)">+</button>
-                        <button class="btn trash_btn text-white" @click="removeCartItem(item)" type="button"><i class="fas fa-trash-alt"></i></button>
+                        <button class=" add_btn btn-sm mr-3 text-white" @click="addQuanity(item)">+</button>
+                        <button class="trash_btn text-white" @click="removeCartItem(item)" type="button"><i class="fas fa-trash-alt"></i></button>
                       </div>
                         <hr>
                   </div>
                   
                   <div class="cart-total align-self-end">
-                      <strong class="cart-total-title text-success">Totale</strong>
+                      <strong class="cart-total-title ">Totale</strong>
                       <span class="cart-total-price">€ {{total}}</span>
                   </div>
               </div>
 
-               <a :href="url" class="btn buy_btn btn-purchase text-uppercase text-white" @click="purchaseClicked()" type="button"> <strong>Ordina</strong> </a>
+               <a :href="url" class="btn buy_btn  btn-purchase text-uppercase text-white" @click="purchaseClicked()" type="button"> <strong>Ordina</strong> </a>
               
         </div>
       
@@ -82,7 +82,7 @@ export default {
       addItemToCart(restaurant, id,title, price) {       
                let carStored = JSON.parse(sessionStorage.getItem("cartStored"))
                console.log(carStored, this.contenutoArchiviato);           
-            if(carStored != 0 && carStored[0].user_id != restaurant) {
+            if(carStored.length != 0 && carStored[0].user_id != restaurant) {
             alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');             
             
             }          
@@ -253,10 +253,11 @@ export default {
             })
     },
     mounted(){
-      
-       if (this.contenutoArchiviato == null) {
-             this.contenutoArchiviato = [];
-            }
+      let carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+       if (carStored == null) {
+            carStored = [];
+          }
+          sessionStorage.setItem("cartStored", JSON.stringify(carStored));
       const sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
         //console.log(sommaArchiviata);
          if (this.contenutoArchiviato) {
@@ -269,12 +270,4 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>
-
-
-
-
 

@@ -90,20 +90,18 @@
         height: 100%;
         /* display: none; */
         border: 1px 1px 1px 0 solid black; 
-        .shop_btn{
-            width:35px;
-            height:35px; 
-            background-color: #38c172;
-            color:white;
-            border-radius: 50%;
-            justify-content: center;
-            position: absolute;
-            bottom:10px;
-            right:10px;
-        }
     }
 }
+/* CART BORDER */
+.cart{
+    .cart-items{
 
+        border: 1px solid #32affc;
+    }
+    .cart-total-title{
+        color:#32affc;
+    }
+}
 
 @media only screen and (max-width: 600px) {
     
@@ -208,7 +206,6 @@
                 position: absolute;
                 bottom: 55px;
                 border-radius: 5px;
-                
                 border-radius: 5px;
             }
     

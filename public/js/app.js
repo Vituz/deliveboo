@@ -2295,7 +2295,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       var carStored = JSON.parse(sessionStorage.getItem("cartStored"));
       console.log(carStored, this.contenutoArchiviato);
 
-      if (carStored != 0 && carStored[0].user_id != restaurant) {
+      if (carStored.length != 0 && carStored[0].user_id != restaurant) {
         alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');
       } else {
         var _loop = function _loop() {
@@ -2450,10 +2450,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   mounted: function mounted() {
     var _this3 = this;
 
-    if (this.contenutoArchiviato == null) {
-      this.contenutoArchiviato = [];
+    var carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+
+    if (carStored == null) {
+      carStored = [];
     }
 
+    sessionStorage.setItem("cartStored", JSON.stringify(carStored));
     var sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored")); //console.log(sommaArchiviata);
 
     if (this.contenutoArchiviato) {
@@ -39158,7 +39161,7 @@ var render = function() {
                                 }
                               }
                             },
-                            [_c("i", { staticClass: "fas fa-shopping-cart" })]
+                            [_c("i", { staticClass: "fas fa-plus" })]
                           )
                         ]
                       )
@@ -39179,10 +39182,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                {
-                  staticClass:
-                    "d-flex flex-column cart-items border border-success p-2 mb-2"
-                },
+                { staticClass: "d-flex flex-column cart-items p-2 mb-2" },
                 [
                   _vm._l(_vm.cart, function(item) {
                     return _c(
@@ -39220,7 +39220,8 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "btn remove_btn btn-sm mr-3 ",
+                                staticClass:
+                                  "remove_btn btn-sm mr-3 text-white",
                                 on: {
                                   click: function($event) {
                                     return _vm.removeQuantity(item)
@@ -39241,7 +39242,7 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "btn buy_btn btn-sm mr-3 ",
+                                staticClass: " add_btn btn-sm mr-3 text-white",
                                 on: {
                                   click: function($event) {
                                     return _vm.addQuanity(item)
@@ -39254,7 +39255,7 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "btn trash_btn text-white",
+                                staticClass: "trash_btn text-white",
                                 attrs: { type: "button" },
                                 on: {
                                   click: function($event) {
@@ -39273,11 +39274,9 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("div", { staticClass: "cart-total align-self-end" }, [
-                    _c(
-                      "strong",
-                      { staticClass: "cart-total-title text-success" },
-                      [_vm._v("Totale")]
-                    ),
+                    _c("strong", { staticClass: "cart-total-title " }, [
+                      _vm._v("Totale")
+                    ]),
                     _vm._v(" "),
                     _c("span", { staticClass: "cart-total-price" }, [
                       _vm._v("€ " + _vm._s(_vm.total))
@@ -39291,7 +39290,7 @@ var render = function() {
                 "a",
                 {
                   staticClass:
-                    "btn buy_btn btn-purchase text-uppercase text-white",
+                    "btn buy_btn  btn-purchase text-uppercase text-white",
                   attrs: { href: _vm.url, type: "button" },
                   on: {
                     click: function($event) {
@@ -55121,8 +55120,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
