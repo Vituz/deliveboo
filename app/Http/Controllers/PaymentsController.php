@@ -94,7 +94,8 @@ class PaymentsController extends Controller
             Mail::to($restaurantMail)
             ->cc($request->mail)
             ->send(new OrderMail($mail, $cart,$restaurantName));
-            return back()->with('success_message', 'La transazione è avvenuta con successo. ID transazione: '. $transaction->id);
+            session()->flash('msg', ' Una mail di riepilogo è stata inviata alla tua casella di posta');
+            return back()->with('success_message', 'La transazione è avvenuta con successo. ID transazione: '. $transaction->id );
         } else {
             $errorString = "";
     
