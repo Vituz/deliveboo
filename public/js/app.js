@@ -38910,7 +38910,9 @@ var render = function() {
           _vm._v(" "),
           _vm._l(_vm.restaurant.categories, function(category) {
             return _c("span", { key: category.id }, [
-              _vm._v("\n            -" + _vm._s(category.name) + "\n        ")
+              _vm._v(
+                "\r\n            -" + _vm._s(category.name) + "\r\n        "
+              )
             ])
           })
         ],
@@ -39292,12 +39294,12 @@ var render = function() {
                       _c(
                         "div",
                         {
-                          staticClass: "wrapper col-xs-4 pl-2 align-self-center"
+                          staticClass:
+                            "wrapper col-sm-4 col-md-4 pl-2 align-self-center"
                         },
                         [
                           dish.img != null
                             ? _c("img", {
-                                staticClass: "img-fluid",
                                 attrs: {
                                   src:
                                     "http://127.0.0.1:8000/storage/" + dish.img,
@@ -39315,7 +39317,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "right_card d-flex flex-column col-md-8 p-3"
+                            "right_card d-flex flex-column col-sm-8 col-md-8 p-3"
                         },
                         [
                           _c("h4", { staticClass: "m-0" }, [
@@ -55319,18 +55321,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 __webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\MAMP\htdocs\php\deliveboo\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\php\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> b4087a4b07a896159a58d5bf1eb77c8e58f36c17
-=======
-__webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /mnt/c/Users/andre/Dev/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
->>>>>>> 81001c0bf8061e21d2b768c0a21cf4e63345df91
 
 
 /***/ })
