@@ -1,5 +1,5 @@
 <template>
-  <div class="single_rest container" v-if="restaurant">
+  <div class="single_rest container mb-4" v-if="restaurant">
     <div class="details d-flex col-sm-12">
       <div class="single_rest_img_wrapper pt-4 align-self-center">
         <img
