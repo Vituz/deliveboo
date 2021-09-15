@@ -54,9 +54,7 @@
         margin-bottom: 30px;
     }
 
-    .clicked {
-        background-color: cornflowerblue;
-    }
+   
 
     .rest_card {
         width: 15rem;

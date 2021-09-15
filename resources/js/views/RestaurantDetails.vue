@@ -72,7 +72,7 @@ export default {
             cart:[],
             total:0,
             myStorage:window.sessionStorage,
-            contenutoArchiviato:JSON.parse(sessionStorage.getItem("cartStored"))
+            contenutoArchiviato: JSON.parse(sessionStorage.getItem("cartStored"))
           }
     },
     methods:{
@@ -80,8 +80,9 @@ export default {
       
 
       addItemToCart(restaurant, id,title, price) {       
-                          
-            if(this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
+               let carStored = JSON.parse(sessionStorage.getItem("cartStored"))
+               console.log(carStored, this.contenutoArchiviato);           
+            if(carStored != 0 && carStored[0].user_id != restaurant) {
             alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');             
             
             }          
@@ -94,16 +95,16 @@ export default {
               cart_item.quantity++
               this.total+=cart_item.item_price;
               this.updateQuantity();
-              let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-                cartStored.forEach(element => {
+              let carStored = JSON.parse(sessionStorage.getItem("cartStored"))
+               carStored.forEach(element => {
                   if(element.item_id == cart_item.item_id){
                     element.quantity++
                     
-                    sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
+                    sessionStorage.setItem("cartStored", JSON.stringify(carStored));
                    
                   }
+                console.log(carStored);
                 });
-                console.log(cartStored);
 
               return
             }
@@ -121,7 +122,10 @@ export default {
                 item.item_name = title;
                 item.item_price = price;
                 this.cart.push(item);
-                sessionStorage.setItem("cartStored", JSON.stringify(this.cart));              
+                sessionStorage.setItem("cartStored", JSON.stringify(this.cart)); 
+
+                console.log(JSON.parse(sessionStorage.getItem("cartStored")));
+
                 this.total+=item.item_price;
                 this.updateQuantity() 
           
@@ -144,7 +148,7 @@ export default {
         
         this.removeItemOnce(this.cart, item)
         this.total-=item.item_price * item.quantity;
-        let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
+        let cartStored = JSON.parse(sessionStorage.getItem("cartStored"))
         this.removeCartItemStored(item,cartStored)
         sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
        this.updateQuantity()
@@ -160,8 +164,9 @@ export default {
               }
               if (cartStored.lenght == 1) {
                
+                //console.log(this.contenutoArchiviato);
                 
-                return this.contenutoArchiviato = [];
+                return cartStored = [];
               }
               return cartStored;
           }
@@ -173,44 +178,46 @@ export default {
         addQuanity(item){
           item.quantity++;
           this.total+=item.item_price;
-          this.updateQuantity();
+          
 
-           let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-                cartStored.forEach(element => {
+           let carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+               carStored.forEach(element => {
                   if(element.item_id == item.item_id){
-                    element.quantity++
+                    element.quantity++;
                     
-                    sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
                    
                   }
                 });
+                sessionStorage.setItem("cartStored", JSON.stringify(carStored));
+                this.updateQuantity();
          
         },
         removeQuantity(item){
           //console.log(item);
-          if (item.quantity!=1) {
+          if (item.quantity != 1) {
 
             //rimuovo dal carrello
             item.quantity--;
             this.total-=item.item_price;
            this.updateQuantity();
           //rimuovo dallo storage
-          let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-                cartStored.forEach(element => {
+           let carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+
+                carStored.forEach(element => {
                   if(element.item_id == item.item_id){
                     element.quantity--
                    
-                    sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
                     
                   }
+                    sessionStorage.setItem("cartStored", JSON.stringify(carStored));
                 });
 
           }else{
              this.removeCartItem(item,this.cart);
-              let cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-              this.removeCartItemStored(item,cartStored)
-              sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
-              console.log(this.myStorage);
+              let carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+              this.removeCartItemStored(item,carStored)
+              sessionStorage.setItem("cartStored", JSON.stringify(carStored));
+              //console.log(this.myStorage);
               
           }
         },
@@ -246,11 +253,12 @@ export default {
             })
     },
     mounted(){
+      
        if (this.contenutoArchiviato == null) {
              this.contenutoArchiviato = [];
             }
       const sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
-        /* console.log(this.contenutoArchiviato); */
+        //console.log(sommaArchiviata);
          if (this.contenutoArchiviato) {
            this.contenutoArchiviato.forEach(elem => {
              this.cart.push(elem);

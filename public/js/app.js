@@ -2089,22 +2089,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.clicked_categories.length != 0) {
         this.restCall();
-      } // this.restaurants.forEach((rest) => {
-      // let categories_id = [];
-      // rest.categories.forEach((cat) => {
-      //   let cat_id = cat.id;
-      //   categories_id.push(cat_id);
-      // });
-      // let compare_cat = this.findRestaurant(
-      //   categories_id,
-      //   this.clicked_categories
-      // );
-      // if (compare_cat && !this.fill_restaurants.includes(rest)) {
-      //   this.fill_restaurants.push(rest);
-      // }
-      // });
-      //   $request = this.clicked_categories;
-
+      }
     },
     restaurantPage: function restaurantPage(index) {
       console.log(index);
@@ -2117,15 +2102,7 @@ __webpack_require__.r(__webpack_exports__);
       _this2.categories = resp.data.data;
     })["catch"](function (e) {
       console.error("API non caricata" + e);
-    }); // axios
-    //   .get("/api/restaurants")
-    //   .then((resp) => {
-    //     this.restaurants = resp.data.data;
-    //     // console.log(this.restaurants);
-    //   })
-    //   .catch((e) => {
-    //     console.error("API non caricata" + e);
-    //   });
+    });
   }
 });
 
@@ -2222,7 +2199,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     addItemToCart: function addItemToCart(restaurant, id, title, price) {
       var _this = this;
 
-      if (this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
+      var carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+      console.log(carStored, this.contenutoArchiviato);
+
+      if (carStored != 0 && carStored[0].user_id != restaurant) {
         alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');
       } else {
         var _loop = function _loop() {
@@ -2234,14 +2214,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
             _this.updateQuantity();
 
-            var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-            cartStored.forEach(function (element) {
+            var _carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+
+            _carStored.forEach(function (element) {
               if (element.item_id == cart_item.item_id) {
                 element.quantity++;
-                sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
+                sessionStorage.setItem("cartStored", JSON.stringify(_carStored));
               }
+
+              console.log(_carStored);
             });
-            console.log(cartStored);
+
             return {
               v: void 0
             };
@@ -2268,6 +2251,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         item.item_price = price;
         this.cart.push(item);
         sessionStorage.setItem("cartStored", JSON.stringify(this.cart));
+        console.log(JSON.parse(sessionStorage.getItem("cartStored")));
         this.total += item.item_price;
         this.updateQuantity();
       }
@@ -2301,7 +2285,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           }
 
           if (cartStored.lenght == 1) {
-            return this.contenutoArchiviato = [];
+            //console.log(this.contenutoArchiviato);
+            return cartStored = [];
           }
 
           return cartStored;
@@ -2311,14 +2296,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     addQuanity: function addQuanity(item) {
       item.quantity++;
       this.total += item.item_price;
-      this.updateQuantity();
-      var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-      cartStored.forEach(function (element) {
+      var carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+      carStored.forEach(function (element) {
         if (element.item_id == item.item_id) {
           element.quantity++;
-          sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
         }
       });
+      sessionStorage.setItem("cartStored", JSON.stringify(carStored));
+      this.updateQuantity();
     },
     removeQuantity: function removeQuantity(item) {
       //console.log(item);
@@ -2328,21 +2313,21 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         this.total -= item.item_price;
         this.updateQuantity(); //rimuovo dallo storage
 
-        var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-        cartStored.forEach(function (element) {
+        var carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+        carStored.forEach(function (element) {
           if (element.item_id == item.item_id) {
             element.quantity--;
-            sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
           }
+
+          sessionStorage.setItem("cartStored", JSON.stringify(carStored));
         });
       } else {
         this.removeCartItem(item, this.cart);
 
-        var _cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
+        var _carStored2 = JSON.parse(sessionStorage.getItem("cartStored"));
 
-        this.removeCartItemStored(item, _cartStored);
-        sessionStorage.setItem("cartStored", JSON.stringify(_cartStored));
-        console.log(this.myStorage);
+        this.removeCartItemStored(item, _carStored2);
+        sessionStorage.setItem("cartStored", JSON.stringify(_carStored2)); //console.log(this.myStorage);
       }
     },
     purchaseClicked: function purchaseClicked() {
@@ -2376,8 +2361,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       this.contenutoArchiviato = [];
     }
 
-    var sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
-    /* console.log(this.contenutoArchiviato); */
+    var sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored")); //console.log(sommaArchiviata);
 
     if (this.contenutoArchiviato) {
       this.contenutoArchiviato.forEach(function (elem) {

@@ -85,6 +85,10 @@ header {
   background-position: center;
 }
 
+.category_card.clicked {
+  box-shadow: 5px 5px 6px #f6993f;
+}
+
 .category_card:hover {
   height: 5.2rem;
   width: 5.2rem;
