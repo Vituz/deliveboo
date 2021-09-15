@@ -43,7 +43,7 @@
         margin-top: 100px;
         position: relative;
         .single_rest_img_wrapper{
-                padding-right: 30px;
+            padding-right: 30px;
             width: 100%;
             height: 300px;
             margin-bottom: 30px;
@@ -98,8 +98,8 @@
 }
 /* CART BORDER */
 .cart{
+    position: relative;
     .cart-items{
-
         border: 1px solid #32affc;
     }
     .cart-total-title{

@@ -203,6 +203,10 @@ header {
 
 /* CART BORDER */
 
+.cart {
+  position: relative;
+}
+
 .cart .cart-items {
   border: 1px solid #32affc;
 }
@@ -469,8 +473,8 @@ a.buy_btn:hover {
   border-radius: 3px;
   padding: 6px;
   border: none;
-  margin-left: 53%;
-  /* background: linear-gradient(82.72deg, #ec5853 0%, #e3342f 64.04%);  */
+  position: absolute;
+  right: 25px;
   transition: all 0.5s ease-out;
 }
 
