@@ -18,7 +18,8 @@
       <div class="dishes d-flex flex-wrap mt-0 col-md-8">
         <div class="pl-0 dish_card d-flex flex-start" v-if="dish.visibility" v-for="dish in restaurant.dishes" :key="dish.id">
           <div class="wrapper col-xs-4 pl-2 align-self-center">
-            <img class="img-fluid" :src="'http://127.0.0.1:8000/storage/' + dish.img" alt=""/>
+            <img v-if="dish.img != null" class="img-fluid" :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
+            <img v-else class="img-fluid" src="/images/not-found.png"  alt=""/>
           </div>
 
           <div class="right_card d-flex flex-column col-md-8 p-3">
