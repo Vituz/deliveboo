@@ -6,6 +6,7 @@
     box-shadow: 10px 10px 10px gray;  
     .rest_img{
         width:100%;
+        padding:10px;
         img{
             width:100%;
             border-radius: 5px;
@@ -19,7 +20,7 @@
     }
     &:hover{
         box-shadow: 15px 15px 15px gray;      
-        background-color:rgb(219, 219, 219);
+        background-color:#f2f2f2;
         .rest_img{
             -webkit-transform: rotate(-10deg);
             -moz-transform: rotate(-10deg);
@@ -34,7 +35,7 @@
     
 }
 
-/* VIEW RISTORANTE SINGOLO */
+/* RESTAURANT DETAILS */
 .single_rest{
     .details{
         width: 100%;
@@ -92,7 +93,7 @@
         .shop_btn{
             width:35px;
             height:35px; 
-            background-color: green;
+            background-color: #38c172;
             color:white;
             border-radius: 50%;
             justify-content: center;
@@ -103,17 +104,18 @@
     }
 }
 
+
 @media only screen and (max-width: 600px) {
     
     .rest_card{
         h1{
-            font-size: 13px;
+            font-size: 12px;
         }
         h4{
-           font-size: 13px;
+           font-size: 12px;
         }
         span{
-            font-size: 11px;
+            font-size: 10px;
         }
 
     }
@@ -122,31 +124,38 @@
         .details{
             margin-top: 0;
             .single_rest_img_wrapper {
-                width: 200px;
-                height: 180px;
+                width: 80%;
+                height: 100px;
+                margin:auto;
                 margin-bottom: 30px;
                 position: absolute;
                 bottom: 100px;
                 border-radius: 5px;
+                img{
+                    width: 95%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 5px;
+                }
             }
         }
         .dishes{
 
             .right_card{
                 h4{
-                    font-size: 14px;
+                    font-size: 12px;
                 }
                 p{
-                    font-size: 11px;
+                    font-size: 10px;
                 }
             }
-            .dish{
+            .dish_card{
                 .wrapper{
                     padding-right: 0;
                     img{
                         padding-right: 0;
-                        width: 80%;
-                        height: 60%;
+                        width: 100%;
+                        height: 100%;
                     }
                 }
             }
@@ -154,6 +163,37 @@
     }
 }
 
+@media only screen and (max-width:600px){
+    .single_rest {
+        .details{
+            
+            .single_rest_img_wrapper {
+                
+                width: 200px;
+                width: 100%;
+                height: 180px;
+                margin-bottom: 70px;
+                position: absolute;
+                bottom: 35px;
+                border-radius: 5px;
+                
+                border-radius: 5px;
+            }
+    
+        }
+    }
+    .dishes{
+        .right_card{
+            .shop_btn{
+                width:25px;
+                height:25px; 
+                font-size: 10px;
+                /* background-color: $buy_btn; */
+            }
+        }
+    }
+    
+}
 
 @media only screen and (max-width:800px){
     .single_rest {
@@ -177,26 +217,27 @@
     .dishes{
         .dish_card{
             padding-right: 0;
-            
-            min-height: 140px;
-            max-height: 140px;
+            min-height: 145px;
+            max-height: 145px;
 
         }
         .right_card{
             h4{
-                font-size: 15px;
+                font-size: 14px;
             }
             p{
-                font-size: 12px;
+                font-size: 11px;
             }
         }
     }
     .card_container{
-        .rest_card{
+        .restaurant_card{
             min-height: 140px;
             .rest_img{
+                height: 100%;
+                width:100%;
                 img{
-                    width:90%;
+                    width:100%;
                     height: 90%;
                 }
             }
@@ -209,13 +250,35 @@
 
 @media only screen and (max-width:1200px){
     .restaurant_card{
-        min-height: 150px;
-        max-height: 150px;
+        min-height: 130px;
+        max-height: 130px;
         h1{
+            font-weight: 600;
             font-size: 18px;
         }
         h4{
             font-size: 15px;
+        }
+        .rest_img{
+            img{
+                width:100%;
+                height: 80%;
+                margin:auto;
+                
+            }
+        }
+    }
+    .single_rest{
+        .details{
+
+            .single_rest_img_wrapper{
+                width: 100%;
+                height: 230px;
+                margin-bottom: 30px;
+                position: absolute;
+                bottom: 54px;
+                border-radius: 5px
+            }
         }
     }
 }

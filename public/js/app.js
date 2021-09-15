@@ -2210,6 +2210,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+//
+//
+//
 //
 //
 //
@@ -2276,6 +2281,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       restaurant: null,
+      url: '',
       cart: [],
       total: 0,
       myStorage: window.sessionStorage,
@@ -2284,18 +2290,45 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addItemToCart: function addItemToCart(restaurant, id, title, price) {
-      if (this.contenutoArchiviato.length != 0 && this.contenutoArchiviato[0].user_id != restaurant) {
+      var _this = this;
+
+      var carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+      console.log(carStored, this.contenutoArchiviato);
+
+      if (carStored != 0 && carStored[0].user_id != restaurant) {
         alert('concludi l\'ordine dal ristorante precedente o svuota il carrello prima di procedere a un nuovo ordine');
       } else {
-        console.log(this.contenutoArchiviato);
-
-        for (var i = 0; i < this.cart.length; i++) {
-          var cart_item = this.cart[i];
+        var _loop = function _loop() {
+          var cart_item = _this.cart[i];
 
           if (cart_item.item_id == id) {
-            alert('questo piatto è già presente nel carrello');
-            return;
+            cart_item.quantity++;
+            _this.total += cart_item.item_price;
+
+            _this.updateQuantity();
+
+            var _carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+
+            _carStored.forEach(function (element) {
+              if (element.item_id == cart_item.item_id) {
+                element.quantity++;
+                sessionStorage.setItem("cartStored", JSON.stringify(_carStored));
+              }
+
+              console.log(_carStored);
+            });
+
+            return {
+              v: void 0
+            };
           }
+        };
+
+        //console.log(this.contenutoArchiviato);
+        for (var i = 0; i < this.cart.length; i++) {
+          var _ret = _loop();
+
+          if (_typeof(_ret) === "object") return _ret.v;
         }
 
         var item = {
@@ -2311,11 +2344,10 @@ __webpack_require__.r(__webpack_exports__);
         item.item_price = price;
         this.cart.push(item);
         sessionStorage.setItem("cartStored", JSON.stringify(this.cart));
+        console.log(JSON.parse(sessionStorage.getItem("cartStored")));
         this.total += item.item_price;
         this.updateQuantity();
       }
-
-      console.log(this.contenutoArchiviato);
     },
     removeItemOnce: function removeItemOnce(arr, value) {
       var index = arr.indexOf(value);
@@ -2346,7 +2378,8 @@ __webpack_require__.r(__webpack_exports__);
           }
 
           if (cartStored.lenght == 1) {
-            return this.contenutoArchiviato = [];
+            //console.log(this.contenutoArchiviato);
+            return cartStored = [];
           }
 
           return cartStored;
@@ -2356,14 +2389,14 @@ __webpack_require__.r(__webpack_exports__);
     addQuanity: function addQuanity(item) {
       item.quantity++;
       this.total += item.item_price;
-      this.updateQuantity();
-      var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-      cartStored.forEach(function (element) {
+      var carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+      carStored.forEach(function (element) {
         if (element.item_id == item.item_id) {
           element.quantity++;
-          sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
         }
       });
+      sessionStorage.setItem("cartStored", JSON.stringify(carStored));
+      this.updateQuantity();
     },
     removeQuantity: function removeQuantity(item) {
       //console.log(item);
@@ -2373,30 +2406,31 @@ __webpack_require__.r(__webpack_exports__);
         this.total -= item.item_price;
         this.updateQuantity(); //rimuovo dallo storage
 
-        var cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
-        cartStored.forEach(function (element) {
+        var carStored = JSON.parse(sessionStorage.getItem("cartStored"));
+        carStored.forEach(function (element) {
           if (element.item_id == item.item_id) {
             element.quantity--;
-            sessionStorage.setItem("cartStored", JSON.stringify(cartStored));
           }
+
+          sessionStorage.setItem("cartStored", JSON.stringify(carStored));
         });
       } else {
         this.removeCartItem(item, this.cart);
 
-        var _cartStored = JSON.parse(sessionStorage.getItem("cartStored"));
+        var _carStored2 = JSON.parse(sessionStorage.getItem("cartStored"));
 
-        this.removeCartItemStored(item, _cartStored);
-        sessionStorage.setItem("cartStored", JSON.stringify(_cartStored));
-        console.log(this.myStorage);
+        this.removeCartItemStored(item, _carStored2);
+        sessionStorage.setItem("cartStored", JSON.stringify(_carStored2)); //console.log(this.myStorage);
       }
     },
     purchaseClicked: function purchaseClicked() {
       if (this.cart.length !== 0) {
-        alert('Grazie per aver effettuato l\'ordine');
+        this.url = '/payment';
         this.cart = [];
         this.total = 0;
       } else {
         alert('Non hai aggiunto nulla al tuo ordine');
+        return;
       }
     },
     updateQuantity: function updateQuantity() {
@@ -2405,27 +2439,26 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get('/api/restaurants/' + this.id).then(function (resp) {
-      _this.restaurant = resp.data.data[0]; //console.log(resp.data.data[0].name);
+      _this2.restaurant = resp.data.data[0]; //console.log(resp.data.data[0].name);
     })["catch"](function (e) {
       console.error('API non caricata' + e);
     });
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this3 = this;
 
     if (this.contenutoArchiviato == null) {
       this.contenutoArchiviato = [];
     }
 
-    var sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored"));
-    /* console.log(this.contenutoArchiviato); */
+    var sommaArchiviata = JSON.parse(sessionStorage.getItem("sumStored")); //console.log(sommaArchiviata);
 
     if (this.contenutoArchiviato) {
       this.contenutoArchiviato.forEach(function (elem) {
-        _this2.cart.push(elem);
+        _this3.cart.push(elem);
       });
       this.total = sommaArchiviata;
     }
@@ -38798,7 +38831,7 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "rest_img d-flex col-md-5 p-3" }, [
+      _c("div", { staticClass: "rest_img d-flex col-xs-5 pl-2" }, [
         _c("img", {
           staticClass: "align-self-center",
           attrs: {
@@ -39066,16 +39099,17 @@ var render = function() {
                     "div",
                     {
                       key: dish.id,
-                      staticClass: "dish pl-0 dish_card d-flex flex-start"
+                      staticClass: "pl-0 dish_card d-flex flex-start"
                     },
                     [
                       _c(
                         "div",
                         {
-                          staticClass: "wrapper col-sm-4 pl-2 align-self-center"
+                          staticClass: "wrapper col-xs-4 pl-2 align-self-center"
                         },
                         [
                           _c("img", {
+                            staticClass: "img-fluid",
                             attrs: {
                               src: "http://127.0.0.1:8000/storage/" + dish.img,
                               alt: ""
@@ -39088,7 +39122,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "right_card d-flex flex-column justify-content-center col-sm-8 p-2"
+                            "right_card d-flex flex-column col-sm-8 p-3"
                         },
                         [
                           _c("h4", { staticClass: "m-0" }, [
@@ -39111,7 +39145,7 @@ var render = function() {
                             "div",
                             {
                               staticClass:
-                                "mt-3  shop_btn d-flex justify-content-center align-items-center ",
+                                "mt-3  shop_btn buy_btn text-white d-flex justify-content-center align-items-center ",
                               attrs: { type: "button" },
                               on: {
                                 click: function($event) {
@@ -39186,7 +39220,7 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "btn btn-warning btn-sm mr-3",
+                                staticClass: "btn remove_btn btn-sm mr-3 ",
                                 on: {
                                   click: function($event) {
                                     return _vm.removeQuantity(item)
@@ -39207,7 +39241,7 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "btn btn-success btn-sm mr-3",
+                                staticClass: "btn buy_btn btn-sm mr-3 ",
                                 on: {
                                   click: function($event) {
                                     return _vm.addQuanity(item)
@@ -39220,7 +39254,7 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "btn btn-danger",
+                                staticClass: "btn trash_btn text-white",
                                 attrs: { type: "button" },
                                 on: {
                                   click: function($event) {
@@ -39256,8 +39290,9 @@ var render = function() {
               _c(
                 "a",
                 {
-                  staticClass: "btn btn-success btn-purchase text-uppercase",
-                  attrs: { href: "/payment", type: "button" },
+                  staticClass:
+                    "btn buy_btn btn-purchase text-uppercase text-white",
+                  attrs: { href: _vm.url, type: "button" },
                   on: {
                     click: function($event) {
                       return _vm.purchaseClicked()

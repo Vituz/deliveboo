@@ -186,6 +186,7 @@ export default {
       if (this.clicked_categories.length != 0) {
         this.restCall();
       }
+
     },
 
     restaurantPage(index) {
@@ -202,6 +203,7 @@ export default {
       .catch((e) => {
         console.error("API non caricata" + e);
       });
+
   },
 };
 </script>
