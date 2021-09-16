@@ -11,7 +11,7 @@ a.buy_btn{
 .pay_btn{
     border-radius: 3px;
     height: 37px;
-    background-color:#32affc ;
+    background-color:#32affc !important;
     //background: linear-gradient(82.72deg, #32affc 0%, #32affc 64.04%);
     border:none;
     transition: all 0.5s ease-out ;
@@ -27,8 +27,8 @@ a.buy_btn{
     border-radius: 3px;
     padding: 6px;
     border:none;
-    margin-left: 53%;
-   /* background: linear-gradient(82.72deg, #ec5853 0%, #e3342f 64.04%);  */
+    position:absolute;
+    right:25px;
    transition: all 0.5s ease-out ;
    &:hover{
     

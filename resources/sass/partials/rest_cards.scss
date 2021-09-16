@@ -5,10 +5,11 @@
     word-wrap: break-word;
     box-shadow: 10px 10px 10px gray;  
     .rest_img{
-        width:100%;
+        width:155px;
         padding:10px;
         img{
             width:100%;
+            height:100%;
             border-radius: 5px;
             
         }   
@@ -42,6 +43,7 @@
         margin-top: 100px;
         position: relative;
         .single_rest_img_wrapper{
+            padding-right: 30px;
             width: 100%;
             height: 300px;
             margin-bottom: 30px;
@@ -52,6 +54,7 @@
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                border:10px solid $orange;
                 border-radius: 5px;
             }
         }
@@ -74,9 +77,11 @@
         height: 80%;
         img{
             height: 100%;
-            width:100%;
+            width:155px;
+            object-fit: cover;
             z-index: 2;
             border-radius: 5px;
+
         } 
     }    
     &:hover{
@@ -94,8 +99,8 @@
 }
 /* CART BORDER */
 .cart{
+    position: relative;
     .cart-items{
-
         border: 1px solid #32affc;
     }
     .cart-total-title{
@@ -103,17 +108,21 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+
+
+
+
+@media only screen and (min-width: 576px ) and (max-width: 767px) {
     
     .rest_card{
         h1{
-            font-size: 12px;
+            font-size: 14px;
         }
         h4{
-           font-size: 12px;
+           font-size: 14px;
         }
         span{
-            font-size: 10px;
+            font-size: 12px;
         }
 
     }
@@ -122,15 +131,17 @@
         .details{
             margin-top: 0;
             .single_rest_img_wrapper {
-                width: 80%;
-                height: 100px;
+                width: 100%;
+                height: 170px;
                 margin:auto;
+                padding-right: 30px;
                 margin-bottom: 30px;
                 position: absolute;
-                bottom: 100px;
+                bottom: 60px;
                 border-radius: 5px;
                 img{
-                    width: 95%;
+                    width:100%;
+                    
                     height: 100%;
                     object-fit: cover;
                     border-radius: 5px;
@@ -141,19 +152,28 @@
 
             .right_card{
                 h4{
-                    font-size: 12px;
+                    font-size: 15px;
                 }
                 p{
+                    font-size: 12px;
+                }
+                .shop_btn{
+                    width:25px;
+                    height:25px; 
                     font-size: 10px;
+                    /* background-color: $buy_btn; */
                 }
             }
             .dish_card{
+                height: 130px;
                 .wrapper{
                     padding-right: 0;
                     img{
                         padding-right: 0;
-                        width: 100%;
+                        /* width: 100%; */
                         height: 100%;
+                        
+                       
                     }
                 }
             }
@@ -161,54 +181,25 @@
     }
 }
 
-@media only screen and (max-width:600px){
-    .single_rest {
-        .details{
-            
-            .single_rest_img_wrapper {
-                
-                width: 200px;
-                width: 100%;
-                height: 180px;
-                margin-bottom: 70px;
-                position: absolute;
-                bottom: 35px;
-                border-radius: 5px;
-                
-                border-radius: 5px;
-            }
-    
-        }
-    }
-    .dishes{
-        .right_card{
-            .shop_btn{
-                width:25px;
-                height:25px; 
-                font-size: 10px;
-                /* background-color: $buy_btn; */
-            }
-        }
-    }
-    
-}
 
-@media only screen and (max-width:800px){
+@media only screen and (min-width:768px) and (max-width:991px){
     .single_rest {
         .details{
             
             .single_rest_img_wrapper {
                 
-                width: 200px;
                 width: 100%;
-                height: 180px;
+                height: 250px;
                 margin-bottom: 70px;
                 position: absolute;
-                bottom: 55px;
+                bottom: 45px;
                 border-radius: 5px;
                 border-radius: 5px;
             }
-    
+            h2{
+                padding-top: 0 !important;
+
+            }
         }
     }
     .dishes{
@@ -216,14 +207,24 @@
             padding-right: 0;
             min-height: 145px;
             max-height: 145px;
-
-        }
-        .right_card{
-            h4{
-                font-size: 14px;
+            .wrapper{
+                width:135px;
+                img{
+                    width:100%;
+                }
             }
-            p{
-                font-size: 11px;
+            .right_card{
+                h4{
+                    font-size: 14px;
+                }
+                p{
+                    font-size: 11px;
+                }
+                .shop_btn{
+                    width:25px;
+                    height:25px; 
+                    font-size: 10px;
+                }
             }
         }
     }
@@ -245,37 +246,3 @@
 
 
 
-@media only screen and (max-width:1200px){
-    .restaurant_card{
-        min-height: 130px;
-        max-height: 130px;
-        h1{
-            font-weight: 600;
-            font-size: 18px;
-        }
-        h4{
-            font-size: 15px;
-        }
-        .rest_img{
-            img{
-                width:100%;
-                height: 80%;
-                margin:auto;
-                
-            }
-        }
-    }
-    .single_rest{
-        .details{
-
-            .single_rest_img_wrapper{
-                width: 100%;
-                height: 230px;
-                margin-bottom: 30px;
-                position: absolute;
-                bottom: 54px;
-                border-radius: 5px
-            }
-        }
-    }
-}

@@ -16,9 +16,10 @@ header {
 }
 
 .jumbo {
-  position: relative;
-  margin-bottom: 2rem;
   height: 100%;
+  margin-bottom: 2rem;
+  border-bottom: 10px solid #f6993f;
+  position: relative;
   z-index: 0;
 }
 
@@ -35,13 +36,33 @@ header {
   background-color: #f6993f;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 576px) and (max-width: 767px) {
   .jumbo_text h1 {
-    font-size: 55px;
+    font-size: 45px;
   }
 
   .jumbo_text h2 {
-    font-size: 45px;
+    font-size: 35px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .jumbo_text h1 {
+    font-size: 50px;
+  }
+
+  .jumbo_text h2 {
+    font-size: 40px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .jumbo_text h1 {
+    font-size: 50px;
+  }
+
+  .jumbo_text h2 {
+    font-size: 40px;
   }
 }
 
@@ -55,6 +76,10 @@ header {
   border-radius: 0.6rem;
   box-shadow: 2px 1px 12px 2px lightgrey;
   border: 1px solid orange;
+}
+
+.category_card:hover {
+  cursor: pointer;
 }
 
 .category_card .card_image {
@@ -108,13 +133,14 @@ header {
 }
 
 .rest_card .rest_img {
-  width: 100%;
+  width: 155px;
   padding: 10px;
   transition: all 0.5s ease;
 }
 
 .rest_card .rest_img img {
   width: 100%;
+  height: 100%;
   border-radius: 5px;
 }
 
@@ -140,6 +166,7 @@ header {
 }
 
 .single_rest .details .single_rest_img_wrapper {
+  padding-right: 30px;
   width: 100%;
   height: 300px;
   margin-bottom: 30px;
@@ -153,6 +180,7 @@ header {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  border: 10px solid #f6993f;
   border-radius: 5px;
 }
 
@@ -175,7 +203,9 @@ header {
 
 .dish_card .wrapper img {
   height: 100%;
-  width: 100%;
+  width: 155px;
+  -o-object-fit: cover;
+     object-fit: cover;
   z-index: 2;
   border-radius: 5px;
 }
@@ -195,6 +225,10 @@ header {
 
 /* CART BORDER */
 
+.cart {
+  position: relative;
+}
+
 .cart .cart-items {
   border: 1px solid #32affc;
 }
@@ -203,17 +237,17 @@ header {
   color: #32affc;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 576px) and (max-width: 767px) {
   .rest_card h1 {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .rest_card h4 {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .rest_card span {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .single_rest {
@@ -225,17 +259,18 @@ header {
   }
 
   .single_rest .details .single_rest_img_wrapper {
-    width: 80%;
-    height: 100px;
+    width: 100%;
+    height: 170px;
     margin: auto;
+    padding-right: 30px;
     margin-bottom: 30px;
     position: absolute;
-    bottom: 100px;
+    bottom: 60px;
     border-radius: 5px;
   }
 
   .single_rest .details .single_rest_img_wrapper img {
-    width: 95%;
+    width: 100%;
     height: 100%;
     -o-object-fit: cover;
        object-fit: cover;
@@ -243,11 +278,22 @@ header {
   }
 
   .single_rest .dishes .right_card h4 {
-    font-size: 12px;
+    font-size: 15px;
   }
 
   .single_rest .dishes .right_card p {
+    font-size: 12px;
+  }
+
+  .single_rest .dishes .right_card .shop_btn {
+    width: 25px;
+    height: 25px;
     font-size: 10px;
+    /* background-color: $buy_btn; */
+  }
+
+  .single_rest .dishes .dish_card {
+    height: 130px;
   }
 
   .single_rest .dishes .dish_card .wrapper {
@@ -256,41 +302,24 @@ header {
 
   .single_rest .dishes .dish_card .wrapper img {
     padding-right: 0;
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
   .single_rest .details .single_rest_img_wrapper {
-    width: 200px;
     width: 100%;
-    height: 180px;
+    height: 250px;
     margin-bottom: 70px;
     position: absolute;
-    bottom: 35px;
+    bottom: 45px;
     border-radius: 5px;
     border-radius: 5px;
   }
 
-  .dishes .right_card .shop_btn {
-    width: 25px;
-    height: 25px;
-    font-size: 10px;
-    /* background-color: $buy_btn; */
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  .single_rest .details .single_rest_img_wrapper {
-    width: 200px;
-    width: 100%;
-    height: 180px;
-    margin-bottom: 70px;
-    position: absolute;
-    bottom: 55px;
-    border-radius: 5px;
-    border-radius: 5px;
+  .single_rest .details h2 {
+    padding-top: 0 !important;
   }
 
   .dishes .dish_card {
@@ -299,12 +328,26 @@ header {
     max-height: 145px;
   }
 
-  .dishes .right_card h4 {
+  .dishes .dish_card .wrapper {
+    width: 135px;
+  }
+
+  .dishes .dish_card .wrapper img {
+    width: 100%;
+  }
+
+  .dishes .dish_card .right_card h4 {
     font-size: 14px;
   }
 
-  .dishes .right_card p {
+  .dishes .dish_card .right_card p {
     font-size: 11px;
+  }
+
+  .dishes .dish_card .right_card .shop_btn {
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
   }
 
   .card_container .restaurant_card {
@@ -319,37 +362,6 @@ header {
   .card_container .restaurant_card .rest_img img {
     width: 100%;
     height: 90%;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .restaurant_card {
-    min-height: 130px;
-    max-height: 130px;
-  }
-
-  .restaurant_card h1 {
-    font-weight: 600;
-    font-size: 18px;
-  }
-
-  .restaurant_card h4 {
-    font-size: 15px;
-  }
-
-  .restaurant_card .rest_img img {
-    width: 100%;
-    height: 80%;
-    margin: auto;
-  }
-
-  .single_rest .details .single_rest_img_wrapper {
-    width: 100%;
-    height: 230px;
-    margin-bottom: 30px;
-    position: absolute;
-    bottom: 54px;
-    border-radius: 5px;
   }
 }
 
@@ -467,7 +479,7 @@ a.buy_btn:hover {
 .pay_btn {
   border-radius: 3px;
   height: 37px;
-  background-color: #32affc;
+  background-color: #32affc !important;
   border: none;
   transition: all 0.5s ease-out;
 }
@@ -483,8 +495,8 @@ a.buy_btn:hover {
   border-radius: 3px;
   padding: 6px;
   border: none;
-  margin-left: 53%;
-  /* background: linear-gradient(82.72deg, #ec5853 0%, #e3342f 64.04%);  */
+  position: absolute;
+  right: 25px;
   transition: all 0.5s ease-out;
 }
 

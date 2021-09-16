@@ -1,7 +1,7 @@
 <footer>
         <div class="container">
             <!-- TOP FOOTER -->
-            <div class="top_footer d-flex flex-wrap">
+            <div class="top_footer d-flex flex-wrap ">
                 <div class="col-md-4 p-0">                                      
                     <ul class="pl-0">
                         <li>

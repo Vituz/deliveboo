@@ -1,5 +1,5 @@
 <template>
-  <div class=" ">
+  <div class="">
     <div
       class="card_container d-flex flex-wrap justify-content-center text-center py-4"
     >

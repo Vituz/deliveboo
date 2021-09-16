@@ -1,5 +1,5 @@
 <template>
-  <div class="single_rest container" v-if="restaurant">
+  <div class="single_rest container mb-4" v-if="restaurant">
     <div class="details d-flex col-sm-12">
       <div class="single_rest_img_wrapper pt-4 align-self-center">
         <img
@@ -17,11 +17,12 @@
     <div class="d-flex flex-wrap">
       <div class="dishes d-flex flex-wrap mt-0 col-md-8">
         <div class="pl-0 dish_card d-flex flex-start" v-if="dish.visibility" v-for="dish in restaurant.dishes" :key="dish.id">
-          <div class="wrapper col-xs-4 pl-2 align-self-center">
-            <img class="img-fluid" :src="'http://127.0.0.1:8000/storage/' + dish.img" alt=""/>
+          <div class="wrapper col-sm-4 col-md-4 pl-2 align-self-center">
+            <img v-if="dish.img != null" class="" :src="'http://127.0.0.1:8000/storage/' + dish.img" alt="">
+            <img v-else class="img-fluid" src="/images/not-found.png"  alt=""/>
           </div>
 
-          <div class="right_card d-flex flex-column col-md-8 p-3">
+          <div class="right_card d-flex flex-column col-sm-8 col-md-8 p-3">
             <h4 class="m-0">{{dish.name}}</h4>
             <p class="m-0">{{dish.description}}</p>
             <p class="m-0">Ingredienti: {{dish.ingredients}}</p>

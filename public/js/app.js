@@ -1971,6 +1971,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantComponent",
   props: {
@@ -2261,6 +2263,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+//
 //
 //
 //
@@ -38889,7 +38892,7 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "rest_img d-flex col-xs-5 pl-2" }, [
+      _c("div", { staticClass: "rest_img d-flex col-sm-5 pl-2" }, [
         _c("img", {
           staticClass: "align-self-center",
           attrs: {
@@ -38901,11 +38904,11 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "rest_info col-md-7 text-left p-3" },
+        { staticClass: "rest_info col-sm-7 text-left p-3" },
         [
-          _c("h3", [_vm._v(_vm._s(_vm.restaurant.name))]),
+          _c("h4", [_vm._v(_vm._s(_vm.restaurant.name))]),
           _vm._v(" "),
-          _c("h5", [_vm._v(_vm._s(_vm.restaurant.address))]),
+          _c("h6", [_vm._v(_vm._s(_vm.restaurant.address))]),
           _vm._v(" "),
           _vm._l(_vm.restaurant.categories, function(category) {
             return _c("span", { key: category.id }, [
@@ -38944,7 +38947,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: " " },
+    {},
     [
       _c(
         "div",
@@ -39250,7 +39253,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.restaurant
-    ? _c("div", { staticClass: "single_rest container" }, [
+    ? _c("div", { staticClass: "single_rest container mb-4" }, [
         _c("div", { staticClass: "details d-flex col-sm-12" }, [
           _c(
             "div",
@@ -39293,16 +39296,22 @@ var render = function() {
                       _c(
                         "div",
                         {
-                          staticClass: "wrapper col-xs-4 pl-2 align-self-center"
+                          staticClass:
+                            "wrapper col-sm-4 col-md-4 pl-2 align-self-center"
                         },
                         [
-                          _c("img", {
-                            staticClass: "img-fluid",
-                            attrs: {
-                              src: "http://127.0.0.1:8000/storage/" + dish.img,
-                              alt: ""
-                            }
-                          })
+                          dish.img != null
+                            ? _c("img", {
+                                attrs: {
+                                  src:
+                                    "http://127.0.0.1:8000/storage/" + dish.img,
+                                  alt: ""
+                                }
+                              })
+                            : _c("img", {
+                                staticClass: "img-fluid",
+                                attrs: { src: "/images/not-found.png", alt: "" }
+                              })
                         ]
                       ),
                       _vm._v(" "),
@@ -39310,7 +39319,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "right_card d-flex flex-column col-md-8 p-3"
+                            "right_card d-flex flex-column col-sm-8 col-md-8 p-3"
                         },
                         [
                           _c("h4", { staticClass: "m-0" }, [
